@@ -1,0 +1,37 @@
+---
+title: "Conteúdo"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+O conteúdo programático detalhado da disciplina é apresentado a seguir. Ele está organizado em três grandes eixos que abordaremos ao longo do semestre.
+
+---
+
+
+Parte 1: Princípios da Estimação Pontual<br>
+&ensp;&ensp;1.1. Conceitos Iniciais: Parâmetros, Estimador e Estatística<br>
+&ensp;&ensp;1.2. Distribuição amostral de algumas estatísticas<br>
+&ensp;&ensp;1.3. Propriedades dos estimadores:<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;1.3.1. Estimador não viesado<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;1.3.2. Viés e Erro quadrático Médio<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;1.3.3. Eficiência de um Estimador<br>
+&ensp;&ensp;1.4. Estatística Suficiente<br>
+
+Parte 2: Métodos de Estimação<br>
+&ensp;&ensp;2.1. Família Exponencial<br>
+&ensp;&ensp;2.2. O Método da Máxima Verossimilhança<br>
+&ensp;&ensp;2.3. Propriedades dos Estimadores de Máxima Verossimilhança<br>
+&ensp;&ensp;2.4. Família Exponencial e o Método da Máxima Verossimilhança<br>
+&ensp;&ensp;2.5. O Método dos Momentos<br>
+&ensp;&ensp;2.6. Introdução ao estimador de Bayes<br>
+
+Parte 3: Estimação por intervalo<br>
+&ensp;&ensp;3.1. Resultados de amostras de população normal<br>
+&ensp;&ensp;3.2. Método da Quantidade Pivotal<br>
+&ensp;&ensp;3.3. Intervalos de confiança para populações normais para:<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;3.3.1. Uma amostra<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;3.3.2. Duas amostras<br>
+&ensp;&ensp;3.4. Intervalos de confiança aproximados

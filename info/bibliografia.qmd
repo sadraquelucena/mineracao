@@ -1,0 +1,58 @@
+---
+title: "Bibliografia"
+
+format:
+  html:
+    toc: false
+    anchor-sections: false
+    
+listing:
+  - id: basica
+    contents: bibliografia_basica.yml
+    type: table
+    sort-ui: false
+    filter-ui: false
+    image-align: left
+  
+  - id: complementar
+    contents: bibliografia_complementar.yml
+    type: table
+    sort-ui: false
+    filter-ui: false
+    image-align: left
+lang: pt
+---
+
+Abaixo, você encontra a bibliografia básica e complementar da disciplina.
+
+### Básica
+
+<style>
+/* Esconde o cabeçalho da tabela de listagem */
+.quarto-listing-table thead {
+  display: none;
+}
+
+/* Centraliza verticalmente TODO o conteúdo das células da tabela */
+.quarto-listing-table td {
+  vertical-align: middle;
+}
+
+/* Define o tamanho da imagem e garante a proporção */
+.quarto-listing-table td:first-child img {
+  width: 100px !important;      /* Defina a largura desejada */
+  max-width: none !important;
+  height: auto !important;      /* Garante que a altura se ajuste proporcionalmente */
+}
+</style>
+
+:::{#basica}
+:::
+
+
+
+### Complementar
+
+:::{#complementar}
+:::
+

@@ -1,0 +1,77 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  bread-crumbs: false
+  page-navigation: true
+  title: "Inferência I"
+  sidebar:
+    style: "docked"
+    search: false
+    border: false
+    logo: img/inferencia1-logo-sem-borda.png
+    contents:
+    - section: "Informações da disciplina"
+      contents: 
+      - href: info/dados_gerais.qmd
+        text: "Dados gerais"
+      - href: info/ementa.qmd
+        text: "Ementa e objetivos"
+      - href: info/conteudo.qmd
+        text: "Conteúdo"
+      - href: info/bibliografia.qmd
+        text: "Bibliografia"
+      - href: info/cronograma.qmd
+        text: "Cronograma"
+    
+    - section: "Aulas"
+      contents: 
+      - section: "Parte 1: Princípios da Estimação Pontual"
+        contents:
+          - href: aulas/01-Apresentacao_da_disciplina.qmd
+            text: "1- Apresentação da Disciplina"
+          - href: aulas/02-Distribuicoes_amostrais.qmd
+            text: "2- Distribuições Amostrais"
+          - href: aulas/03-Vies_de_um_estimador.qmd
+            text: "3- Viés de Um Estimador"
+          - href: aulas/04-EQM_de_um_estimador.qmd
+            text: "4- Erro Quadrático Médio de Um Estimador"
+          - href: aulas/05-Eficiencia_de_um_estimador.qmd
+            text: "5- Eficiência de Um Estimador"
+          - href: aulas/06-Estatisticas_suficientes.qmd
+            text: "6- Estatísticas Suficientes"
+          - href: aulas/07-Criterio_da_fatoração_de_Neyman.qmd
+            text: "7- Critério da Fatoração de Neyman"
+          - href: aulas/08-Criterio_da_fatoracao_caso_multiparametrico.qmd
+            text: "8- Critério da Fatoração: Caso Multiparametrico"
+          - href: aulas/09-Familia_exponencial.qmd
+            text: "9- Família Exponencial"
+          - href: aulas/10-Estatistica_completa_e_ENVVUM.qmd
+            text: "10- Estatística Completa e Estimador Não Viciado de Variância Uniformemente Mínima"
+      
+      - section: "Parte 2: Métodos de Estimação"
+        contents:
+          - href: aulas/11-Metodo_dos_momentos.qmd
+            text: "11- Método dos Momentos"
+      
+      #- section: "Parte 3: Estimação por intervalo"
+      #  contents:
+      #    - href: aulas/1-Apresentacao_da_disciplina.qmd
+      #      text: "1- Apresentação da Disciplina e Conceitos Iniciais"
+    
+    - href: PDFs/listas/listas_de_exercicio.qmd
+      text: "Listas de Exercício"
+    - href: PDFs/tabelas/tabelas.qmd
+      text: "Tabelas"
+
+
+
+format:
+  html:
+    theme: styles.scss
+    toc: true
+    grid:
+      sidebar-width: 300px
+resources:
+  - PDFs/**

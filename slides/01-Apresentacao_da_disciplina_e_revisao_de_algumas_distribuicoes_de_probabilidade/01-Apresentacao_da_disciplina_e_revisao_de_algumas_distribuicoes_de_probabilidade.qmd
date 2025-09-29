@@ -1,0 +1,771 @@
+---
+title: "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade"
+subtitle: "ESTAT0078 -- Inferência I"
+author:
+  name: | # indica que o campo name terá múltiplas linhas
+    Prof. Dr. Sadraque E. F. Lucena<br>
+    <span style="font-size:.8em;">sadraquelucena@academico.ufs.br</span>
+    <br>
+    <a href="http://sadraquelucena.github.io/inferencia1" style="font-size:.8em;">http://sadraquelucena.github.io/inferencia1</a>
+  
+format:
+  revealjs:
+    theme: meutema.scss
+    width: 1024
+    height: 768
+    margin: 0.1         # margem em torno do conteúdo
+    min-scale: 0.2       # escala mínima permitida
+    max-scale: 2.0       # escala máxima permitida
+    slide-number: true
+    code-line-numbers: false # sem numero das linhas nos code chunks
+    subtitle-style: "font-size: 2em; font-weight: bold;"  # Aqui é onde aumentamos o subtítulo
+    logo: imagens/ufs_horizontal_positiva.png
+    transition: fade
+    transition-speed: fast
+    scss: meutema.scss
+
+lang: pt-BR
+---
+
+## Canais de Comunicação e Materiais da Disciplina
+
+- Site: <http://sadraquelucena.github.io/inferencia1>
+
+- Grupo no WhatsApp: <http://tiny.cc/inf1wpp>
+
+![](imagens/WhatsApp.jpeg){fig-align="center"}
+
+
+
+
+## Informações da disciplina
+
+- **Componente curricular:** ESTAT0078 -- Inferência I
+- **Período:** 7º semestre
+- **Carga horária:** 60 horas (4 créditos)
+- **Horário:**
+  - Terças - 19h00 às 20h30
+  - Quintas - 20h45 às 22h15
+- **Docente:** Prof. Dr. Sadraque E. F. Lucena
+
+
+
+
+## Objetivo da Disciplina
+
+- Introduzir fundamentos da inferência estatística;
+
+- Desenvolver habilidades de análise e interpretação de estimadores;
+
+- Compreender a aplicabilidade da inferência na análise de dados.
+
+
+
+
+## Ementa
+
+- Amostras e distribuições amostrais.
+
+- Estimação pontual e por intervalo.
+
+- Estudo de estimadores mais comumente usados: método dos momentos, máxima verossimilhança, estimador de Bayes.
+
+- Intervalos de confiança; métodos para construção de intervalos de confiança.
+
+
+
+
+## Conteúdo Programático
+
+Parte 1. Princípios da Estimação Pontual<br>
+&nbsp;[1.1. Conceitos Iniciais: Parâmetros, Estimador e Estatística]{style="font-size: 90%;"}<br>
+&nbsp;[1.2. Distribuição amostral de algumas estatísticas]{style="font-size: 90%;"}<br>
+&nbsp;[1.3. Propriedades dos estimadores:]{style="font-size: 90%;"}<br>
+&ensp;&ensp;&ensp;&ensp;[1.3.1. Estimador não viesado]{style="font-size: 90%;"}<br>
+&ensp;&ensp;&ensp;&ensp;[1.3.2. Viés e Erro quadrático Médio]{style="font-size: 90%;"}<br>
+&ensp;&ensp;&ensp;&ensp;[1.3.3. Eficiência de um Estimador]{style="font-size: 90%;"}<br>
+&ensp;[1.4. Estatística Suficiente]{style="font-size: 90%;"}<br>
+
+
+
+
+## Conteúdo Programático
+
+Parte 2. Métodos de Estimação<br>
+&nbsp;[2.1. Família Exponencial]{style="font-size: 90%;"}<br>
+&nbsp;[2.2. O Método da Máxima Verossimilhança]{style="font-size: 90%;"}<br>
+&nbsp;[2.3. Propriedades dos Estimadores de Máxima Verossimilhança]{style="font-size: 90%;"}<br>
+&nbsp;[2.4. Família Exponencial e o Método da Máxima Verossimilhança]{style="font-size: 90%;"}<br>
+&nbsp;[2.5. O Método dos Momentos]{style="font-size: 90%;"}<br>
+&nbsp;[2.6. Introdução ao estimador de Bayes]{style="font-size: 90%;"}<br>
+
+
+
+
+## Conteúdo Programático
+
+Parte 3. Estimação por intervalo<br>
+&nbsp;[3.1. Resultados de amostras de população normal]{style="font-size: 90%;"}<br>
+&nbsp;[3.2. Método da Quantidade Pivotal]{style="font-size: 90%;"}<br>
+&nbsp;[3.3. Intervalos de confiança para populações normais para:]{style="font-size: 90%;"}<br>
+&ensp;&ensp;&ensp;&ensp;[3.3.1. Uma amostra]{style="font-size: 90%;"}<br>
+&ensp;&ensp;&ensp;&ensp;[3.3.2. Duas amostras]{style="font-size: 90%;"}<br>
+&nbsp;[3.4. Intervalos de confiança aproximados]{style="font-size: 90%;"}
+
+
+
+
+## Avaliação
+
+- Serão realizadas **3 avaliações**.
+- A aprovação requer uma média maior ou igual a 5,0.
+- Uma **avaliação substitutiva** será realizada ao final do período. Esta prova abrange todo o conteúdo, substitui apenas uma nota e é permitida em dois casos:
+  1. Para repor falta em alguma das avaliações.
+  2. Para substituir a menor nota (apenas para quem tiver média inferior a 5,0).
+
+
+
+
+
+
+## Datas Importantes
+
+::: {.callout-note title="Avaliações (previsão):"}
+
+- **13/Nov/25 (quinta):** Avaliação 1
+- **18/Dez/25 (quinta):** Avaliação 2
+- **10/Fev/26 (terça):** Avaliação 3
+- **12/Fev/26 (quinta):** Avaliação Substitutiva
+:::
+
+::: {.callout-important title="Não haverá aula:"}
+
+- **20/Nov/25:** Dia Nacional de Zumbi e da Consciência Negra
+(feriado nacional)
+- **25 e 27/Nov/25:** XI SEMAC
+- **22 a 31/12/2025:** Recesso de final de ano
+- **01/01/2026:** Confraternização Universal (feriado nacional) e Aniversário de São Cristóvão (feriado municipal)
+- **02 a 10/01/2026:** Férias coletivas para docentes
+:::
+
+
+
+## Bibliografia Recomendada
+
+### Básica 
+::: {.columns}
+::: {.column width="25%"}
+![](imagens/bolfarine.jpg)
+:::
+::: {.column width="25%"}
+![](imagens/casella.jpg)
+:::
+::: {.column width="25%"}
+![](imagens/mood.jpg)
+:::
+::: {.column width="25%"}
+![](imagens/morettin.jpg)
+:::
+:::
+
+
+
+
+## Bibliografia Recomendada
+
+### Complementar 
+::: {.columns}
+::: {.column width="25%"}
+![](imagens/magalhaes.jpg)
+:::
+::: {.column width="25%"}
+![](imagens/barryjames.jpg)
+:::
+::: {.column width="25%"}
+![](imagens/ross.jpg){height=9cm}
+:::
+::: {.column width="25%"}
+![](imagens/young.jpg){height=9cm}
+:::
+:::
+
+
+
+
+# Introdução
+
+
+
+
+## Inferência: transformando dados em conhecimento
+
+- As distribuições de probabilidade possuem parâmetros.
+- **Exemplos:**
+  - Normal($\mu, \sigma^2$)
+  - Poisson($\lambda$)
+  - Exponencial($\alpha$)
+- Essas distribuições são usadas para representar dados (e assim entender sua variabilidade e quantificar probabilidades).
+
+
+
+
+## Inferência: transformando dados em conhecimento
+
+- Normal($\mu, \sigma^2$)
+
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+
+# Distibuição normal
+par(mfrow=c(1,2))
+set.seed(1234)
+hist(rnorm(1000, mean = 10, sd = 2), col = "Royal Blue", border = "white", freq = FALSE, 
+     main = expression(N(mu == 10, sigma^2 == 4)), xlab = "Valores", ylab = "Densidade",
+     ylim = c(0,.2), xlim = c(-5,25))
+curve(dnorm(x, mean = 10, sd = 2), add = TRUE, col = "red", lwd = 2)
+
+hist(rnorm(1000, mean = 10, sd = 4), col = "Royal Blue", border = "white", freq = FALSE, 
+     main = expression(N(mu == 10, sigma^2 == 16)), xlab = "Valores", ylab = "Densidade",
+     ylim = c(0,.2), xlim = c(-5,25))
+curve(dnorm(x, mean = 10, sd = 4), add = TRUE, col = "red", lwd = 2)
+```
+
+
+
+
+## Inferência: transformando dados em conhecimento
+
+- Poisson($\lambda$)
+
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+
+# Distibuição de Poisson
+par(mfrow=c(1,2))
+set.seed(123)
+
+dados <- rpois(1000, lambda = 2)
+barplot(prop.table(table(dados)), col = "Forest Green", border = "white", 
+        main = expression(Poisson(lambda == 2)), 
+        xlab = "Valores", ylab = "Frequência",
+        xlim = c(0,16))
+pois_probs <- dpois(0:max(dados), lambda = 2)
+points(c(.7,1.9,3.1,4.3,5.5,6.7,7.9,9.1,10.3), pois_probs, type = "b", col = "red", lwd = 3)
+
+dados <- rpois(1000, lambda = 4)
+barplot(prop.table(table(dados)), col = "Forest Green", border = "white", 
+        main = expression(Poisson(lambda == 4)), 
+        xlab = "Valores", ylab = "Frequência",
+        xlim = c(0,16))
+pois_probs <- dpois(0:max(dados), lambda = 4)
+points(c(.7,1.9,3.1,4.3,5.5,6.7,7.9,9.1,10.3,11.5, 12.7, 13.9, 15.1), pois_probs, type = "b", col = "red", lwd = 3)
+```
+
+
+
+
+## Inferência: transformando dados em conhecimento
+
+- Exponencial($\alpha$)
+
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+
+# Distibuição exponencial
+par(mfrow=c(1,2))
+# Distibuição exponencial
+set.seed(1234)
+hist(rexp(1000, rate = 1), col = "Orange", border = "white", freq = FALSE, 
+     main = expression(Exponencial(alpha == 1)), xlab = "Valores", ylab = "Densidade",
+     xlim = c(0,20), ylim = c(0, .8))
+curve(dexp(x, rate = 1), add = TRUE, col = "red", lwd = 2)
+
+hist(rexp(1000, rate = 1/3), col = "Orange", border = "white", freq = FALSE, 
+     main = expression(Exponencial(alpha == 3)), xlab = "Valores", ylab = "Densidade",
+     xlim = c(0,20), ylim = c(0, .8))
+curve(dexp(x, rate = 1/3), add = TRUE, col = "red", lwd = 2)
+```
+
+
+
+
+## Inferência: transformando dados em conhecimento
+
+- O objetivo da inferência estatística é estimar os parâmetros das distribuições com base nos dados observados.
+  - Isso permite fazer afirmações sobre a população e quantificar a probabilidade de estarmos certos (ou errados).
+
+
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+#| fig-align: center
+
+# Gerar dados de uma distribuição normal
+set.seed(123)
+n <- 2500  # Número de pontos
+mean_val <- 50
+sd_val <- 10
+
+# Gerar pontos aleatórios da normal
+dados <- rnorm(n, mean = mean_val, sd = sd_val)
+
+
+# Gerar pontos aleatórios ao longo da curva normal (exatamente abaixo dela)
+# Para cada valor de x, calcular a densidade correspondente e gerar um ponto nesse valor
+densidade_teorica <- dnorm(dados, mean = mean_val, sd = sd_val)
+for(i in 1:length(densidade_teorica)){
+  densidade_teorica[i] <- densidade_teorica[i] - runif(1, min = 0, max = densidade_teorica[i]) + rnorm(1, mean=0, sd = .0015)
+  
+}
+
+dados_plot <- dados
+for(i in 1:length(densidade_teorica)){
+  dados_plot[i] <- dados_plot[i] + rnorm(1, mean=0, sd = 1)
+  
+}
+  
+par(mfrow=c(1,2))
+# Plotar a curva teórica da normal
+curve(dnorm(x, mean = mean_val, sd = sd_val), 
+      from = min(dados), to = max(dados), 
+      col = "red", lwd = 2, 
+      main = "População", 
+      xlab = "Valores", ylab = "Densidade")
+# Adicionar os pontos ao gráfico
+points(dados_plot, densidade_teorica, pch = 21, col = "blue", bg = "lightblue", cex = 0.5)
+#text(x = mean_val + 2 * sd_val, y = max(dnorm(seq(min(dados), max(dados), length.out = 100), mean = mean_val, sd = sd_val)) * 0.95, 
+#     labels = expression(N(mu == 50, sigma^2 == 100)), col = "red", cex = 1,  lwd = 2)
+
+# Amostra
+
+# Gerar dados de exemplo - distribuição normal
+set.seed(123)
+dados <- rnorm(1000, mean = 50, sd = 10)
+
+# Calcular o histograma
+hist_data <- hist(dados, plot = FALSE)
+
+# counts_per_bin: número de pontos em cada barra
+counts_per_bin <- hist_data$counts
+
+# bin_indices: densidades ou alturas relativas de cada barra
+alturas <- hist_data$density
+
+# Repetir a densidade para o número de pontos em cada barra e empilhar aleatoriamente dentro do intervalo
+alturas <- rep(alturas, counts_per_bin)
+for(i in 1:length(alturas)){
+  alturas[i] <- alturas[i] - runif(1, min = 0, max = alturas[i])
+}
+
+# Obter os pontos médios do eixo x de cada barra
+pontos_medios <- hist_data$mids
+
+# Repetir os pontos médios para o número de pontos em cada barra
+pontos_medios <- rep(pontos_medios, counts_per_bin)
+
+# Adicionar variação aleatória nos pontos médios para espalhá-los horizontalmente dentro das barras
+pontos_medios <- pontos_medios + runif(length(pontos_medios), min = -2.4, max = 2.4)
+
+# Adicionar a curva de densidade ao gráfico
+hist(dados, col = "Royal Blue", border = "white", freq = FALSE, 
+     main = "Amostra", xlab = "Valores", ylab = "Densidade")
+points(pontos_medios, alturas, pch = 21, col = "darkblue", bg = "lightblue", cex = 0.5)
+curve(dnorm(x, mean = 50, sd = 10), add = TRUE, col = "red", lwd = 2)
+#text(x = mean_val + 2 * sd_val, y = max(dnorm(seq(min(dados), max(dados), length.out = 100), mean = mean_val, sd = sd_val)) * 0.95, 
+#     labels = expression(N(mu == mean_val, sigma^2 == sd_val)), col = "red", cex = 1,  lwd = 2)
+
+```
+
+
+
+
+## Inferência: transformando dados em conhecimento
+
+![[Fonte: Adaptado de <https://stats.libretexts.org/Courses/Lumen_Learning/Concepts_in_Statistics_(Lumen)/06%3A_Probability_and_Probability_Distributions/6.01%3A_Why_It_Matters-_Probability_and_Probability_Distributions>]{style="font-size: 70%;"}](imagens/fig1.png)
+
+
+
+
+# Revisão de Algumas Distribuições de Probabilidade
+
+
+
+
+## Distribuição Binomial
+
+- Descreve o número de sucessos em uma sequência fixa de tentativas independentes.
+- Notação: $X\sim$ Binomial($n,p$)
+- Parâmetros da distribuição:
+  - $n$: número de tentativas
+  - $p$: probabilidade de sucesso em cada tentativa, $0<p<1$
+- Função de probabilidade:
+$$
+  P(X=x) = \binom{n}{p}p^x (1-p)^{n-x}, \quad x=0,1,2,\ldots,n
+$$
+
+
+
+
+## Distribuição Binomial
+
+- Propriedades importantes:
+  - Média: $E(X) = n p$
+  - Variância: $Var(X)=np(1-p)$
+- Modela pesquisas eleitorais (favorável ou não a um candidato), número de sinistros em uma carteira, etc.
+
+
+
+
+## Distribuição Binomial no R <img src="imagens/rcompiler.png" style="width: 100px; vertical-align: middle; margin-left: 50px; margin-top: 11px;" />
+
+Considere $X\sim$ Binomial($n,p$). Para calcular:
+
+- $P(X=x)$ use o comando `dbinom(x, n, p)`.
+- $P(X\leq x)$ use o comando `pbinom(x, n, p)`.
+- Para simular $r$ ocorrências de uma binomial use<br> `rbinom(r, n, p)`.
+
+
+
+
+## Distribuição Binomial
+
+### Exemplo 1.1
+
+Seja $X\sim$ Binomial($n=10; p=0,\!3$).
+
+a) $P(X=4) \color{blue}{= \binom{n}{p}p^x (1-p)^{n-x} = \binom{10}{4}0,\!3^4 (1-0,\!3)^{10-4}}$
+$\qquad\qquad\!\color{blue}{= 0,\!2001}$
+
+Cálculo no R:
+```{r}
+#| echo: true
+#| eval: true
+
+dbinom(4, 10, 0.3)
+```
+
+<br>
+
+b) $E(X)\color{blue}{= 10\cdot 0,\!3=3}$
+
+c) $Var(X)\color{blue}{= 10\cdot 0,\!3(1-0,\!3)= 2,\!1}$
+
+
+
+
+## Distribuição Binomial
+
+Gráfico de $X\sim$ Binomial($n=10; p=0,\!3$):
+
+```{r}
+#| echo: true
+#| eval: true
+#| fig-align: center
+
+n <- 10; p <- 0.3
+probabilidades <- dbinom(0:n, n, p)
+barplot(probabilidades, names.arg = 0:n,
+        xlab = "Número de Sucessos", ylab = "Probabilidade",
+        col = "blue", border = "blue", ylim = c(0,.25))
+```
+
+
+
+
+## Distribuição de Poisson
+
+- Expressa a probabilidade de um número fixo de eventos ocorrer em um intervalo de tempo ou espaço, com uma taxa média conhecida e de forma independente.
+- Notação: $X\sim$ Poisson($\lambda$)
+- Parâmetro da distribuição:
+  - $\lambda$: taxa média de eventos por unidade de tempo ou espaço
+- Função de probabilidade:
+$$
+  P(X=x) = \frac{e^{-\lambda}\lambda^x}{x!}, \quad x=0,1,2,\ldots
+$$
+
+
+
+
+## Distribuição de Poisson
+
+- Propriedade importante:
+  - $E(X) = Var(X) = \lambda$ (média e variância iguais)
+
+
+
+
+## Distribuição de Poisson no R <img src="imagens/rcompiler.png" style="width: 100px; vertical-align: middle; margin-left: 50px; margin-top: 11px;" />
+
+Considere $X\sim$ Poisson($\lambda$). Para calcular:
+
+- $P(X=x)$ use o comando `dpois(x, lambda)`.
+- $P(X\leq x)$ use o comando `pbinom(x, lambda)`.
+- Para simular $r$ ocorrências de uma Poisson use<br> `rpois(r, lambda)`.
+
+
+
+
+## Distribuição de Poisson
+
+### Exemplo 1.2
+
+Seja $X\sim$ Poisson($\lambda=6$).
+
+a) $P(X=4) \color{blue}{= \frac{e^{-\lambda}\lambda^x}{x!} = \frac{e^{-6} 6^4}{4!} = 0,\!1339}$
+
+Cálculo no R:
+```{r}
+#| echo: true
+#| eval: true
+
+dpois(4, 6)
+```
+
+
+
+## Distribuição de Poisson
+
+Gráfico da distibuição de $X\sim$ Poisson($\lambda=6$):
+
+```{r}
+#| echo: true
+#| eval: true
+#| fig-align: center
+
+n <- 20; lambda <- 6
+probabilidades <- dpois(0:n, lambda)
+barplot(probabilidades, names.arg = 0:n,
+        xlab = "Número de Sucessos", ylab = "Probabilidade",
+        col = "blue", border = "blue", ylim = c(0,.25))
+```
+
+
+
+
+## Distribuição Uniforme
+
+- Descreve uma situação onde todos os resultados possíveis de uma variável aleatória têm a mesma probabilidade de ocorrer.
+- Notação: $X\sim$ Uniforme($a, b$)
+- Parâmetros da distribuição:
+  - $a$: limite inferior (mínimo)
+	- $b$: limite superior (máximo)
+- Função de densidade de probabilidade:
+$$
+  f(x) = \frac{1}{b-a}, \quad a\leq x\leq b
+$$
+
+
+
+
+## Distribuição Uniforme
+
+- Propriedades importantes:
+  - Média: $E(X)=\frac{a+b}{2}$
+	- Variância: $Var(X)=\frac{(b-a)^2}{12}$
+	- A distribuição é simétrica em torno da média.
+	- A variável aleatória pode assumir qualquer valor entre $a$ e $b$.
+
+
+
+
+## Distribuição Uniforme no R <img src="imagens/rcompiler.png" style="width: 100px; vertical-align: middle; margin-left: 50px; margin-top: 11px;" />
+
+Considere $X\sim$ Uniforme($a, b$). Para calcular:
+
+- $P(X\leq x)$ use o comando `punif(x, min=a, max=b)`.
+- Para simular $r$ ocorrências de uma uniforme use<br> `runif(r, min=a, max=b)`.
+
+
+
+
+## Distribuição Uniforme
+
+### Exemplo 1.3
+
+Seja $X\sim$ Uniforme($a=1, b=7$).
+
+a) $P(X\leq 6) \color{blue}{= \int_a^x\frac{1}{b-a} dx = \int_1^6 \frac{1}{7-1} dx = \int_1^6 \frac{1}{6} dx}$
+$\qquad\qquad\!\color{blue}{= \left[ \frac{x}{6} \right]_1^6 = 1 - \frac{1}{6} =0,\!8333}$
+
+Cálculo no R:
+```{r}
+#| echo: true
+#| eval: true
+
+punif(6, min=1, max=7)
+```
+
+
+
+## Distribuição Uniforme
+
+Gráfico da distibuição de $X\sim$ Uniforme($a=1, b=7$):
+
+```{r}
+#| echo: true
+#| eval: true
+#| fig-align: center
+
+a <- 1; b <- 7
+curve(dunif(x, min=a, max=b), from = -10, to = 10,
+      main = "Uniforme(1, 7)", xlab = "x", ylab = "Densidade",
+      lwd = 3, col = "red")
+```
+
+
+
+
+## Distribuição Normal
+
+- Distribuição contínua, simétrica, e em forma de sino.
+- Representa muitas variáveis naturais e mensuráveis, como altura, peso, e notas de testes.
+- Notação: $X\sim$ Normal($\mu, \sigma^2$)
+- Parâmetros da distribuição:
+  - $\mu$: média
+	- $\sigma^2$: variância
+- Função de densidade de probabilidade:
+$$
+  f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \quad -\infty<x<\infty, -\infty<\mu<\infty, \sigma^2>0
+$$
+
+
+
+
+## Distribuição Normal
+
+- Propriedades importantes:
+  - É perfeitamente simétrica em torno da média.
+	- A maior parte dos dados está concentrada ao redor da média, com a probabilidade de eventos extremos diminuindo conforme a distância da média.
+	- 68\% dos dados estão dentro de $\mu \pm 1\sigma^2$.
+	- 95\% dos dados estão dentro de $\mu \pm 2\sigma^2$.
+	- 99,7\% dos dados estão dentro de $\mu \pm 3\sigma^2$.
+
+
+
+
+## Distribuição Normal no R <img src="imagens/rcompiler.png" style="width: 100px; vertical-align: middle; margin-left: 50px; margin-top: 11px;" />
+
+Considere $X\sim$ Normal($\mu, \sigma^2$). Para calcular:
+
+- $P(X\leq x)$ use o comando `pnorm(x, mean=`$\color{slateblue}{\mu}$`, sd=`$\color{slateblue}{\sigma}$`)`.
+- Para simular $r$ ocorrências de uma normal use<br> `rnorm(r, mean=`$\color{slateblue}{\mu}$`, sd=`$\color{slateblue}{\sigma}$`)`.
+
+
+
+
+## Distribuição Normal
+
+### Exemplo 1.4
+
+Seja $X\sim$ Normal($\mu=0, \sigma^2=4$).
+
+a) $P(X\leq 1) \color{blue}{= \int_{-\infty}^1 \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} dx}$
+
+Cálculo no R:
+```{r}
+#| echo: true
+#| eval: true
+
+pnorm(1, mean=0, sd=sqrt(4))
+```
+
+
+
+## Distribuição Normal
+
+Gráfico da distibuição de $X\sim$ Normal($\mu=0, \sigma^2=4$):
+
+```{r}
+#| echo: true
+#| eval: true
+#| fig-align: center
+
+mu <- 0; sigma <- sqrt(4)
+curve(dnorm(x, mean=mu, sd=sigma), from = -8, to = 8,
+      main = "Normal(0, 4)", xlab = "x", ylab = "Densidade",
+      lwd = 3, col = "red")
+```
+
+
+
+
+## Distribuição Exponencial
+
+- Distribuição contínua que é frequentemente usada para modelar o tempo de vida de equipamentos.
+- Notação: $X\sim$ Exponencial($\alpha$)
+- Parâmetro da distribuição:
+  - $\alpha$: taxa média de ocorrências de um evento por unidade de tempo.
+- Função de densidade de probabilidade:
+$$
+  f(x) = \alpha e^{-\alpha x}, \quad x\geq 0, \alpha>0
+$$
+
+
+
+
+## Distribuição Exponencial
+
+- Propriedades importantes:
+  - Média: $E(X)=\frac{1}{\alpha}$
+  - Variância: $Var(X)=\frac{1}{\alpha^2}$
+  - A distribuição exponencial tem a propriedade de falta de memória, ou seja, a probabilidade de um evento futuro não depende do tempo já decorrido.
+  - O tempo entre eventos em um processo de Poisson é exponencialmente distribuído.
+
+
+
+
+## Distribuição Exponencial no R <img src="imagens/rcompiler.png" style="width: 100px; vertical-align: middle; margin-left: 50px; margin-top: 11px;" />
+
+Considere $X\sim$ Exponencial($\alpha$). Para calcular:
+
+- $P(X\leq x)$ use o comando `pexp(x, rate=`$\color{slateblue}{\alpha}$`)`.
+- Para simular $r$ ocorrências de uma Exponencial use<br> `rexp(r, rate=`$\color{slateblue}{\alpha}$`)`.
+
+
+
+
+## Distribuição Exponencial
+
+### Exemplo 1.4
+
+Seja $X\sim$ Exponencial($\alpha=2$).
+
+a) $P(X\leq 1) \color{blue}{= \int_0^x \alpha e^{-\alpha x} dx = \int_0^1 2 e^{-2 x} dx = \left. - e^{-2x}\right|_0^1}$
+$\qquad\qquad\!\color{blue}{= 1-e^{-2} = 0,\!8647}$
+
+Cálculo no R:
+```{r}
+#| echo: true
+#| eval: true
+
+pexp(1, rate=2)
+```
+
+
+
+## Distribuição Exponencial
+
+Gráfico da distibuição de $X\sim$ Exponencial($\alpha=2$):
+
+```{r}
+#| echo: true
+#| eval: true
+#| fig-align: center
+
+alpha <- 2
+curve(dexp(x, rate=alpha), from = 0, to = 5,
+      main = "Exponencial(2)", xlab = "x", ylab = "Densidade",
+      lwd = 3, col = "red")
+```
+
+
+
+
+# Fim

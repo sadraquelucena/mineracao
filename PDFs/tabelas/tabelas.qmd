@@ -1,0 +1,33 @@
+---
+title: "Tabelas"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+Acesse aqui as tabelas estatísticas mais importantes para o nosso curso de Inferência. Elas serão ferramentas essenciais para a resolução de exercícios e para as avaliações da disciplina.
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="tabela_normal.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![Tabela Normal](tabela_normal.png)<br>Tabela Normal
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="tabela_t.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![Tabela t](tabela_t.png)<br>Tabela t
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="tabela_qui_quadrado.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![Tabela Qui-quadrado](tabela_qui_quadrado.png)<br>
+Tabela Qui-quadrado
+</a>
+:::
+
+:::
+

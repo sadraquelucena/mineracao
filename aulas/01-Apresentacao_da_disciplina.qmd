@@ -1,0 +1,32 @@
+---
+title: "Conteúdo 1"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade
+
+Sejam bem-vindos(as) à Inferência I!
+
+Na primeira aula, traçamos nosso "plano de voo" para o semestre: conversamos sobre os objetivos da disciplina, os temas que vamos explorar, o formato das avaliações e os canais de comunicação. Para já aquecer os motores, mergulhamos em uma revisão fundamental de algumas das principais distribuições de probabilidade e cálculos práticos no R. Assim, preparamos o terreno para os desafios de estimação que vêm pela frente.
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide01_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide01_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::

@@ -1,0 +1,38 @@
+---
+title: "Ementa e Objetivos"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Ementa
+
+Amostras e distribuições amostrais. Estimação pontual e por intervalo. Estudo de estimadores mais comumente usados: método dos momentos, máxima verossimilhança, estimador de Bayes. Intervalos de confiança; métodos para construção de intervalos de confiança.
+
+
+## Objetivos
+
+Aprofundar os conhecimentos em estimação pontual e intervalar, bem como a avaliação de estimadores.
+
+## Metodologia
+
+Serão ministradas aulas teóricas expositivas; utilizados recursos visuais; resolução de exercícios em sala de aula; solicitação de atividades extraclasse.
+
+## Habilidades e Competências
+
+Ao final da disciplina, o aluno estará apto a compreender e aplicar a teoria de estimação pontual e intervalar dentro do contexto da inferência estatística.
+
+## Avaliação
+
+A disciplina terá **3 avaliações** principais ao longo do semestre. A aprovação na disciplina requer uma média maior ou igual a 5,0.
+
+Ao final do período haverá uma Avaliação Substitutiva que segue duas regras:
+
+- Se você faltou a uma das três provas, poderá fazer a substitutiva para repor essa nota.
+
+- Se você fez todas as provas, mas não atingiu a média para ser aprovado(a), também poderá fazer a substitutiva. Nesse caso, a prova servirá para substituir a sua menor nota.
+
+Atenção: A possibilidade de substituir a menor nota é um recurso exclusivo para quem ainda não alcançou a aprovação. Alunos(as) já aprovados(as) não poderão realizar a prova para aumentar a média.
+
+Em ambas as situações, o conteúdo da avaliação substitutiva cobre toda a matéria do semestre.

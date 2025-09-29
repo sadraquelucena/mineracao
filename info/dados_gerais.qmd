@@ -1,0 +1,49 @@
+---
+title: "Dados Gerais da Disciplina"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+Esta seção centraliza todas as informações essenciais sobre nosso componente curricular, incluindo horários, avaliações e datas importantes.
+
+
+## Informações
+
+- **Componente curricular:** ESTAT0078 - Inferência I
+- **Carga Horária:** 60 horas (4 créditos)
+- **Unidade Responsável:** Departamento de Estatística e Ciências Atuariais (DECAT)
+- **Docente Responsável:** Prof. Dr. Sadraque E. F. Lucena
+- **Período Letivo:** 2025-2
+- **Plano de Ensino da Disciplina:**  [pdf](/PDFs/plano_de_ensino_Inferencia1.pdf){target="_blank"}
+
+*Disciplina obrigatória para os cursos de Estatística e de Ciências Atuariais da Universidade Federal de Sergipe.*
+
+
+## Horários das Aulas
+
+As aulas ocorrerão nos seguintes horários:
+
+- **Terças**: 19h00 às 20h30 na DID XXX sala XXX
+- **Quintas**: 20h45 às 22h15 na DID XXX sala XXX
+
+
+
+## Avaliações
+
+As datas previstas para as avaliações são:
+
+- **Avaliação 1:** 13/11/2025 (quinta)
+- **Avaliação 2:** 18/12/2025 (quinta)
+- **Avaliação 3:** 10/02/2026 (terça)
+- **Avaliação Substitutiva:** 12/02/2026 (quinta)
+
+
+## Não haverá aula
+
+- **20/11/2025:** Dia Nacional de Zumbi e da Consciência Negra (feriado nacional)
+- **25 e 27/11/2025:** XI SEMAC (suspensão das atividades de aula para participação nos eventos da XI SEMAC)
+- **22 a 31/12/2025:** Recesso de final de ano
+- **01/01/2026:** Confraternização Universal (feriado nacional) e Aniversário de São Cristóvão (feriado municipal)
+- **02 a 10/01/2026:** Férias coletivas para docentes

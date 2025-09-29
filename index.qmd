@@ -1,0 +1,13 @@
+---
+title: ""
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+# Bem-vindo(a)!
+
+Este espaço foi criado pelo [Prof. Dr. Sadraque E. F. Lucena](http://sadraquelucena.github.io){target="_blank"} para centralizar todos os conteúdos, atividades e o cronograma da disciplina **ESTAT0078 -- Inferência I**, ofertado pelo Departamento de Estatística e Ciências Atuariais da Universidade Federal de Sergipe.
+
+Ao longo do semestre, vamos construir juntos uma base sólida nos conceitos fundamentais da Inferência Estatística, explorando métodos para obter e avaliar estimadores pontuais e para construir de intervalos de confiança.
