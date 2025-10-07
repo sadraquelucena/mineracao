@@ -12,40 +12,39 @@ Confira abaixo o cronograma de aulas do semestre, baseado no [calendário acadê
 | **Data** | **Dia da Semana** | **Aula** | **Assunto Previsto** |
 |:---|:---|:---|:---------------------------|
 | 07/10/25 | Terça | 1 | VI Encontro de Estatística e Ciências Atuariais da UFS |
-| 09/10/25 | Quinta | 2 | Apresentação da disciplina. Revisão das principais distribuições de probabilidade |
-| 14/10/25 | Terça | 3 | Amostras, Estatísticas e Estimadores |
-| 16/10/25 | Quinta | 4 | Viés de um estimador |
-| 21/10/25 | Terça | 5 | Erro quadrático médio de um estimador |
-| 23/10/25 | Quinta | 6 | Estimadores eficientes |
-| 28/10/25 | Terça | 7 | Estatísticas suficientes |
-| 30/10/25 | Quinta | 8 | Critério da fatoração de Neyman |
-| 04/11/25 | Terça | 9 | Família Exponencial |
-| 06/11/25 | Quinta | 10 | Estatística completa e estimador não viesado de variância uniformemente mínima |
-| 11/11/25 | Terça | 11 | Aula de Exercícios |
-| 13/11/25 | Quinta | 12 | Avaliação 1 |
-| 18/11/25 | Terça | 13 | O método dos momentos |
+| 09/10/25 | Quinta | 2 | Apresentação da disciplina. Introdução à mineração de dados. |
+| 14/10/25 | Terça | 3 | Introdução ao Quarto. |
+| 16/10/25 | Quinta | 4 | Pré-processamento de dados. |
+| 21/10/25 | Terça | 5 | Pré-processamento de dados. |
+| 23/10/25 | Quinta | 6 | Algoritmos de agrupamento. |
+| 28/10/25 | Terça | 7 | Algoritmos de agrupamento. |
+| 30/10/25 | Quinta | 8 | Algoritmos de agrupamento. |
+| 04/11/25 | Terça | 9 | Introdução à Classificação de dados. Validação cruzada e avaliação de desempenho. |
+| 06/11/25 | Quinta | 10 | Regressão Logística. |
+| 11/11/25 | Terça | 11 | Regressão Logística. |
+| 13/11/25 | Quinta | 12 | k-Nearest Neighbors (k-NN). |
+| 18/11/25 | Terça | 13 | k-Nearest Neighbors (k-NN). |
 | 20/11/25 | Quinta | -- | Dia Nacional de Zumbi e da Consciência Negra (feriado nacional) |
 | 25/11/25 | Terça | 14 | XI SEMAC |
 | 27/11/25 | Quinta | 15 | XI SEMAC |
-| 02/12/25 | Terça | 16 | O método dos momentos (continuação) |
-| 04/12/25 | Quinta | 17 | O método da máxima verossimilhança |
-| 09/12/25 | Terça | 18 | Propriedade dos estimadores de máxima verossimilhança |
-| 11/12/25 | Quinta | 19 | O método da máxima verossimilhança: caso multiparamétrico |
-| 16/12/25 | Terça | 20 | Exercícios |
-| 18/12/25 | Quinta | 21 | Avaliação 2 |
+| 02/12/25 | Terça | 16 | Naive Bayes. |
+| 04/12/25 | Quinta | 17 | Naive Bayes. |
+| 09/12/25 | Terça | 18 | Árvores de decisão. |
+| 11/12/25 | Quinta | 19 | Árvores de decisão. |
+| 16/12/25 | Terça | 20 | Floresta Aleatória (Random Forest). |
+| 18/12/25 | Quinta | 21 | Floresta Aleatória (Random Forest). |
 | 23/12/25 | Terça | -- | Recesso acadêmico |
 | 25/12/25 | Quinta | -- | Recesso acadêmico |
 | 30/12/25 | Terça | -- | Recesso acadêmico |
 | 01/01/26 | Quinta | -- | Confraternização Universal (feriado nacional) e Aniversário de São Cristóvão (feriado municipal) |
 | 06/01/26 | Terça | -- | Férias coletivas para docentes |
 | 08/01/26 | Quinta | -- | Férias coletivas para docentes |
-| 13/01/26 | Terça | 22 | Amostras de populações normais |
-| 15/01/26 | Quinta | 23 | O método da quantidade pivotal |
-| 20/01/26 | Terça | 24 | Intervalos para populações normais: o caso de uma única amostra |
-| 22/01/26 | Quinta | 25 | Intervalos para populações normais: duas amostras independentes |
-| 27/01/26 | Terça | 26 | Intervalos para populações normais: duas amostras independentes |
-| 29/01/26 | Quinta | 27 | Intervalos de confiança aproximados |
-| 03/02/26 | Terça | 28 | Exercícios |
-| 05/02/26 | Quinta | 29 | Exercícios |
-| 10/02/26 | Terça | 30 | Avaliação 3 |
-| 12/02/26 | Quinta | 31 | Avaliação Substitutiva |
+| 13/01/26 | Terça | 22 | Support Vector Machine. |
+| 15/01/26 | Quinta | 23 | Support Vector Machine. |
+| 20/01/26 | Terça | 24 | Regressão Linear. |
+| 22/01/26 | Quinta | 25 | Regressão Linear. |
+| 27/01/26 | Terça | 26 | Regras de Associação. |
+| 29/01/26 | Quinta | 27 | Regras de Associação. |
+| 03/02/26 | Terça | 28 | Projeto Final |
+| 05/02/26 | Quinta | 29 | Projeto Final |
+| 10/02/26 | Terça | 30 | Apresentação do Projeto Final |

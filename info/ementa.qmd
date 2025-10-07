@@ -8,31 +8,21 @@ format:
 
 ## Ementa
 
-Amostras e distribuições amostrais. Estimação pontual e por intervalo. Estudo de estimadores mais comumente usados: método dos momentos, máxima verossimilhança, estimador de Bayes. Intervalos de confiança; métodos para construção de intervalos de confiança.
+Análise estatística em grandes bancos de dados. Tratamento de dados para processos de Data Mining. Principais funcionalidades, técnicas e algoritmos. Análise de associações. Classificação de dados. Árvores de decisão. Regressão Logística. Redes Neurais. Segmentação e Análise de Cluster. Estudo de casos.
 
 
 ## Objetivos
 
-Aprofundar os conhecimentos em estimação pontual e intervalar, bem como a avaliação de estimadores.
+Capacitar o aluno a compreender, aplicar e avaliar as principais técnicas e algoritmos de mineração de dados sob uma perspectiva estatística. Ao final da disciplina, o estudante deverá ser capaz de conduzir um projeto de extração de conhecimento a partir de dados, desde a preparação e análise exploratória até a construção, interpretação e validação de modelos preditivos e descritivos, comunicando os resultados de forma clara e objetiva.
 
 ## Metodologia
 
-Serão ministradas aulas teóricas expositivas; utilizados recursos visuais; resolução de exercícios em sala de aula; solicitação de atividades extraclasse.
+Serão ministradas aulas teóricas expositivas; utilizados recursos computacionais e visuais; aplicação de métodos em dados reais; solicitação de atividades extraclasse e realização de projetos.
 
 ## Habilidades e Competências
 
-Ao final da disciplina, o aluno estará apto a compreender e aplicar a teoria de estimação pontual e intervalar dentro do contexto da inferência estatística.
+Ao final da disciplina, espera-se que o(a) aluno(a) seja capaz de executar as rotinas essenciais de pré-processamento em grandes volumes de dados e a implementar os principais algoritmos de classificação, segmentação e associação para construir modelos preditivos e descritivos. O(A) aluno(a) também estará habilitado a avaliar criticamente a performance e a validade dos modelos gerados, bme como interpretar os resultados para extrair insights acionáveis e a comunicar suas conclusões de forma clara para diferentes públicos.
 
 ## Avaliação
 
-A disciplina terá **3 avaliações** principais ao longo do semestre. A aprovação na disciplina requer uma média maior ou igual a 5,0.
-
-Ao final do período haverá uma Avaliação Substitutiva que segue duas regras:
-
-- Se você faltou a uma das três provas, poderá fazer a substitutiva para repor essa nota.
-
-- Se você fez todas as provas, mas não atingiu a média para ser aprovado(a), também poderá fazer a substitutiva. Nesse caso, a prova servirá para substituir a sua menor nota.
-
-Atenção: A possibilidade de substituir a menor nota é um recurso exclusivo para quem ainda não alcançou a aprovação. Alunos(as) já aprovados(as) não poderão realizar a prova para aumentar a média.
-
-Em ambas as situações, o conteúdo da avaliação substitutiva cobre toda a matéria do semestre.
+Será realizada uma avaliação contínua, com solicitação de atividades extraclasse e apresentações em sala de aula. Ao final da disciplina os alunos deverão apresentar um projeto final.

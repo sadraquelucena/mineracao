@@ -11,33 +11,28 @@ Esta seção centraliza todas as informações essenciais sobre nosso componente
 
 ## Informações
 
-- **Componente curricular:** ESTAT0078 - Inferência I
+- **Componente curricular:** ESTAT0109 - Mineração de Dados em Estatística
 - **Carga Horária:** 60 horas (4 créditos)
 - **Unidade Responsável:** Departamento de Estatística e Ciências Atuariais (DECAT)
 - **Docente Responsável:** Prof. Dr. Sadraque E. F. Lucena
 - **Período Letivo:** 2025-2
-- **Plano de Ensino da Disciplina:**  [pdf](/PDFs/plano_de_ensino_Inferencia1.pdf){target="_blank"}
+- **Plano de Ensino da Disciplina:**  [pdf](/PDFs/plano_de_ensino_mineracao.pdf){target="_blank"}
 
-*Disciplina obrigatória para os cursos de Estatística e de Ciências Atuariais da Universidade Federal de Sergipe.*
+*Disciplina optativa para o curso de Estatística e de Ciências Atuariais da Universidade Federal de Sergipe.*
 
 
 ## Horários das Aulas
 
 As aulas ocorrerão nos seguintes horários:
 
-- **Terças**: 19h00 às 20h30 na DID XXX sala XXX
-- **Quintas**: 20h45 às 22h15 na DID XXX sala XXX
+- **Terças**: 17h00 às 18h30 na DID 5 sala 017
+- **Quintas**: 17h00 às 18h30 na DID 5 sala 107
 
 
 
 ## Avaliações
 
-As datas previstas para as avaliações são:
-
-- **Avaliação 1:** 13/11/2025 (quinta)
-- **Avaliação 2:** 18/12/2025 (quinta)
-- **Avaliação 3:** 10/02/2026 (terça)
-- **Avaliação Substitutiva:** 12/02/2026 (quinta)
+Será realizada uma avaliação contínua, com solicitação de atividades extraclasse e apresentações em sala de aula. Ao final da disciplina os alunos deverão apresentar um projeto final.
 
 
 ## Não haverá aula

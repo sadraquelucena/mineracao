@@ -1,11 +1,14 @@
-- image: /img/bolfarine.png
-  title: "BOLFARINE, Heleno; SANDOVAL, Mônica C. **Introdução a Inferência Estatística**. 2. ed. Sociedade Brasileira de Matemática, 2010."
+- image: /img/pang-ning.jpg
+  title: "PANG-NING, Tan; STEINBACH, Michael, KARPATNE, Anuj; KUMAR, Vipin. **Introduction to data mining**. 2. ed. New York: Pearson, 2019."
 
-- image: /img/casella.jpg
-  title: "CASELLA, George; BERGER, Roger L. **Inferência Estatística**. Cengage Learning, 2010."
+- image: /img/bramer.jpg
+  title: "BRAMER, Max. **Practical Machine Learning in R**. Indianapolis, Indiana: John Wiley & Sons, 2020."
 
-- image: /img/mood.jpg
-  title: "MOOD, Alexander McFarlane; GRAYBILL, Franklin A; BOES, Duane C. **Introduction to the theory of statistics**. 3rd ed. Singapore: McGraw-Hill, 1974."
+- image: /img/Aggarwal.jpg
+  title: "AGGARWAL, Charu C. et al. **Data mining: the textbook**. New York: springer, 2015."
 
-- image: /img/morettin.jpg
-  title: "MORETTIN, Luiz Gonzaga. **Estatística básica:** probabilidade e inferência. São Paulo: Pearson, 2010."
+- image: /img/Hastie.jpg
+  title: "HASTIE, T.; TIBSHIRANI, R; FRIEDMAN, J. **The Elements of Statistical Learning**: Data Mining, Inference and Prediction. 2. ed. New York, NY: Springer, 2009."
+  
+- image: /img/Dunham.jpg
+  title: "DUNHAM, Margaret H. **Data Mining**: Introductory and Advanced Topics. Pearson, 2020."
