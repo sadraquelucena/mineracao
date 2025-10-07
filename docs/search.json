@@ -4,7 +4,7 @@
     "href": "info/bibliografia.html",
     "title": "Bibliografia",
     "section": "",
-    "text": "Abaixo, você encontra a bibliografia básica e complementar da disciplina.\n\nBásica\n\n\n\n\n\n\n\n \n\n\n\nTítulo\n\n\n\n\n\n\n\n\n\n\n\nPANG-NING, Tan; STEINBACH, Michael, KARPATNE, Anuj; KUMAR, Vipin. Introduction to data mining. 2. ed. New York: Pearson, 2019.\n\n\n\n\n\n\n\n\n\nBRAMER, Max. Practical Machine Learning in R. Indianapolis, Indiana: John Wiley & Sons, 2020.\n\n\n\n\n\n\n\n\n\nAGGARWAL, Charu C. et al. Data mining: the textbook. New York: springer, 2015.\n\n\n\n\n\n\n\n\n\nHASTIE, T.; TIBSHIRANI, R; FRIEDMAN, J. The Elements of Statistical Learning: Data Mining, Inference and Prediction. 2. ed. New York, NY: Springer, 2009.\n\n\n\n\n\n\n\n\n\nDUNHAM, Margaret H. Data Mining: Introductory and Advanced Topics. Pearson, 2020.\n\n\n\n\n\n\nNenhum item correspondente\n\n\n\nComplementar\n\n\n\n\n\n\n \n\n\n\nTítulo\n\n\n\n\n\n\n\n\n\n\n\nCASTRO, Leandro N.; FERRARI, Daniel G. Introdução à mineração de dados: conceitos básicos, algoritmos e aplicações. São Paulo : Saraiva, 2016.\n\n\n\n\n\n\n\n\n\nBRAMER, Max. Principles of Data Mining. 4. ed. Springer, 2020.\n\n\n\n\n\n\n\n\n\nLAROSE, Daniel T.; LAROSE, Chantal D. . Discovering knowledge in data: an introduction to data mining. 2. ed. John Wiley & Sons, 2014.\n\n\n\n\n\n\nNenhum item correspondente",
+    "text": "Abaixo, você encontra a bibliografia básica e complementar da disciplina.\n\nBásica\n\n\n\n\n\n\n\n \n\n\n\nTítulo\n\n\n\n\n\n\n\n\n\n\n\nPANG-NING, Tan; STEINBACH, Michael, KARPATNE, Anuj; KUMAR, Vipin. Introduction to data mining. 2. ed. New York: Pearson, 2019.\n\n\n\n\n\n\n\n\n\nNWANGANGA, Fred; CHAPPLE, Mike. Practical Machine Learning in R. Indianapolis, Indiana: John Wiley & Sons, 2020.\n\n\n\n\n\n\n\n\n\nAGGARWAL, Charu C. et al. Data mining: the textbook. New York: springer, 2015.\n\n\n\n\n\n\n\n\n\nHASTIE, T.; TIBSHIRANI, R; FRIEDMAN, J. The Elements of Statistical Learning: Data Mining, Inference and Prediction. 2. ed. New York, NY: Springer, 2009.\n\n\n\n\n\n\n\n\n\nDUNHAM, Margaret H. Data Mining: Introductory and Advanced Topics. Pearson, 2020.\n\n\n\n\n\n\nNenhum item correspondente\n\n\n\nComplementar\n\n\n\n\n\n\n \n\n\n\nTítulo\n\n\n\n\n\n\n\n\n\n\n\nCASTRO, Leandro N.; FERRARI, Daniel G. Introdução à mineração de dados: conceitos básicos, algoritmos e aplicações. São Paulo : Saraiva, 2016.\n\n\n\n\n\n\n\n\n\nBRAMER, Max. Principles of Data Mining. 4. ed. Springer, 2020.\n\n\n\n\n\n\n\n\n\nLAROSE, Daniel T.; LAROSE, Chantal D. . Discovering knowledge in data: an introduction to data mining. 2. ed. John Wiley & Sons, 2014.\n\n\n\n\n\n\nNenhum item correspondente",
     "crumbs": [
       "Informações da disciplina",
       "Bibliografia"
@@ -33,7 +33,7 @@
     "href": "aulas/01-Apresentacao_da_disciplina.html",
     "title": "Conteúdo 1",
     "section": "",
-    "text": "Sejam bem-vindos(as) à Inferência I!\nNa primeira aula, traçamos nosso “plano de voo” para o semestre: conversamos sobre os objetivos da disciplina, os temas que vamos explorar, o formato das avaliações e os canais de comunicação. Para já aquecer os motores, mergulhamos em uma revisão fundamental de algumas das principais distribuições de probabilidade e cálculos práticos no R. Assim, preparamos o terreno para os desafios de estimação que vêm pela frente.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
     "crumbs": [
       "Aulas",
       "Parte 1: Fundamentos",
@@ -41,11 +41,11 @@
     ]
   },
   {
-    "objectID": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-revisão-de-algumas-distribuições-de-probabilidade",
-    "href": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-revisão-de-algumas-distribuições-de-probabilidade",
+    "objectID": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
+    "href": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
     "title": "Conteúdo 1",
     "section": "",
-    "text": "Sejam bem-vindos(as) à Inferência I!\nNa primeira aula, traçamos nosso “plano de voo” para o semestre: conversamos sobre os objetivos da disciplina, os temas que vamos explorar, o formato das avaliações e os canais de comunicação. Para já aquecer os motores, mergulhamos em uma revisão fundamental de algumas das principais distribuições de probabilidade e cálculos práticos no R. Assim, preparamos o terreno para os desafios de estimação que vêm pela frente.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
     "crumbs": [
       "Aulas",
       "Parte 1: Fundamentos",
@@ -53,298 +53,221 @@
     ]
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#canais-de-comunicação-e-materiais-da-disciplina",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#canais-de-comunicação-e-materiais-da-disciplina",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#canais-de-comunicação-e-materiais-da-disciplina",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#canais-de-comunicação-e-materiais-da-disciplina",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Canais de Comunicação e Materiais da Disciplina",
-    "text": "Canais de Comunicação e Materiais da Disciplina\n\nSite: http://sadraquelucena.github.io/inferencia1\nGrupo no WhatsApp: http://tiny.cc/inf1wpp"
+    "text": "Canais de Comunicação e Materiais da Disciplina\n\nSite: http://sadraquelucena.github.io/mineracao\nGrupo no WhatsApp: http://tiny.cc/wppmineracao"
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#informações-da-disciplina",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#informações-da-disciplina",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#informações-da-disciplina",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#informações-da-disciplina",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Informações da disciplina",
-    "text": "Informações da disciplina\n\nComponente curricular: ESTAT0078 – Inferência I\nPeríodo: 7º semestre\nCarga horária: 60 horas (4 créditos)\nHorário:\n\nTerças - 19h00 às 20h30\nQuintas - 20h45 às 22h15\n\nDocente: Prof. Dr. Sadraque E. F. Lucena"
+    "text": "Informações da disciplina\n\nComponente curricular: ESTAT0109 – Mineração de Dados em Estatística\nTipo: Dsiciplina optativa\nCarga horária: 60 horas (4 créditos)\nHorário:\n\nTerças - 19h00 às 20h30\nQuintas - 20h45 às 22h15\n\nDocente: Prof. Dr. Sadraque E. F. Lucena"
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#objetivo-da-disciplina",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#objetivo-da-disciplina",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#objetivo-da-disciplina",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#objetivo-da-disciplina",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Objetivo da Disciplina",
-    "text": "Objetivo da Disciplina\n\nIntroduzir fundamentos da inferência estatística;\nDesenvolver habilidades de análise e interpretação de estimadores;\nCompreender a aplicabilidade da inferência na análise de dados."
+    "text": "Objetivo da Disciplina\nCapacitar os(as) alunos(as) a aplicar técnicas estatísticas e computacionais para extrair padrões e conhecimentos úteis de conjuntos de dados."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#ementa",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#ementa",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#ementa",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#ementa",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Ementa",
-    "text": "Ementa\n\nAmostras e distribuições amostrais.\nEstimação pontual e por intervalo.\nEstudo de estimadores mais comumente usados: método dos momentos, máxima verossimilhança, estimador de Bayes.\nIntervalos de confiança; métodos para construção de intervalos de confiança."
+    "text": "Ementa\n\nAnálise estatística em grandes bancos de dados.\nTratamento de dados para processos de Data Mining.\nPrincipais funcionalidades, técnicas e algoritmos.\nAnálise de associações.\nClassificação de dados.\nÁrvores de decisão.\nRegressão Logística.\nRedes Neurais.\nSegmentação e Análise de Cluster.\nEstudo de casos."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#conteúdo-programático",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#conteúdo-programático",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#conteúdo-programático",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#conteúdo-programático",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Conteúdo Programático",
-    "text": "Conteúdo Programático\nParte 1. Princípios da Estimação Pontual  1.1. Conceitos Iniciais: Parâmetros, Estimador e Estatística  1.2. Distribuição amostral de algumas estatísticas  1.3. Propriedades dos estimadores:     1.3.1. Estimador não viesado     1.3.2. Viés e Erro quadrático Médio     1.3.3. Eficiência de um Estimador  1.4. Estatística Suficiente"
+    "text": "Conteúdo Programático\nParte 1: Fundamentos   1.1. Fundamentos da Mineração de Dados   1.2. Pré-processamento de       1.2.1. Exploração      1.2.2. Limpeza      1.2.3. Transformação      1.2.3. Redução  Parte 2: Aprendizado Não Supervisionado   2.1. Regras de Associação   2.2.\\(k\\)-means"
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#conteúdo-programático-1",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#conteúdo-programático-1",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#conteúdo-programático-1",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#conteúdo-programático-1",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Conteúdo Programático",
-    "text": "Conteúdo Programático\nParte 2. Métodos de Estimação  2.1. Família Exponencial  2.2. O Método da Máxima Verossimilhança  2.3. Propriedades dos Estimadores de Máxima Verossimilhança  2.4. Família Exponencial e o Método da Máxima Verossimilhança  2.5. O Método dos Momentos  2.6. Introdução ao estimador de Bayes"
+    "text": "Conteúdo Programático\nParte 3: Aprendizado Supervisionado   3.1. Regressão      3.1.1. Regressão linear      3.1.2. Regressão logística   3.2. \\(k\\)-Nearest Neighbors   3.3. Naive Bayes   3.4. Árvores de Decisão   3.5. Florestas aleatórias   3.6. Support Vector Machine"
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#conteúdo-programático-2",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#conteúdo-programático-2",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#conteúdo-programático-2",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#conteúdo-programático-2",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Conteúdo Programático",
-    "text": "Conteúdo Programático\nParte 3. Estimação por intervalo  3.1. Resultados de amostras de população normal  3.2. Método da Quantidade Pivotal  3.3. Intervalos de confiança para populações normais para:     3.3.1. Uma amostra     3.3.2. Duas amostras  3.4. Intervalos de confiança aproximados"
+    "text": "Conteúdo Programático\nParte 3: Aprendizado Supervisionado (continuação)   3.7. Avaliação de desempenho      3.7.1. Validação Cruzada      3.7.2. Amostragem bootstrap      3.7.3. Acurácia      3.7.4. Kappa      3.7.5. Precisão e revocação      3.7.6. Sensibilidade e especificidade   3.8. Ajuste de parâmetros   3.9. Métodos de conjunto (ensemble methods)      3.9.1. Bagging      3.9.2. Boosting      3.9.3. Stacking"
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#avaliação",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#avaliação",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#avaliação",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#avaliação",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Avaliação",
-    "text": "Avaliação\n\nSerão realizadas 3 avaliações.\nA aprovação requer uma média maior ou igual a 5,0.\nUma avaliação substitutiva será realizada ao final do período. Esta prova abrange todo o conteúdo, substitui apenas uma nota e é permitida em dois casos:\n\nPara repor falta em alguma das avaliações.\nPara substituir a menor nota (apenas para quem tiver média inferior a 5,0)."
+    "text": "Avaliação\nA avaliação do aprendizado será realizada por meio de um portfólio de projetos práticos, composto por:\n\nMini-Projetos: Estudos de caso práticos ao longo do semestre, com relatórios curtos descrevendo a preparação dos dados, aplicação dos algoritmos e interpretação dos resultados.\nProjeto Final Integrador: Relatório final consolidando as análises, com comparação crítica entre modelos, avaliação de desempenho e recomendação do modelo mais adequado ao problema."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#datas-importantes",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#datas-importantes",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#datas-importantes",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#datas-importantes",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Datas Importantes",
-    "text": "Datas Importantes\n\n\n\n\n\n\n\nAvaliações (previsão):\n\n\n\n13/Nov/25 (quinta): Avaliação 1\n18/Dez/25 (quinta): Avaliação 2\n10/Fev/26 (terça): Avaliação 3\n12/Fev/26 (quinta): Avaliação Substitutiva\n\n\n\n\n\n\n\n\n\n\n\n\nNão haverá aula:\n\n\n\n20/Nov/25: Dia Nacional de Zumbi e da Consciência Negra (feriado nacional)\n25 e 27/Nov/25: XI SEMAC\n22 a 31/12/2025: Recesso de final de ano\n01/01/2026: Confraternização Universal (feriado nacional) e Aniversário de São Cristóvão (feriado municipal)\n02 a 10/01/2026: Férias coletivas para docentes"
+    "text": "Datas Importantes\n\n\n\n\n\n\n\nNão haverá aula:\n\n\n\n20/Nov/25: Dia Nacional de Zumbi e da Consciência Negra (feriado nacional)\n25 e 27/Nov/25: XI SEMAC\n22 a 31/12/2025: Recesso de final de ano\n01/01/2026: Confraternização Universal (feriado nacional) e Aniversário de São Cristóvão (feriado municipal)\n02 a 10/01/2026: Férias coletivas para docentes"
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#bibliografia-recomendada",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#bibliografia-recomendada",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#bibliografia-recomendada",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#bibliografia-recomendada",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Bibliografia Recomendada",
     "text": "Bibliografia Recomendada\nBásica"
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#bibliografia-recomendada-1",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#bibliografia-recomendada-1",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#bibliografia-recomendada-1",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#bibliografia-recomendada-1",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Bibliografia Recomendada",
     "text": "Bibliografia Recomendada\nComplementar"
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#inferência-transformando-dados-em-conhecimento",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#inferência-transformando-dados-em-conhecimento",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Inferência: transformando dados em conhecimento",
-    "text": "Inferência: transformando dados em conhecimento\n\nAs distribuições de probabilidade possuem parâmetros.\nExemplos:\n\nNormal(\\(\\mu, \\sigma^2\\))\nPoisson(\\(\\lambda\\))\nExponencial(\\(\\alpha\\))\n\nEssas distribuições são usadas para representar dados (e assim entender sua variabilidade e quantificar probabilidades)."
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#ferramentas",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#ferramentas",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Ferramentas",
+    "text": "Ferramentas"
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#inferência-transformando-dados-em-conhecimento-1",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#inferência-transformando-dados-em-conhecimento-1",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Inferência: transformando dados em conhecimento",
-    "text": "Inferência: transformando dados em conhecimento\n\nNormal(\\(\\mu, \\sigma^2\\))"
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#o-que-é-mineração-de-dados",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#o-que-é-mineração-de-dados",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "O que é Mineração de Dados?",
+    "text": "O que é Mineração de Dados?\n\nMineração Tradicional: processo de mineração tradicional, que busca extrair materiais valiosos (ouro, pedras preciosas) de uma mina.\nMineração de Dados:\n\nA Mina → A Base de Dados\nAs Ferramentas → Os Algoritmos\nOs Minerais Preciosos → O Conhecimento"
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#inferência-transformando-dados-em-conhecimento-2",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#inferência-transformando-dados-em-conhecimento-2",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Inferência: transformando dados em conhecimento",
-    "text": "Inferência: transformando dados em conhecimento\n\nPoisson(\\(\\lambda\\))"
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#a-hierarquia-de-valor-dados-informação-e-conhecimento",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#a-hierarquia-de-valor-dados-informação-e-conhecimento",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "A Hierarquia de Valor: Dados, Informação e Conhecimento",
+    "text": "A Hierarquia de Valor: Dados, Informação e Conhecimento\n\nPara que a Mineração de Dados faça sentido, precisamos entender como o valor é agregado em cada nível.\n\nDados: Nível base. símbolos ou signos brutos, não estruturados e sem significado isolado (Ex: o valor “28”).\nInformação: Dados com significado e utilidade. Contexto é adicionado (Ex: “A temperatura do ar é 28°C”).\nConhecimento: É a compreensão obtida a partir da informação, permitindo a tomada de decisão e a agregação de valor. (Ex: “Saber que fará 28°C em Aracaju no fim de semana pode influenciar a decisão de ir à praia”)."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#inferência-transformando-dados-em-conhecimento-3",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#inferência-transformando-dados-em-conhecimento-3",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Inferência: transformando dados em conhecimento",
-    "text": "Inferência: transformando dados em conhecimento\n\nExponencial(\\(\\alpha\\))"
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#exemplos",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#exemplos",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Exemplos",
+    "text": "Exemplos\n\nCasos em que a mineração de dados geralmente agrega valor:\n\nDescobrir anomalias em registros de sistema e aplicativos que podem indicar um incidente de cibersegurança;\nPrever as vendas de produtos com base nas condições de mercado e ambientais;\nRecomendar o próximo filme que um cliente pode querer assistir com base em sua atividade passada e nas preferências de clientes semelhantes;\nDefinir os preços dos quartos de hotel com bastante antecedência com base na demanda prevista."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#inferência-transformando-dados-em-conhecimento-4",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#inferência-transformando-dados-em-conhecimento-4",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Inferência: transformando dados em conhecimento",
-    "text": "Inferência: transformando dados em conhecimento\n\nO objetivo da inferência estatística é estimar os parâmetros das distribuições com base nos dados observados.\n\nIsso permite fazer afirmações sobre a população e quantificar a probabilidade de estarmos certos (ou errados)."
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#kdd",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#kdd",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "KDD",
+    "text": "KDD\nA mineração de dados é uma etapa fundamental de um processo mais abrangente conhecido pela sigla KDD.\n\nKDD (Knowledge Discovery in Databases | Descoberta de Conhecimento em Bases de Dados): Processo completo e abrangente de extrair conhecimento útil de dados.\n\nEnvolve desde a coleta e limpeza dos dados até a validação final dos padrões encontrados.\nSuas etapas incluem: seleção, integração, limpeza, transformação, mineração e avaliação.\n\nMineração de Dados: Etapa fundamental no processo KDD.\n\nAplicação de algoritmos (computacionais e estatísticos) para identificar padrões nos dados já preparados."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#inferência-transformando-dados-em-conhecimento-5",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#inferência-transformando-dados-em-conhecimento-5",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Inferência: transformando dados em conhecimento",
-    "text": "Inferência: transformando dados em conhecimento\n\nFonte: Adaptado de https://stats.libretexts.org/Courses/Lumen_Learning/Concepts_in_Statistics_(Lumen)/06%3A_Probability_and_Probability_Distributions/6.01%3A_Why_It_Matters-_Probability_and_Probability_Distributions"
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#processo-kdd-visão-geral",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#processo-kdd-visão-geral",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Processo KDD: Visão Geral",
+    "text": "Processo KDD: Visão Geral\nO processo KDD consiste em quatro etapas:\n\nBase de Dados: Ponto de partida. É uma coleção organizada de dados brutos sobre um conjunto de itens.\nPreparação ou Pré-processamento: A etapa de preparação e limpeza dos dados para garantir a qualidade da análise.\nMineração de Dados: A fase de “escavação”, onde algoritmos são aplicados para buscar padrões e extrair conhecimento.\nAvaliação ou Validação do Conhecimento: A fase final, que filtra e valida se os padrões encontrados são realmente úteis e valiosos.\n\n\nMuitas vezes, após a avaliação (etapa 4), é preciso retornar a etapas anteriores para refinar a análise."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-binomial",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-binomial",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Binomial",
-    "text": "Distribuição Binomial\n\nDescreve o número de sucessos em uma sequência fixa de tentativas independentes.\nNotação: \\(X\\sim\\) Binomial(\\(n,p\\))\nParâmetros da distribuição:\n\n\\(n\\): número de tentativas\n\\(p\\): probabilidade de sucesso em cada tentativa, \\(0&lt;p&lt;1\\)\n\nFunção de probabilidade: \\[\nP(X=x) = \\binom{n}{p}p^x (1-p)^{n-x}, \\quad x=0,1,2,\\ldots,n\n\\]"
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#a-etapa-mais-crítica-pré-processamento",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#a-etapa-mais-crítica-pré-processamento",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "A Etapa Mais Crítica: Pré-processamento",
+    "text": "A Etapa Mais Crítica: Pré-processamento\nEsta etapa visa preparar os dados para uma análise eficiente:\n\nLimpeza: Tratamento de dados inconsistentes ou faltantes (missing values).\nIntegração: Combinação de dados de múltiplas fontes (planilhas, bancos de dados diferentes).\nSeleção: Escolha dos dados e variáveis (atributos) mais relevantes(redução de dimensionalidade).\nTransformação: Consolidação dos dados em formatos apropriados para a mineração (ex: normalização, padronização, agregação)."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-binomial-1",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-binomial-1",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Binomial",
-    "text": "Distribuição Binomial\n\nPropriedades importantes:\n\nMédia: \\(E(X) = n p\\)\nVariância: \\(Var(X)=np(1-p)\\)\n\nModela pesquisas eleitorais (favorável ou não a um candidato), número de sinistros em uma carteira, etc."
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#mineração-coração-do-processo",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#mineração-coração-do-processo",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Mineração (Coração do Processo)",
+    "text": "Mineração (Coração do Processo)\nNesta fase, algoritmos são aplicados aos dados já preparados para extrair padrões.\n\nAgrupamento (Clusterização): Divide os dados em grupos semelhantes entre si e distintos dos demais.\nPredição: Constrói modelos para prever valores futuros. Classificação prevê uma categoria, enquanto Estimação (ou Regressão) prevê um valor contínuo.\nRegras de Associação: Descobre atributos que ocorrem juntos com frequência, como no exemplo “quem compra pão também compra manteiga”.\nDetecção de Anomalias: Identifica registros fora do padrão, úteis para detectar fraudes ou defeitos."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-binomial-no-r",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-binomial-no-r",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Binomial no R ",
-    "text": "Distribuição Binomial no R \nConsidere \\(X\\sim\\) Binomial(\\(n,p\\)). Para calcular:\n\n\\(P(X=x)\\) use o comando dbinom(x, n, p).\n\\(P(X\\leq x)\\) use o comando pbinom(x, n, p).\nPara simular \\(r\\) ocorrências de uma binomial use rbinom(r, n, p)."
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#avaliação-e-validação-do-conhecimento",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#avaliação-e-validação-do-conhecimento",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Avaliação e Validação do Conhecimento",
+    "text": "Avaliação e Validação do Conhecimento\nNem todo padrão encontrado por um algoritmo é útil. Esta etapa filtra os resultados para garantir que o conhecimento gerado seja valioso.As perguntas a serem respondidas incluem:\n\nO padrão é estatisticamente significativo ou ocorreu ao acaso?\nEle é novo e surpreendente ou apenas confirma algo que já sabíamos?\nÉ compreensível para o especialista do domínio ou para o tomador de decisão?\nEle pode ser usado para embasar uma decisão que trará benefícios (aumento de receita, redução de custos, etc.)?\nO objetivo é separar o conhecimento útil de padrões irrelevantes."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-binomial-2",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-binomial-2",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Binomial",
-    "text": "Distribuição Binomial\nExemplo 1.1\nSeja \\(X\\sim\\) Binomial(\\(n=10; p=0,\\!3\\)).\n\n\\(P(X=4) \\color{blue}{= \\binom{n}{p}p^x (1-p)^{n-x} = \\binom{10}{4}0,\\!3^4 (1-0,\\!3)^{10-4}}\\) \\(\\qquad\\qquad\\!\\color{blue}{= 0,\\!2001}\\)\n\nCálculo no R:\n\ndbinom(4, 10, 0.3)\n\n[1] 0.2001209\n\n\n\n\n\\(E(X)\\color{blue}{= 10\\cdot 0,\\!3=3}\\)\n\\(Var(X)\\color{blue}{= 10\\cdot 0,\\!3(1-0,\\!3)= 2,\\!1}\\)"
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#mineração-de-dados-é-interdisciplinar",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#mineração-de-dados-é-interdisciplinar",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Mineração de Dados é Interdisciplinar",
+    "text": "Mineração de Dados é Interdisciplinar\n\nEstatística: Fornece a base para modelagem, testes de hipóteses e validação.\nAprendizagem de Máquina e IA: Oferece um vasto arsenal de algoritmos.\nCiência da Computação: Lida com Bancos de Dados, eficiência de algoritmos e computação de alto desempenho.\nVisualização de Dados: Essencial para a interpretação e comunicação dos resultados."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-binomial-3",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-binomial-3",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Binomial",
-    "text": "Distribuição Binomial\nGráfico de \\(X\\sim\\) Binomial(\\(n=10; p=0,\\!3\\)):\n\nn &lt;- 10; p &lt;- 0.3\nprobabilidades &lt;- dbinom(0:n, n, p)\nbarplot(probabilidades, names.arg = 0:n,\n        xlab = \"Número de Sucessos\", ylab = \"Probabilidade\",\n        col = \"blue\", border = \"blue\", ylim = c(0,.25))"
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#principais-termos-da-área",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#principais-termos-da-área",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Principais Termos da Área",
+    "text": "Principais Termos da Área\n\nA área de Mineração de Dados possui uma vasta quantidade de técnicas e algoritmos.\nFoi desenvolvida ao longo de décadas por diferentes grupos:\n\nPesquisadores acadêmicos\nEmpresas de tecnologia\nConsultores\n\nEssa diversidade de origens e inspirações (da estatística à biologia) gerou diferentes nomenclaturas para contextos muitas vezes similares.\nÉ importante estarmos familiarizados com as nomenclaturas mais utilizadas."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-de-poisson",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-de-poisson",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição de Poisson",
-    "text": "Distribuição de Poisson\n\nExpressa a probabilidade de um número fixo de eventos ocorrer em um intervalo de tempo ou espaço, com uma taxa média conhecida e de forma independente.\nNotação: \\(X\\sim\\) Poisson(\\(\\lambda\\))\nParâmetro da distribuição:\n\n\\(\\lambda\\): taxa média de eventos por unidade de tempo ou espaço\n\nFunção de probabilidade: \\[\nP(X=x) = \\frac{e^{-\\lambda}\\lambda^x}{x!}, \\quad x=0,1,2,\\ldots\n\\]"
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#inteligência-artificial-ia-clássica",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#inteligência-artificial-ia-clássica",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Inteligência Artificial (IA) Clássica",
+    "text": "Inteligência Artificial (IA) Clássica\n\nDefinição: A ciência e engenharia de criar máquinas inteligentes, especialmente programas de computador.\nInspiração Principal: A inteligência humana (percepção, resolução de problemas, comunicação).\nAbordagem Central: Era simbólica e baseada em lógica.\n\nConhecimento era representado por símbolos e regras.\nO sistema inteligente era construído codificando-se o conhecimento de um especialista.\n\nExemplo: Sistemas Especialistas (Expert Systems).\n\nSe tosse E febre E dor de cabeça, ENTÃO gripe."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-de-poisson-1",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-de-poisson-1",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição de Poisson",
-    "text": "Distribuição de Poisson\n\nPropriedade importante:\n\n\\(E(X) = Var(X) = \\lambda\\) (média e variância iguais)"
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#inteligência-computacional",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#inteligência-computacional",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Inteligência Computacional",
+    "text": "Inteligência Computacional\n\nOrigem: Surgiu de uma discordância com a IA Clássica.\n\nA IA Clássica teve dificuldade em cumprir promessas ambiciosas (robôs autônomos, etc.).\nNovas abordagens, com formas de operar diferentes, precisavam de um novo nome.\n\nFoco: Técnicas não-simbólicas, muitas vezes inspiradas em fenômenos biológicos.\nPilares da Inteligência Computacional:\n\nRedes Neurais Artificiais\nSistemas Nebulosos (Fuzzy Systems)\nAlgoritmos Evolutivos"
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-de-poisson-no-r",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-de-poisson-no-r",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição de Poisson no R ",
-    "text": "Distribuição de Poisson no R \nConsidere \\(X\\sim\\) Poisson(\\(\\lambda\\)). Para calcular:\n\n\\(P(X=x)\\) use o comando dpois(x, lambda).\n\\(P(X\\leq x)\\) use o comando pbinom(x, lambda).\nPara simular \\(r\\) ocorrências de uma Poisson use rpois(r, lambda)."
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#aprendizagem-de-máquina",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#aprendizagem-de-máquina",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Aprendizagem de Máquina",
+    "text": "Aprendizagem de Máquina\n\nDefinição: Área que desenvolve programas capazes de melhorar seu desempenho automaticamente por meio da experiência.\nFonte da Experiência: Dados.\nIdeia Central: Em vez de programar regras explícitas, o sistema aprende os padrões diretamente dos dados.\nRelação: Está intimamente ligada à Mineração de Dados, Estatística e Inteligência Artificial.\nFoco Principal: Extrair informação e conhecimento a partir de dados de forma automática."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-de-poisson-2",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-de-poisson-2",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição de Poisson",
-    "text": "Distribuição de Poisson\nExemplo 1.2\nSeja \\(X\\sim\\) Poisson(\\(\\lambda=6\\)).\n\n\\(P(X=4) \\color{blue}{= \\frac{e^{-\\lambda}\\lambda^x}{x!} = \\frac{e^{-6} 6^4}{4!} = 0,\\!1339}\\)\n\nCálculo no R:\n\ndpois(4, 6)\n\n[1] 0.1338526"
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#aplicações-no-mundo-real",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#aplicações-no-mundo-real",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Aplicações no Mundo Real",
+    "text": "Aplicações no Mundo Real\n\nRecomendação de Filmes e Produtos: A Netflix aprende seus gostos (Aprendizagem de Máquina) para sugerir novos filmes.\nDiagnóstico Médico por Imagem: Sistemas analisam tomografias para identificar padrões de doenças, aprendendo com milhares de exames anteriores (Redes Neurais).\nDetecção de Fraude em Cartão de Crédito: O sistema aprende o padrão de gastos do cliente (Aprendizagem de Máquina) e sinaliza transações que fogem desse padrão.\nOtimização de Rotas de Entrega: Algoritmos inspirados em colônias de formigas (Computação Natural) encontram os caminhos mais eficientes."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-de-poisson-3",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-de-poisson-3",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição de Poisson",
-    "text": "Distribuição de Poisson\nGráfico da distibuição de \\(X\\sim\\) Poisson(\\(\\lambda=6\\)):\n\nn &lt;- 20; lambda &lt;- 6\nprobabilidades &lt;- dpois(0:n, lambda)\nbarplot(probabilidades, names.arg = 0:n,\n        xlab = \"Número de Sucessos\", ylab = \"Probabilidade\",\n        col = \"blue\", border = \"blue\", ylim = c(0,.25))"
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#como-as-máquinas-aprendem",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#como-as-máquinas-aprendem",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Como as Máquinas Aprendem?",
+    "text": "Como as Máquinas Aprendem?\n\nAprendizado Supervisionado:\n\nO algoritmo treina com um conjunto de dados que já possui as respostas corretas (rótulos).\nExemplo: Prever o preço de um imóvel usando uma base de dados com o preço de imóveis já vendidos.\n\nAprendizado Não Supervisionado:\n\nO algoritmo recebe dados sem respostas ou rótulos.\nA tarefa é encontrar padrões, estruturas ou grupos ocultos nos dados.\nExemplo: Agrupar clientes de um supermercado em segmentos com base em seus hábitos de compra."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-uniforme",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-uniforme",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Uniforme",
-    "text": "Distribuição Uniforme\n\nDescreve uma situação onde todos os resultados possíveis de uma variável aleatória têm a mesma probabilidade de ocorrer.\nNotação: \\(X\\sim\\) Uniforme(\\(a, b\\))\nParâmetros da distribuição:\n\n\\(a\\): limite inferior (mínimo)\n\n\\(b\\): limite superior (máximo)\n\n\nFunção de densidade de probabilidade: \\[\nf(x) = \\frac{1}{b-a}, \\quad a\\leq x\\leq b\n\\]"
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#computação-natural",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#computação-natural",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Computação Natural",
+    "text": "Computação Natural\n\nDefinição: Um termo “guarda-chuva” para descrever técnicas que se relacionam com a natureza.\nInspiração: Fenômenos naturais, que vão além da inteligência humana.\n\nExemplos: Evolução das espécies, sistema imunológico, comportamento de enxames (formigas, abelhas), construção de ninhos por cupins.\n\nAbrangência:\n\nMétodos inspirados na natureza para resolver problemas.\n\nAlgoritmos Evolutivos, Inteligência de Enxame.\n\n\nMétodos que usam a natureza para computar. - Computação com moléculas (DNA), Computação Quântica."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-uniforme-1",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-uniforme-1",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Uniforme",
-    "text": "Distribuição Uniforme\n\nPropriedades importantes:\n\nMédia: \\(E(X)=\\frac{a+b}{2}\\)\n\nVariância: \\(Var(X)=\\frac{(b-a)^2}{12}\\)\nA distribuição é simétrica em torno da média.\nA variável aleatória pode assumir qualquer valor entre \\(a\\) e \\(b\\)."
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#a-mesma-ideia-nomes-diferentes",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#a-mesma-ideia-nomes-diferentes",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "A Mesma Ideia, Nomes Diferentes",
+    "text": "A Mesma Ideia, Nomes Diferentes\nMuitos conceitos de Mineração de Dados e Aprendizagem de Máquina têm um equivalente direto na Estatística. A base matemática é frequentemente a mesma.\n\nInstância (Instance)\n\nObservação ou Ponto Amostral\nUma unidade amostral ou indivíduo (equivale a uma linha em uma tabela).\n\nAtributo (Attribute / Feature)\n\nVariável Independente ou Variável Explicativa (preditor)\nÉ a variável que usamos para fazer uma previsão (equivale a uma coluna em uma tabela)."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-uniforme-no-r",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-uniforme-no-r",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Uniforme no R ",
-    "text": "Distribuição Uniforme no R \nConsidere \\(X\\sim\\) Uniforme(\\(a, b\\)). Para calcular:\n\n\\(P(X\\leq x)\\) use o comando punif(x, min=a, max=b).\nPara simular \\(r\\) ocorrências de uma uniforme use runif(r, min=a, max=b)."
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#glossário-essencial-termos-da-área",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#glossário-essencial-termos-da-área",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Glossário Essencial: Termos da Área",
+    "text": "Glossário Essencial: Termos da Área\n\nRótulo ou Atributo-Alvo (Label / Target)\n\nVariável Dependente ou Variável Resposta\nÉ a variável que o modelo estatístico tenta prever ou explicar.\n\nModelo (Model)\n\nModelo estatístico ou algoritmo computacional criado que será usado para fazer novas previsões.\nPode ser, por exemplo, uma árvore de decisão, uma rede neural ou um modelo de regressão logística."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-uniforme-2",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-uniforme-2",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Uniforme",
-    "text": "Distribuição Uniforme\nExemplo 1.3\nSeja \\(X\\sim\\) Uniforme(\\(a=1, b=7\\)).\n\n\\(P(X\\leq 6) \\color{blue}{= \\int_a^x\\frac{1}{b-a} dx = \\int_1^6 \\frac{1}{7-1} dx = \\int_1^6 \\frac{1}{6} dx}\\) \\(\\qquad\\qquad\\!\\color{blue}{= \\left[ \\frac{x}{6} \\right]_1^6 = 1 - \\frac{1}{6} =0,\\!8333}\\)\n\nCálculo no R:\n\npunif(6, min=1, max=7)\n\n[1] 0.8333333"
-  },
-  {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-uniforme-3",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-uniforme-3",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Uniforme",
-    "text": "Distribuição Uniforme\nGráfico da distibuição de \\(X\\sim\\) Uniforme(\\(a=1, b=7\\)):\n\na &lt;- 1; b &lt;- 7\ncurve(dunif(x, min=a, max=b), from = -10, to = 10,\n      main = \"Uniforme(1, 7)\", xlab = \"x\", ylab = \"Densidade\",\n      lwd = 3, col = \"red\")"
-  },
-  {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-normal",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-normal",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Normal",
-    "text": "Distribuição Normal\n\nDistribuição contínua, simétrica, e em forma de sino.\nRepresenta muitas variáveis naturais e mensuráveis, como altura, peso, e notas de testes.\nNotação: \\(X\\sim\\) Normal(\\(\\mu, \\sigma^2\\))\nParâmetros da distribuição:\n\n\\(\\mu\\): média\n\n\\(\\sigma^2\\): variância\n\n\nFunção de densidade de probabilidade: \\[\nf(x) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}, \\quad -\\infty&lt;x&lt;\\infty, -\\infty&lt;\\mu&lt;\\infty, \\sigma^2&gt;0\n\\]"
-  },
-  {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-normal-1",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-normal-1",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Normal",
-    "text": "Distribuição Normal\n\nPropriedades importantes:\n\nÉ perfeitamente simétrica em torno da média.\n\nA maior parte dos dados está concentrada ao redor da média, com a probabilidade de eventos extremos diminuindo conforme a distância da média.\n68% dos dados estão dentro de \\(\\mu \\pm 1\\sigma^2\\).\n95% dos dados estão dentro de \\(\\mu \\pm 2\\sigma^2\\).\n99,7% dos dados estão dentro de \\(\\mu \\pm 3\\sigma^2\\)."
-  },
-  {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-normal-no-r",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-normal-no-r",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Normal no R ",
-    "text": "Distribuição Normal no R \nConsidere \\(X\\sim\\) Normal(\\(\\mu, \\sigma^2\\)). Para calcular:\n\n\\(P(X\\leq x)\\) use o comando pnorm(x, mean=\\(\\color{slateblue}{\\mu}\\), sd=\\(\\color{slateblue}{\\sigma}\\)).\nPara simular \\(r\\) ocorrências de uma normal use rnorm(r, mean=\\(\\color{slateblue}{\\mu}\\), sd=\\(\\color{slateblue}{\\sigma}\\))."
-  },
-  {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-normal-2",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-normal-2",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Normal",
-    "text": "Distribuição Normal\nExemplo 1.4\nSeja \\(X\\sim\\) Normal(\\(\\mu=0, \\sigma^2=4\\)).\n\n\\(P(X\\leq 1) \\color{blue}{= \\int_{-\\infty}^1 \\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}} dx}\\)\n\nCálculo no R:\n\npnorm(1, mean=0, sd=sqrt(4))\n\n[1] 0.6914625"
-  },
-  {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-normal-3",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-normal-3",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Normal",
-    "text": "Distribuição Normal\nGráfico da distibuição de \\(X\\sim\\) Normal(\\(\\mu=0, \\sigma^2=4\\)):\n\nmu &lt;- 0; sigma &lt;- sqrt(4)\ncurve(dnorm(x, mean=mu, sd=sigma), from = -8, to = 8,\n      main = \"Normal(0, 4)\", xlab = \"x\", ylab = \"Densidade\",\n      lwd = 3, col = \"red\")"
-  },
-  {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-exponencial",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-exponencial",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Exponencial",
-    "text": "Distribuição Exponencial\n\nDistribuição contínua que é frequentemente usada para modelar o tempo de vida de equipamentos.\nNotação: \\(X\\sim\\) Exponencial(\\(\\alpha\\))\nParâmetro da distribuição:\n\n\\(\\alpha\\): taxa média de ocorrências de um evento por unidade de tempo.\n\nFunção de densidade de probabilidade: \\[\nf(x) = \\alpha e^{-\\alpha x}, \\quad x\\geq 0, \\alpha&gt;0\n\\]"
-  },
-  {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-exponencial-1",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-exponencial-1",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Exponencial",
-    "text": "Distribuição Exponencial\n\nPropriedades importantes:\n\nMédia: \\(E(X)=\\frac{1}{\\alpha}\\)\nVariância: \\(Var(X)=\\frac{1}{\\alpha^2}\\)\nA distribuição exponencial tem a propriedade de falta de memória, ou seja, a probabilidade de um evento futuro não depende do tempo já decorrido.\nO tempo entre eventos em um processo de Poisson é exponencialmente distribuído."
-  },
-  {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-exponencial-no-r",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-exponencial-no-r",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Exponencial no R ",
-    "text": "Distribuição Exponencial no R \nConsidere \\(X\\sim\\) Exponencial(\\(\\alpha\\)). Para calcular:\n\n\\(P(X\\leq x)\\) use o comando pexp(x, rate=\\(\\color{slateblue}{\\alpha}\\)).\nPara simular \\(r\\) ocorrências de uma Exponencial use rexp(r, rate=\\(\\color{slateblue}{\\alpha}\\))."
-  },
-  {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-exponencial-2",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-exponencial-2",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Exponencial",
-    "text": "Distribuição Exponencial\nExemplo 1.4\nSeja \\(X\\sim\\) Exponencial(\\(\\alpha=2\\)).\n\n\\(P(X\\leq 1) \\color{blue}{= \\int_0^x \\alpha e^{-\\alpha x} dx = \\int_0^1 2 e^{-2 x} dx = \\left. - e^{-2x}\\right|_0^1}\\) \\(\\qquad\\qquad\\!\\color{blue}{= 1-e^{-2} = 0,\\!8647}\\)\n\nCálculo no R:\n\npexp(1, rate=2)\n\n[1] 0.8646647"
-  },
-  {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-exponencial-3",
-    "href": "slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html#distribuição-exponencial-3",
-    "title": "Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade",
-    "section": "Distribuição Exponencial",
-    "text": "Distribuição Exponencial\nGráfico da distibuição de \\(X\\sim\\) Exponencial(\\(\\alpha=2\\)):\n\nalpha &lt;- 2\ncurve(dexp(x, rate=alpha), from = 0, to = 5,\n      main = \"Exponencial(2)\", xlab = \"x\", ylab = \"Densidade\",\n      lwd = 3, col = \"red\")"
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#glossário-essencial-termos-da-área-1",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#glossário-essencial-termos-da-área-1",
+    "title": "Apresentação da Disciplina e Introdução à mineração de dados",
+    "section": "Glossário Essencial: Termos da Área",
+    "text": "Glossário Essencial: Termos da Área\n\nTreinamento (Training)\n\nAjuste do Modelo ou Estimação de Parâmetros\nÉ o processo de usar os dados para encontrar os melhores coeficientes (parâmetros) do modelo (Ex: método de mínimos quadrados em uma regressão).\n\nDiferença sutil no foco:\n\nA Estatística Clássica frequentemente enfatiza a inferência, ou seja, entender e explicar a relação entre as variáveis.\nA Mineração de Dados e Aprendizagem de Máquina geralmente priorizam a capacidade de predição do modelo em dados futuros, mesmo que o modelo seja uma “caixa-preta”."
   },
   {
     "objectID": "info/ementa.html",

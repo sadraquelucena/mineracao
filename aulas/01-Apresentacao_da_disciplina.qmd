@@ -6,11 +6,11 @@ format:
     anchor-sections: false
 ---
 
-## Apresentação da Disciplina e Revisão de Algumas Distribuições de Probabilidade
+## Apresentação da Disciplina e Introdução à mineração de dados
 
-Sejam bem-vindos(as) à Inferência I!
+Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!
 
-Na primeira aula, traçamos nosso "plano de voo" para o semestre: conversamos sobre os objetivos da disciplina, os temas que vamos explorar, o formato das avaliações e os canais de comunicação. Para já aquecer os motores, mergulhamos em uma revisão fundamental de algumas das principais distribuições de probabilidade e cálculos práticos no R. Assim, preparamos o terreno para os desafios de estimação que vêm pela frente.
+Nesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (*Knowledge Discovery in Databases*), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.
 
 Slides:
 
@@ -18,13 +18,13 @@ Slides:
 :::: {.grid}
 
 ::: {.g-col-12 .g-col-md-4}
-<a href="/slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.html" target="_blank" style="text-decoration: none; color: inherit;">
+<a href="/slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html" target="_blank" style="text-decoration: none; color: inherit;">
 ![](/PDFs/slides/slide01_html.png)<br>Versão html
 </a>
 :::
 
 ::: {.g-col-12 .g-col-md-4}
-<a href="/PDFs/slides/01-Apresentacao_da_disciplina_e_revisao_de_algumas_distribuicoes_de_probabilidade.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+<a href="/PDFs/slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.pdf" target="_blank" style="text-decoration: none; color: inherit;">
 ![](/PDFs/slides/slide01_pdf.png)<br>Versão pdf
 </a>
 :::
