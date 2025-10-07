@@ -11,45 +11,91 @@
     ]
   },
   {
-    "objectID": "info/conteudo.html",
-    "href": "info/conteudo.html",
-    "title": "Conteúdo",
+    "objectID": "info/softwares.html",
+    "href": "info/softwares.html",
+    "title": "Mineração de Dados",
     "section": "",
-    "text": "O conteúdo programático detalhado da disciplina é apresentado a seguir. Ele está organizado em três grandes eixos que abordaremos ao longo do semestre.\n\nParte 1: Fundamentos   1.1. Fundamentos da Mineração de Dados   1.2. Pré-processamento de Dados      1.2.1. Exploração      1.2.2. Limpeza      1.2.3. Transformação      1.2.3. Redução\nParte 2: Aprendizado Não Supervisionado   2.1. Regras de Associação   2.2. \\(k\\)-means\nParte 3: Aprendizado Supervisionado   3.1. Regressão      3.1.1. Regressão linear      3.1.2. Regressão logística   3.2. \\(k\\)-Nearest Neighbors   3.3. Naive Bayes   3.4. Árvores de Decisão   3.5. Florestas aleatórias   3.6. Support Vector Machine   3.7. Avaliação de desempenho      3.7.1. Validação Cruzada      3.7.2. Amostragem bootstrap      3.7.3. Acurácia      3.7.4. Kappa      3.7.5. Precisão e revocação      3.7.6. Sensibilidade e especificidade   3.8. Ajuste de parâmetros   3.9. Métodos de conjunto (ensemble methods)      3.9.1. Bagging      3.9.2. Boosting      3.9.3. Stacking",
+    "text": "Para acompanhar as atividades da disciplina, será necessário instalar os softwares listados abaixo. Todos são gratuitos e amplamente utilizados nas áreas de Estatística e Ciência de Dados:\n\n\n\nR é um ambiente computacional gratuito voltado para análises estatísticas e produção de visualizações gráficas. Link\n\n\n\nO RStudio consiste em um ambiente de desenvolvimento integrado (IDE) projetado para aumentar a produtividade no uso da linguagem R, oferecendo ferramentas especializadas para programação, depuração e visualização de dados. Link\n\n\n\nQuarto é um sistema de publicação técnico-científica de código aberto que integra análise computacional (Python, R, Julia) e produção de documentos dinâmicos em múltiplos formatos (HTML, PDF, Word). Combina escrita em Markdown com recursos avançados para equações, citações e visualizações reprodutíveis. Link",
     "crumbs": [
       "Informações da disciplina",
-      "Conteúdo"
+      "Softwares Necessários"
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Bem-vindo(a)!",
+    "objectID": "info/softwares.html#softwares-necessários",
+    "href": "info/softwares.html#softwares-necessários",
+    "title": "Mineração de Dados",
     "section": "",
-    "text": "Bem-vindo(a)!\nEste espaço foi criado pelo Prof. Dr. Sadraque E. F. Lucena para centralizar todos os conteúdos, atividades e o cronograma da disciplina ESTAT0109 - Mineração de Dados em Estatística, ofertado pelo Departamento de Estatística e Ciências Atuariais da Universidade Federal de Sergipe.\nAo longo do semestre, vamos construir juntos uma base sólida nos fundamentos da Mineração de Dados, explorando o processo de descoberta de conhecimento em bases de dados, as principais técnicas de aprendizado supervisionado e não supervisionado, e as aplicações práticas de algoritmos estatísticos e computacionais para extrair padrões, prever resultados e transformar dados em conhecimento útil."
-  },
-  {
-    "objectID": "aulas/01-Apresentacao_da_disciplina.html",
-    "href": "aulas/01-Apresentacao_da_disciplina.html",
-    "title": "Conteúdo 1",
-    "section": "",
-    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "text": "Para acompanhar as atividades da disciplina, será necessário instalar os softwares listados abaixo. Todos são gratuitos e amplamente utilizados nas áreas de Estatística e Ciência de Dados:\n\n\n\nR é um ambiente computacional gratuito voltado para análises estatísticas e produção de visualizações gráficas. Link\n\n\n\nO RStudio consiste em um ambiente de desenvolvimento integrado (IDE) projetado para aumentar a produtividade no uso da linguagem R, oferecendo ferramentas especializadas para programação, depuração e visualização de dados. Link\n\n\n\nQuarto é um sistema de publicação técnico-científica de código aberto que integra análise computacional (Python, R, Julia) e produção de documentos dinâmicos em múltiplos formatos (HTML, PDF, Word). Combina escrita em Markdown com recursos avançados para equações, citações e visualizações reprodutíveis. Link",
     "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "1- Apresentação da Disciplina"
+      "Informações da disciplina",
+      "Softwares Necessários"
     ]
   },
   {
-    "objectID": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
-    "href": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
-    "title": "Conteúdo 1",
+    "objectID": "info/ementa.html",
+    "href": "info/ementa.html",
+    "title": "Ementa e Objetivos",
     "section": "",
-    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "text": "Análise estatística em grandes bancos de dados. Tratamento de dados para processos de Data Mining. Principais funcionalidades, técnicas e algoritmos. Análise de associações. Classificação de dados. Árvores de decisão. Regressão Logística. Redes Neurais. Segmentação e Análise de Cluster. Estudo de casos.",
     "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "1- Apresentação da Disciplina"
+      "Informações da disciplina",
+      "Ementa e objetivos"
+    ]
+  },
+  {
+    "objectID": "info/ementa.html#ementa",
+    "href": "info/ementa.html#ementa",
+    "title": "Ementa e Objetivos",
+    "section": "",
+    "text": "Análise estatística em grandes bancos de dados. Tratamento de dados para processos de Data Mining. Principais funcionalidades, técnicas e algoritmos. Análise de associações. Classificação de dados. Árvores de decisão. Regressão Logística. Redes Neurais. Segmentação e Análise de Cluster. Estudo de casos.",
+    "crumbs": [
+      "Informações da disciplina",
+      "Ementa e objetivos"
+    ]
+  },
+  {
+    "objectID": "info/ementa.html#objetivos",
+    "href": "info/ementa.html#objetivos",
+    "title": "Ementa e Objetivos",
+    "section": "Objetivos",
+    "text": "Objetivos\nCapacitar o aluno a compreender, aplicar e avaliar as principais técnicas e algoritmos de mineração de dados sob uma perspectiva estatística. Ao final da disciplina, o estudante deverá ser capaz de conduzir um projeto de extração de conhecimento a partir de dados, desde a preparação e análise exploratória até a construção, interpretação e validação de modelos preditivos e descritivos, comunicando os resultados de forma clara e objetiva.",
+    "crumbs": [
+      "Informações da disciplina",
+      "Ementa e objetivos"
+    ]
+  },
+  {
+    "objectID": "info/ementa.html#metodologia",
+    "href": "info/ementa.html#metodologia",
+    "title": "Ementa e Objetivos",
+    "section": "Metodologia",
+    "text": "Metodologia\nSerão ministradas aulas teóricas expositivas; utilizados recursos computacionais e visuais; aplicação de métodos em dados reais; solicitação de atividades extraclasse e realização de projetos.",
+    "crumbs": [
+      "Informações da disciplina",
+      "Ementa e objetivos"
+    ]
+  },
+  {
+    "objectID": "info/ementa.html#habilidades-e-competências",
+    "href": "info/ementa.html#habilidades-e-competências",
+    "title": "Ementa e Objetivos",
+    "section": "Habilidades e Competências",
+    "text": "Habilidades e Competências\nAo final da disciplina, espera-se que o(a) aluno(a) seja capaz de executar as rotinas essenciais de pré-processamento em grandes volumes de dados e a implementar os principais algoritmos de classificação, segmentação e associação para construir modelos preditivos e descritivos. O(A) aluno(a) também estará habilitado a avaliar criticamente a performance e a validade dos modelos gerados, bme como interpretar os resultados para extrair insights acionáveis e a comunicar suas conclusões de forma clara para diferentes públicos.",
+    "crumbs": [
+      "Informações da disciplina",
+      "Ementa e objetivos"
+    ]
+  },
+  {
+    "objectID": "info/ementa.html#avaliação",
+    "href": "info/ementa.html#avaliação",
+    "title": "Ementa e Objetivos",
+    "section": "Avaliação",
+    "text": "Avaliação\nSerá realizada uma avaliação contínua, com solicitação de atividades extraclasse e apresentações em sala de aula. Ao final da disciplina os alunos deverão apresentar um projeto final.",
+    "crumbs": [
+      "Informações da disciplina",
+      "Ementa e objetivos"
     ]
   },
   {
@@ -270,69 +316,45 @@
     "text": "Glossário Essencial: Termos da Área\n\nTreinamento (Training)\n\nAjuste do Modelo ou Estimação de Parâmetros\nÉ o processo de usar os dados para encontrar os melhores coeficientes (parâmetros) do modelo (Ex: método de mínimos quadrados em uma regressão).\n\nDiferença sutil no foco:\n\nA Estatística Clássica frequentemente enfatiza a inferência, ou seja, entender e explicar a relação entre as variáveis.\nA Mineração de Dados e Aprendizagem de Máquina geralmente priorizam a capacidade de predição do modelo em dados futuros, mesmo que o modelo seja uma “caixa-preta”."
   },
   {
-    "objectID": "info/ementa.html",
-    "href": "info/ementa.html",
-    "title": "Ementa e Objetivos",
+    "objectID": "aulas/01-Apresentacao_da_disciplina.html",
+    "href": "aulas/01-Apresentacao_da_disciplina.html",
+    "title": "Conteúdo 1",
     "section": "",
-    "text": "Análise estatística em grandes bancos de dados. Tratamento de dados para processos de Data Mining. Principais funcionalidades, técnicas e algoritmos. Análise de associações. Classificação de dados. Árvores de decisão. Regressão Logística. Redes Neurais. Segmentação e Análise de Cluster. Estudo de casos.",
+    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
     "crumbs": [
-      "Informações da disciplina",
-      "Ementa e objetivos"
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "1- Apresentação da Disciplina"
     ]
   },
   {
-    "objectID": "info/ementa.html#ementa",
-    "href": "info/ementa.html#ementa",
-    "title": "Ementa e Objetivos",
+    "objectID": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
+    "href": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
+    "title": "Conteúdo 1",
     "section": "",
-    "text": "Análise estatística em grandes bancos de dados. Tratamento de dados para processos de Data Mining. Principais funcionalidades, técnicas e algoritmos. Análise de associações. Classificação de dados. Árvores de decisão. Regressão Logística. Redes Neurais. Segmentação e Análise de Cluster. Estudo de casos.",
+    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
     "crumbs": [
-      "Informações da disciplina",
-      "Ementa e objetivos"
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "1- Apresentação da Disciplina"
     ]
   },
   {
-    "objectID": "info/ementa.html#objetivos",
-    "href": "info/ementa.html#objetivos",
-    "title": "Ementa e Objetivos",
-    "section": "Objetivos",
-    "text": "Objetivos\nCapacitar o aluno a compreender, aplicar e avaliar as principais técnicas e algoritmos de mineração de dados sob uma perspectiva estatística. Ao final da disciplina, o estudante deverá ser capaz de conduzir um projeto de extração de conhecimento a partir de dados, desde a preparação e análise exploratória até a construção, interpretação e validação de modelos preditivos e descritivos, comunicando os resultados de forma clara e objetiva.",
-    "crumbs": [
-      "Informações da disciplina",
-      "Ementa e objetivos"
-    ]
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bem-vindo(a)!",
+    "section": "",
+    "text": "Bem-vindo(a)!\nEste espaço foi criado pelo Prof. Dr. Sadraque E. F. Lucena para centralizar todos os conteúdos, atividades e o cronograma da disciplina ESTAT0109 - Mineração de Dados em Estatística, ofertado pelo Departamento de Estatística e Ciências Atuariais da Universidade Federal de Sergipe.\nAo longo do semestre, vamos construir juntos uma base sólida nos fundamentos da Mineração de Dados, explorando o processo de descoberta de conhecimento em bases de dados, as principais técnicas de aprendizado supervisionado e não supervisionado, e as aplicações práticas de algoritmos estatísticos e computacionais para extrair padrões, prever resultados e transformar dados em conhecimento útil."
   },
   {
-    "objectID": "info/ementa.html#metodologia",
-    "href": "info/ementa.html#metodologia",
-    "title": "Ementa e Objetivos",
-    "section": "Metodologia",
-    "text": "Metodologia\nSerão ministradas aulas teóricas expositivas; utilizados recursos computacionais e visuais; aplicação de métodos em dados reais; solicitação de atividades extraclasse e realização de projetos.",
+    "objectID": "info/conteudo.html",
+    "href": "info/conteudo.html",
+    "title": "Conteúdo",
+    "section": "",
+    "text": "O conteúdo programático detalhado da disciplina é apresentado a seguir. Ele está organizado em três grandes eixos que abordaremos ao longo do semestre.\n\nParte 1: Fundamentos   1.1. Fundamentos da Mineração de Dados   1.2. Pré-processamento de Dados      1.2.1. Exploração      1.2.2. Limpeza      1.2.3. Transformação      1.2.3. Redução\nParte 2: Aprendizado Não Supervisionado   2.1. Regras de Associação   2.2. \\(k\\)-means\nParte 3: Aprendizado Supervisionado   3.1. Regressão      3.1.1. Regressão linear      3.1.2. Regressão logística   3.2. \\(k\\)-Nearest Neighbors   3.3. Naive Bayes   3.4. Árvores de Decisão   3.5. Florestas aleatórias   3.6. Support Vector Machine   3.7. Avaliação de desempenho      3.7.1. Validação Cruzada      3.7.2. Amostragem bootstrap      3.7.3. Acurácia      3.7.4. Kappa      3.7.5. Precisão e revocação      3.7.6. Sensibilidade e especificidade   3.8. Ajuste de parâmetros   3.9. Métodos de conjunto (ensemble methods)      3.9.1. Bagging      3.9.2. Boosting      3.9.3. Stacking",
     "crumbs": [
       "Informações da disciplina",
-      "Ementa e objetivos"
-    ]
-  },
-  {
-    "objectID": "info/ementa.html#habilidades-e-competências",
-    "href": "info/ementa.html#habilidades-e-competências",
-    "title": "Ementa e Objetivos",
-    "section": "Habilidades e Competências",
-    "text": "Habilidades e Competências\nAo final da disciplina, espera-se que o(a) aluno(a) seja capaz de executar as rotinas essenciais de pré-processamento em grandes volumes de dados e a implementar os principais algoritmos de classificação, segmentação e associação para construir modelos preditivos e descritivos. O(A) aluno(a) também estará habilitado a avaliar criticamente a performance e a validade dos modelos gerados, bme como interpretar os resultados para extrair insights acionáveis e a comunicar suas conclusões de forma clara para diferentes públicos.",
-    "crumbs": [
-      "Informações da disciplina",
-      "Ementa e objetivos"
-    ]
-  },
-  {
-    "objectID": "info/ementa.html#avaliação",
-    "href": "info/ementa.html#avaliação",
-    "title": "Ementa e Objetivos",
-    "section": "Avaliação",
-    "text": "Avaliação\nSerá realizada uma avaliação contínua, com solicitação de atividades extraclasse e apresentações em sala de aula. Ao final da disciplina os alunos deverão apresentar um projeto final.",
-    "crumbs": [
-      "Informações da disciplina",
-      "Ementa e objetivos"
+      "Conteúdo"
     ]
   },
   {

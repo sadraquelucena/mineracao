@@ -24,6 +24,8 @@ website:
         text: "Bibliografia"
       - href: info/cronograma.qmd
         text: "Cronograma"
+      - href: info/softwares.qmd
+        text: "Softwares Necessários"
     
     - section: "Aulas"
       contents: 

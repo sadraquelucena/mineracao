@@ -1,0 +1,26 @@
+---
+title: ""
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Softwares Necessários
+
+Para acompanhar as atividades da disciplina, será necessário instalar os softwares listados abaixo. Todos são gratuitos e amplamente utilizados nas áreas de Estatística e Ciência de Dados:
+
+<div style="display: flex; flex-direction: column; gap: 1.5em; font-size: 1rem;">
+
+### <img src="/img/R_logo.png" style="height: 60px; vertical-align: middle;"><br> 
+R é um ambiente computacional gratuito voltado para análises estatísticas e produção de visualizações gráficas.<br>
+[Link](https://cran.rstudio.com/){target="_blank"}
+
+### <img src="/img/rstudio-logo.svg" style="height: 60px; vertical-align: middle;"><br> 
+O RStudio consiste em um ambiente de desenvolvimento integrado (IDE) projetado para aumentar a produtividade no uso da linguagem R, oferecendo ferramentas especializadas para programação, depuração e visualização de dados.<br> [Link](https://posit.co/download/rstudio-desktop/){target="_blank"}
+
+### <img src="/img/quarto.png" style="height: 60px; vertical-align: middle;"><br> 
+Quarto é um sistema de publicação técnico-científica de código aberto que integra análise computacional (Python, R, Julia) e produção de documentos dinâmicos em múltiplos formatos (HTML, PDF, Word). Combina escrita em Markdown com recursos avançados para equações, citações e visualizações reprodutíveis.<br>
+[Link](https://quarto.org/docs/get-started/){target="_blank"}
+
+</div>

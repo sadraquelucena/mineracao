@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.24">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bibliografia – Mineração de Dados</title>
+<title>softwares – Mineração de Dados</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,10 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../info/cronograma.html" rel="next">
-<link href="../info/conteudo.html" rel="prev">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<link href="../aulas/01-Apresentacao_da_disciplina.html" rel="next">
+<link href="../info/cronograma.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -58,106 +56,20 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Nenhum resultado",
-    "search-matching-documents-text": "documentos correspondentes",
-    "search-copy-link-title": "Copiar link para a busca",
-    "search-hide-matches-text": "Esconder correspondências adicionais",
-    "search-more-match-text": "mais correspondência neste documento",
-    "search-more-matches-text": "mais correspondências neste documento",
-    "search-clear-button-title": "Limpar",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar",
-    "search-label": "Procurar"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-basica .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-image","listing-title"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-basica'] = new List('listing-basica', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-complementar .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-image","listing-title"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-complementar'] = new List('listing-complementar', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -167,11 +79,11 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Bibliografia</h1>
+        <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+          <h1 class="quarto-secondary-nav-title"></h1>
         </a>     
     </div>
   </nav>
@@ -192,7 +104,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Informações da disciplina</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -217,7 +129,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../info/bibliografia.html" class="sidebar-item-text sidebar-link active">
+  <a href="../info/bibliografia.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bibliografia</span></a>
   </div>
 </li>
@@ -229,7 +141,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../info/softwares.html" class="sidebar-item-text sidebar-link">
+  <a href="../info/softwares.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Softwares Necessários</span></a>
   </div>
 </li>
@@ -239,7 +151,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Aulas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -248,7 +160,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Parte 1: Fundamentos</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -270,174 +182,28 @@ window.Quarto = {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title d-none d-lg-block">Bibliografia</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Abaixo, você encontra a bibliografia básica e complementar da disciplina.</p>
-<section id="básica" class="level3">
-<h3 data-anchor-id="básica">Básica</h3>
-<style>
-/* Esconde o cabeçalho da tabela de listagem */
-.quarto-listing-table thead {
-  display: none;
-}
-
-/* Centraliza verticalmente TODO o conteúdo das células da tabela */
-.quarto-listing-table td {
-  vertical-align: middle;
-}
-
-/* Define o tamanho da imagem e garante a proporção */
-.quarto-listing-table td:first-child img {
-  width: 100px !important;      /* Defina a largura desejada */
-  max-width: none !important;
-  height: auto !important;      /* Garante que a altura se ajuste proporcionalmente */
-}
-</style>
-<div id="listing-basica" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-
-<th>
- 
-</th>
-
-<th>
-Título
-</th>
-
-</tr>
-</thead>
-<tbody class="list">
-
-<tr data-index="0" data-listing-title-sort="PANG-NING, Tan; STEINBACH, Michael, KARPATNE, Anuj; KUMAR, Vipin. **Introduction to data mining**. 2. ed. New York: Pearson, 2019.">
-<td>
-<span class="listing-image"><img loading="lazy" src="../img/pang-ning.jpg" style="height: 40px;"></span>
-</td>
-<td>
-<span class="listing-title">PANG-NING, Tan; STEINBACH, Michael, KARPATNE, Anuj; KUMAR, Vipin. <strong>Introduction to data mining</strong>. 2. ed.&nbsp;New York: Pearson, 2019.</span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-listing-title-sort="NWANGANGA, Fred; CHAPPLE, Mike. **Practical Machine Learning in R**. Indianapolis, Indiana: John Wiley &amp; Sons, 2020.">
-<td>
-<span class="listing-image"><img loading="lazy" src="../img/Aggarwal.jpg" style="height: 40px;"></span>
-</td>
-<td>
-<span class="listing-title">NWANGANGA, Fred; CHAPPLE, Mike. <strong>Practical Machine Learning in R</strong>. Indianapolis, Indiana: John Wiley &amp; Sons, 2020.</span>
-</td>
-
-</tr>
-
-<tr data-index="2" data-listing-title-sort="AGGARWAL, Charu C. et al. **Data mining: the textbook**. New York: springer, 2015.">
-<td>
-<span class="listing-image"><img loading="lazy" src="../img/Aggarwal.jpg" style="height: 40px;"></span>
-</td>
-<td>
-<span class="listing-title">AGGARWAL, Charu C. et al.&nbsp;<strong>Data mining: the textbook</strong>. New York: springer, 2015.</span>
-</td>
-
-</tr>
-
-<tr data-index="3" data-listing-title-sort="HASTIE, T.; TIBSHIRANI, R; FRIEDMAN, J. **The Elements of Statistical Learning**: Data Mining, Inference and Prediction. 2. ed. New York, NY: Springer, 2009.">
-<td>
-<span class="listing-image"><img loading="lazy" src="../img/Hastie.jpg" style="height: 40px;"></span>
-</td>
-<td>
-<span class="listing-title">HASTIE, T.; TIBSHIRANI, R; FRIEDMAN, J. <strong>The Elements of Statistical Learning</strong>: Data Mining, Inference and Prediction. 2. ed.&nbsp;New York, NY: Springer, 2009.</span>
-</td>
-
-</tr>
-
-<tr data-index="4" data-listing-title-sort="DUNHAM, Margaret H. **Data Mining**: Introductory and Advanced Topics. Pearson, 2020.">
-<td>
-<span class="listing-image"><img loading="lazy" src="../img/Dunham.jpg" style="height: 40px;"></span>
-</td>
-<td>
-<span class="listing-title">DUNHAM, Margaret H. <strong>Data Mining</strong>: Introductory and Advanced Topics. Pearson, 2020.</span>
-</td>
-
-</tr>
-
-</tbody>
-</table>
-<div class="listing-no-matching d-none">Nenhum item correspondente</div>
-</div>
+<section id="softwares-necessários" class="level2">
+<h2 data-anchor-id="softwares-necessários">Softwares Necessários</h2>
+<p>Para acompanhar as atividades da disciplina, será necessário instalar os softwares listados abaixo. Todos são gratuitos e amplamente utilizados nas áreas de Estatística e Ciência de Dados:</p>
+<div style="display: flex; flex-direction: column; gap: 1.5em; font-size: 1rem;">
+<section id="section" class="level3">
+<h3 data-anchor-id="section"><img src="../img/R_logo.png" style="height: 60px; vertical-align: middle;"><br></h3>
+<p>R é um ambiente computacional gratuito voltado para análises estatísticas e produção de visualizações gráficas.<br> <a href="https://cran.rstudio.com/" target="_blank">Link</a></p>
 </section>
-<section id="complementar" class="level3">
-<h3 data-anchor-id="complementar">Complementar</h3>
-<div id="listing-complementar" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-
-<th>
- 
-</th>
-
-<th>
-Título
-</th>
-
-</tr>
-</thead>
-<tbody class="list">
-
-<tr data-index="0" data-listing-title-sort="CASTRO, Leandro N.; FERRARI, Daniel G. **Introdução à mineração de dados**: conceitos básicos, algoritmos e aplicações. São Paulo : Saraiva, 2016.">
-<td>
-<span class="listing-image"><img loading="lazy" src="../img/Castro.jpg" style="height: 40px;"></span>
-</td>
-<td>
-<span class="listing-title">CASTRO, Leandro N.; FERRARI, Daniel G. <strong>Introdução à mineração de dados</strong>: conceitos básicos, algoritmos e aplicações. São Paulo : Saraiva, 2016.</span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-listing-title-sort="BRAMER, Max. **Principles of Data Mining**. 4. ed. Springer, 2020.">
-<td>
-<span class="listing-image"><img loading="lazy" src="../img/bramer.jpg" style="height: 40px;"></span>
-</td>
-<td>
-<span class="listing-title">BRAMER, Max. <strong>Principles of Data Mining</strong>. 4. ed.&nbsp;Springer, 2020.</span>
-</td>
-
-</tr>
-
-<tr data-index="2" data-listing-title-sort="LAROSE, Daniel T.; LAROSE, Chantal D. . **Discovering knowledge in data**: an introduction to data mining. 2. ed. John Wiley &amp; Sons, 2014.">
-<td>
-<span class="listing-image"><img loading="lazy" src="../img/Larose.jpg" style="height: 40px;"></span>
-</td>
-<td>
-<span class="listing-title">LAROSE, Daniel T.; LAROSE, Chantal D. . <strong>Discovering knowledge in data</strong>: an introduction to data mining. 2. ed.&nbsp;John Wiley &amp; Sons, 2014.</span>
-</td>
-
-</tr>
-
-</tbody>
-</table>
-<div class="listing-no-matching d-none">Nenhum item correspondente</div>
+<section id="section-1" class="level3">
+<h3 data-anchor-id="section-1"><img src="../img/rstudio-logo.svg" style="height: 60px; vertical-align: middle;"><br></h3>
+<p>O RStudio consiste em um ambiente de desenvolvimento integrado (IDE) projetado para aumentar a produtividade no uso da linguagem R, oferecendo ferramentas especializadas para programação, depuração e visualização de dados.<br> <a href="https://posit.co/download/rstudio-desktop/" target="_blank">Link</a></p>
+</section>
+<section id="section-2" class="level3">
+<h3 data-anchor-id="section-2"><img src="../img/quarto.png" style="height: 60px; vertical-align: middle;"><br></h3>
+<p>Quarto é um sistema de publicação técnico-científica de código aberto que integra análise computacional (Python, R, Julia) e produção de documentos dinâmicos em múltiplos formatos (HTML, PDF, Word). Combina escrita em Markdown com recursos avançados para equações, citações e visualizações reprodutíveis.<br> <a href="https://quarto.org/docs/get-started/" target="_blank">Link</a></p>
+</section>
 </div>
-
 
 
 </section>
@@ -461,12 +227,12 @@ Título
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copiada");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copiada");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -838,13 +604,13 @@ Título
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../info/conteudo.html" class="pagination-link" aria-label="Conteúdo">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Conteúdo</span>
+      <a href="../info/cronograma.html" class="pagination-link" aria-label="Cronograma">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Cronograma</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../info/cronograma.html" class="pagination-link" aria-label="Cronograma">
-        <span class="nav-page-text">Cronograma</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../aulas/01-Apresentacao_da_disciplina.html" class="pagination-link" aria-label="1- Apresentação da Disciplina">
+        <span class="nav-page-text">1- Apresentação da Disciplina</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
