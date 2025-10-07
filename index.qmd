@@ -8,6 +8,6 @@ format:
 
 # Bem-vindo(a)!
 
-Este espaço foi criado pelo [Prof. Dr. Sadraque E. F. Lucena](http://sadraquelucena.github.io){target="_blank"} para centralizar todos os conteúdos, atividades e o cronograma da disciplina **ESTAT0078 -- Inferência I**, ofertado pelo Departamento de Estatística e Ciências Atuariais da Universidade Federal de Sergipe.
+Este espaço foi criado pelo [Prof. Dr. Sadraque E. F. Lucena](http://sadraquelucena.github.io){target="_blank"} para centralizar todos os conteúdos, atividades e o cronograma da disciplina **ESTAT0109 - Mineração de Dados em Estatística**, ofertado pelo Departamento de Estatística e Ciências Atuariais da Universidade Federal de Sergipe.
 
-Ao longo do semestre, vamos construir juntos uma base sólida nos conceitos fundamentais da Inferência Estatística, explorando métodos para obter e avaliar estimadores pontuais e para construir de intervalos de confiança.
+Ao longo do semestre, vamos construir juntos uma base sólida nos fundamentos da Mineração de Dados, explorando o processo de descoberta de conhecimento em bases de dados, as principais técnicas de aprendizado supervisionado e não supervisionado, e as aplicações práticas de algoritmos estatísticos e computacionais para extrair padrões, prever resultados e transformar dados em conhecimento útil.
