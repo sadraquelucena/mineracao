@@ -44,8 +44,7 @@ lang: pt-BR
 - **Tipo:** Disciplina optativa
 - **Carga horária:** 60 horas (4 créditos)
 - **Horário:**
-  - Terças - 19h00 às 20h30
-  - Quintas - 20h45 às 22h15
+  - Terças e Quintas - 17h00 às 18h30
 - **Docente:** Prof. Dr. Sadraque E. F. Lucena
 
 
