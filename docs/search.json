@@ -110,14 +110,14 @@
     "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#informações-da-disciplina",
     "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Informações da disciplina",
-    "text": "Informações da disciplina\n\nComponente curricular: ESTAT0109 – Mineração de Dados em Estatística\nTipo: Dsiciplina optativa\nCarga horária: 60 horas (4 créditos)\nHorário:\n\nTerças - 19h00 às 20h30\nQuintas - 20h45 às 22h15\n\nDocente: Prof. Dr. Sadraque E. F. Lucena"
+    "text": "Informações da disciplina\n\nComponente curricular: ESTAT0109 – Mineração de Dados em Estatística\nTipo: Disciplina optativa\nCarga horária: 60 horas (4 créditos)\nHorário:\n\nTerças - 19h00 às 20h30\nQuintas - 20h45 às 22h15\n\nDocente: Prof. Dr. Sadraque E. F. Lucena"
   },
   {
     "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#objetivo-da-disciplina",
     "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#objetivo-da-disciplina",
     "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Objetivo da Disciplina",
-    "text": "Objetivo da Disciplina\nCapacitar os(as) alunos(as) a aplicar técnicas estatísticas e computacionais para extrair padrões e conhecimentos úteis de conjuntos de dados."
+    "text": "Objetivo da Disciplina\nCapacitar os(as) alunos(as) a aplicar técnicas estatísticas e computacionais para extrair padrões e conhecimentos úteis a partir de conjuntos de dados."
   },
   {
     "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#ementa",
@@ -131,7 +131,7 @@
     "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#conteúdo-programático",
     "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Conteúdo Programático",
-    "text": "Conteúdo Programático\nParte 1: Fundamentos   1.1. Fundamentos da Mineração de Dados   1.2. Pré-processamento de       1.2.1. Exploração      1.2.2. Limpeza      1.2.3. Transformação      1.2.3. Redução  Parte 2: Aprendizado Não Supervisionado   2.1. Regras de Associação   2.2.\\(k\\)-means"
+    "text": "Conteúdo Programático\nParte 1: Fundamentos   1.1. Fundamentos da Mineração de Dados   1.2. Pré-processamento de dados      1.2.1. Exploração      1.2.2. Limpeza      1.2.3. Transformação      1.2.3. Redução  Parte 2: Aprendizado Não Supervisionado   2.1. Regras de Associação   2.2.\\(k\\)-means"
   },
   {
     "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#conteúdo-programático-1",
@@ -152,7 +152,7 @@
     "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#avaliação",
     "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Avaliação",
-    "text": "Avaliação\nA avaliação do aprendizado será realizada por meio de um portfólio de projetos práticos, composto por:\n\nMini-Projetos: Estudos de caso práticos ao longo do semestre, com relatórios curtos descrevendo a preparação dos dados, aplicação dos algoritmos e interpretação dos resultados.\nProjeto Final Integrador: Relatório final consolidando as análises, com comparação crítica entre modelos, avaliação de desempenho e recomendação do modelo mais adequado ao problema."
+    "text": "Avaliação\nA avaliação do aprendizado será realizada por meio de um portfólio de projetos práticos, composto por:\n\nMini-Projetos: Estudos de casos práticos ao longo do semestre, com relatórios curtos descrevendo a preparação dos dados, aplicação dos algoritmos e interpretação dos resultados.\nProjeto Final Integrador: Relatório final consolidando as análises, com comparação crítica entre modelos, avaliação de desempenho e recomendação do modelo mais adequado ao problema."
   },
   {
     "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#datas-importantes",
@@ -194,7 +194,7 @@
     "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#a-hierarquia-de-valor-dados-informação-e-conhecimento",
     "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "A Hierarquia de Valor: Dados, Informação e Conhecimento",
-    "text": "A Hierarquia de Valor: Dados, Informação e Conhecimento\n\nPara que a Mineração de Dados faça sentido, precisamos entender como o valor é agregado em cada nível.\n\nDados: Nível base. símbolos ou signos brutos, não estruturados e sem significado isolado (Ex: o valor “28”).\nInformação: Dados com significado e utilidade. Contexto é adicionado (Ex: “A temperatura do ar é 28°C”).\nConhecimento: É a compreensão obtida a partir da informação, permitindo a tomada de decisão e a agregação de valor. (Ex: “Saber que fará 28°C em Aracaju no fim de semana pode influenciar a decisão de ir à praia”)."
+    "text": "A Hierarquia de Valor: Dados, Informação e Conhecimento\n\nPara que a Mineração de Dados faça sentido, precisamos entender como o valor é agregado em cada nível.\n\nDados: Nível base. São símbolos ou signos brutos, não estruturados e sem significado isolado (Ex: o valor “28”).\nInformação: Dados com significado e utilidade. Contexto é adicionado (Ex: “A temperatura do ar é 28°C”).\nConhecimento: É a compreensão obtida a partir da informação, permitindo a tomada de decisão e a agregação de valor. (Ex: “Saber que fará 28°C em Aracaju no fim de semana pode influenciar a decisão de ir à praia”)."
   },
   {
     "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#exemplos",
@@ -236,7 +236,7 @@
     "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#avaliação-e-validação-do-conhecimento",
     "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Avaliação e Validação do Conhecimento",
-    "text": "Avaliação e Validação do Conhecimento\nNem todo padrão encontrado por um algoritmo é útil. Esta etapa filtra os resultados para garantir que o conhecimento gerado seja valioso.As perguntas a serem respondidas incluem:\n\nO padrão é estatisticamente significativo ou ocorreu ao acaso?\nEle é novo e surpreendente ou apenas confirma algo que já sabíamos?\nÉ compreensível para o especialista do domínio ou para o tomador de decisão?\nEle pode ser usado para embasar uma decisão que trará benefícios (aumento de receita, redução de custos, etc.)?\nO objetivo é separar o conhecimento útil de padrões irrelevantes."
+    "text": "Avaliação e Validação do Conhecimento\nNem todo padrão encontrado por um algoritmo é útil. Esta etapa filtra os resultados para garantir que o conhecimento gerado seja valioso. As perguntas a serem respondidas incluem:\n\nO padrão é estatisticamente significativo ou ocorreu ao acaso?\nEle é novo e surpreendente ou apenas confirma algo que já sabíamos?\nÉ compreensível para o especialista do domínio ou para quem toma decisão?\nEle pode ser usado para embasar uma decisão que trará benefícios (aumento de receita, redução de custos, etc.)?\nO objetivo é separar o conhecimento útil de padrões irrelevantes."
   },
   {
     "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#mineração-de-dados-é-interdisciplinar",
@@ -264,7 +264,7 @@
     "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#inteligência-computacional",
     "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "Inteligência Computacional",
-    "text": "Inteligência Computacional\n\nOrigem: Surgiu de uma discordância com a IA Clássica.\n\nA IA Clássica teve dificuldade em cumprir promessas ambiciosas (robôs autônomos, etc.).\nNovas abordagens, com formas de operar diferentes, precisavam de um novo nome.\n\nFoco: Técnicas não-simbólicas, muitas vezes inspiradas em fenômenos biológicos.\nPilares da Inteligência Computacional:\n\nRedes Neurais Artificiais\nSistemas Nebulosos (Fuzzy Systems)\nAlgoritmos Evolutivos"
+    "text": "Inteligência Computacional\n\nOrigem: Surgiu de uma discordância com a IA Clássica.\n\nA IA Clássica teve dificuldade em cumprir promessas ambiciosas (robôs autônomos, etc.).\nNovas abordagens, com formas de operação diferentes, precisavam de um novo nome.\n\nFoco: Técnicas não-simbólicas, muitas vezes inspiradas em fenômenos biológicos.\nPilares da Inteligência Computacional:\n\nRedes Neurais Artificiais\nSistemas Nebulosos (Fuzzy Systems)\nAlgoritmos Evolutivos"
   },
   {
     "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#aprendizagem-de-máquina",
@@ -302,18 +302,18 @@
     "text": "A Mesma Ideia, Nomes Diferentes\nMuitos conceitos de Mineração de Dados e Aprendizagem de Máquina têm um equivalente direto na Estatística. A base matemática é frequentemente a mesma.\n\nInstância (Instance)\n\nObservação ou Ponto Amostral\nUma unidade amostral ou indivíduo (equivale a uma linha em uma tabela).\n\nAtributo (Attribute / Feature)\n\nVariável Independente ou Variável Explicativa (preditor)\nÉ a variável que usamos para fazer uma previsão (equivale a uma coluna em uma tabela)."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#glossário-essencial-termos-da-área",
-    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#glossário-essencial-termos-da-área",
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#a-mesma-ideia-nomes-diferentes-1",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#a-mesma-ideia-nomes-diferentes-1",
     "title": "Apresentação da Disciplina e Introdução à mineração de dados",
-    "section": "Glossário Essencial: Termos da Área",
-    "text": "Glossário Essencial: Termos da Área\n\nRótulo ou Atributo-Alvo (Label / Target)\n\nVariável Dependente ou Variável Resposta\nÉ a variável que o modelo estatístico tenta prever ou explicar.\n\nModelo (Model)\n\nModelo estatístico ou algoritmo computacional criado que será usado para fazer novas previsões.\nPode ser, por exemplo, uma árvore de decisão, uma rede neural ou um modelo de regressão logística."
+    "section": "A Mesma Ideia, Nomes Diferentes",
+    "text": "A Mesma Ideia, Nomes Diferentes\n\nRótulo ou Atributo-Alvo (Label / Target)\n\nVariável Dependente ou Variável Resposta\nÉ a variável que o modelo estatístico tenta prever ou explicar.\n\nModelo (Model)\n\nModelo estatístico ou algoritmo computacional criado que será usado para fazer novas previsões.\nPode ser, por exemplo, uma árvore de decisão, uma rede neural ou um modelo de regressão logística."
   },
   {
-    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#glossário-essencial-termos-da-área-1",
-    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#glossário-essencial-termos-da-área-1",
+    "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#a-mesma-ideia-nomes-diferentes-2",
+    "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#a-mesma-ideia-nomes-diferentes-2",
     "title": "Apresentação da Disciplina e Introdução à mineração de dados",
-    "section": "Glossário Essencial: Termos da Área",
-    "text": "Glossário Essencial: Termos da Área\n\nTreinamento (Training)\n\nAjuste do Modelo ou Estimação de Parâmetros\nÉ o processo de usar os dados para encontrar os melhores coeficientes (parâmetros) do modelo (Ex: método de mínimos quadrados em uma regressão).\n\nDiferença sutil no foco:\n\nA Estatística Clássica frequentemente enfatiza a inferência, ou seja, entender e explicar a relação entre as variáveis.\nA Mineração de Dados e Aprendizagem de Máquina geralmente priorizam a capacidade de predição do modelo em dados futuros, mesmo que o modelo seja uma “caixa-preta”."
+    "section": "A Mesma Ideia, Nomes Diferentes",
+    "text": "A Mesma Ideia, Nomes Diferentes\n\nTreinamento (Training)\n\nAjuste do Modelo ou Estimação de Parâmetros\nÉ o processo de usar os dados para encontrar os melhores coeficientes (parâmetros) do modelo (Ex: método de mínimos quadrados em uma regressão).\n\nDiferença sutil no foco:\n\nA Estatística Clássica frequentemente enfatiza a inferência, ou seja, entender e explicar a relação entre as variáveis.\nA Mineração de Dados e Aprendizagem de Máquina geralmente priorizam a capacidade de predição do modelo em dados futuros, mesmo que o modelo seja uma “caixa-preta”."
   },
   {
     "objectID": "aulas/01-Apresentacao_da_disciplina.html",

@@ -41,7 +41,7 @@ lang: pt-BR
 ## Informações da disciplina
 
 - **Componente curricular:** ESTAT0109 -- Mineração de Dados em Estatística
-- **Tipo:** Dsiciplina optativa
+- **Tipo:** Disciplina optativa
 - **Carga horária:** 60 horas (4 créditos)
 - **Horário:**
   - Terças - 19h00 às 20h30
@@ -53,7 +53,7 @@ lang: pt-BR
 
 ## Objetivo da Disciplina
 
-Capacitar os(as) alunos(as) a aplicar técnicas estatísticas e computacionais para extrair padrões e conhecimentos úteis de conjuntos de dados.
+Capacitar os(as) alunos(as) a aplicar técnicas estatísticas e computacionais para extrair padrões e conhecimentos úteis a partir de conjuntos de dados.
 
 
 
@@ -78,7 +78,7 @@ Capacitar os(as) alunos(as) a aplicar técnicas estatísticas e computacionais p
 
 Parte 1: Fundamentos<br>
 &ensp;&ensp;1.1. Fundamentos da Mineração de Dados<br>
-&ensp;&ensp;1.2. Pré-processamento de <br>
+&ensp;&ensp;1.2. Pré-processamento de dados<br>
 &ensp;&ensp;&ensp;&ensp;&ensp;1.2.1. [Exploração]{style="font-size: 90%;"}<br>
 &ensp;&ensp;&ensp;&ensp;&ensp;1.2.2. [Limpeza]{style="font-size: 90%;"}<br>
 &ensp;&ensp;&ensp;&ensp;&ensp;1.2.3. [Transformação]{style="font-size: 90%;"}<br>
@@ -129,7 +129,7 @@ Parte 3: Aprendizado Supervisionado (continuação)<br>
 
 A avaliação do aprendizado será realizada por meio de um portfólio de projetos práticos, composto por:
 
-- **Mini-Projetos:** Estudos de caso práticos ao longo do semestre, com relatórios curtos descrevendo a preparação dos dados, aplicação dos algoritmos e interpretação dos resultados.
+- **Mini-Projetos:** Estudos de casos práticos ao longo do semestre, com relatórios curtos descrevendo a preparação dos dados, aplicação dos algoritmos e interpretação dos resultados.
 - **Projeto Final Integrador:** Relatório final consolidando as análises, com comparação crítica entre modelos, avaliação de desempenho e recomendação do modelo mais adequado ao problema.
 
 
@@ -225,7 +225,7 @@ A avaliação do aprendizado será realizada por meio de um portfólio de projet
 ## A Hierarquia de Valor: Dados, Informação e Conhecimento
 
 - Para que a Mineração de Dados faça sentido, precisamos entender como o valor é agregado em cada nível.
-    - **Dados:** Nível base. símbolos ou signos brutos, não estruturados e sem significado isolado (Ex: o valor "28").
+    - **Dados:** Nível base. São símbolos ou signos brutos, não estruturados e sem significado isolado (Ex: o valor "28").
     - **Informação:** Dados com significado e utilidade. Contexto é adicionado (Ex: "A temperatura do ar é 28°C").
     - **Conhecimento:**  É a compreensão obtida a partir da informação, permitindo a tomada de decisão e a agregação de valor. (Ex: "Saber que fará 28°C em Aracaju no fim de semana pode influenciar a decisão de ir à praia").
 
@@ -300,11 +300,11 @@ Nesta fase, algoritmos são aplicados aos dados já preparados para extrair padr
 
 ## Avaliação e Validação do Conhecimento
 
-Nem todo padrão encontrado por um algoritmo é útil. Esta etapa filtra os resultados para garantir que o conhecimento gerado seja valioso.As perguntas a serem respondidas incluem:
+Nem todo padrão encontrado por um algoritmo é útil. Esta etapa filtra os resultados para garantir que o conhecimento gerado seja valioso. As perguntas a serem respondidas incluem:
 
 - O padrão é estatisticamente significativo ou ocorreu ao acaso?
 - Ele é novo e surpreendente ou apenas confirma algo que já sabíamos?
-- É compreensível para o especialista do domínio ou para o tomador de decisão?
+- É compreensível para o especialista do domínio ou para quem toma decisão?
 - Ele pode ser usado para embasar uma decisão que trará benefícios (aumento de receita, redução de custos, etc.)?
 - O objetivo é separar o conhecimento útil de padrões irrelevantes.
 
@@ -352,7 +352,7 @@ Nem todo padrão encontrado por um algoritmo é útil. Esta etapa filtra os resu
 
 - **Origem:** Surgiu de uma discordância com a IA Clássica.
     - A IA Clássica teve dificuldade em cumprir promessas ambiciosas (robôs autônomos, etc.).
-    - Novas abordagens, com formas de operar diferentes, precisavam de um novo nome.
+    - Novas abordagens, com formas de operação diferentes, precisavam de um novo nome.
 - **Foco:** Técnicas não-simbólicas, muitas vezes inspiradas em fenômenos biológicos.
 - **Pilares da Inteligência Computacional:**
     - Redes Neurais Artificiais
@@ -428,7 +428,7 @@ Muitos conceitos de Mineração de Dados e Aprendizagem de Máquina têm um equi
 
 
 
-## Glossário Essencial: Termos da Área
+## A Mesma Ideia, Nomes Diferentes
 
 - **Rótulo** ou **Atributo-Alvo** (*Label / Target*)
     - Variável Dependente ou Variável Resposta
@@ -441,7 +441,7 @@ Muitos conceitos de Mineração de Dados e Aprendizagem de Máquina têm um equi
 
 
 
-## Glossário Essencial: Termos da Área
+## A Mesma Ideia, Nomes Diferentes
 
 - **Treinamento** (*Training*)
     - Ajuste do Modelo ou Estimação de Parâmetros
