@@ -1,0 +1,31 @@
+---
+title: "Conteúdo 2"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Introdução ao RStudio + GitHub
+
+Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide02_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/02-introducao_ao_rstudio+github.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide02_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::
+

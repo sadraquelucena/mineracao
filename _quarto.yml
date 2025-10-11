@@ -33,6 +33,8 @@ website:
         contents:
           - href: aulas/01-Apresentacao_da_disciplina.qmd
             text: "1- Apresentação da Disciplina"
+          - href: aulas/02-introducao_ao_rstudio+github.qmd
+            text: "2- Introdução ao RStudio + GitHub"
       
       #- section: "Parte 2: Métodos de Estimação"
       #  contents:

@@ -316,6 +316,30 @@
     "text": "A Mesma Ideia, Nomes Diferentes\n\nTreinamento (Training)\n\nAjuste do Modelo ou Estimação de Parâmetros\nÉ o processo de usar os dados para encontrar os melhores coeficientes (parâmetros) do modelo (Ex: método de mínimos quadrados em uma regressão).\n\nDiferença sutil no foco:\n\nA Estatística Clássica frequentemente enfatiza a inferência, ou seja, entender e explicar a relação entre as variáveis.\nA Mineração de Dados e Aprendizagem de Máquina geralmente priorizam a capacidade de predição do modelo em dados futuros, mesmo que o modelo seja uma “caixa-preta”."
   },
   {
+    "objectID": "aulas/02-introducao_ao_rstudio+github.html",
+    "href": "aulas/02-introducao_ao_rstudio+github.html",
+    "title": "Conteúdo 2",
+    "section": "",
+    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "2- Introdução ao RStudio + GitHub"
+    ]
+  },
+  {
+    "objectID": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
+    "href": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
+    "title": "Conteúdo 2",
+    "section": "",
+    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "2- Introdução ao RStudio + GitHub"
+    ]
+  },
+  {
     "objectID": "aulas/01-Apresentacao_da_disciplina.html",
     "href": "aulas/01-Apresentacao_da_disciplina.html",
     "title": "Conteúdo 1",
@@ -338,6 +362,230 @@
       "Parte 1: Fundamentos",
       "1- Apresentação da Disciplina"
     ]
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#uso-na-disciplina",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#uso-na-disciplina",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Uso na Disciplina",
+    "text": "Uso na Disciplina\nCenário:\n\nVocê está cursando Mineração de Dados em Estatística.\nA cada aula, o professor entrega:\n\nSlides da aula com explicações e um código em R.\nUm problema para você resolver, adaptando e expandindo o código.\n\nVocê modifica, testa, ajusta e responde o problema.\nNa aula seguinte, você acessa de qualquer máquina o que você fez exatamente de onde parou."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#você-pode-fazer-tudo-isso-com-e",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#você-pode-fazer-tudo-isso-com-e",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Você pode fazer tudo isso com  e ",
+    "text": "Você pode fazer tudo isso com  e \nVocê terá:\n\nUm histórico completo de aprendizagem.\nUm repositório que mostra sua evolução.\nUma base reutilizável para projetos futuros.\n\n\nÉ como criar seu próprio material interativo de Mineração de Dados!"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#objetivo-da-aula",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#objetivo-da-aula",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Objetivo da aula",
+    "text": "Objetivo da aula\n\nEntender o que é e para que serve o  e o .\nSaber como criar um repositório de projeto.\nAtualizar repositório no  via ."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "O que é o ?",
+    "text": "O que é o ?\n\nGit é uma ferramenta que ajuda a controlar e gerenciar mudanças em arquivos ao longo do tempo.\nEle permite que você salve versões diferentes de um trabalho à medida que faz alterações, de modo que possa voltar para versões anteriores se algo der errado ou se precisar revisar mudanças feitas."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Por que o  é importante?",
+    "text": "Por que o  é importante?\n\nEvita perda de trabalho: Se você estiver escrevendo código ou criando qualquer tipo de documento, o Git permite que você salve diferentes versões do seu trabalho. Assim, se algo der errado, você pode voltar a uma versão anterior.\nFacilita o trabalho em equipe: Quando várias pessoas estão trabalhando no mesmo projeto, o Git permite que cada uma trabalhe de forma independente e depois una os trabalhos de maneira organizada. Isso evita que as alterações de uma pessoa sobrescrevam as de outra.\nOrganização e rastreamento: O Git mantém um histórico completo de todas as mudanças feitas em um projeto, permitindo saber quem fez o quê e quando."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "O que é o ?",
+    "text": "O que é o ?\n\nGitHub é uma plataforma online que armazena e organiza projetos que utilizam Git.\nEle permite que você publique seu código, compartilhe arquivos e colabore com outras pessoas em projetos de forma fácil e eficiente."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Por que o  é importante?",
+    "text": "Por que o  é importante?\n\nArmazenamento seguro: Com o GitHub, seus projetos ficam seguramente armazenados na nuvem. Isso significa que você pode acessar seu trabalho de qualquer lugar e sempre terá uma cópia segura.\nColaboração em equipe: GitHub permite que várias pessoas trabalhem no mesmo projeto ao mesmo tempo. Cada pessoa pode fazer mudanças no código, e o GitHub ajuda a gerenciar essas mudanças sem que uma sobrescreva a outra.\nHistórico e transparência: O GitHub mantém um histórico completo de todas as alterações feitas no seu projeto. Isso permite ver quem fez o quê e quando, facilitando o acompanhamento e revisão do trabalho de equipe."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#como-e-por-que-usar-o-na-disciplina",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#como-e-por-que-usar-o-na-disciplina",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Como e por que usar o  na disciplina?",
+    "text": "Como e por que usar o  na disciplina?\n\nVocê receberá um script em R a cada aula\nDurante a aula, vai editar esse script no RStudio, testando e resolvendo problemas\nNo final da aula, envia suas alterações para seu repositório (push) — tudo salvo e organizado\nPode acessar seu trabalho de qualquer lugar, com segurança e histórico garantido\n\n\nGitHub será seu caderno digital de códigos — inteligente, seguro e acessível para a disciplina"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#primeiros-passos",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#primeiros-passos",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Primeiros passos",
+    "text": "Primeiros passos\n\nBaixar e instalar o Git: https://happygitwithr.com/install-git.html\nCriar uma conta no GitHub: https://github.com/\nCriar um reposítório Git\nClone esse repositório para sua máquina usando o RStudio\nTrabalhe no projeto e envie as atualizações de volta ao GitHub\n\n\nDesenvolva o hábito de buscar soluções por conta própria. Isso faz parte do dia a dia de quem trabalha com dados. Comece agora a desenvolver essa autonomia."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um repositório  no ",
+    "text": "Criando um repositório  no \n\nApós fazer login no GitHub, Clique em + no canto superior direito\nEm seguida, clique em New repository"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um repositório  no ",
+    "text": "Criando um repositório  no \n\n\n\nEm Repository name dê um anome ao repositóro\nEm Description faça uma descrição do repositório\nMarque a opção Public ou Private\nEm Initialize this repository with: marque a opção Add a README file\nClique em Create repository"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#section",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#section",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "",
+    "text": "Com o repositório já criado no GitHub, agora vamos usar o RStudio para ligar o projeto local ao repositório remoto.\nAssim, todas as alterações feitas no RStudio poderão ser salvas na nuvem e versionadas automaticamente.\nPara enviar essas alterações ao GitHub, será necessário se autenticar — com login e senha ou com um token de acesso.\n\nVamos ver como criar um token de acesso no GitHub."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um token de acesso no ",
+    "text": "Criando um token de acesso no \n\n\n\nEstando logado no GitHub, clique na sua foto de perfil no canto superior direito\n\nClique em Settings"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um token de acesso no ",
+    "text": "Criando um token de acesso no \n\nNo canto inferior esquerdo da tela clique em Developer settings"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-2",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-2",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um token de acesso no ",
+    "text": "Criando um token de acesso no \n\n\n\nNo canto superior esquerdo da tela clique em Personal access tokens\nClique em Tokens (classic)\n\n\n\n\n\n\n\nEm Expiration selecione a data em que o token irá expirar\nMarque todas as opções em Select scopes\nClique em Generate token\n\n\nO token será gerado uma única vez. Guarde-o com cuidado, pois não será possível visualizá-lo novamente no GitHub. Você usará esse token quando for solicitada autenticação."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : integração prática",
+    "text": "+ : integração prática\n\nO RStudio possui integração nativa com o Git e GitHub\n\nOu seja, é possível sincronizar um repositório GitHub a um repositório local\nIsso significa que você pode ligar o repositório do GitHub (na nuvem) ao seu projeto no computador. Assim, o que você altera localmente pode ser enviado para o GitHub — e vice-versa.\n\nPara isso, seguimos os seguintes passos:"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : integração prática",
+    "text": "+ : integração prática\n\nFazemos uma cópia do repositório do GitHub na máquina local usando o RStudio.\n\nQuando já há uma cópia na máquina, começamos o trabalho atualizando o projeto local com as alterações que estão no GitHub (pull).\n\nTrabalhamos normalmente no projeto: scripts, análises, relatórios…\nUsamos o Git para registrar as alterações (commit) e enviar para o GitHub (push)."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : criando o projeto local",
+    "text": "+ : criando o projeto local\n\n\n\nNo canto superior direito do RStudio clique em File &gt; New Project\nClique em Version control"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : criando o projeto local",
+    "text": "+ : criando o projeto local\n\nClique em Git"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-2",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-2",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : criando o projeto local",
+    "text": "+ : criando o projeto local\n\n\n\nNo campo Repository URL, cole a URL do repositório que você criou no GitHub\nEm Create project as subdirectory of, escolha o diretório em que o repositório do GitHub será copiado na máquina local\nClique em Create Project"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-3",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-3",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : criando o projeto local",
+    "text": "+ : criando o projeto local\n\nSe você estiver clonando um repositório público, o RStudio irá criar uma cópia do projeto localmente, sem exigir login.\nSe o repositório for privado, o GitHub pedirá que você se autentique (login e senha ou token).\n\n\n\nUma vez que já existe o projeto na máquina local, você só precisa acessar o diretório local (pasta) e clicar no arquivo com extensão .Rproj para abrir o projeto no Rstudio, sem necessidade de clonar o projeto novamente na máquina."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nDepois de salvar as atualizações do seu projeto local, você pode enviar essas alterações para o repositório no GitHub diretamente pelo RStudio. Você deve fazer:\n\n\nNo quadrante superior direito clique em Commit"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nRStudio mostra os arquivos que foram alterados. Selecione-os.\nNo campo Commit message escreva um comentário contendo o que foi atualizado (sugestão: não use caracteres especiais ou acentos)\nClique em Commit"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-2",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-2",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-3",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-3",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nApós finalizado o envio, clique em Close"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-4",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-4",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nNote que irá aparecer a mensagem Your branch is ahead of 'origin/master' by 1 commit (isto indica que você tem alterações ainda não enviadas ao GitHub)\nClique em Push"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-5",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-5",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nEm máquinas com Windows o Rstudio redirecionará para você fazer login na sua conta GitHub no seu navegador. Em Linux preencha o campo Username for 'https://github.com' coloque login e clique em OK"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-6",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-6",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nAinda em Linux, no campo Personal Access Token insira o token criado no GitHub\nClique em OK"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-7",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-7",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nCaso apareça a mensagem abaixo, os arquivos foram atualizados no repositório do GitHub."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#material-extra",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#material-extra",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Material Extra",
+    "text": "Material Extra\nAprofunde o que vimos em aula com esses vídeos no YouTube:\n\nCurso completo de Git e GitHub: http://tiny.cc/GitGitHub:\nIntegração do RStudio com o GitHub:\n\nParte 1: http://tiny.cc/RStudioGitHub1\nParte 2: http://tiny.cc/RStudioGitHub2"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#ganhos-da-aula",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#ganhos-da-aula",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Ganhos da aula",
+    "text": "Ganhos da aula\n\nVersionamento de código e arquivos com GitHub\nIntegração do RStudio com GitHub\nExperiência com ferramentas do mercado"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#atividade-extraclasse",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#atividade-extraclasse",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Atividade extraclasse",
+    "text": "Atividade extraclasse\nConfigure seu ambiente de trabalho pessoal\nObjetivo\nDeixar seu computador pessoal pronto para continuar os trabalhos da disciplina fora do laboratório, de forma independente.\nEtapas:\n\nInstalar o Git: https://happygitwithr.com/install-git.html\nInstalar o R: https://cran.r-project.org\nInstalar o RStudio: https://posit.co/download/rstudio-desktop\n\nCriar um repositório da disciplina do GitHub, clonar via RStudio para a sua máquina local e fazer seu primeiro commit."
   },
   {
     "objectID": "index.html",
