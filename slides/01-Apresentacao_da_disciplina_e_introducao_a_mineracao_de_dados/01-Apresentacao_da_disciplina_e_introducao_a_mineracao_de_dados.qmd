@@ -6,7 +6,7 @@ author:
     Prof. Dr. Sadraque E. F. Lucena<br>
     <span style="font-size:.8em;">sadraquelucena@academico.ufs.br</span>
     <br>
-    <a href="http://sadraquelucena.github.io/inferencia1" style="font-size:.8em;">http://sadraquelucena.github.io/mineracao</a>
+    <a href="http://sadraquelucena.github.io/mineracao" target="_blank" style="font-size:.8em;">http://sadraquelucena.github.io/mineracao</a>
   
 format:
   revealjs:

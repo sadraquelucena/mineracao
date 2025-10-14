@@ -13,8 +13,8 @@ Confira abaixo o cronograma de aulas do semestre, baseado no [calendário acadê
 |:---|:---|:---|:---------------------------|
 | 07/10/25 | Terça | 1 | VI Encontro de Estatística e Ciências Atuariais da UFS |
 | 09/10/25 | Quinta | 2 | Apresentação da disciplina. Introdução à mineração de dados. |
-| 14/10/25 | Terça | 3 | Introdução ao Quarto. |
-| 16/10/25 | Quinta | 4 | Pré-processamento de dados. |
+| 14/10/25 | Terça | 3 | Introdução ao RStudio + GitHub. |
+| 16/10/25 | Quinta | 4 | Introdução ao Quarto. |
 | 21/10/25 | Terça | 5 | Pré-processamento de dados. |
 | 23/10/25 | Quinta | 6 | Algoritmos de agrupamento. |
 | 28/10/25 | Terça | 7 | Algoritmos de agrupamento. |

@@ -6,7 +6,7 @@ author:
     Prof. Dr. Sadraque E. F. Lucena<br>
     <span style="font-size:.8em;">sadraquelucena@academico.ufs.br</span>
     <br>
-    <a href="http://sadraquelucena.github.io/inferencia1" style="font-size:.8em;">http://sadraquelucena.github.io/mineracao</a>
+    <a href="http://sadraquelucena.github.io/mineracao" target="_blank" style="font-size:.8em;">http://sadraquelucena.github.io/mineracao</a>
   
 format:
   revealjs:
@@ -26,36 +26,6 @@ format:
 
 lang: pt-BR
 ---
-
-## Uso na Disciplina
-
-Cenário:
-
-- Você está cursando *Mineração de Dados em Estatística*.
-
-- A cada aula, o professor entrega:
-    - Slides da aula com explicações e um código em R.
-    - Um problema para você resolver, adaptando e expandindo o código.
-
-- Você modifica, testa, ajusta e responde o problema.
-
-- Na aula seguinte, você acessa de qualquer máquina o que você fez exatamente de onde parou.
-
-
-
-
-## Você pode fazer tudo isso com <img src="imagens/git-logo.png" style="width: 120px; vertical-align: middle; margin-left: 10px; margin-top: 11px;" /> e <img src="imagens/github-logo.png" style="width: 200px; vertical-align: middle; margin-left: 8px; margin-top: -0px;" />
-
-Você terá:
-
-- Um histórico completo de aprendizagem.
-
-- Um repositório que mostra sua evolução.
-
-- Uma base reutilizável para projetos futuros.
-
-> É como criar seu próprio material interativo de Mineração de Dados!
-
 
 ## Objetivo da aula
 
