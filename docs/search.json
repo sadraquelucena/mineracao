@@ -4,7 +4,7 @@
     "href": "info/bibliografia.html",
     "title": "Bibliografia",
     "section": "",
-    "text": "Abaixo, você encontra a bibliografia básica e complementar da disciplina.\n\nBásica\n\n\n\n\n\n\n\n \n\n\n\nTítulo\n\n\n\n\n\n\n\n\n\n\n\nPANG-NING, Tan; STEINBACH, Michael, KARPATNE, Anuj; KUMAR, Vipin. Introduction to data mining. 2. ed. New York: Pearson, 2019.\n\n\n\n\n\n\n\n\n\nNWANGANGA, Fred; CHAPPLE, Mike. Practical Machine Learning in R. Indianapolis, Indiana: John Wiley & Sons, 2020.\n\n\n\n\n\n\n\n\n\nAGGARWAL, Charu C. et al. Data mining: the textbook. New York: springer, 2015.\n\n\n\n\n\n\n\n\n\nHASTIE, T.; TIBSHIRANI, R; FRIEDMAN, J. The Elements of Statistical Learning: Data Mining, Inference and Prediction. 2. ed. New York, NY: Springer, 2009.\n\n\n\n\n\n\n\n\n\nDUNHAM, Margaret H. Data Mining: Introductory and Advanced Topics. Pearson, 2020.\n\n\n\n\n\n\nNenhum item correspondente\n\n\n\nComplementar\n\n\n\n\n\n\n \n\n\n\nTítulo\n\n\n\n\n\n\n\n\n\n\n\nCASTRO, Leandro N.; FERRARI, Daniel G. Introdução à mineração de dados: conceitos básicos, algoritmos e aplicações. São Paulo : Saraiva, 2016.\n\n\n\n\n\n\n\n\n\nBRAMER, Max. Principles of Data Mining. 4. ed. Springer, 2020.\n\n\n\n\n\n\n\n\n\nLAROSE, Daniel T.; LAROSE, Chantal D. . Discovering knowledge in data: an introduction to data mining. 2. ed. John Wiley & Sons, 2014.\n\n\n\n\n\n\nNenhum item correspondente",
+    "text": "Abaixo, você encontra a bibliografia básica e complementar da disciplina.\n\nBásica\n\n\n\n\n\n\n\n \n\n\n\nTítulo\n\n\n\n\n\n\n\n\n\n\n\nPANG-NING, Tan; STEINBACH, Michael, KARPATNE, Anuj; KUMAR, Vipin. Introduction to data mining. 2. ed. New York: Pearson, 2019.\n\n\n\n\n\n\n\n\n\nHan, J.; Pei, J.; Tong, H. Data Mining: Concepts and Techniques. Morgan Kaufmann Publishers, 2023.\n\n\n\n\n\n\n\n\n\nNWANGANGA, Fred; CHAPPLE, Mike. Practical Machine Learning in R. Indianapolis, Indiana: John Wiley & Sons, 2020.\n\n\n\n\n\n\n\n\n\nAGGARWAL, Charu C. et al. Data mining: the textbook. New York: springer, 2015.\n\n\n\n\n\n\n\n\n\nHASTIE, T.; TIBSHIRANI, R; FRIEDMAN, J. The Elements of Statistical Learning: Data Mining, Inference and Prediction. 2. ed. New York, NY: Springer, 2009.\n\n\n\n\n\n\n\n\n\nDUNHAM, Margaret H. Data Mining: Introductory and Advanced Topics. Pearson, 2020.\n\n\n\n\n\n\nNenhum item correspondente\n\n\n\nComplementar\n\n\n\n\n\n\n \n\n\n\nTítulo\n\n\n\n\n\n\n\n\n\n\n\nCASTRO, Leandro N.; FERRARI, Daniel G. Introdução à mineração de dados: conceitos básicos, algoritmos e aplicações. São Paulo : Saraiva, 2016.\n\n\n\n\n\n\n\n\n\nBRAMER, Max. Principles of Data Mining. 4. ed. Springer, 2020.\n\n\n\n\n\n\n\n\n\nLAROSE, Daniel T.; LAROSE, Chantal D. . Discovering knowledge in data: an introduction to data mining. 2. ed. John Wiley & Sons, 2014.\n\n\n\n\n\n\nNenhum item correspondente",
     "crumbs": [
       "Informações da disciplina",
       "Bibliografia"
@@ -96,6 +96,442 @@
     "crumbs": [
       "Informações da disciplina",
       "Ementa e objetivos"
+    ]
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#objetivo-da-aula",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#objetivo-da-aula",
+    "title": "Introdução ao Quarto",
+    "section": "Objetivo da Aula",
+    "text": "Objetivo da Aula\nAprender a criar, editar e renderizar documentos Quarto no RStudio, integrando\n\ntexto;\ncódigo;\ntabelas;\nsaídas do R;\ngráficos;\nreferências."
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#estrutura-da-aula",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#estrutura-da-aula",
+    "title": "Introdução ao Quarto",
+    "section": "Estrutura da Aula",
+    "text": "Estrutura da Aula\n\nO que é o Quarto?\nQuando e como usaremos o Quarto no RStudio\nEstrutura de um documento .qmd\nYAML e principais chaves\nTexto e formatação (Markdown)\nBlocos de código (R)\nRenderização e formatos de saída\nDicas, dúvidas e referências"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#o-que-é-o-quarto",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#o-que-é-o-quarto",
+    "title": "Introdução ao Quarto",
+    "section": "O que é o Quarto?",
+    "text": "O que é o Quarto?\nQuarto é uma plataforma unificada para criar documentos, apresentações e sites combinando texto, código (em R, Python, Julia ou Bash) e suas saídas.\n\nSubstitui o R Markdown\nIntegra código, texto e resultados no mesmo arquivo\nPode gerar HTML, PDF, Word, slides, sites e livros\nÉ o padrão atual para comunicação científica com RStudio."
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#pré-requisitos",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#pré-requisitos",
+    "title": "Introdução ao Quarto",
+    "section": "Pré-requisitos",
+    "text": "Pré-requisitos\nAntes de começar, você precisa ter instalado:\n  \n\n\nAlternativa: use o Posit Cloud (https://posit.cloud/) para criar e renderizar documentos na nuvem."
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#começando",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#começando",
+    "title": "Introdução ao Quarto",
+    "section": "Começando",
+    "text": "Começando\nPrimeiro crie um projeto.\n\nFonte: https://rladies-sp.org/"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#começando-1",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#começando-1",
+    "title": "Introdução ao Quarto",
+    "section": "Começando",
+    "text": "Começando\nO arquivo quarto editável tem extensão .qmd. Para renderizá-lo clique em render ou utilize o atalho do teclado CTRL + SHIFT + K.\n\nFonte: https://rladies-sp.org/"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#estrutura-de-um-arquivo-.qmd",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#estrutura-de-um-arquivo-.qmd",
+    "title": "Introdução ao Quarto",
+    "section": "Estrutura de um arquivo .qmd",
+    "text": "Estrutura de um arquivo .qmd\nUm arquivo .qmd é dividido em três partes:\n\nCabeçalho (YAML) — define o formatação do documento, título, autor, data e outros detalhes.\nCorpo (Markdown) — texto, títulos, listas, tabelas, imagens.\nBlocos de código (Code chunks) — código executável em R, Python, Julia e outras linguagens."
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#yaml-yet-another-markup-language",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#yaml-yet-another-markup-language",
+    "title": "Introdução ao Quarto",
+    "section": "YAML (Yet Another Markup Language)",
+    "text": "YAML (Yet Another Markup Language)\nO YAML fica no início do documento e define as configurações básicas. Exemplo:\n---\ntitle: \"Relatório Anual\"\nauthor: \"Equipe de Estatística\"\ndate: today\nlang: pt\nformat: html\n---\n\nDica: Tudo entre --- e --- é parte do YAML e deve ser escrito com atenção à indentação."
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#yaml-yet-another-markup-language-1",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#yaml-yet-another-markup-language-1",
+    "title": "Introdução ao Quarto",
+    "section": "YAML (Yet Another Markup Language)",
+    "text": "YAML (Yet Another Markup Language)\nEm YAML, os elementos são chamados de pares chave-valor. Algumas chaves são:\n\ntitle: título do documento.\nauthor: nome do(a) autor(a). Pode ser mais de um(a).\ndate: Define a data do documento. Exemplos: \"13-03-2025\", today.\nlang: Define o idioma do documento. Exemplos: pt, en.\nformat: tipo de arquivo de saída.\n\nMais detalhes: quarto.org/docs/authoring/front-matter.html"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#blocos-de-código",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#blocos-de-código",
+    "title": "Introdução ao Quarto",
+    "section": "Blocos de código",
+    "text": "Blocos de código\nBlocos de código são onde você executa o R (ou outra linguagem). Começam com três crases e o nome da linguagem. Exemplo:\n```{r}\n#| echo: false\n#| eval: true\nhead(airquality)\n```"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#blocos-de-código-1",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#blocos-de-código-1",
+    "title": "Introdução ao Quarto",
+    "section": "Blocos de código",
+    "text": "Blocos de código\nAlgumas das principais opções são:\n\n#| echo: controla se o código é exibido no documento.\n#| eval: determina se o código é executado e a saída apresentada.\n#| warning: controla a exibição de mensagens de aviso geradas pelo código.\n#| error: determina se os erros devem ser incluídos na saída.\n#| label: rótulo dado para fazer referência. Uma vez definido um rótulo, você pode referenciá-lo usando (@nome_do_rotulo).\n#| fig-cap: adiciona uma legenda a gráficos gerados pelo código."
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#blocos-de-código-2",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#blocos-de-código-2",
+    "title": "Introdução ao Quarto",
+    "section": "Blocos de código",
+    "text": "Blocos de código\n```{r}\n#| echo: false\n#| eval: true\n#| fig-align: center\nlibrary(ggplot2)\nggplot(airquality, aes(Temp, Ozone)) +\n  geom_point() +\n  geom_smooth(method = \"loess\") +\n  labs(x = \"Temperatura (°F)\", y = \"Ozônio (ppb)\") +\n  theme_minimal()\n```"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#formatação-de-texto",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#formatação-de-texto",
+    "title": "Introdução ao Quarto",
+    "section": "Formatação de texto",
+    "text": "Formatação de texto\n\n\n\nSintaxe\nSaída\n\n\n\n\n*itálico*\nitálico\n\n\n**negrito**\nnegrito\n\n\n***itálico negrito***\nitálico negrito\n\n\nsobrescrito^2^\nsobrescrito2\n\n\nsubscrito~2~\nsubscrito2\n\n\n~~riscado~~\nriscado\n\n\n`código literal`\ncódigo literal"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#seções",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#seções",
+    "title": "Introdução ao Quarto",
+    "section": "Seções",
+    "text": "Seções\nUma seção e as subseções são definidas pela quantidade de #. O limite são seis níveis. Exemplos:\n\n\n\n\n\n\n\nSintaxe\nSaída\n\n\n\n\n# Seção 1\nSeção 1\n\n\n## Subseção 1\nSubseção 1\n\n\n### Subsubseção 1\nSubsubseção 1"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#links-e-imagens",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#links-e-imagens",
+    "title": "Introdução ao Quarto",
+    "section": "Links e imagens",
+    "text": "Links e imagens\n\n&lt;https://quarto.org&gt; produz: https://quarto.org\n[Quarto](https://quarto.org) produz: Quarto\n\n\n\n![](quarto.jpg) produz:"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#lista-sem-ordem",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#lista-sem-ordem",
+    "title": "Introdução ao Quarto",
+    "section": "Lista sem ordem",
+    "text": "Lista sem ordem\n\n\nSintaxe\n\n* Item\n\n    + subitem 1\n\n    + subitem 2\n\n        - subsubitem 1\n\nSaída\n\nLista sem ordem\n\nsubitem 1\nsubitem 2\n\nsubsubitem 1"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#lista-ordenada",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#lista-ordenada",
+    "title": "Introdução ao Quarto",
+    "section": "Lista ordenada",
+    "text": "Lista ordenada\n\n\nSintaxe\n\n1. Item 1\n\n2. Item 2\n\n    i) subitem 1\n    \n         A.  subsubitem 1\n\nSaída\n\nItem 1\nItem 2\n\nsubitem 1\n\nsubsubitem 1"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#tabelas",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#tabelas",
+    "title": "Introdução ao Quarto",
+    "section": "Tabelas",
+    "text": "Tabelas\n| Direita | Esquerda | Padrão | Centralizada |\n|--------:|:---------|--------|:------------:|\n|     12  |      12  |   12   |          12  |\n|    123  |      123 |  123   |         123  |\n|      1  |        1 |    1   |           1  |\n\nproduz:\n\n\n\n\nDireita\nEsquerda\nPadrão\nCentralizada\n\n\n\n\n12\n12\n12\n12\n\n\n123\n123\n123\n123\n\n\n1\n1\n1\n1"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#equações",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#equações",
+    "title": "Introdução ao Quarto",
+    "section": "Equações",
+    "text": "Equações\n\nPara fórmulas e símbolos matemáticos embutidos no texto use $.\nPara fórmulas e símbolos matemáticos destacados use $$.\n\n\n\n$X \\sim N(\\mu,\\sigma^2)$ \\(~\\) produz: \\(~~ X \\sim N(\\mu,\\sigma^2)\\)\n$$ f(x) = \\frac{a}{b} e^{-x} $$ \\(~\\) produz \\[ f(x) = \\frac{a}{b} e^{-x} \\]"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#citação",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#citação",
+    "title": "Introdução ao Quarto",
+    "section": "Citação",
+    "text": "Citação\n\nInforme o arquivo com as referências no YAML:\n\n---\ntitle: Título\nbibliography: referencias.bib\ncsl: abnt.csl\n---\n\nFormato padrão: Chicago Manual of Style com autor e data.\nVocê pode especificar uma formatação personalizada usando o CSL (Citation Style Language) nos repositórios\n\nhttps://github.com/citation-style-language/styles ou\nhttps://www.zotero.org/styles"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#citação-1",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#citação-1",
+    "title": "Introdução ao Quarto",
+    "section": "Citação",
+    "text": "Citação\n\n@Wickham2023 \\(~\\) produz \\(~\\) (autor, ano):\n\nWICKHAM; ÇETINKAYA-RUNDEL; GROLEMUND (2023)\n\n[@Wickham2023] \\(~\\) produz \\(~\\) autor (ano):\n\n(WICKHAM; ÇETINKAYA-RUNDEL; GROLEMUND, 2023)\n\n\n\n\nO arquivo csl com a formatação da ABNT pode ser encontrada em https://www.zotero.org/styles/universidade-federal-de-sergipe-departamento-de-engenharia-de-producao-abnt"
+  },
+  {
+    "objectID": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#referências",
+    "href": "slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html#referências",
+    "title": "Introdução ao Quarto",
+    "section": "Referências",
+    "text": "Referências\n\n\n\n\nWICKHAM, H.; ÇETINKAYA-RUNDEL, M.; GROLEMUND, G. R for data science: Import, tidy, transform, visualize, and model data. 2nd. ed. Sebastopol, CA: O’Reilly, 2023."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#objetivo-da-aula",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#objetivo-da-aula",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Objetivo da aula",
+    "text": "Objetivo da aula\n\nEntender o que é e para que serve o  e o .\nSaber como criar um repositório de projeto.\nAtualizar repositório no  via ."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "O que é o ?",
+    "text": "O que é o ?\n\nGit é uma ferramenta que ajuda a controlar e gerenciar mudanças em arquivos ao longo do tempo.\nEle permite que você salve versões diferentes de um trabalho à medida que faz alterações, de modo que possa voltar para versões anteriores se algo der errado ou se precisar revisar mudanças feitas."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Por que o  é importante?",
+    "text": "Por que o  é importante?\n\nEvita perda de trabalho: Se você estiver escrevendo código ou criando qualquer tipo de documento, o Git permite que você salve diferentes versões do seu trabalho. Assim, se algo der errado, você pode voltar a uma versão anterior.\nFacilita o trabalho em equipe: Quando várias pessoas estão trabalhando no mesmo projeto, o Git permite que cada uma trabalhe de forma independente e depois una os trabalhos de maneira organizada. Isso evita que as alterações de uma pessoa sobrescrevam as de outra.\nOrganização e rastreamento: O Git mantém um histórico completo de todas as mudanças feitas em um projeto, permitindo saber quem fez o quê e quando."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "O que é o ?",
+    "text": "O que é o ?\n\nGitHub é uma plataforma online que armazena e organiza projetos que utilizam Git.\nEle permite que você publique seu código, compartilhe arquivos e colabore com outras pessoas em projetos de forma fácil e eficiente."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Por que o  é importante?",
+    "text": "Por que o  é importante?\n\nArmazenamento seguro: Com o GitHub, seus projetos ficam seguramente armazenados na nuvem. Isso significa que você pode acessar seu trabalho de qualquer lugar e sempre terá uma cópia segura.\nColaboração em equipe: GitHub permite que várias pessoas trabalhem no mesmo projeto ao mesmo tempo. Cada pessoa pode fazer mudanças no código, e o GitHub ajuda a gerenciar essas mudanças sem que uma sobrescreva a outra.\nHistórico e transparência: O GitHub mantém um histórico completo de todas as alterações feitas no seu projeto. Isso permite ver quem fez o quê e quando, facilitando o acompanhamento e revisão do trabalho de equipe."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#como-e-por-que-usar-o-na-disciplina",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#como-e-por-que-usar-o-na-disciplina",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Como e por que usar o  na disciplina?",
+    "text": "Como e por que usar o  na disciplina?\n\nVocê receberá um script em R a cada aula\nDurante a aula, vai editar esse script no RStudio, testando e resolvendo problemas\nNo final da aula, envia suas alterações para seu repositório (push) — tudo salvo e organizado\nPode acessar seu trabalho de qualquer lugar, com segurança e histórico garantido\n\n\nGitHub será seu caderno digital de códigos — inteligente, seguro e acessível para a disciplina"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#primeiros-passos",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#primeiros-passos",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Primeiros passos",
+    "text": "Primeiros passos\n\nBaixar e instalar o Git: https://happygitwithr.com/install-git.html\nCriar uma conta no GitHub: https://github.com/\nCriar um reposítório Git\nClone esse repositório para sua máquina usando o RStudio\nTrabalhe no projeto e envie as atualizações de volta ao GitHub\n\n\nDesenvolva o hábito de buscar soluções por conta própria. Isso faz parte do dia a dia de quem trabalha com dados. Comece agora a desenvolver essa autonomia."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um repositório  no ",
+    "text": "Criando um repositório  no \n\nApós fazer login no GitHub, Clique em + no canto superior direito\nEm seguida, clique em New repository"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um repositório  no ",
+    "text": "Criando um repositório  no \n\n\n\nEm Repository name dê um anome ao repositóro\nEm Description faça uma descrição do repositório\nMarque a opção Public ou Private\nEm Initialize this repository with: marque a opção Add a README file\nClique em Create repository"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#section",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#section",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "",
+    "text": "Com o repositório já criado no GitHub, agora vamos usar o RStudio para ligar o projeto local ao repositório remoto.\nAssim, todas as alterações feitas no RStudio poderão ser salvas na nuvem e versionadas automaticamente.\nPara enviar essas alterações ao GitHub, será necessário se autenticar — com login e senha ou com um token de acesso.\n\nVamos ver como criar um token de acesso no GitHub."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um token de acesso no ",
+    "text": "Criando um token de acesso no \n\n\n\nEstando logado no GitHub, clique na sua foto de perfil no canto superior direito\n\nClique em Settings"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um token de acesso no ",
+    "text": "Criando um token de acesso no \n\nNo canto inferior esquerdo da tela clique em Developer settings"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-2",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-2",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um token de acesso no ",
+    "text": "Criando um token de acesso no \n\n\n\nNo canto superior esquerdo da tela clique em Personal access tokens\nClique em Tokens (classic)\n\n\n\n\n\n\n\nEm Expiration selecione a data em que o token irá expirar\nMarque todas as opções em Select scopes\nClique em Generate token\n\n\nO token será gerado uma única vez. Guarde-o com cuidado, pois não será possível visualizá-lo novamente no GitHub. Você usará esse token quando for solicitada autenticação."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : integração prática",
+    "text": "+ : integração prática\n\nO RStudio possui integração nativa com o Git e GitHub\n\nOu seja, é possível sincronizar um repositório GitHub a um repositório local\nIsso significa que você pode ligar o repositório do GitHub (na nuvem) ao seu projeto no computador. Assim, o que você altera localmente pode ser enviado para o GitHub — e vice-versa.\n\nPara isso, seguimos os seguintes passos:"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : integração prática",
+    "text": "+ : integração prática\n\nFazemos uma cópia do repositório do GitHub na máquina local usando o RStudio.\n\nQuando já há uma cópia na máquina, começamos o trabalho atualizando o projeto local com as alterações que estão no GitHub (pull).\n\nTrabalhamos normalmente no projeto: scripts, análises, relatórios…\nUsamos o Git para registrar as alterações (commit) e enviar para o GitHub (push)."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : criando o projeto local",
+    "text": "+ : criando o projeto local\n\n\n\nNo canto superior direito do RStudio clique em File &gt; New Project\nClique em Version control"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : criando o projeto local",
+    "text": "+ : criando o projeto local\n\nClique em Git"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-2",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-2",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : criando o projeto local",
+    "text": "+ : criando o projeto local\n\n\n\nNo campo Repository URL, cole a URL do repositório que você criou no GitHub\nEm Create project as subdirectory of, escolha o diretório em que o repositório do GitHub será copiado na máquina local\nClique em Create Project"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-3",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-3",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : criando o projeto local",
+    "text": "+ : criando o projeto local\n\nSe você estiver clonando um repositório público, o RStudio irá criar uma cópia do projeto localmente, sem exigir login.\nSe o repositório for privado, o GitHub pedirá que você se autentique (login e senha ou token).\n\n\n\nUma vez que já existe o projeto na máquina local, você só precisa acessar o diretório local (pasta) e clicar no arquivo com extensão .Rproj para abrir o projeto no Rstudio, sem necessidade de clonar o projeto novamente na máquina."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nDepois de salvar as atualizações do seu projeto local, você pode enviar essas alterações para o repositório no GitHub diretamente pelo RStudio. Você deve fazer:\n\n\nNo quadrante superior direito clique em Commit"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nRStudio mostra os arquivos que foram alterados. Selecione-os.\nNo campo Commit message escreva um comentário contendo o que foi atualizado (sugestão: não use caracteres especiais ou acentos)\nClique em Commit"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-2",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-2",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-3",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-3",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nApós finalizado o envio, clique em Close"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-4",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-4",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nNote que irá aparecer a mensagem Your branch is ahead of 'origin/master' by 1 commit (isto indica que você tem alterações ainda não enviadas ao GitHub)\nClique em Push"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-5",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-5",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nEm máquinas com Windows o Rstudio redirecionará para você fazer login na sua conta GitHub no seu navegador. Em Linux preencha o campo Username for 'https://github.com' coloque login e clique em OK"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-6",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-6",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nAinda em Linux, no campo Personal Access Token insira o token criado no GitHub\nClique em OK"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-7",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-7",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nCaso apareça a mensagem abaixo, os arquivos foram atualizados no repositório do GitHub."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#material-extra",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#material-extra",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Material Extra",
+    "text": "Material Extra\nAprofunde o que vimos em aula com esses vídeos no YouTube:\n\nCurso completo de Git e GitHub: http://tiny.cc/GitGitHub:\nIntegração do RStudio com o GitHub:\n\nParte 1: http://tiny.cc/RStudioGitHub1\nParte 2: http://tiny.cc/RStudioGitHub2"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#ganhos-da-aula",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#ganhos-da-aula",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Ganhos da aula",
+    "text": "Ganhos da aula\n\nVersionamento de código e arquivos com GitHub\nIntegração do RStudio com GitHub\nExperiência com ferramentas do mercado"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#atividade-extraclasse",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#atividade-extraclasse",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Atividade extraclasse",
+    "text": "Atividade extraclasse\nConfigure seu ambiente de trabalho pessoal\nObjetivo\nDeixar seu computador pessoal pronto para continuar os trabalhos da disciplina fora do laboratório, de forma independente.\nEtapas:\n\nInstalar o Git: https://happygitwithr.com/install-git.html\nInstalar o R: https://cran.r-project.org\nInstalar o RStudio: https://posit.co/download/rstudio-desktop\n\nCriar um repositório da disciplina do GitHub, clonar via RStudio para a sua máquina local e fazer seu primeiro commit."
+  },
+  {
+    "objectID": "aulas/03-introducao_ao_quarto.html",
+    "href": "aulas/03-introducao_ao_quarto.html",
+    "title": "Conteúdo 3",
+    "section": "",
+    "text": "Nesta aula, iniciamos nossa jornada no Quarto, a plataforma unificada que é o padrão atual para comunicação científica no RStudio. Exploramos a estrutura de um documento .qmd, o papel do cabeçalho YAML e o uso de Markdown para formatação. Aprendemos a criar, editar e renderizar documentos que integram texto, blocos de código R, tabelas, gráficos e referências. A aula mostra como o Quarto permite gerar diversos formatos de saída (como HTML, PDF e slides) a partir de um único arquivo. Esse é o ponto de partida para desenvolver habilidades de comunicação eficaz, garantir a reprodutibilidade das análises e adotar boas práticas na documentação de projetos ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nPara auxiliar na prática, também está disponível um modelo de exemplo em Quarto para download.",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "3- Introdução ao Quarto"
+    ]
+  },
+  {
+    "objectID": "aulas/03-introducao_ao_quarto.html#introdução-ao-quarto",
+    "href": "aulas/03-introducao_ao_quarto.html#introdução-ao-quarto",
+    "title": "Conteúdo 3",
+    "section": "",
+    "text": "Nesta aula, iniciamos nossa jornada no Quarto, a plataforma unificada que é o padrão atual para comunicação científica no RStudio. Exploramos a estrutura de um documento .qmd, o papel do cabeçalho YAML e o uso de Markdown para formatação. Aprendemos a criar, editar e renderizar documentos que integram texto, blocos de código R, tabelas, gráficos e referências. A aula mostra como o Quarto permite gerar diversos formatos de saída (como HTML, PDF e slides) a partir de um único arquivo. Esse é o ponto de partida para desenvolver habilidades de comunicação eficaz, garantir a reprodutibilidade das análises e adotar boas práticas na documentação de projetos ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nPara auxiliar na prática, também está disponível um modelo de exemplo em Quarto para download.",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "3- Introdução ao Quarto"
+    ]
+  },
+  {
+    "objectID": "aulas/01-Apresentacao_da_disciplina.html",
+    "href": "aulas/01-Apresentacao_da_disciplina.html",
+    "title": "Conteúdo 1",
+    "section": "",
+    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nVídeo da aula:",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "1- Apresentação da Disciplina"
+    ]
+  },
+  {
+    "objectID": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
+    "href": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
+    "title": "Conteúdo 1",
+    "section": "",
+    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nVídeo da aula:",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "1- Apresentação da Disciplina"
+    ]
+  },
+  {
+    "objectID": "aulas/02-introducao_ao_rstudio+github.html",
+    "href": "aulas/02-introducao_ao_rstudio+github.html",
+    "title": "Conteúdo 2",
+    "section": "",
+    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "2- Introdução ao RStudio + GitHub"
+    ]
+  },
+  {
+    "objectID": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
+    "href": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
+    "title": "Conteúdo 2",
+    "section": "",
+    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "2- Introdução ao RStudio + GitHub"
     ]
   },
   {
@@ -314,264 +750,6 @@
     "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "A Mesma Ideia, Nomes Diferentes",
     "text": "A Mesma Ideia, Nomes Diferentes\n\nTreinamento (Training)\n\nAjuste do Modelo ou Estimação de Parâmetros\nÉ o processo de usar os dados para encontrar os melhores coeficientes (parâmetros) do modelo (Ex: método de mínimos quadrados em uma regressão).\n\nDiferença sutil no foco:\n\nA Estatística Clássica frequentemente enfatiza a inferência, ou seja, entender e explicar a relação entre as variáveis.\nA Mineração de Dados e Aprendizagem de Máquina geralmente priorizam a capacidade de predição do modelo em dados futuros, mesmo que o modelo seja uma “caixa-preta”."
-  },
-  {
-    "objectID": "aulas/02-introducao_ao_rstudio+github.html",
-    "href": "aulas/02-introducao_ao_rstudio+github.html",
-    "title": "Conteúdo 2",
-    "section": "",
-    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "2- Introdução ao RStudio + GitHub"
-    ]
-  },
-  {
-    "objectID": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
-    "href": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
-    "title": "Conteúdo 2",
-    "section": "",
-    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "2- Introdução ao RStudio + GitHub"
-    ]
-  },
-  {
-    "objectID": "aulas/01-Apresentacao_da_disciplina.html",
-    "href": "aulas/01-Apresentacao_da_disciplina.html",
-    "title": "Conteúdo 1",
-    "section": "",
-    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nVídeo da aula:",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "1- Apresentação da Disciplina"
-    ]
-  },
-  {
-    "objectID": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
-    "href": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
-    "title": "Conteúdo 1",
-    "section": "",
-    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nVídeo da aula:",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "1- Apresentação da Disciplina"
-    ]
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#objetivo-da-aula",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#objetivo-da-aula",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Objetivo da aula",
-    "text": "Objetivo da aula\n\nEntender o que é e para que serve o  e o .\nSaber como criar um repositório de projeto.\nAtualizar repositório no  via ."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "O que é o ?",
-    "text": "O que é o ?\n\nGit é uma ferramenta que ajuda a controlar e gerenciar mudanças em arquivos ao longo do tempo.\nEle permite que você salve versões diferentes de um trabalho à medida que faz alterações, de modo que possa voltar para versões anteriores se algo der errado ou se precisar revisar mudanças feitas."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Por que o  é importante?",
-    "text": "Por que o  é importante?\n\nEvita perda de trabalho: Se você estiver escrevendo código ou criando qualquer tipo de documento, o Git permite que você salve diferentes versões do seu trabalho. Assim, se algo der errado, você pode voltar a uma versão anterior.\nFacilita o trabalho em equipe: Quando várias pessoas estão trabalhando no mesmo projeto, o Git permite que cada uma trabalhe de forma independente e depois una os trabalhos de maneira organizada. Isso evita que as alterações de uma pessoa sobrescrevam as de outra.\nOrganização e rastreamento: O Git mantém um histórico completo de todas as mudanças feitas em um projeto, permitindo saber quem fez o quê e quando."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "O que é o ?",
-    "text": "O que é o ?\n\nGitHub é uma plataforma online que armazena e organiza projetos que utilizam Git.\nEle permite que você publique seu código, compartilhe arquivos e colabore com outras pessoas em projetos de forma fácil e eficiente."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Por que o  é importante?",
-    "text": "Por que o  é importante?\n\nArmazenamento seguro: Com o GitHub, seus projetos ficam seguramente armazenados na nuvem. Isso significa que você pode acessar seu trabalho de qualquer lugar e sempre terá uma cópia segura.\nColaboração em equipe: GitHub permite que várias pessoas trabalhem no mesmo projeto ao mesmo tempo. Cada pessoa pode fazer mudanças no código, e o GitHub ajuda a gerenciar essas mudanças sem que uma sobrescreva a outra.\nHistórico e transparência: O GitHub mantém um histórico completo de todas as alterações feitas no seu projeto. Isso permite ver quem fez o quê e quando, facilitando o acompanhamento e revisão do trabalho de equipe."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#como-e-por-que-usar-o-na-disciplina",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#como-e-por-que-usar-o-na-disciplina",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Como e por que usar o  na disciplina?",
-    "text": "Como e por que usar o  na disciplina?\n\nVocê receberá um script em R a cada aula\nDurante a aula, vai editar esse script no RStudio, testando e resolvendo problemas\nNo final da aula, envia suas alterações para seu repositório (push) — tudo salvo e organizado\nPode acessar seu trabalho de qualquer lugar, com segurança e histórico garantido\n\n\nGitHub será seu caderno digital de códigos — inteligente, seguro e acessível para a disciplina"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#primeiros-passos",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#primeiros-passos",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Primeiros passos",
-    "text": "Primeiros passos\n\nBaixar e instalar o Git: https://happygitwithr.com/install-git.html\nCriar uma conta no GitHub: https://github.com/\nCriar um reposítório Git\nClone esse repositório para sua máquina usando o RStudio\nTrabalhe no projeto e envie as atualizações de volta ao GitHub\n\n\nDesenvolva o hábito de buscar soluções por conta própria. Isso faz parte do dia a dia de quem trabalha com dados. Comece agora a desenvolver essa autonomia."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Criando um repositório  no ",
-    "text": "Criando um repositório  no \n\nApós fazer login no GitHub, Clique em + no canto superior direito\nEm seguida, clique em New repository"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Criando um repositório  no ",
-    "text": "Criando um repositório  no \n\n\n\nEm Repository name dê um anome ao repositóro\nEm Description faça uma descrição do repositório\nMarque a opção Public ou Private\nEm Initialize this repository with: marque a opção Add a README file\nClique em Create repository"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#section",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#section",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "",
-    "text": "Com o repositório já criado no GitHub, agora vamos usar o RStudio para ligar o projeto local ao repositório remoto.\nAssim, todas as alterações feitas no RStudio poderão ser salvas na nuvem e versionadas automaticamente.\nPara enviar essas alterações ao GitHub, será necessário se autenticar — com login e senha ou com um token de acesso.\n\nVamos ver como criar um token de acesso no GitHub."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Criando um token de acesso no ",
-    "text": "Criando um token de acesso no \n\n\n\nEstando logado no GitHub, clique na sua foto de perfil no canto superior direito\n\nClique em Settings"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Criando um token de acesso no ",
-    "text": "Criando um token de acesso no \n\nNo canto inferior esquerdo da tela clique em Developer settings"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-2",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-2",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Criando um token de acesso no ",
-    "text": "Criando um token de acesso no \n\n\n\nNo canto superior esquerdo da tela clique em Personal access tokens\nClique em Tokens (classic)\n\n\n\n\n\n\n\nEm Expiration selecione a data em que o token irá expirar\nMarque todas as opções em Select scopes\nClique em Generate token\n\n\nO token será gerado uma única vez. Guarde-o com cuidado, pois não será possível visualizá-lo novamente no GitHub. Você usará esse token quando for solicitada autenticação."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": " + : integração prática",
-    "text": "+ : integração prática\n\nO RStudio possui integração nativa com o Git e GitHub\n\nOu seja, é possível sincronizar um repositório GitHub a um repositório local\nIsso significa que você pode ligar o repositório do GitHub (na nuvem) ao seu projeto no computador. Assim, o que você altera localmente pode ser enviado para o GitHub — e vice-versa.\n\nPara isso, seguimos os seguintes passos:"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": " + : integração prática",
-    "text": "+ : integração prática\n\nFazemos uma cópia do repositório do GitHub na máquina local usando o RStudio.\n\nQuando já há uma cópia na máquina, começamos o trabalho atualizando o projeto local com as alterações que estão no GitHub (pull).\n\nTrabalhamos normalmente no projeto: scripts, análises, relatórios…\nUsamos o Git para registrar as alterações (commit) e enviar para o GitHub (push)."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": " + : criando o projeto local",
-    "text": "+ : criando o projeto local\n\n\n\nNo canto superior direito do RStudio clique em File &gt; New Project\nClique em Version control"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": " + : criando o projeto local",
-    "text": "+ : criando o projeto local\n\nClique em Git"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-2",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-2",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": " + : criando o projeto local",
-    "text": "+ : criando o projeto local\n\n\n\nNo campo Repository URL, cole a URL do repositório que você criou no GitHub\nEm Create project as subdirectory of, escolha o diretório em que o repositório do GitHub será copiado na máquina local\nClique em Create Project"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-3",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-3",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": " + : criando o projeto local",
-    "text": "+ : criando o projeto local\n\nSe você estiver clonando um repositório público, o RStudio irá criar uma cópia do projeto localmente, sem exigir login.\nSe o repositório for privado, o GitHub pedirá que você se autentique (login e senha ou token).\n\n\n\nUma vez que já existe o projeto na máquina local, você só precisa acessar o diretório local (pasta) e clicar no arquivo com extensão .Rproj para abrir o projeto no Rstudio, sem necessidade de clonar o projeto novamente na máquina."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nDepois de salvar as atualizações do seu projeto local, você pode enviar essas alterações para o repositório no GitHub diretamente pelo RStudio. Você deve fazer:\n\n\nNo quadrante superior direito clique em Commit"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nRStudio mostra os arquivos que foram alterados. Selecione-os.\nNo campo Commit message escreva um comentário contendo o que foi atualizado (sugestão: não use caracteres especiais ou acentos)\nClique em Commit"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-2",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-2",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-3",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-3",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nApós finalizado o envio, clique em Close"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-4",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-4",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nNote que irá aparecer a mensagem Your branch is ahead of 'origin/master' by 1 commit (isto indica que você tem alterações ainda não enviadas ao GitHub)\nClique em Push"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-5",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-5",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nEm máquinas com Windows o Rstudio redirecionará para você fazer login na sua conta GitHub no seu navegador. Em Linux preencha o campo Username for 'https://github.com' coloque login e clique em OK"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-6",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-6",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nAinda em Linux, no campo Personal Access Token insira o token criado no GitHub\nClique em OK"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-7",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-7",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nCaso apareça a mensagem abaixo, os arquivos foram atualizados no repositório do GitHub."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#material-extra",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#material-extra",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Material Extra",
-    "text": "Material Extra\nAprofunde o que vimos em aula com esses vídeos no YouTube:\n\nCurso completo de Git e GitHub: http://tiny.cc/GitGitHub:\nIntegração do RStudio com o GitHub:\n\nParte 1: http://tiny.cc/RStudioGitHub1\nParte 2: http://tiny.cc/RStudioGitHub2"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#ganhos-da-aula",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#ganhos-da-aula",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Ganhos da aula",
-    "text": "Ganhos da aula\n\nVersionamento de código e arquivos com GitHub\nIntegração do RStudio com GitHub\nExperiência com ferramentas do mercado"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#atividade-extraclasse",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#atividade-extraclasse",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Atividade extraclasse",
-    "text": "Atividade extraclasse\nConfigure seu ambiente de trabalho pessoal\nObjetivo\nDeixar seu computador pessoal pronto para continuar os trabalhos da disciplina fora do laboratório, de forma independente.\nEtapas:\n\nInstalar o Git: https://happygitwithr.com/install-git.html\nInstalar o R: https://cran.r-project.org\nInstalar o RStudio: https://posit.co/download/rstudio-desktop\n\nCriar um repositório da disciplina do GitHub, clonar via RStudio para a sua máquina local e fazer seu primeiro commit."
   },
   {
     "objectID": "index.html",

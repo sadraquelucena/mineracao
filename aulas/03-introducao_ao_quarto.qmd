@@ -1,0 +1,33 @@
+---
+title: "Conteúdo 3"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Introdução ao Quarto
+
+Nesta aula, iniciamos nossa jornada no Quarto, a plataforma unificada que é o padrão atual para comunicação científica no RStudio. Exploramos a estrutura de um documento `.qmd`, o papel do cabeçalho YAML e o uso de Markdown para formatação. Aprendemos a criar, editar e renderizar documentos que integram texto, blocos de código R, tabelas, gráficos e referências. A aula mostra como o Quarto permite gerar diversos formatos de saída (como HTML, PDF e slides) a partir de um único arquivo. Esse é o ponto de partida para desenvolver habilidades de comunicação eficaz, garantir a reprodutibilidade das análises e adotar boas práticas na documentação de projetos ao longo da disciplina.
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide03_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/03-introducao_ao_quarto.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide03_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::
+
+
+Para auxiliar na prática, também está disponível [um modelo de exemplo em Quarto](/PDFs/slides/arquivo-exemplo-quarto.zip) para download.

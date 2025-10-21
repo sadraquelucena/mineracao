@@ -1,0 +1,408 @@
+---
+title: "Introdução ao Quarto"
+subtitle: "ESTAT0109 -- Mineração de Dados em Estatística"
+author:
+  name: | # indica que o campo name terá múltiplas linhas
+    Prof. Dr. Sadraque E. F. Lucena<br>
+    <span style="font-size:.8em;">sadraquelucena@academico.ufs.br</span>
+    <br>
+    <a href="http://sadraquelucena.github.io/mineracao" target="_blank" style="font-size:.8em;">http://sadraquelucena.github.io/mineracao</a>
+
+df-print: paged  # Como data frames aparecem no documento
+                 # opções: "default", "kable", "tibble" e "paged"
+
+bibliography: referencias.bib
+csl: universidade-federal-de-sergipe-departamento-de-engenharia-de-producao-abnt.csl
+
+format:
+  revealjs:
+    theme: meutema.scss
+    width: 1024
+    height: 768
+    margin: 0.1         # margem em torno do conteúdo
+    min-scale: 0.2       # escala mínima permitida
+    max-scale: 2.0       # escala máxima permitida
+    slide-number: true
+    code-line-numbers: false # sem numero das linhas nos code chunks
+    subtitle-style: "font-size: 2em; font-weight: bold;"  # Aqui é onde aumentamos o subtítulo
+    logo: imagens/ufs_horizontal_positiva.png
+    transition: fade
+    transition-speed: fast
+    scss: meutema.scss
+
+lang: pt-BR
+---
+
+## Objetivo da Aula
+
+Aprender a **criar**, **editar** e **renderizar** documentos **Quarto** no **RStudio**, integrando
+
+-   texto;
+-   código;
+-   tabelas;
+-   saídas do R;
+-   gráficos;
+-   referências.
+
+
+
+
+## Estrutura da Aula
+
+1. O que é o Quarto?
+2. Quando e como usaremos o Quarto no RStudio
+3. Estrutura de um documento `.qmd`
+4. YAML e principais chaves
+5. Texto e formatação (Markdown)
+6. Blocos de código (R)
+7. Renderização e formatos de saída
+8. Dicas, dúvidas e referências
+
+
+
+
+## O que é o Quarto?
+
+Quarto é uma **plataforma unificada** para criar documentos, apresentações e sites combinando texto, código (em *R*, *Python*, *Julia* ou *Bash*) e suas saídas.
+
+-   Substitui o R Markdown
+-   Integra código, texto e resultados no mesmo arquivo
+-   Pode gerar **HTML**, **PDF**, **Word**, **slides**, **sites** e **livros**
+-   É o padrão atual para comunicação científica com RStudio.
+
+
+
+
+## Pré-requisitos
+
+Antes de começar, você precisa ter instalado:
+
+
+<img src="imagens/R.png" style="height: 150px; vertical-align: middle; margin-left: 130px;" />    <img src="imagens/rstudio-logo.svg" style="height: 150px; vertical-align: middle; margin-left: 150px;" />    <img src="imagens/quarto.jpg" style="height: 150px; vertical-align: middle; margin-left: 260px;" />
+
+<br>
+
+- Alternativa: use o **Posit Cloud** (<https://posit.cloud/>) para criar e renderizar documentos na nuvem.
+
+
+
+
+## Começando
+
+Primeiro crie um projeto.
+
+![Fonte: https://rladies-sp.org/](imagens/projeto.png)
+
+
+
+
+## Começando
+
+O arquivo quarto editável tem extensão *.qmd*. Para renderizá-lo clique em render ou utilize o atalho do teclado `CTRL + SHIFT + K`.
+
+![Fonte: https://rladies-sp.org/](imagens/render.png)
+
+
+
+
+## Estrutura de um arquivo `.qmd`
+
+Um arquivo `.qmd` é dividido em três partes:
+
+1.  **Cabeçalho (YAML)** — define o formatação do documento, título, autor, data e outros detalhes.
+2.  **Corpo (Markdown)** — texto, títulos, listas, tabelas, imagens.
+3.  **Blocos de código (Code chunks)** — código executável em R, Python, Julia e outras linguagens.
+
+
+
+
+## YAML (Yet Another Markup Language)
+
+O YAML fica no início do documento e define as configurações básicas. Exemplo:
+
+```yaml
+---
+title: "Relatório Anual"
+author: "Equipe de Estatística"
+date: today
+lang: pt
+format: html
+---
+```
+
+- **Dica:** Tudo entre `---` e `---` é parte do YAML e deve ser escrito com atenção à indentação.
+
+
+
+
+## YAML (Yet Another Markup Language)
+
+Em YAML, os elementos são chamados de pares chave-valor. Algumas chaves são:
+
+- `title`: título do documento.
+- `author`: nome do(a) autor(a). Pode ser mais de um(a).
+- `date`: Define a data do documento. Exemplos: `"13-03-2025"`, `today`.
+- `lang`: Define o idioma do documento. Exemplos: `pt`, `en`. 
+- `format`: tipo de arquivo de saída.
+
+
+Mais detalhes: [quarto.org/docs/authoring/front-matter.html](https://quarto.org/docs/authoring/front-matter.html)
+
+
+
+
+## Blocos de código
+
+Blocos de código são onde você executa o R (ou outra linguagem). Começam com três crases e o nome da linguagem. Exemplo:
+
+```{{r}}
+#| echo: false
+#| eval: true
+head(airquality)
+```
+
+```{r}
+#| echo: false
+#| eval: true
+head(airquality)
+```
+
+
+
+
+## Blocos de código
+
+Algumas das principais opções são:
+
+- `#| echo:` controla se o código é exibido no documento.
+- `#| eval:` determina se o código é executado e a saída apresentada.
+- `#| warning:` controla a exibição de mensagens de aviso geradas pelo código.
+- `#| error:` determina se os erros devem ser incluídos na saída.
+- `#| label:` rótulo dado para fazer referência. Uma vez definido um rótulo, você pode referenciá-lo usando (`@nome_do_rotulo`).
+- `#| fig-cap:` adiciona uma legenda a gráficos gerados pelo código.
+
+
+
+
+## Blocos de código
+
+```{{r}}
+#| echo: false
+#| eval: true
+#| fig-align: center
+library(ggplot2)
+ggplot(airquality, aes(Temp, Ozone)) +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  labs(x = "Temperatura (°F)", y = "Ozônio (ppb)") +
+  theme_minimal()
+```
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-align: center
+library(ggplot2)
+ggplot(airquality, aes(Temp, Ozone)) +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  labs(x = "Temperatura (°F)", y = "Ozônio (ppb)") +
+  theme_minimal()
+```
+
+
+## Formatação de texto
+
+|Sintaxe                |Saída                |
+|:----------------------|:--------------------|
+|`*itálico*`            |*itálico*            |
+|`**negrito**`          |**negrito**          |
+|`***itálico negrito***`|***itálico negrito***|
+|`sobrescrito^2^`       |sobrescrito^2^       |
+|`subscrito~2~`         |subscrito~2~         |
+|`~~riscado~~`          |~~riscado~~          |
+|`` `código literal` `` |`código literal`     |
+
+
+
+
+## Seções
+
+Uma seção e as subseções são definidas pela quantidade de #. O limite são seis níveis. Exemplos:
+
+
+| Sintaxe | Saída |
+|----------|--------|
+| `# Seção 1` | [Seção 1]{style="font-size: 55px; font-weight: bold;"} |
+| `## Subseção 1` | [Subseção 1]{style="font-size: 45px; font-weight: bold;"} |
+| `### Subsubseção 1` | [Subsubseção 1]{style="font-size: 35px; font-weight: bold;"} |
+
+
+
+
+## Links e imagens
+
+- `<https://quarto.org>` produz: <https://quarto.org>
+- `[Quarto](https://quarto.org)` produz: [Quarto](https://quarto.org)
+
+<br>
+
+- `![](quarto.jpg)` produz:
+
+![](imagens/quarto.jpg) 
+
+
+
+
+## Lista sem ordem
+
+:::: {.columns}
+
+::: {.column width="50%"}
+#### Sintaxe
+
+``` qmd
+
+* Item
+
+    + subitem 1
+
+    + subitem 2
+
+        - subsubitem 1
+```
+
+:::
+
+::: {.column width="50%"}
+#### Saída
+
+* Lista sem ordem
+    + subitem 1
+    + subitem 2
+        - subsubitem 1
+
+:::
+
+::::
+
+
+
+
+## Lista ordenada
+
+:::: {.columns}
+
+::: {.column width="50%"}
+#### Sintaxe
+
+``` qmd
+
+1. Item 1
+
+2. Item 2
+
+    i) subitem 1
+    
+         A.  subsubitem 1
+```
+:::
+
+::: {.column width="50%"}
+#### Saída
+
+1. Item 1
+
+2. Item 2
+
+    i) subitem 1
+
+         A.  subsubitem 1
+:::
+
+::::
+
+
+
+
+## Tabelas
+
+``` qmd
+| Direita | Esquerda | Padrão | Centralizada |
+|--------:|:---------|--------|:------------:|
+|     12  |      12  |   12   |          12  |
+|    123  |      123 |  123   |         123  |
+|      1  |        1 |    1   |           1  |
+```
+
+<br>
+
+produz:
+
+<br>
+
+| Direita | Esquerda | Padrão | Centralizada |
+|--------:|:---------|--------|:------------:|
+|     12  |      12  |   12   |          12  |
+|    123  |      123 |  123   |         123  |
+|      1  |        1 |    1   |           1  |
+
+
+
+
+## Equações
+- Para fórmulas e símbolos matemáticos embutidos no texto use `$`.
+- Para fórmulas e símbolos matemáticos destacados use `$$`.
+
+<br>
+
+- `$X \sim N(\mu,\sigma^2)$` $~$ produz: $~~ X \sim N(\mu,\sigma^2)$
+
+- `$$ f(x) = \frac{a}{b} e^{-x} $$` $~$ produz $$ f(x) = \frac{a}{b} e^{-x} $$
+
+
+
+
+## Citação
+
+- Informe o arquivo com as referências no YAML:
+
+```yaml
+---
+title: Título
+bibliography: referencias.bib
+csl: abnt.csl
+---
+```
+
+- Formato padrão: *Chicago Manual of Style* com autor e data.
+- Você pode especificar uma formatação personalizada usando o CSL (*Citation Style Language*) nos repositórios
+    - <https://github.com/citation-style-language/styles> ou
+    - <https://www.zotero.org/styles>
+    
+    
+
+
+## Citação
+
+- `@Wickham2023 ` $~$ produz $~$ *(autor, ano)*:
+    - @Wickham2023
+
+- `[@Wickham2023]` $~$ produz $~$ *autor (ano)*:
+    - [@Wickham2023]
+
+<br>
+
+- O arquivo csl com a formatação da ABNT pode ser encontrada em <https://www.zotero.org/styles/universidade-federal-de-sergipe-departamento-de-engenharia-de-producao-abnt>
+
+
+
+
+# Fim
+
+Agora vamos fazer no RStudio.
+
+
+
+
+## Referências
