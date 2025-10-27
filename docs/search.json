@@ -253,6 +253,270 @@
     "text": "Referências\n\n\n\n\nWICKHAM, H.; ÇETINKAYA-RUNDEL, M.; GROLEMUND, G. R for data science: Import, tidy, transform, visualize, and model data. 2nd. ed. Sebastopol, CA: O’Reilly, 2023."
   },
   {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#objetivo-da-aula",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#objetivo-da-aula",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Objetivo da Aula",
+    "text": "Objetivo da Aula\n\nAprender a manipular grandes bases de dados no R.\nConhecer os pacotes duckdb e DBI.\nFazer consultas usando a linguagem SQL dentro do R."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-muro-da-memória-ram",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-muro-da-memória-ram",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "O Muro da Memória RAM",
+    "text": "O Muro da Memória RAM\n\nO R é, por natureza, uma ferramenta in-memory. É comum usarmos o comando: meus_dados &lt;- read.csv(\"arquivo_grande.csv\").\nProblema: O que acontece se arquivo_grande.csv tem 50 GB e seu notebook tem 16 GB de RAM?\n\nO R tenta alocar 50 GB de espaço na RAM.\nO sistema operacional tenta compensar usando swap (disco), o que torna o processo astronomicamente lento.\nNa maioria dos casos, a sessão do R simplesmente trava ou é morta pelo sistema.\n\nSolução: Em vez de trazer os dados para o R, nós lemos e processamos os dados diretamente no disco, e trazemos para a RAM apenas o resultado final (que geralmente é pequeno).\n\nIsso é chamado de processamento Out-of-Core (ou On-Disk).\nPodemos usar os pacotes duckdb e DBI para fazê-lo."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-duckdb",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-duckdb",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "O Pacote duckdb",
+    "text": "O Pacote duckdb\n\nFunciona como seu assistente inteligente para dados grandes.\nImagine que seus dados são uma biblioteca gigante:\n\nMétodo tradicional: Trazer todos os livros para sua mesa (RAM).\nCom DuckDB: Pedir ao bibliotecário que consulte os livros nas estantes (disco) e traga apenas a resposta."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-duckdb-1",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-duckdb-1",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "O Pacote duckdb",
+    "text": "O Pacote duckdb\n\nÉ um sistema de gerenciamento de banco de dados (SGBD) analítico, in-process e colunar. Ou seja:\n\nAnalítico (OLAP): Otimizado para consultas complexas, agregações e filtros (ex: GROUP BY, SUM, AVG).\nIn-Process: Não é um servidor (como PostgreSQL ou MySQL). Ele roda dentro da sua sessão R. Não há instalação, configuração ou gerenciamento de servidor. Apenas install.packages(\"duckdb\") e pronto.\nColunar: Esta é a chave. Bancos de dados tradicionais armazenam dados por linha. O duckdb armazena por coluna.\n\nSe sua consulta é SELECT VARIAVEL1, COUNT(*) ..., ele lê apenas a coluna VARIAVEL1 do disco, ignorando todas as outras (nome, data, etc.). Isso resulta em uma velocidade maior.\nduckdb implementa uma versão muito abrangente e moderna do padrão SQL (Structured Query Language)."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-dbi",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-dbi",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "O Pacote DBI",
+    "text": "O Pacote DBI\n\nDBI (Database Interface) é um pacote que fornece uma camada de abstração universal para comunicação com bancos de dados no R.\nEle define um conjunto de funções consistentes:\n\ndbConnect(): para iniciar a conexão.\ndbGetQuery(): para enviar uma consulta e receber os dados de volta.\ndbDisconnect(): para encerrar a conexão.\n\nPor que usá-lo?\n\nConsistência: Você usa as mesmas funções DBI para falar com duckdb, RPostgres, RMariaDB, RSQLite, etc.\nPortabilidade: Seu código R não muda. Se amanhã você decidir migrar seu processo do duckdb (local) para um PostgreSQL (servidor), você só precisa alterar a linha do dbConnect()."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#como-o-sql-se-encaixa",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#como-o-sql-se-encaixa",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Como o SQL se encaixa?",
+    "text": "Como o SQL se encaixa?\n\nO DBI permite que o R fale com o duckdb, e a língua que eles usam é o SQL (Structured Query Language).\nEm vez de usar comandos do pacte dplyr (como filter, group_by, summarise) que operam em data.frames na memória, nós escrevemos uma string de consulta SQL (ex: SELECT ... FROM ... WHERE ...)\nNós passamos essa string para o DBI (ex: dbGetQuery(…)).\nO DBI entrega a string ao duckdb.\nO duckdb interpreta o SQL, otimiza a consulta, executa a operação diretamente no arquivo em disco, e retorna apenas o data.frame resultante para o R."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uso",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uso",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Estrutura Geral de Uso",
+    "text": "Estrutura Geral de Uso\nEste é o esquema de 5 passos para qualquer análise out-of-core com duckdb:\n\n# 1. Carregar as bibliotecas na sessão\nlibrary(DBI)\nlibrary(duckdb)\n\n# 2. Criar a conexão com o banco de dados (para salvar as consultas)\n\n# Opção A: Em memória (rápido, mas volátil)\n#con &lt;- dbConnect(duckdb::duckdb(), dbdir = \":memory:\")\n\n# Opção B: Persistente (recomendado)\ncon &lt;- dbConnect(duckdb::duckdb(),\n                 dbdir = \"meu_banco_analitico.duckdb\")\n\n# 3. Informar ao duckdb onde estão os dados\n# Isso NÃO carrega o CSV. Apenas cria um \"ponteiro\" para ele.\nduckdb_register(con, \"meus_dados\", \"arquivo_grande.csv\")"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uso-1",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uso-1",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Estrutura Geral de Uso",
+    "text": "Estrutura Geral de Uso\nEste é o esquema de 5 passos para qualquer análise out-of-core com duckdb:\n\n# 4. Fazer consultas ao banco usando SQL\nresultado &lt;- dbGetQuery(con, \"SELECT COUNT(*) FROM meus_dados\")\n\n# 5. Encerrar a conexão e liberar os recursos\ndbDisconnect(con, shutdown = TRUE)\n\n\n\nComo as cosultas usam SQL, vamos fazer uma breve explicação sobre o uso da linguagem."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uma-consulta-sql",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uma-consulta-sql",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Estrutura Geral de uma Consulta SQL",
+    "text": "Estrutura Geral de uma Consulta SQL\nUma consulta SQL é como uma frase que descreve os dados que você deseja. A ordem de escrita é quase sempre esta:\n\nSELECT coluna1, FUNCAO(coluna2) AS novo_nome\nFROM nome_da_tabela\nWHERE condicao_de_filtro (ex: ano = 2023)\nGROUP BY coluna_de_agrupamento (ex: coluna1)\nORDER BY coluna_de_ordenacao (ex: novo_nome) DESC\nLIMIT 10"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-instrução-select",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-instrução-select",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "A instrução SELECT",
+    "text": "A instrução SELECT\n\nEspecifica as colunas que você quer ver no resultado final.\nSempre vem acompanhada de FROM, que especifica de qual tabela os dados devem ser lidos.\n\nSintaxe:\n\nSELECT coluna1, coluna2, ...\nFROM nome_tabela\n\n\ncoluna1, coluna2, ... são as colunas das tabelas que você quer selecionar.\nnome_tabela representa o nome da tabela que contém os dados.\n\nExemplo: Suponha que temos uma tabela clientes e queremos selecionar todas as colunas.\n\nSELECT *\nFROM clientes"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-cláusula-where",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-cláusula-where",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "A cláusula WHERE",
+    "text": "A cláusula WHERE\n\nSeleciona linhas que atendem a uma condição.\n\nSintaxe:\n\nSELECT coluna1, coluna2, ...\nFROM nome_tabela\nWHERE condição\n\nExemplos:\n\n\n\nSELECT *\nFROM clientes\nWHERE idade=30\n\n\n\nSELECT *\nFROM clientes\nWHERE idade&gt;24"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-cláusula-where-1",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-cláusula-where-1",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "A cláusula WHERE",
+    "text": "A cláusula WHERE\nWHERE aceita alguns operadores:\n\n\n\n\n\n\n\n\n\nOperador\nDescrição\nOperador\nDescrição\n\n\n\n\n=\nIgual\n&lt;&gt; ou !=\nDiferente\n\n\n&gt;\nMaior que\n&lt;\nMenor que\n\n\n&gt;=\nMaior ou igual\n&lt;=\nMenor ou igual\n\n\nBETWEEN\nEntre um intervalo\nLIKE\nBusca por um padrão\n\n\nIN\nPara especificar múltiplos valores possíveis para uma coluna\n\n\n\n\n\nExemplo:\n\nSELECT *\nFROM clientes\nWHERE Idade BETWEEN 20 AND 30"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-instrução-group-by",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-instrução-group-by",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "A instrução GROUP BY",
+    "text": "A instrução GROUP BY\n\nAgrupa linhas com mesmo valor.\nGeralmente é usada com funções de agregação (COUNT(), MAX(), MIN(), SUM(), AVG()) para agrupar os resultados de uma ou mais colunas.\nMuito usada em conjunto com ORDER BY, para ordenação dos resultados.\n\nSintaxe:\n\nSELECT nomes_das_colunas\nFROM nome_tabela\nWHERE condição\nGROUP BY nomes_das_colunas\nORDER BY nomes_das_colunas\n\nExemplo:\n\nSELECT COUNT(ID_cliente), estado\nFROM clientes\nGROUP BY estado\nORDER BY COUNT(ID_cliente) DESC"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-2",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-2",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo",
+    "text": "Exemplo\nVamos usar o banco de dados sobre mortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM), desenvolvido pelo Ministério da Saúde. Os dados estão disponíveis em: https://opendatasus.saude.gov.br/dataset/sim.\n\nVamos usar o conjunto de dados DO24OPEN.csv (óbitos ocorridos em 2024) e as variáveis:\n\nCODMUNOCOR: Código relativo ao município onde ocorreu o óbito\nCAUSABAS: Causa básica da declaração de óbito\n\nTambém vamos usar uma tabela do IBGE com os códigos e nomes dos municípios obtida em https://www.ibge.gov.br/explica/codigos-dos-municipios.php.\n\nUsaremos o arquivo RELATORIO_DTB_BRASIL_2024_MUNICIPIOS.xls."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-preparação-do-ambiente",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-preparação-do-ambiente",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo: Preparação do ambiente",
+    "text": "Exemplo: Preparação do ambiente\n\n# 0. Instalando os pacotes (apenas uma vez)\n# install.packages(c(\"DBI\", \"duckdb\"))\n\n# 1. Carregando pacotes.\nlibrary(duckdb)\nlibrary(DBI)\n\n# 2. Especificando onde serão armazenadas as consultas.\n# Isso prepara o \"motor\" do duckdb para receber comandos\ncon &lt;- dbConnect(    # 'con' vai armazenar o objeto da conexão\n  duckdb::duckdb(),  # Especifica DuckDB como SGBD\n  dbdir = \":memory:\" # as consultas serão salvas na memória\n                     # e depois apagadas ao finalizar\n  #dbdir = \"sim_obitos.duckdb\" # cria uma arquivo p/ armazenar\n                               # os resultados da consulta\n)\n\n# 3. Definindo o caminho para o arquivo gigante\n# para não precisarmos escrever em toda consulta\ncaminho &lt;- \"/home/sadraque/Documentos/UFS/Disciplinas/2025.2/mineracao de dados em estatistica/slides/04-processamento_out-of-core/DO24OPEN.csv\""
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-1-contagem-total-de-linhas",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-1-contagem-total-de-linhas",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo 1: Contagem total de linhas",
+    "text": "Exemplo 1: Contagem total de linhas\nVamos contar quantas linhas há na tabela de dados.\n\n# Criando a consulta SQL\n# SELECT COUNT(*): \"Selecione a contagem de todas as linhas\"\n# FROM '%s' será substituído pelo caminho do arquivo\nconsult &lt;- sprintf(\"SELECT COUNT(*) AS total\n                           FROM '%s'\", caminho)\n\n# Enviando a consulta e pegando o resultado.\n# O duckdb vai ler o arquivo (sem carregá-lo) e retornar\n# apenas o resultado.\ntotal_linhas &lt;- dbGetQuery(con, consult)\ntotal_linhas\n\n    total\n1 1426346"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-2-agregando-por-município",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-2-agregando-por-município",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo 2: Agregando por Município",
+    "text": "Exemplo 2: Agregando por Município\nVamos contar o número de óbitos por código do município (CODMUNOCOR).\n\n# Montar a consulta SQL\nconsult &lt;- sprintf(\"SELECT CODMUNOCOR, COUNT(*) AS total_obitos\n                      FROM '%s'\n                      GROUP BY CODMUNOCOR\n                      ORDER BY total_obitos DESC\",\n                     caminho)\n\n\n# Enviar a consulta e pegar o resultado\nobitos_por_municipio &lt;- dbGetQuery(con, consult)\n\n# Ver as primeiras 4 linhas do resultado\nhead(obitos_por_municipio, n = 4L)\n\n  CODMUNOCOR total_obitos\n1     355030        89208\n2     330455        61443\n3     310620        23340\n4     261160        22146"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo 3: Adicionando filtragem",
+    "text": "Exemplo 3: Adicionando filtragem\nVamos consultar o número de óbitos por causas externas.\n\n# Criar a consulta SQL\n# CODMUNOCOR: Codigo do município onde ocorreu o óbito.\n# CAUSABAS: 'V01' a 'V99' são os códigos da CID-10 para\n#           acidentes de transporte.\nconsult &lt;- sprintf(\"SELECT CODMUNOCOR,\n                           COUNT(CAUSABAS) AS obitos_acidentes\n                    FROM '%s'\n                    WHERE CAUSABAS BETWEEN 'V01' AND 'V99'\n                    GROUP BY CODMUNOCOR\n                    ORDER BY obitos_acidentes DESC\",\n                   caminho)\nobitos_acidentes_mun &lt;- dbGetQuery(con, consult)\nhead(obitos_acidentes_mun, n = 4L) # primeiras 4 linhas\n\n  CODMUNOCOR obitos_acidentes\n1     130260              380\n2     520870              367\n3     261160              347\n4     355030              281"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-1",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-1",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo 3: Adicionando filtragem",
+    "text": "Exemplo 3: Adicionando filtragem\n\nOs códigos do SIM vêm sem os nomes dos municípios.\nPrecisamos cruzar com a tabela do IBGE para saber os nomes dos municípios.\n\n\nlibrary(tidyverse)\n\ntab_cod_ibge &lt;- readxl::read_excel(\n  \"/home/sadraque/Documentos/UFS/Disciplinas/2025.2/mineracao de dados em estatistica/slides/04-processamento_out-of-core/RELATORIO_DTB_BRASIL_2024_MUNICIPIOS.xls\",\n  skip = 6,  # Pula as 6 primeiras linhas\n  col_names = TRUE  # Usa a 7ª linha como nome das variáveis (default)\n) |&gt;\n  # Limpar nomes das colunas\n  janitor::clean_names()"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-2",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-2",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo 3: Adicionando filtragem",
+    "text": "Exemplo 3: Adicionando filtragem\n\ntab_cod_ibge &lt;- tab_cod_ibge |&gt;\n  # Cria código de 6 dígitos removendo o dígito verificador\n  mutate(codigo_6digitos = str_sub(codigo_municipio_completo,\n                                   1, -2)) |&gt;\n  # Converte para numérico\n  mutate(codigo_6digitos = as.numeric(codigo_6digitos)) |&gt;\n  # Seleciona e renomeia colunas finais\n  select(codigo = codigo_6digitos,\n         municipio = nome_municipio,\n         UF = nome_uf)"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-3",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-3",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo 3: Adicionando filtragem",
+    "text": "Exemplo 3: Adicionando filtragem\n\n# juntando o número de acidentes e os nomes dos municípios\nobitos_acidentes_nome_municipios &lt;- tab_cod_ibge |&gt;\n  left_join(obitos_acidentes_mun,\n            by = c(\"codigo\" = \"CODMUNOCOR\"))  |&gt;\n  arrange(desc(obitos_acidentes)) # ordem decrescente\nhead(obitos_acidentes_nome_municipios)\n\n# A tibble: 6 × 4\n  codigo municipio UF               obitos_acidentes\n   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;                       &lt;dbl&gt;\n1 130260 Manaus    Amazonas                      380\n2 520870 Goiânia   Goiás                         367\n3 261160 Recife    Pernambuco                    347\n4 355030 São Paulo São Paulo                     281\n5 530010 Brasília  Distrito Federal              271\n6 211130 São Luís  Maranhão                      269\n\n# Encerrando a conexão\ndbDisconnect(con, shutdown = TRUE)"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exercícios",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exercícios",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nFaça um histograma das idades das pessoas que vieram a óbito em 2024 em todo o país (note que primeiro você precisa fazer uma consulta na base de dados).\nFaça um gráfico de barras contando os óbitos por sexo para cada estado do país."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#conclusão-e-revisão",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#conclusão-e-revisão",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Conclusão e Revisão",
+    "text": "Conclusão e Revisão\n\nProblema: A RAM é limitada; dados massivos não cabem nela.\nSolução: Processamento Out-of-Core (On-Disk).\nFerramentas:\n\nduckdb: Motor que faz o trabalho pesado no disco.\nDBI: Interface que o R usa para se comunicar.\nSQL: A linguagem que usamos para descrever o que queremos.\n\nFluxo: dbConnect -&gt; duckdb_register -&gt; dbGetQuery (com SQL) -&gt; dbDisconnect.\nVerbos SQL:\n\n\n\n\nSELECT (o quê)\nFROM (de onde)\nWHERE (filtro de linha)\n\n\n\nGROUP BY (agregar)\nORDER BY (ordenar)"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#section",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#section",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "",
+    "text": "Mais sobre a estrutura de SQL você pode encontrar em https://www.w3schools.com/sql/.\n\nFim"
+  },
+  {
+    "objectID": "aulas/02-introducao_ao_rstudio+github.html",
+    "href": "aulas/02-introducao_ao_rstudio+github.html",
+    "title": "Conteúdo 2",
+    "section": "",
+    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "2- Introdução ao RStudio + GitHub"
+    ]
+  },
+  {
+    "objectID": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
+    "href": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
+    "title": "Conteúdo 2",
+    "section": "",
+    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "2- Introdução ao RStudio + GitHub"
+    ]
+  },
+  {
+    "objectID": "aulas/04-processamento_out-of-core.html",
+    "href": "aulas/04-processamento_out-of-core.html",
+    "title": "Conteúdo 4",
+    "section": "",
+    "text": "Nesta aula, enfrentamos o desafio de analisar dados que excedem a memória RAM do computador, introduzindo o paradigma de processamento Out-of-Core no R. Exploramos a arquitetura dessa solução, compreendendo o papel do pacote duckdb como o motor analítico in-process e do pacote DBI como a interface de conexão universal. Aprendemos a estrutura fundamental da linguagem SQL para realizar consultas diretamente no disco, focando nos comandos SELECT, FROM, WHERE, GROUP BY e ORDER BY. A aula demonstra, com exemplos práticos usando dados do DATASUS, como agregar e filtrar milhões de registros instantaneamente, trazendo para o R apenas o resultado consolidado. Este é um passo essencial para escalar análises, garantir a performance em datasets massivos e superar as limitações do processamento in-memory tradicional.\nDados que iremos usar:\n\nMortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM): https://opendatasus.saude.gov.br/dataset/sim\nTabela de Códigos de Municípios do IBGE: https://www.ibge.gov.br/explica/codigos-dos-municipios.php\n\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "4- Processamento *Out-of-Core*"
+    ]
+  },
+  {
+    "objectID": "aulas/04-processamento_out-of-core.html#processamento-out-of-core-com-duckdb-e-dbi-no-r",
+    "href": "aulas/04-processamento_out-of-core.html#processamento-out-of-core-com-duckdb-e-dbi-no-r",
+    "title": "Conteúdo 4",
+    "section": "",
+    "text": "Nesta aula, enfrentamos o desafio de analisar dados que excedem a memória RAM do computador, introduzindo o paradigma de processamento Out-of-Core no R. Exploramos a arquitetura dessa solução, compreendendo o papel do pacote duckdb como o motor analítico in-process e do pacote DBI como a interface de conexão universal. Aprendemos a estrutura fundamental da linguagem SQL para realizar consultas diretamente no disco, focando nos comandos SELECT, FROM, WHERE, GROUP BY e ORDER BY. A aula demonstra, com exemplos práticos usando dados do DATASUS, como agregar e filtrar milhões de registros instantaneamente, trazendo para o R apenas o resultado consolidado. Este é um passo essencial para escalar análises, garantir a performance em datasets massivos e superar as limitações do processamento in-memory tradicional.\nDados que iremos usar:\n\nMortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM): https://opendatasus.saude.gov.br/dataset/sim\nTabela de Códigos de Municípios do IBGE: https://www.ibge.gov.br/explica/codigos-dos-municipios.php\n\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "4- Processamento *Out-of-Core*"
+    ]
+  },
+  {
+    "objectID": "aulas/01-Apresentacao_da_disciplina.html",
+    "href": "aulas/01-Apresentacao_da_disciplina.html",
+    "title": "Conteúdo 1",
+    "section": "",
+    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nVídeo da aula:",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "1- Apresentação da Disciplina"
+    ]
+  },
+  {
+    "objectID": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
+    "href": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
+    "title": "Conteúdo 1",
+    "section": "",
+    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nVídeo da aula:",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "1- Apresentação da Disciplina"
+    ]
+  },
+  {
+    "objectID": "aulas/03-introducao_ao_quarto.html",
+    "href": "aulas/03-introducao_ao_quarto.html",
+    "title": "Conteúdo 3",
+    "section": "",
+    "text": "Nesta aula, iniciamos nossa jornada no Quarto, a plataforma unificada que é o padrão atual para comunicação científica no RStudio. Exploramos a estrutura de um documento .qmd, o papel do cabeçalho YAML e o uso de Markdown para formatação. Aprendemos a criar, editar e renderizar documentos que integram texto, blocos de código R, tabelas, gráficos e referências. A aula mostra como o Quarto permite gerar diversos formatos de saída (como HTML, PDF e slides) a partir de um único arquivo. Esse é o ponto de partida para desenvolver habilidades de comunicação eficaz, garantir a reprodutibilidade das análises e adotar boas práticas na documentação de projetos ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nPara auxiliar na prática, também está disponível um modelo de exemplo em Quarto para download.",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "3- Introdução ao Quarto"
+    ]
+  },
+  {
+    "objectID": "aulas/03-introducao_ao_quarto.html#introdução-ao-quarto",
+    "href": "aulas/03-introducao_ao_quarto.html#introdução-ao-quarto",
+    "title": "Conteúdo 3",
+    "section": "",
+    "text": "Nesta aula, iniciamos nossa jornada no Quarto, a plataforma unificada que é o padrão atual para comunicação científica no RStudio. Exploramos a estrutura de um documento .qmd, o papel do cabeçalho YAML e o uso de Markdown para formatação. Aprendemos a criar, editar e renderizar documentos que integram texto, blocos de código R, tabelas, gráficos e referências. A aula mostra como o Quarto permite gerar diversos formatos de saída (como HTML, PDF e slides) a partir de um único arquivo. Esse é o ponto de partida para desenvolver habilidades de comunicação eficaz, garantir a reprodutibilidade das análises e adotar boas práticas na documentação de projetos ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nPara auxiliar na prática, também está disponível um modelo de exemplo em Quarto para download.",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "3- Introdução ao Quarto"
+    ]
+  },
+  {
     "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#objetivo-da-aula",
     "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#objetivo-da-aula",
     "title": "Introdução ao RStudio + GitHub",
@@ -461,78 +725,6 @@
     "title": "Introdução ao RStudio + GitHub",
     "section": "Atividade extraclasse",
     "text": "Atividade extraclasse\nConfigure seu ambiente de trabalho pessoal\nObjetivo\nDeixar seu computador pessoal pronto para continuar os trabalhos da disciplina fora do laboratório, de forma independente.\nEtapas:\n\nInstalar o Git: https://happygitwithr.com/install-git.html\nInstalar o R: https://cran.r-project.org\nInstalar o RStudio: https://posit.co/download/rstudio-desktop\n\nCriar um repositório da disciplina do GitHub, clonar via RStudio para a sua máquina local e fazer seu primeiro commit."
-  },
-  {
-    "objectID": "aulas/03-introducao_ao_quarto.html",
-    "href": "aulas/03-introducao_ao_quarto.html",
-    "title": "Conteúdo 3",
-    "section": "",
-    "text": "Nesta aula, iniciamos nossa jornada no Quarto, a plataforma unificada que é o padrão atual para comunicação científica no RStudio. Exploramos a estrutura de um documento .qmd, o papel do cabeçalho YAML e o uso de Markdown para formatação. Aprendemos a criar, editar e renderizar documentos que integram texto, blocos de código R, tabelas, gráficos e referências. A aula mostra como o Quarto permite gerar diversos formatos de saída (como HTML, PDF e slides) a partir de um único arquivo. Esse é o ponto de partida para desenvolver habilidades de comunicação eficaz, garantir a reprodutibilidade das análises e adotar boas práticas na documentação de projetos ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nPara auxiliar na prática, também está disponível um modelo de exemplo em Quarto para download.",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "3- Introdução ao Quarto"
-    ]
-  },
-  {
-    "objectID": "aulas/03-introducao_ao_quarto.html#introdução-ao-quarto",
-    "href": "aulas/03-introducao_ao_quarto.html#introdução-ao-quarto",
-    "title": "Conteúdo 3",
-    "section": "",
-    "text": "Nesta aula, iniciamos nossa jornada no Quarto, a plataforma unificada que é o padrão atual para comunicação científica no RStudio. Exploramos a estrutura de um documento .qmd, o papel do cabeçalho YAML e o uso de Markdown para formatação. Aprendemos a criar, editar e renderizar documentos que integram texto, blocos de código R, tabelas, gráficos e referências. A aula mostra como o Quarto permite gerar diversos formatos de saída (como HTML, PDF e slides) a partir de um único arquivo. Esse é o ponto de partida para desenvolver habilidades de comunicação eficaz, garantir a reprodutibilidade das análises e adotar boas práticas na documentação de projetos ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nPara auxiliar na prática, também está disponível um modelo de exemplo em Quarto para download.",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "3- Introdução ao Quarto"
-    ]
-  },
-  {
-    "objectID": "aulas/01-Apresentacao_da_disciplina.html",
-    "href": "aulas/01-Apresentacao_da_disciplina.html",
-    "title": "Conteúdo 1",
-    "section": "",
-    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nVídeo da aula:",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "1- Apresentação da Disciplina"
-    ]
-  },
-  {
-    "objectID": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
-    "href": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
-    "title": "Conteúdo 1",
-    "section": "",
-    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nVídeo da aula:",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "1- Apresentação da Disciplina"
-    ]
-  },
-  {
-    "objectID": "aulas/02-introducao_ao_rstudio+github.html",
-    "href": "aulas/02-introducao_ao_rstudio+github.html",
-    "title": "Conteúdo 2",
-    "section": "",
-    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "2- Introdução ao RStudio + GitHub"
-    ]
-  },
-  {
-    "objectID": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
-    "href": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
-    "title": "Conteúdo 2",
-    "section": "",
-    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "2- Introdução ao RStudio + GitHub"
-    ]
   },
   {
     "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#canais-de-comunicação-e-materiais-da-disciplina",

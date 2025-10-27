@@ -37,6 +37,8 @@ website:
             text: "2- Introdução ao RStudio + GitHub"
           - href: aulas/03-introducao_ao_quarto.qmd
             text: "3- Introdução ao Quarto"
+          - href: aulas/04-processamento_out-of-core.qmd
+            text: "4- Processamento *Out-of-Core*"
       
       #- section: "Parte 2: Métodos de Estimação"
       #  contents:

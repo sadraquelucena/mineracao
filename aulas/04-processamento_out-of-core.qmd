@@ -1,0 +1,36 @@
+---
+title: "Conteúdo 4"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Processamento *Out-of-Core* com `duckdb` e `DBI` no R
+
+Nesta aula, enfrentamos o desafio de analisar dados que excedem a memória RAM do computador, introduzindo o paradigma de processamento *Out-of-Core* no R. Exploramos a arquitetura dessa solução, compreendendo o papel do pacote `duckdb` como o motor analítico *in-process* e do pacote `DBI` como a interface de conexão universal. Aprendemos a estrutura fundamental da linguagem SQL para realizar consultas diretamente no disco, focando nos comandos SELECT, FROM, WHERE, GROUP BY e ORDER BY. A aula demonstra, com exemplos práticos usando dados do DATASUS, como agregar e filtrar milhões de registros instantaneamente, trazendo para o R apenas o resultado consolidado. Este é um passo essencial para escalar análises, garantir a performance em datasets massivos e superar as limitações do processamento *in-memory* tradicional.
+
+Dados que iremos usar:
+
+- Mortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM): <https://opendatasus.saude.gov.br/dataset/sim>{target="_blank"}
+- Tabela de Códigos de Municípios do IBGE: <https://www.ibge.gov.br/explica/codigos-dos-municipios.php>{target="_blank"}
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/04-processamento_out-of-core/04-processamento_out-of-core.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide04_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/04-processamento_out-of-core.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide04_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::
+
