@@ -237,6 +237,31 @@ ul.task-list li input[type="checkbox"] {
 <p><a href="../PDFs/slides/04-processamento_out-of-core.pdf" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide04_pdf.png" class="img-fluid"><br>Versão pdf </a></p>
 </div>
 </div>
+</section>
+<section id="projeto-1-preparação-de-datasets-para-análise-de-risco" class="level2">
+<h2 data-anchor-id="projeto-1-preparação-de-datasets-para-análise-de-risco">Projeto 1 – Preparação de Datasets para Análise de Risco</h2>
+<p>Você é um(a) Engenheiro(a) de Dados. O time de Cientistas de Dados solicitou um dataset filtrado do <code>SCR.data</code>. Vocês devem usar <code>duckdb</code> para consultar arquivos CSV brutos, fazer a filtragem necessária usando SQL, e entregar um <em>dataframe</em> leve no R. O projeto é <strong>INDIVIDUAL</strong>.</p>
+<p><strong>Prazo:</strong> Próxima aula.</p>
+<p><strong>Tarefa:</strong> Acesse <a href="https://dadosabertos.bcb.gov.br/dataset/scr_data" class="uri">https://dadosabertos.bcb.gov.br/dataset/scr_data</a>, baixe os dados de 2025 e selecione o conjunto de dados (arquivo CSV) do mês mais recente disponível.</p>
+<p>Em seguida, escolha 1 Estado (UF) e 1 das duas opções de projeto abaixo.</p>
+<p>O objetivo de ambas as opções é escrever uma consulta SQL que leia o CSV e filtre os dados. A consulta deve usar <code>WHERE</code> para selecionar apenas as linhas que correspondam à UF escolhida E ao tipo de cliente (<code>'PF'</code> ou <code>'PJ'</code>).</p>
+<p><strong>Opção 1: Extração de Micro-Segmentos de Risco (Pessoa Física)</strong></p>
+<ul>
+<li><strong>Objetivo:</strong> Preparar o dataset de clientes Pessoa Física (PF) para uma futura análise de risco e segmentação.</li>
+<li><strong>Filtro Requerido:</strong> <code>cliente = 'PF'</code> (além da UF escolhida).</li>
+</ul>
+<p><strong>Opção 2: Extração de Risco Setorial (Pessoa Jurídica)</strong></p>
+<ul>
+<li><strong>Objetivo:</strong> Preparar o dataset de clientes Pessoa Jurídica (PJ) para uma futura análise de risco dos diferentes setores da economia (CNAE).</li>
+<li><strong>Filtro Requerido:</strong> <code>cliente = 'PJ'</code> (além da UF escolhida).</li>
+</ul>
+<p><strong>Entrega:</strong> Produza um relatório em pdf gerado em Quarto que contenha:</p>
+<ol type="1">
+<li>Qual das 2 opções foi escolhida e qual a UF (Estado) selecionada.</li>
+<li>O script R completo e comentado no documento Quarto. Nesta tarefa, o código SQL dentro do R é a parte principal do trabalho.</li>
+<li>A saída da consulta no R. Você deve usar as funções <code>glimpse()</code> e <code>summary()</code> no <em>dataframe</em> resultante para provar que os filtros foram aplicados corretamente.</li>
+<li>O envio deve ser realizado pelo SIGAA.</li>
+</ol>
 
 
 </section>

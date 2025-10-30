@@ -418,7 +418,7 @@
     "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#section",
     "title": "Processamento Out-of-Core com duckdb e DBI no R",
     "section": "",
-    "text": "Mais sobre a estrutura de SQL você pode encontrar em https://www.w3schools.com/sql/.\n\nFim"
+    "text": "Mais sobre a estrutura de SQL você pode encontrar em https://www.w3schools.com/sql/."
   },
   {
     "objectID": "aulas/02-introducao_ao_rstudio+github.html",
@@ -462,6 +462,18 @@
     "title": "Conteúdo 4",
     "section": "",
     "text": "Nesta aula, enfrentamos o desafio de analisar dados que excedem a memória RAM do computador, introduzindo o paradigma de processamento Out-of-Core no R. Exploramos a arquitetura dessa solução, compreendendo o papel do pacote duckdb como o motor analítico in-process e do pacote DBI como a interface de conexão universal. Aprendemos a estrutura fundamental da linguagem SQL para realizar consultas diretamente no disco, focando nos comandos SELECT, FROM, WHERE, GROUP BY e ORDER BY. A aula demonstra, com exemplos práticos usando dados do DATASUS, como agregar e filtrar milhões de registros instantaneamente, trazendo para o R apenas o resultado consolidado. Este é um passo essencial para escalar análises, garantir a performance em datasets massivos e superar as limitações do processamento in-memory tradicional.\nDados que iremos usar:\n\nMortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM): https://opendatasus.saude.gov.br/dataset/sim\nTabela de Códigos de Municípios do IBGE: https://www.ibge.gov.br/explica/codigos-dos-municipios.php\n\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "4- Processamento *Out-of-Core*"
+    ]
+  },
+  {
+    "objectID": "aulas/04-processamento_out-of-core.html#projeto-1-preparação-de-datasets-para-análise-de-risco",
+    "href": "aulas/04-processamento_out-of-core.html#projeto-1-preparação-de-datasets-para-análise-de-risco",
+    "title": "Conteúdo 4",
+    "section": "Projeto 1 – Preparação de Datasets para Análise de Risco",
+    "text": "Projeto 1 – Preparação de Datasets para Análise de Risco\nVocê é um(a) Engenheiro(a) de Dados. O time de Cientistas de Dados solicitou um dataset filtrado do SCR.data. Vocês devem usar duckdb para consultar arquivos CSV brutos, fazer a filtragem necessária usando SQL, e entregar um dataframe leve no R. O projeto é INDIVIDUAL.\nPrazo: Próxima aula.\nTarefa: Acesse https://dadosabertos.bcb.gov.br/dataset/scr_data, baixe os dados de 2025 e selecione o conjunto de dados (arquivo CSV) do mês mais recente disponível.\nEm seguida, escolha 1 Estado (UF) e 1 das duas opções de projeto abaixo.\nO objetivo de ambas as opções é escrever uma consulta SQL que leia o CSV e filtre os dados. A consulta deve usar WHERE para selecionar apenas as linhas que correspondam à UF escolhida E ao tipo de cliente ('PF' ou 'PJ').\nOpção 1: Extração de Micro-Segmentos de Risco (Pessoa Física)\n\nObjetivo: Preparar o dataset de clientes Pessoa Física (PF) para uma futura análise de risco e segmentação.\nFiltro Requerido: cliente = 'PF' (além da UF escolhida).\n\nOpção 2: Extração de Risco Setorial (Pessoa Jurídica)\n\nObjetivo: Preparar o dataset de clientes Pessoa Jurídica (PJ) para uma futura análise de risco dos diferentes setores da economia (CNAE).\nFiltro Requerido: cliente = 'PJ' (além da UF escolhida).\n\nEntrega: Produza um relatório em pdf gerado em Quarto que contenha:\n\nQual das 2 opções foi escolhida e qual a UF (Estado) selecionada.\nO script R completo e comentado no documento Quarto. Nesta tarefa, o código SQL dentro do R é a parte principal do trabalho.\nA saída da consulta no R. Você deve usar as funções glimpse() e summary() no dataframe resultante para provar que os filtros foram aplicados corretamente.\nO envio deve ser realizado pelo SIGAA.",
     "crumbs": [
       "Aulas",
       "Parte 1: Fundamentos",
