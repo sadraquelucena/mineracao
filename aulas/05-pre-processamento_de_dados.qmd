@@ -30,13 +30,16 @@ Slides:
 ::::
 
 
-Como exemplo de aplicação iremos usar os mesmos dados da aula anterior, em que usamos dados do Sistema de Informação sobre Mortalidade (SIM) e do IBGE. O código R pode ser baixado [aqui](/PDFs/slides/exemplo_pre_processamento_SIM_IBGE.R). Os dados estão disponíveis em:
+
+## Aplicações
+
+**Exemplo 1:** Como exemplo de aplicação iremos usar os mesmos dados da aula anterior, em que usamos dados do Sistema de Informação sobre Mortalidade (SIM) e do IBGE. O código R pode ser baixado [aqui](/PDFs/slides/05-pre-processamento_de_dados_exemplo1.R). Os dados estão disponíveis em:
 
 - Mortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM): <https://opendatasus.saude.gov.br/dataset/sim>{target="_blank"}
-- Tabela de Códigos de Municípios do IBGE: <https://www.ibge.gov.br/explica/codigos-dos-municipios.php>{target="_blank"}
+- Estimativas de população residente por município de 2024: <http://sidra.ibge.gov.br/tabela/6579>{target="_blank"}
 
 
-Também temos outro código em R para outro pr-é-processamento de dados. O arquivo com o código R e os dados podem ser baixados [aqui](/PDFs/slides/05-pre-processamento_de_dados_exemploR.zip).
+**Exemplo 2:** Também temos outro código em R para outro pr-é-processamento de dados. O arquivo com o código R e os dados podem ser baixados [aqui](/PDFs/slides/05-pre-processamento_de_dados_exemplo2.zip).
 
 
 

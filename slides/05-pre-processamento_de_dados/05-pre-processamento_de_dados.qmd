@@ -43,7 +43,7 @@ lang: pt-BR
     - **Ruído (*noisy*):** Valores errados ou impossíveis (ex: um paciente com `IDADE` = 200 anos).
     - **Inconsistência (*inconsistency*):** A mesma informação registrada de formas diferentes (ex: `MUNICIPIO` = "Aracaju", "Aracajú").
     - **Heterogeneidade (*heterogeneity*):** Dados de múltiplas fontes, com formatos e chaves diferentes (ex: o código o município do Censo Escolar e do SIM usando padrões diferentes -- 6 ou 7 dígitos).
-    - **Dandos faltantes (*Missing*):** O famoso `NA`.
+    - **Dados faltantes (*Missing*):** O famoso `NA`.
 
 
 
@@ -143,7 +143,7 @@ São quantidades mensuráveis (números inteiros ou reais) onde as operações m
     - `VL_TOTAL_INTERNACAO` (R$ 0,00 é ausência de custo).
     - `IDADE`, `PESO`, `ALTURA`.
     - `RENDA_MENSAL`, `N_DE_FILHOS`.
-- **Operações:** Todas! Média, Mediana, Moda, Diferenças E Rácios (R\$ 100 é exatamente o dobro de R\$ 50).
+- **Operações:** Todas! Média, Mediana, Moda, Diferenças e Razões (R\$ 100 é exatamente o dobro de R\$ 50).
 
 
 
@@ -205,9 +205,9 @@ Vejamos detalhes de cada fase.
 ## 1. Tratamento de Inconsistências
 
 - Ocorre quando o mesmo dado é registrado de formas diferentes (sintaxe) ou quando um valor viola uma regra lógica (semântica).
-- **Com identificar?**
-    - **Para categorias:** Fazer uma tabela de frequência para avaliar há registros com sintaxe diferente (ex: `municipio` com respostas "Aracaju" e "Aracajú").
-    - **Para numéricos:** Obter mínimo, máximo e Boxplots par aver se há valores fora so possível (ex: `idade_da_mae` = 5 anos).
+- **Como identificar?**
+    - **Para categorias:** Fazer uma tabela de frequência para avaliar se há registros com sintaxe diferente (ex: `municipio` com respostas "Aracaju" e "Aracajú").
+    - **Para numéricos:** Obter mínimo, máximo e Boxplots para ver se há valores fora do possível (ex: `idade_da_mae` = 5 anos).
 - **O que fazer:**
     - **Padronização de categorias:** Agrupar sinônimos ou erros de digitação em um único rótulo padrão (ex: "Aracajú", "AJU", "Aracaju" → "Aracaju").
     - **Validação de regras:** Transformar valores inválidos em `NA`s.
@@ -409,7 +409,7 @@ Temos quatro grandes desafios ao fazer isso. Vejamos.
 Como o computador sabe que 'Aracaju' é 'Aracaju'?
 
 * **Definição:** Como parear entidades do mundo real (pacientes, municípios, clientes) que estão em bases diferentes?
-* **Ex:** `id_cliente` (Base A) vs. `numero_client` (Base B).
+* **Ex:** `id_cliente` (Base A) vs. `numero_cliente` (Base B).
 
 **Exemplo:**
 * **Base IBGE (Censo):** O código de Aracaju é `CD_MUN_IBGE` = **"2800308"** (7 dígitos).
@@ -505,7 +505,7 @@ A *mesma entidade* (linha) aparece mais de uma vez.
 -   Frequentemente é preciso modificar a estrutura ou características dos dados para formas "apropriadas para a mineração".
 -   Algumas técnicas usadas são:
     a.  Normalização Z-score;
-    b.  Discretização Min-Max;
+    b.  Normalização Min-Max;
     c.  Transformação logarítmica;
     d.  Discretização;
     e.  Codificação de variáveis *dummy*.
@@ -590,7 +590,7 @@ Isto é um *vazamento de dados* (*data leakage*). Você estaria "contando" ao se
 - Alguns algoritmos exigem que a variável independente seja binária ou tenha um número limitado de valores distintos.
 - Esse processo pode ser feito usando a suavização com médias de intervalo ou suavização com limites de intervalo.
 - Outra forma comum é a *dicotomização*.
-  - Exemplo: Os valores $\{4,8, 9,15, 21, 21, 24, 25, 26, 28, 29,34\}$ seriam dicotomizados usado $20$ como valore de corte, ficando $\{0, 0, 0, 0,1,1,1,1,1,1,1,1\}$.
+  - Exemplo: Os valores $\{4,8, 9,15, 21, 21, 24, 25, 26, 28, 29,34\}$ seriam dicotomizados usando $20$ como valor de corte, ficando $\{0, 0, 0, 0,1,1,1,1,1,1,1,1\}$.
 
 
 
@@ -600,12 +600,12 @@ Isto é um *vazamento de dados* (*data leakage*). Você estaria "contando" ao se
 ### e. Codificação de variáveis *dummy*
 
 - Uma variável *dummy* é uma dicotomização de uma variável contínua.
-- Ela é muito usada em algoritmos que exigem que os atributos independentes sejam numericos (como regressão ou k-NN) e como uma forma de representar dados ausentes.
+- Ela é muito usada em algoritmos que exigem que os atributos independentes sejam numéricos (como regressão ou k-NN) e como uma forma de representar dados ausentes.
 - Suponha que temos a variável abaixo:
 
 |Escolaridade                    | Código |
 |:------------------------|:------:|
-|*Enino Fundamental*      | 1      |
+|*Ensino Fundamental*      | 1      |
 |*Ensino Médio*           | 2      |
 |*Ensino Superior*        | 3      |
 
@@ -620,7 +620,7 @@ Isto é um *vazamento de dados* (*data leakage*). Você estaria "contando" ao se
 
 |Escolaridade             | Ensino Médio      | Ensino Superior|
 |:------------------------|:-----------------:|:--------------:|
-|*Enino Fundamental*      | 0                 | 0              |
+|*Ensino Fundamental*      | 0                 | 0              |
 |*Ensino Médio*           | 1                 | 0              |
 |*Ensino Superior*        | 0                 | 1              |
 
