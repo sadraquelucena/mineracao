@@ -1,0 +1,70 @@
+---
+title: "Conteúdo 5"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Pré-Processamento de Dados
+
+O pilar fundamental de qualquer modelo de mineração é a qualidade dos seus dados, reconhecendo o princípio de que entradas de baixa qualidade geram resultados de baixa qualidade (Garbage In, Garbage Out). Esta aula explora os desafios comuns encontrados em dados brutos — como ruído, inconsistências, dados faltantes e heterogeneidade — e introduz o pipeline de pré-processamento como um fluxo de trabalho estruturado para diagnosticar e remediar esses problemas. O processo se inicia pela base, com a classificação correta dos tipos de atributos (nominais, ordinais, intervalares e racionais) para definir as operações válidas. A partir daí, o pipeline detalha as etapas essenciais de tratamento de inconsistências (padronização e validação), estratégias para valores ausentes (da remoção simples à imputação preditiva), suavização de ruído (usando técnicas como binning), superação dos desafios da integração de dados (conflitos, redundância e identificação de entidades), aplicação de métodos de transformação (normalização Z-score, Min-Max, dummy coding) e o uso de técnicas de redução de dados (como PCA e seleção de atributos). Dominar este pipeline é um passo indispensável para garantir que os algoritmos de machine learning operem com máxima eficiência e que os resultados da análise sejam confiáveis, precisos e robustos.
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/05-pre-processamento_de_dados/05-pre-processamento_de_dados.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide05_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/05-pre-processamento_de_dados.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide05_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::
+
+
+Como exemplo de aplicação iremos usar os mesmos dados da aula anterior, em que usamos dados do Sistema de Informação sobre Mortalidade (SIM) e do IBGE. O código R pode ser baixado [aqui](/PDFs/slides/exemplo_pre_processamento_SIM_IBGE.R). Os dados estão disponíveis em:
+
+- Mortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM): <https://opendatasus.saude.gov.br/dataset/sim>{target="_blank"}
+- Tabela de Códigos de Municípios do IBGE: <https://www.ibge.gov.br/explica/codigos-dos-municipios.php>{target="_blank"}
+
+
+Também temos outro código em R para outro pr-é-processamento de dados. O arquivo com o código R e os dados podem ser baixados [aqui](/PDFs/slides/05-pre-processamento_de_dados_exemploR.zip).
+
+
+
+
+## Projeto 2 -- Pré-Processamento de Dados para Modelagem de Risco
+
+Você agora atua como Cientista de Dados Júnior no mesmo time do Projeto 1.
+Seu trabalho começa onde o Projeto 1 terminou: com o dataframe filtrado do SCR.data.
+
+O objetivo desta etapa é limpar, padronizar, transformar os dados para prepará-los para modelagem estatística ou *machine learning*. O projeto é **INDIVIDUAL**.
+
+**Prazo:** Próxima aula.
+
+**Tarefa:** Você deve reutilizar exatamente o dataframe final obtido no Projeto 1 (com PF ou PJ e UF filtrados). Caso tenha cometido algum erro no Projeto 1, você pode corrigi-lo agora -- mas deve declarar isso no relatório. O foco agora é limpeza e preparação, **não** precisa colocar o que já foi feito no Projeto 1.
+
+Faça o pré-processamento dos dados que você organizou no Projeto 1. O *dataframe* resultante deve passar por no mínimo uma dessas etapas de pré-processamento, sendo obrigatória a etapa de Normalização:
+
+- Tratamento de valores ausentes usando imputação ou remoção
+- Criação de variáveis derivadas	log-transform, dummies, faixas etárias, grupos de risco, etc.
+- Detecção de outliers, não precisa removê-los
+- Padronização de nomes/renomeação de colunas se necessário
+- Checagem de qualidade	porcentagem de NAs por coluna
+- Normalização/padronização z-score **(obrigatório)**
+
+
+**Entrega:** Produza um relatório em pdf gerado em Quarto que contenha:
+
+1. O script R completo e comentado no documento Quarto.
+2. As saídas do R.
+3. Documentação do dicionário de variáveis da tabela obtida (dataframe) com nome, tipo de variável e descrição.
+4. O envio deve ser realizado pelo SIGAA.

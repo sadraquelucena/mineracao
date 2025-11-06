@@ -39,6 +39,8 @@ website:
             text: "3- Introdução ao Quarto"
           - href: aulas/04-processamento_out-of-core.qmd
             text: "4- Processamento *Out-of-Core*"
+          - href: aulas/05-pre-processamento_de_dados.qmd
+            text: "5- Pré-Processamento de Dados"
       
       #- section: "Parte 2: Métodos de Estimação"
       #  contents:
