@@ -62,7 +62,7 @@ pop_ibge_2024_bruto <- read_excel(
 # O DATASUS usa código de 6 dígitos (CODMUNRES).
 # O IBGE (SIDRA) usa código de 7 dígitos (com dígito verificador).
 # Precisamos criar uma chave compatível.
-
+# Obtido de http://sidra.ibge.gov.br/tabela/6579
 pop_ibge_2024_limpo <- pop_ibge_2024_bruto |>
   # Cria o código de 6 dígitos removendo o último caractere
   mutate(

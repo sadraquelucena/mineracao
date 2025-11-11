@@ -1,0 +1,104 @@
+---
+title: "Conteúdo 6"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Agrupamento com K-Means e Métodos Relacionados
+
+Esta aula oferece um guia prático sobre algoritmos de clusterização particionada, com foco em como selecionar o método correto com base na natureza dos seus dados. Partindo do clássico K-Means para dados numéricos, exploramos suas limitações (como a sensibilidade a *outliers*) e introduz alternativas robustas como o K-Medians e o K-Medoids (PAM). A lógica é então expandida para lidar com dados puramente categóricos, através do K-Modes e da Distância de Hamming, e para dados mistos complexos, onde compara as abordagens do K-Prototypes e a flexível combinação da Distância de Gower com K-Medoids. Abordamos também a questão essencial de como determinar o número ideal de clusters (k) utilizando técnicas de validação populares, como o Método do Cotovelo (WCSS), a Silhueta Média e a Estatística Gap.
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide06_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide06_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::
+
+
+
+## Aplicações
+
+A aplicaçãos dos métodos no R usam diferentes bases de dados. Os arquivos contendo os códigos e os dados podem ser baixados [aqui](/PDFs/slides/06-clusterizacao_exemplos.zip).
+
+
+
+
+## Projeto 3 -- Segmentação de Clientes e Análise de Risco
+
+Você continua atuando como Cientista de Dados Júnior. No Projeto 2, você finalizou a etapa de pré-processamento dos dados do SCR, resultando em um dataframe limpo, transformado e com as variáveis numéricas padronizadas (z-score).
+
+Agora queremos que você realize a próxima fase: a segmentação não supervisionada desses clientes.
+
+**Problema de Negócio (A Solicitação do "Banco"):** Não podemos tratar todos os clientes de crédito da mesma forma. Precisamos que você use técnicas de *data science* para "descobrir" os grupos (*clusters*) naturais que existem em no portfólio que você está usando. Queremos saber:
+
+1. Quantos perfis de clientes realmente temos?
+
+2. Quais são as características que definem cada perfil? (Ex: 'Jovens de alto risco', 'Empresas estáveis de baixa alavancagem', 'Clientes em dia, mas com crédito imobiliário'?)
+
+3. Com base nesses perfis, que ação estratégica podemos tomar para cada um?"
+
+**Tarefa:** Utilizando o dataframe final padronizado do Projeto 2, seu trabalho é realizar uma análise de clusterização. O projeto é INDIVIDUAL.
+
+**Prazo:** Próxima aula.
+
+**Entrega:** Você deve produzir um Relatório de Segmentação de Clientes em PDF (gerado via Quarto). Este relatório deve ser escrito em linguagem de negócios, como se fosse ser lido por um gerente de risco de crédito que não é um especialista em estatística.
+
+ - O código R completo e comentado deve ser incluído ao final do documento, em um Apêndice.
+
+### Estrutura Obrigatória do Relatório
+Seu documento Quarto deve seguir esta estrutura para ser considerado profissional:
+
+1. Sumário Executivo
+
+    - Responda diretamente à solicitação do "banco".
+    - Ex: "Nossa análise do portfólio de crédito revelou a existência de [K] perfis de clientes distintos. Os grupos mais relevantes são [Nome do Cluster 1, ex: 'Risco Emergente'] e [Nome do Cluster 2, ex: 'Conservadores de Baixa Dívida']. Recomendamos ações imediatas de monitoramento para o Cluster 1 e foco em vendas de novos produtos para o Cluster 2. Os detalhes da análise seguem."
+
+2. Introdução e Objetivo
+    
+    - Breve descrição do problema de negócio (a necessidade de segmentar clientes) e o objetivo do projeto (usar clusterização para encontrar perfis acionáveis).
+
+3. Metodologia de Segmentação
+
+    - 3.1. Fonte de Dados: Descreva brevemente os dados de entrada (ex: "O dataframe padronizado do Projeto 2, contendo [N] observações e [P] variáveis selecionadas...").
+    - 3.2. Justificativa do Algoritmo (Ponto-Chave): Aqui, você deve usar o conteúdo da nossa aula. Analise a natureza do seu dataframe do Projeto 2.
+        - Ele é 100% numérico?
+        - Ele é 100% categórico?
+        - Ele é Misto (com variáveis numéricas padronizadas e variáveis categóricas/dummies)?
+        - Os dados possuem muitos *outliers*?
+        - Com base nessa resposta, justifique sua escolha do método de clusterização.
+        - Ex: "Como nossos dados contêm uma mistura de variáveis numéricas (ex: vencido_padronizado, idade_padronizada) e categóricas (ex: porte_empresa, uf), o uso de K-Means (apenas numérico) ou K-Modes (apenas categórico) é inadequado. Portanto, optamos pelo K-Prototypes, um algoritmo híbrido que lida nativamente com ambos os tipos de dados, combinando a Distância Euclidiana (para os dados já padronizados) e a Distância de Hamming."
+    - 3.3. Definição do Número de Grupos (k): Apresente o(s) gráfico(s) (Método do Cotovelo e/ou Silhueta) que você usou para escolher o número k de clusters.
+        - Justifique a escolha (ex: "O Método da Silhueta Média atingiu seu pico em k=4, indicando que esta é a separação mais coesa e distinta...").
+
+4. Resultados: Os Perfis de Clientes (Personas)
+
+    - Esta é a parte principal do relatório.
+    - Para cada um dos k clusters, crie uma "persona" ou perfil.
+    - Dê um nome acionável a cada cluster (ex: "Cluster 1: Os Inadimplentes Recentes", "Cluster 2: Os Super-Endividados", "Cluster 3: O Cliente Padrão").
+    - Apresente uma tabela ou gráficos que mostrem as médias (para numéricos) e as modas (para categóricos) de cada cluster (como fizemos no exercício do K-Prototypes).
+
+5. Recomendações Estratégicas
+
+    - Para cada "persona" que você criou, sugira uma ação de negócio que o banco pode tomar.
+    - Ex. Cluster 1 ('Inadimplentes Recentes'): "Ação: Encaminhar imediatamente para a esteira de renegociação/cobrança. Não oferecer novos produtos de crédito."
+    - Ex. Cluster 2 ('Cliente Padrão'): "Ação: Focar em cross-sell. Oferecer seguros, consórcios ou financiamento imobiliário. Baixo risco, alto potencial de engajamento."
+
+6. Apêndice: Script R Completo
+
+    - Ao final do documento, insira uma seção "Apêndice" e coloque seu script R completo e comentado.
+    - Use `echo: true` e `eval: false` para os chunks de código no apêndice, garantindo que o relatório principal (seções 1-5) esteja limpo e focado nos resultados (sem código).

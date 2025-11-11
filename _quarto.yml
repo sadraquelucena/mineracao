@@ -41,6 +41,10 @@ website:
             text: "4- Processamento *Out-of-Core*"
           - href: aulas/05-pre-processamento_de_dados.qmd
             text: "5- Pré-Processamento de Dados"
+      - section: "Parte 2: Métodos Não Supervisionados"
+        contents:
+          - href: aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.qmd
+            text: "6- Agrupamento com K-Means e Métodos Relacionados"
       
       #- section: "Parte 2: Métodos de Estimação"
       #  contents:

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Conteúdo 4 – Mineração de Dados</title>
+<title>Conteúdo 6 – Mineração de Dados</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../aulas/05-pre-processamento_de_dados.html" rel="next">
-<link href="../aulas/03-introducao_ao_quarto.html" rel="prev">
+<link href="../aulas/05-pre-processamento_de_dados.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -83,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Conteúdo 4</h1>
+          <h1 class="quarto-secondary-nav-title">Conteúdo 6</h1>
         </a>     
     </div>
   </nav>
@@ -158,13 +157,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Parte 1: Fundamentos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../aulas/01-Apresentacao_da_disciplina.html" class="sidebar-item-text sidebar-link">
@@ -185,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../aulas/04-processamento_out-of-core.html" class="sidebar-item-text sidebar-link active">
+  <a href="../aulas/04-processamento_out-of-core.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">4- Processamento <em>Out-of-Core</em></span></a>
   </div>
 </li>
@@ -199,16 +198,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Parte 2: Métodos Não Supervisionados</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html" class="sidebar-item-text sidebar-link">
+  <a href="../aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">6- Agrupamento com K-Means e Métodos Relacionados</span></a>
   </div>
 </li>
@@ -227,7 +226,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Conteúdo 4</h1>
+<h1 class="title d-none d-lg-block">Conteúdo 6</h1>
 </div>
 
 
@@ -244,50 +243,91 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="processamento-out-of-core-com-duckdb-e-dbi-no-r" class="level2">
-<h2 data-anchor-id="processamento-out-of-core-com-duckdb-e-dbi-no-r">Processamento <em>Out-of-Core</em> com <code>duckdb</code> e <code>DBI</code> no R</h2>
-<p>Nesta aula, enfrentamos o desafio de analisar dados que excedem a memória RAM do computador, introduzindo o paradigma de processamento <em>Out-of-Core</em> no R. Exploramos a arquitetura dessa solução, compreendendo o papel do pacote <code>duckdb</code> como o motor analítico <em>in-process</em> e do pacote <code>DBI</code> como a interface de conexão universal. Aprendemos a estrutura fundamental da linguagem SQL para realizar consultas diretamente no disco, focando nos comandos SELECT, FROM, WHERE, GROUP BY e ORDER BY. A aula demonstra, com exemplos práticos usando dados do DATASUS, como agregar e filtrar milhões de registros instantaneamente, trazendo para o R apenas o resultado consolidado. Este é um passo essencial para escalar análises, garantir a performance em datasets massivos e superar as limitações do processamento <em>in-memory</em> tradicional.</p>
-<p>Dados que iremos usar:</p>
-<ul>
-<li>Mortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM): <a href="https://opendatasus.saude.gov.br/dataset/sim" target="_blank">https://opendatasus.saude.gov.br/dataset/sim</a></li>
-<li>Tabela de Códigos de Municípios do IBGE: <a href="https://www.ibge.gov.br/explica/codigos-dos-municipios.php" target="_blank">https://www.ibge.gov.br/explica/codigos-dos-municipios.php</a></li>
-</ul>
+<section id="agrupamento-com-k-means-e-métodos-relacionados" class="level2">
+<h2 data-anchor-id="agrupamento-com-k-means-e-métodos-relacionados">Agrupamento com K-Means e Métodos Relacionados</h2>
+<p>Esta aula oferece um guia prático sobre algoritmos de clusterização particionada, com foco em como selecionar o método correto com base na natureza dos seus dados. Partindo do clássico K-Means para dados numéricos, exploramos suas limitações (como a sensibilidade a <em>outliers</em>) e introduz alternativas robustas como o K-Medians e o K-Medoids (PAM). A lógica é então expandida para lidar com dados puramente categóricos, através do K-Modes e da Distância de Hamming, e para dados mistos complexos, onde compara as abordagens do K-Prototypes e a flexível combinação da Distância de Gower com K-Medoids. Abordamos também a questão essencial de como determinar o número ideal de clusters (k) utilizando técnicas de validação populares, como o Método do Cotovelo (WCSS), a Silhueta Média e a Estatística Gap.</p>
 <p>Slides:</p>
 <div class="grid">
 <div class="g-col-12 g-col-md-4">
-<p><a href="../slides/04-processamento_out-of-core/04-processamento_out-of-core.html" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide04_html.png" class="img-fluid"><br>Versão html </a></p>
+<p><a href="../slides/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide06_html.png" class="img-fluid"><br>Versão html </a></p>
 </div>
 <div class="g-col-12 g-col-md-4">
-<p><a href="../PDFs/slides/04-processamento_out-of-core.pdf" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide04_pdf.png" class="img-fluid"><br>Versão pdf </a></p>
+<p><a href="../PDFs/slides/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.pdf" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide06_pdf.png" class="img-fluid"><br>Versão pdf </a></p>
 </div>
 </div>
 </section>
-<section id="projeto-1-preparação-de-datasets-para-análise-de-risco" class="level2">
-<h2 data-anchor-id="projeto-1-preparação-de-datasets-para-análise-de-risco">Projeto 1 – Preparação de Datasets para Análise de Risco</h2>
-<p>Você é um(a) Engenheiro(a) de Dados. O time de Cientistas de Dados solicitou um dataset filtrado do <code>SCR.data</code>. Vocês devem usar <code>duckdb</code> para consultar arquivos CSV brutos, fazer a filtragem necessária usando SQL, e entregar um <em>dataframe</em> leve no R. O projeto é <strong>INDIVIDUAL</strong>.</p>
-<p><strong>Prazo:</strong> Próxima aula.</p>
-<p><strong>Tarefa:</strong> Acesse <a href="https://dadosabertos.bcb.gov.br/dataset/scr_data" class="uri">https://dadosabertos.bcb.gov.br/dataset/scr_data</a>, baixe os dados de 2025 e selecione o conjunto de dados (arquivo CSV) do mês mais recente disponível.</p>
-<p>Em seguida, escolha 1 Estado (UF) e 1 das duas opções de projeto abaixo.</p>
-<p>O objetivo de ambas as opções é escrever uma consulta SQL que leia o CSV e filtre os dados. A consulta deve usar <code>WHERE</code> para selecionar apenas as linhas que correspondam à UF escolhida E ao tipo de cliente (<code>'PF'</code> ou <code>'PJ'</code>).</p>
-<p><strong>Opção 1: Extração de Micro-Segmentos de Risco (Pessoa Física)</strong></p>
-<ul>
-<li><strong>Objetivo:</strong> Preparar o dataset de clientes Pessoa Física (PF) para uma futura análise de risco e segmentação.</li>
-<li><strong>Filtro Requerido:</strong> <code>cliente = 'PF'</code> (além da UF escolhida).</li>
-</ul>
-<p><strong>Opção 2: Extração de Risco Setorial (Pessoa Jurídica)</strong></p>
-<ul>
-<li><strong>Objetivo:</strong> Preparar o dataset de clientes Pessoa Jurídica (PJ) para uma futura análise de risco dos diferentes setores da economia (CNAE).</li>
-<li><strong>Filtro Requerido:</strong> <code>cliente = 'PJ'</code> (além da UF escolhida).</li>
-</ul>
-<p><strong>Entrega:</strong> Produza um relatório em pdf gerado em Quarto que contenha:</p>
+<section id="aplicações" class="level2">
+<h2 data-anchor-id="aplicações">Aplicações</h2>
+<p>A aplicaçãos dos métodos no R usam diferentes bases de dados. Os arquivos contendo os códigos e os dados podem ser baixados <a href="../PDFs/slides/06-clusterizacao_exemplos.zip">aqui</a>.</p>
+</section>
+<section id="projeto-3-segmentação-de-clientes-e-análise-de-risco" class="level2">
+<h2 data-anchor-id="projeto-3-segmentação-de-clientes-e-análise-de-risco">Projeto 3 – Segmentação de Clientes e Análise de Risco</h2>
+<p>Você continua atuando como Cientista de Dados Júnior. No Projeto 2, você finalizou a etapa de pré-processamento dos dados do SCR, resultando em um dataframe limpo, transformado e com as variáveis numéricas padronizadas (z-score).</p>
+<p>Agora queremos que você realize a próxima fase: a segmentação não supervisionada desses clientes.</p>
+<p><strong>Problema de Negócio (A Solicitação do “Banco”):</strong> Não podemos tratar todos os clientes de crédito da mesma forma. Precisamos que você use técnicas de <em>data science</em> para “descobrir” os grupos (<em>clusters</em>) naturais que existem em no portfólio que você está usando. Queremos saber:</p>
 <ol type="1">
-<li>Qual das 2 opções foi escolhida e qual a UF (Estado) selecionada.</li>
-<li>O script R completo e comentado no documento Quarto. Nesta tarefa, o código SQL dentro do R é a parte principal do trabalho.</li>
-<li>A saída da consulta no R. Você deve usar as funções <code>glimpse()</code> e <code>summary()</code> no <em>dataframe</em> resultante para provar que os filtros foram aplicados corretamente.</li>
-<li>O envio deve ser realizado pelo SIGAA.</li>
+<li><p>Quantos perfis de clientes realmente temos?</p></li>
+<li><p>Quais são as características que definem cada perfil? (Ex: ‘Jovens de alto risco’, ‘Empresas estáveis de baixa alavancagem’, ‘Clientes em dia, mas com crédito imobiliário’?)</p></li>
+<li><p>Com base nesses perfis, que ação estratégica podemos tomar para cada um?”</p></li>
+</ol>
+<p><strong>Tarefa:</strong> Utilizando o dataframe final padronizado do Projeto 2, seu trabalho é realizar uma análise de clusterização. O projeto é INDIVIDUAL.</p>
+<p><strong>Prazo:</strong> Próxima aula.</p>
+<p><strong>Entrega:</strong> Você deve produzir um Relatório de Segmentação de Clientes em PDF (gerado via Quarto). Este relatório deve ser escrito em linguagem de negócios, como se fosse ser lido por um gerente de risco de crédito que não é um especialista em estatística.</p>
+<ul>
+<li>O código R completo e comentado deve ser incluído ao final do documento, em um Apêndice.</li>
+</ul>
+<section id="estrutura-obrigatória-do-relatório" class="level3">
+<h3 data-anchor-id="estrutura-obrigatória-do-relatório">Estrutura Obrigatória do Relatório</h3>
+<p>Seu documento Quarto deve seguir esta estrutura para ser considerado profissional:</p>
+<ol type="1">
+<li><p>Sumário Executivo</p>
+<ul>
+<li>Responda diretamente à solicitação do “banco”.</li>
+<li>Ex: “Nossa análise do portfólio de crédito revelou a existência de [K] perfis de clientes distintos. Os grupos mais relevantes são [Nome do Cluster 1, ex: ‘Risco Emergente’] e [Nome do Cluster 2, ex: ‘Conservadores de Baixa Dívida’]. Recomendamos ações imediatas de monitoramento para o Cluster 1 e foco em vendas de novos produtos para o Cluster 2. Os detalhes da análise seguem.”</li>
+</ul></li>
+<li><p>Introdução e Objetivo</p>
+<ul>
+<li>Breve descrição do problema de negócio (a necessidade de segmentar clientes) e o objetivo do projeto (usar clusterização para encontrar perfis acionáveis).</li>
+</ul></li>
+<li><p>Metodologia de Segmentação</p>
+<ul>
+<li>3.1. Fonte de Dados: Descreva brevemente os dados de entrada (ex: “O dataframe padronizado do Projeto 2, contendo [N] observações e [P] variáveis selecionadas…”).</li>
+<li>3.2. Justificativa do Algoritmo (Ponto-Chave): Aqui, você deve usar o conteúdo da nossa aula. Analise a natureza do seu dataframe do Projeto 2.
+<ul>
+<li>Ele é 100% numérico?</li>
+<li>Ele é 100% categórico?</li>
+<li>Ele é Misto (com variáveis numéricas padronizadas e variáveis categóricas/dummies)?</li>
+<li>Os dados possuem muitos <em>outliers</em>?</li>
+<li>Com base nessa resposta, justifique sua escolha do método de clusterização.</li>
+<li>Ex: “Como nossos dados contêm uma mistura de variáveis numéricas (ex: vencido_padronizado, idade_padronizada) e categóricas (ex: porte_empresa, uf), o uso de K-Means (apenas numérico) ou K-Modes (apenas categórico) é inadequado. Portanto, optamos pelo K-Prototypes, um algoritmo híbrido que lida nativamente com ambos os tipos de dados, combinando a Distância Euclidiana (para os dados já padronizados) e a Distância de Hamming.”</li>
+</ul></li>
+<li>3.3. Definição do Número de Grupos (k): Apresente o(s) gráfico(s) (Método do Cotovelo e/ou Silhueta) que você usou para escolher o número k de clusters.
+<ul>
+<li>Justifique a escolha (ex: “O Método da Silhueta Média atingiu seu pico em k=4, indicando que esta é a separação mais coesa e distinta…”).</li>
+</ul></li>
+</ul></li>
+<li><p>Resultados: Os Perfis de Clientes (Personas)</p>
+<ul>
+<li>Esta é a parte principal do relatório.</li>
+<li>Para cada um dos k clusters, crie uma “persona” ou perfil.</li>
+<li>Dê um nome acionável a cada cluster (ex: “Cluster 1: Os Inadimplentes Recentes”, “Cluster 2: Os Super-Endividados”, “Cluster 3: O Cliente Padrão”).</li>
+<li>Apresente uma tabela ou gráficos que mostrem as médias (para numéricos) e as modas (para categóricos) de cada cluster (como fizemos no exercício do K-Prototypes).</li>
+</ul></li>
+<li><p>Recomendações Estratégicas</p>
+<ul>
+<li>Para cada “persona” que você criou, sugira uma ação de negócio que o banco pode tomar.</li>
+<li>Ex. Cluster 1 (‘Inadimplentes Recentes’): “Ação: Encaminhar imediatamente para a esteira de renegociação/cobrança. Não oferecer novos produtos de crédito.”</li>
+<li>Ex. Cluster 2 (‘Cliente Padrão’): “Ação: Focar em cross-sell. Oferecer seguros, consórcios ou financiamento imobiliário. Baixo risco, alto potencial de engajamento.”</li>
+</ul></li>
+<li><p>Apêndice: Script R Completo</p>
+<ul>
+<li>Ao final do documento, insira uma seção “Apêndice” e coloque seu script R completo e comentado.</li>
+<li>Use <code>echo: true</code> e <code>eval: false</code> para os chunks de código no apêndice, garantindo que o relatório principal (seções 1-5) esteja limpo e focado nos resultados (sem código).</li>
+</ul></li>
 </ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -686,14 +726,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../aulas/03-introducao_ao_quarto.html" class="pagination-link" aria-label="3- Introdução ao Quarto">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">3- Introdução ao Quarto</span>
+      <a href="../aulas/05-pre-processamento_de_dados.html" class="pagination-link" aria-label="5- Pré-Processamento de Dados">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">5- Pré-Processamento de Dados</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../aulas/05-pre-processamento_de_dados.html" class="pagination-link" aria-label="5- Pré-Processamento de Dados">
-        <span class="nav-page-text">5- Pré-Processamento de Dados</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

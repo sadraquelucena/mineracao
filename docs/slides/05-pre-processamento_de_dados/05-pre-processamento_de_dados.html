@@ -154,7 +154,7 @@
 <li><strong>Ruído (<em>noisy</em>):</strong> Valores errados ou impossíveis (ex: um paciente com <code>IDADE</code> = 200 anos).</li>
 <li><strong>Inconsistência (<em>inconsistency</em>):</strong> A mesma informação registrada de formas diferentes (ex: <code>MUNICIPIO</code> = “Aracaju”, “Aracajú”).</li>
 <li><strong>Heterogeneidade (<em>heterogeneity</em>):</strong> Dados de múltiplas fontes, com formatos e chaves diferentes (ex: o código o município do Censo Escolar e do SIM usando padrões diferentes – 6 ou 7 dígitos).</li>
-<li><strong>Dandos faltantes (<em>Missing</em>):</strong> O famoso <code>NA</code>.</li>
+<li><strong>Dados faltantes (<em>Missing</em>):</strong> O famoso <code>NA</code>.</li>
 </ul></li>
 </ul>
 </section>
@@ -254,7 +254,7 @@
 </ul></li>
 </ol>
 <ul>
-<li><strong>Operações:</strong> Todas! Média, Mediana, Moda, Diferenças E Rácios (R$ 100 é exatamente o dobro de R$ 50).</li>
+<li><strong>Operações:</strong> Todas! Média, Mediana, Moda, Diferenças e Razões (R$ 100 é exatamente o dobro de R$ 50).</li>
 </ul>
 </section>
 <section id="a-visão-do-machine-learning" class="slide level2">
@@ -313,10 +313,10 @@
 <h2>1. Tratamento de Inconsistências</h2>
 <ul>
 <li>Ocorre quando o mesmo dado é registrado de formas diferentes (sintaxe) ou quando um valor viola uma regra lógica (semântica).</li>
-<li><strong>Com identificar?</strong>
+<li><strong>Como identificar?</strong>
 <ul>
-<li><strong>Para categorias:</strong> Fazer uma tabela de frequência para avaliar há registros com sintaxe diferente (ex: <code>municipio</code> com respostas “Aracaju” e “Aracajú”).</li>
-<li><strong>Para numéricos:</strong> Obter mínimo, máximo e Boxplots par aver se há valores fora so possível (ex: <code>idade_da_mae</code> = 5 anos).</li>
+<li><strong>Para categorias:</strong> Fazer uma tabela de frequência para avaliar se há registros com sintaxe diferente (ex: <code>municipio</code> com respostas “Aracaju” e “Aracajú”).</li>
+<li><strong>Para numéricos:</strong> Obter mínimo, máximo e Boxplots para ver se há valores fora do possível (ex: <code>idade_da_mae</code> = 5 anos).</li>
 </ul></li>
 <li><strong>O que fazer:</strong>
 <ul>
@@ -474,7 +474,7 @@
 <p>Como o computador sabe que ‘Aracaju’ é ‘Aracaju’?</p>
 <ul>
 <li><strong>Definição:</strong> Como parear entidades do mundo real (pacientes, municípios, clientes) que estão em bases diferentes?</li>
-<li><strong>Ex:</strong> <code>id_cliente</code> (Base A) vs.&nbsp;<code>numero_client</code> (Base B).</li>
+<li><strong>Ex:</strong> <code>id_cliente</code> (Base A) vs.&nbsp;<code>numero_cliente</code> (Base B).</li>
 </ul>
 <p><strong>Exemplo:</strong> * <strong>Base IBGE (Censo):</strong> O código de Aracaju é <code>CD_MUN_IBGE</code> = <strong>“2800308”</strong> (7 dígitos). * <strong>Base DATASUS (SIH):</strong> O código de Aracaju é <code>CD_MUN_DATASUS</code> = <strong>“280030”</strong> (6 dígitos). * <strong>Solução:</strong> Não dá para juntar direto! Precisamos transformar <code>CD_MUN_IBGE</code> para criar uma chave compatível com <code>CD_MUN_DATASUS</code>.</p>
 </section>
@@ -556,7 +556,7 @@
 <li>Algumas técnicas usadas são:
 <ol type="a">
 <li>Normalização Z-score;</li>
-<li>Discretização Min-Max;</li>
+<li>Normalização Min-Max;</li>
 <li>Transformação logarítmica;</li>
 <li>Discretização;</li>
 <li>Codificação de variáveis <em>dummy</em>.</li>
@@ -624,7 +624,7 @@ v'_{i} = \frac{v_i - \min_A}{\max_A - \min_A} \times (\text{novo_max} - \text{no
 <li>Esse processo pode ser feito usando a suavização com médias de intervalo ou suavização com limites de intervalo.</li>
 <li>Outra forma comum é a <em>dicotomização</em>.
 <ul>
-<li>Exemplo: Os valores <span class="math inline">\(\{4,8, 9,15, 21, 21, 24, 25, 26, 28, 29,34\}\)</span> seriam dicotomizados usado <span class="math inline">\(20\)</span> como valore de corte, ficando <span class="math inline">\(\{0, 0, 0, 0,1,1,1,1,1,1,1,1\}\)</span>.</li>
+<li>Exemplo: Os valores <span class="math inline">\(\{4,8, 9,15, 21, 21, 24, 25, 26, 28, 29,34\}\)</span> seriam dicotomizados usando <span class="math inline">\(20\)</span> como valor de corte, ficando <span class="math inline">\(\{0, 0, 0, 0,1,1,1,1,1,1,1,1\}\)</span>.</li>
 </ul></li>
 </ul>
 </section>
@@ -633,7 +633,7 @@ v'_{i} = \frac{v_i - \min_A}{\max_A - \min_A} \times (\text{novo_max} - \text{no
 <h3 id="e.-codificação-de-variáveis-dummy">e. Codificação de variáveis <em>dummy</em></h3>
 <ul>
 <li>Uma variável <em>dummy</em> é uma dicotomização de uma variável contínua.</li>
-<li>Ela é muito usada em algoritmos que exigem que os atributos independentes sejam numericos (como regressão ou k-NN) e como uma forma de representar dados ausentes.</li>
+<li>Ela é muito usada em algoritmos que exigem que os atributos independentes sejam numéricos (como regressão ou k-NN) e como uma forma de representar dados ausentes.</li>
 <li>Suponha que temos a variável abaixo:</li>
 </ul>
 <table class="caption-top">
@@ -645,7 +645,7 @@ v'_{i} = \frac{v_i - \min_A}{\max_A - \min_A} \times (\text{novo_max} - \text{no
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><em>Enino Fundamental</em></td>
+<td style="text-align: left;"><em>Ensino Fundamental</em></td>
 <td style="text-align: center;">1</td>
 </tr>
 <tr class="even">
@@ -675,7 +675,7 @@ v'_{i} = \frac{v_i - \min_A}{\max_A - \min_A} \times (\text{novo_max} - \text{no
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><em>Enino Fundamental</em></td>
+<td style="text-align: left;"><em>Ensino Fundamental</em></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">0</td>
 </tr>
