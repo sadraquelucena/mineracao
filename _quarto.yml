@@ -45,6 +45,8 @@ website:
         contents:
           - href: aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.qmd
             text: "6- Agrupamento com K-Means e Métodos Relacionados"
+          - href: aulas/07-regras_de_associacao.qmd
+            text: "7- Regras de Associação"
       
       #- section: "Parte 2: Métodos de Estimação"
       #  contents:

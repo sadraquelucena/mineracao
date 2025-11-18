@@ -1,0 +1,41 @@
+---
+title: "Conteúdo 7"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Regras de Associação
+
+Esta aula detalha o método das Regras de Associação, uma técnica essencial da Mineração de Dados focada na Análise de Cesta de Mercado para descobrir quais produtos os clientes tendem a comprar em conjunto. O material explica as três métricas cruciais — Suporte (frequência), Confiança (precisão condicional) e Lift (interesse real) — que são usadas para filtrar padrões acionáveis em meio a um vasto número de combinações. Além disso, a apresentação diferencia os principais algoritmos de busca por padrões frequentes, o clássico Apriori e o mais eficiente FP-Growth, preparando o leitor para aplicar esses conhecimentos na otimização de leiautes de lojas, campanhas de marketing e gestão de inventário.
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/07-regras_de_associacao/07-regras_de_associacao.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide07_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/07-regras_de_associacao.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide07_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::
+
+
+
+## Aplicações
+
+Os arquivos contendo os códigos em R e os dados podem ser baixados [aqui](/PDFs/slides/07-regras_de_associacao_exemplos.zip).
+
+
+
+
+## Projeto 4 -- (Em breve!)
