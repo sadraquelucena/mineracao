@@ -38,4 +38,126 @@ Os arquivos contendo os códigos em R e os dados podem ser baixados [aqui](/PDFs
 
 
 
-## Projeto 4 -- (Em breve!)
+## Projeto 4 -- Regras de Associação no SIM
+
+Você é um(a) Analista de Mineração de Dados em Saúde Pública. O time de Vigilância Epidemiológica solicitou a identificação de padrões de coocorrência de risco na mortalidade, usando o Sistema de Informações sobre Mortalidade (SIM). Você deve aplicar o algoritmo Apriori sobre os dados de mortes ocorridas no Brasil em 2024 disponíveis em <https://opendatasus.saude.gov.br/dataset/sim>. O projeto é INDIVIDUAL.
+
+**Prazo:** Próxima aula.
+
+**Tarefa:** Acesse <https://opendatasus.saude.gov.br/dataset/sim>. Baixe os dados de 2024 e escolha 1 (um) Estado (UF) para sua análise. Em seguida, escolha 1 (um) dos nove projetos listados abaixo, que já define o foco da sua análise. O objetivo é aplicar o Apriori para gerar regras de associação válidas, interpretáveis e com implicações para a saúde pública.
+
+### Mini Projetos para escolher
+
+P1. Associação de Múltiplas Causas (Linha A-D) e Perfil de Vulnerabilidade em Óbitos por Insuficiência Cardíaca
+
+- **Problema:** Quais comorbidades e características sociodemográficas frequentemente coocorrem e precedem o óbito por Insuficiência Cardíaca (I50) em um estado brasileiro?
+- **Variáveis:** Códigos da LINHAA a LINHAD (múltiplas causas), IDADE (em faixas), ESC2010, ASSISTMED, LOCOCOR.
+- **Apriori:** Gerar regras buscando Confiança, Suporte e Lift superiores a 1.
+- **Análise:** Interpretar regras que tenham códigos de DCNT como antecedentes e a Insuficiência Cardíaca como consequente.
+
+
+P2. Associação entre Local de Ocorrência, Assistência e Causas Básicas Sensíveis à Atenção Primária
+
+- **Problema:** Quais combinações de fatores (local de óbito não-hospitalar e falta de assistência) estão mais fortemente associadas a óbitos por Causas Sensíveis à Atenção Primária (CSAP), indicando lacunas no cuidado básico?
+- **Variáveis:** CAUSABAS (agrupada por CSAP), LOCOCOR (Domicílio, Outros), ASSISTMED (Não/Sim), IDADE (faixas).
+- **Apriori:** Busca por regras que tenham uma combinação de LOCOCOR (não hospitalar) e ASSISTMED (não) no antecedente, e a CSAP no consequente.
+- **Avaliação:** Análise das regras com alto Lift, que indicam que a coocorrência de desassistência e óbito por CSAP é muito maior que o esperado.
+
+
+P3. Regras de Associação entre Perfil Ocupacional, Escolaridade e Óbitos por Causas Externas
+
+- **Problema:** Quais são as combinações mais fortes entre a ocupação (OCUP), o nível de escolaridade (ESC2010) e a ocorrência de óbitos por tipos específicos de Causas Externas (V01-Y98), como acidentes de trabalho?
+- **Variáveis:** OCUP (agrupada), ESC2010, ACIDTRAB (Sim/Não), CAUSABAS (agrupada por tipo de violência/acidente).
+- **Apriori:** Focar em regras com alto Lift onde a OCUP e a ESC2010 são antecedentes.
+
+
+P4. Associação entre Raça/Cor, Escolaridade e Mortalidade Materna Evitável
+
+- **Problema:** Que combinações de fatores de vulnerabilidade (RACACOR e ESCMAEAGR1) estão fortemente associadas a óbitos de mulheres em idade fértil (10-49 anos) por causas relacionadas à gestação, parto ou puerpério (CAUSAMAT)?
+- **Variáveis:** CAUSAMAT (agrupada), RACACOR, ESCMAEAGR1 (escolaridade da mãe), ASSISTMED.Ajustar o Suporte e a Confiança para eventos raros.
+- **Apriori:** Focar em regras com RACACOR no antecedente e a causa materna como consequente.
+- **Análise:** Comparar a Confiança de regras para diferentes grupos de RACACOR.
+
+
+P5. Associação de Óbitos por Doenças Respiratórias (J00-J99) com Fatores Ambientais e Sazonais
+
+- **Problema:** Quais combinações de características sociodemográficas e de evento (idade, sexo, LOCOCOR) mais se associam a óbitos por doenças respiratórias (CAUSABAS J00-J99) nos meses de maior incidência (inverno/chuvosos)?
+- **Variáveis:** CAUSABAS (agrupada: Pneumonia, Asma, DPOC), IDADE (faixas), SEXO, LOCOCOR, MÊS DO ÓBITO (criada a partir de DTOBITO).
+- **Apriori:** Executar com foco em regras que incluam a variável sazonal (Mês) no antecedente.
+- **Avaliação:** Filtrar as regras com o maior Lift nos meses de pico (ex: Junho, Julho).
+
+
+P6. Associação de Acidentes de Trânsito (V01-V89) com Idade, Sexo e Tipo de Veículo/Vítima
+
+- **Problema:** Quais são os padrões de vítimas (idade, sexo, tipo de óbito) mais frequentemente associados a acidentes de trânsito em um determinado estado?
+- **Variáveis:** IDADE (faixas), SEXO, CAUSABAS (agrupada por tipo de vítima: Pedestre, Ciclista, Motociclista, Ocupante de Carro).
+- **Apriori:** Busca por regras que tenham um dos tipos de vítima como consequente.
+- **Relatório:** Focar no Lift para destacar os grupos de risco que mais se sobressaem em relação à distribuição esperada.
+    
+    
+P7. Associações entre Nível de Escolaridade e Óbitos por Condições Crônicas Específicas (Diabetes Mellitus)
+
+- **Problema:** Que regras de associação mostram a relação entre a falta de escolaridade e o óbito por complicações do Diabetes (E10-E14), comparado a outros fatores de risco?
+- **Variáveis:** ESC2010, RACACOR, IDADE (faixas), LINHAC (complicações associadas, ex: Insuficiência Renal).
+- **Apriori:** Focar em regras onde a ESC2010 ou RACACOR são o antecedente e a complicação (Linha A-D) ou a causa básica (Diabetes) é o consequente.
+
+P8. Associação de Câncer (C00-C97) com Fatores Sociodemográficos e Local de Ocorrência
+
+- **Problema:** Que combinações de fatores (tipo de câncer, idade, escolaridade, local de óbito) estão fortemente associadas em óbitos por câncer em um estado?
+- **Variáveis:** CAUSABAS (agrupada por tipo de câncer - Mama, Próstata, Pulmão), IDADE (faixas), ESC2010, LOCOCOR (Hospital, Domicílio).
+- **Apriori:** Focar em regras onde o LOCOCOR é o antecedente/consequente.
+    
+
+P9. Associação de Óbitos de Populações Indígenas/Ignoradas com Fatores de Evento (Associação Mínima)
+
+- **Problema:** Quais são os padrões mínimos de óbito (causa, local, assistência) associados à classificação de RACACOR=Indígena ou RACACOR=Ignorada, sinalizando desafios específicos de saúde e registro?
+- **Variáveis:** RACACOR (Indígena/Ignorada), CAUSABAS (agrupada), LOCOCOR, ASSISTMED, ATESTANTE (Agrupada: Médico, IML, Policial).
+- **Apriori:** Definir um Suporte muito baixo devido à raridade da população indígena e o foco nas variáveis de registro.
+- **Avaliação:** Analisar o Lift para encontrar associações surpreendentes.
+
+
+### Entrega: Relatório de Mineração de Regras
+
+Você deverá produzir um **Relatório Executivo** no formato PDF, gerado através de um documento **Quarto (.qmd)**. Este relatório é destinado aos gestores da saúde pública do estado escolhido e deve priorizar a comunicação clara dos *insights* descobertos.
+
+O relatório deve seguir a seguinte estrutura formal, com os códigos e saídas do R movidos para o final, na seção de Anexos. Ele deve conter:
+
+1. Contextualização e Objetivo
+
+Esta seção deve apresentar:
+
+- O projeto escolhido.
+- Mencionar o Estado foco da análise.
+- Apresentar a relevância da mineração de regras de associação para o problema específico da UF. Explicar, em termos gerenciais, por que o método Apriori é a ferramenta ideal para descobrir combinações inesperadas de fatores que levam ao óbito neste contexto (extraído da seção 'Por Que Faz Sentido' do projeto).
+
+2. Principais Padrões de Risco Descobertos
+
+Esta seção é o cerne do relatório e deve apresentar os achados mais importantes da mineração.
+
+- Regras de Alto Impacto:
+    - Apresentação clara das 5 (cinco) regras de associação com o MAIOR LIFT encontradas. Cada regra deve ser listada em linguagem de gestor (evitando notação formal $\{X, Y\} \implies \{Z\}$ inicialmente, e usando-a apenas no Anexo)
+    - *Exemplo:* Em vez de $\{\text{ESC2010=0, IDADE (80+)}\} \implies \{\text{LOCOCOR=Domicílio}\}$, use: "Indivíduos com mais de 80 anos e sem escolaridade apresentam uma alta associação com óbitos ocorridos em domicílio."
+    
+- Interpretação Gerencial:
+    - Uma interpretação descritiva e aprofundada das três regras mais fortes (maior Lift). Focar no significado da Confiança (qual a probabilidade de o consequente ocorrer dado o antecedente) e do Lift (o quão incomum ou forte é essa associação).
+
+
+3. Implicações para a Vigilância e Ação Social
+
+- Relevância para a Vigilância Epidemiológica:
+    - Uma breve discussão sobre o impacto social e de saúde pública da regra mais significativa. Como este padrão descoberto pode informar ou modificar uma política de intervenção (ex: campanhas de saúde direcionadas, alocação de recursos, treinamento de equipes básicas).
+    
+4. Anexos Metodológicos e Detalhes Técnicos
+
+Esta seção deve conter todos os elementos técnicos para garantir a reprodutibilidade científica do estudo, sem poluir a leitura do gestor.
+
+- Anexo A
+    - A saída da função summary() aplicada ao objeto de regras resultante no R (para mostrar o número total de regras geradas e a distribuição de Suporte, Confiança e Lift).
+
+- Anexo B
+    - Script R completo e comentado utilizado no projeto.
+    - O código deve incluir a leitura dos dados, o filtro por UF, o pré-processamento/discretização das variáveis-chave e a criação do objeto `transactions (arules)`.
+    - A especificação clara dos parâmetros Suporte Mínimo e Confiança Mínima utilizados no Apriori.
+    - O código utilizado para a apresentação das regras com o MAIOR LIFT.
+    
+O envio final deve ser realizado pelo SIGAA.

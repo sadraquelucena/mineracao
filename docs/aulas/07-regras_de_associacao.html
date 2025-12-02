@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -266,10 +295,132 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-anchor-id="aplicações">Aplicações</h2>
 <p>Os arquivos contendo os códigos em R e os dados podem ser baixados <a href="../PDFs/slides/07-regras_de_associacao_exemplos.zip">aqui</a>.</p>
 </section>
-<section id="projeto-4-em-breve" class="level2">
-<h2 data-anchor-id="projeto-4-em-breve">Projeto 4 – (Em breve!)</h2>
+<section id="projeto-4-regras-de-associação-no-sim" class="level2">
+<h2 data-anchor-id="projeto-4-regras-de-associação-no-sim">Projeto 4 – Regras de Associação no SIM</h2>
+<p>Você é um(a) Analista de Mineração de Dados em Saúde Pública. O time de Vigilância Epidemiológica solicitou a identificação de padrões de coocorrência de risco na mortalidade, usando o Sistema de Informações sobre Mortalidade (SIM). Você deve aplicar o algoritmo Apriori sobre os dados de mortes ocorridas no Brasil em 2024 disponíveis em <a href="https://opendatasus.saude.gov.br/dataset/sim" class="uri">https://opendatasus.saude.gov.br/dataset/sim</a>. O projeto é INDIVIDUAL.</p>
+<p><strong>Prazo:</strong> Próxima aula.</p>
+<p><strong>Tarefa:</strong> Acesse <a href="https://opendatasus.saude.gov.br/dataset/sim" class="uri">https://opendatasus.saude.gov.br/dataset/sim</a>. Baixe os dados de 2024 e escolha 1 (um) Estado (UF) para sua análise. Em seguida, escolha 1 (um) dos nove projetos listados abaixo, que já define o foco da sua análise. O objetivo é aplicar o Apriori para gerar regras de associação válidas, interpretáveis e com implicações para a saúde pública.</p>
+<section id="mini-projetos-para-escolher" class="level3">
+<h3 data-anchor-id="mini-projetos-para-escolher">Mini Projetos para escolher</h3>
+<p>P1. Associação de Múltiplas Causas (Linha A-D) e Perfil de Vulnerabilidade em Óbitos por Insuficiência Cardíaca</p>
+<ul>
+<li><strong>Problema:</strong> Quais comorbidades e características sociodemográficas frequentemente coocorrem e precedem o óbito por Insuficiência Cardíaca (I50) em um estado brasileiro?</li>
+<li><strong>Variáveis:</strong> Códigos da LINHAA a LINHAD (múltiplas causas), IDADE (em faixas), ESC2010, ASSISTMED, LOCOCOR.</li>
+<li><strong>Apriori:</strong> Gerar regras buscando Confiança, Suporte e Lift superiores a 1.</li>
+<li><strong>Análise:</strong> Interpretar regras que tenham códigos de DCNT como antecedentes e a Insuficiência Cardíaca como consequente.</li>
+</ul>
+<p>P2. Associação entre Local de Ocorrência, Assistência e Causas Básicas Sensíveis à Atenção Primária</p>
+<ul>
+<li><strong>Problema:</strong> Quais combinações de fatores (local de óbito não-hospitalar e falta de assistência) estão mais fortemente associadas a óbitos por Causas Sensíveis à Atenção Primária (CSAP), indicando lacunas no cuidado básico?</li>
+<li><strong>Variáveis:</strong> CAUSABAS (agrupada por CSAP), LOCOCOR (Domicílio, Outros), ASSISTMED (Não/Sim), IDADE (faixas).</li>
+<li><strong>Apriori:</strong> Busca por regras que tenham uma combinação de LOCOCOR (não hospitalar) e ASSISTMED (não) no antecedente, e a CSAP no consequente.</li>
+<li><strong>Avaliação:</strong> Análise das regras com alto Lift, que indicam que a coocorrência de desassistência e óbito por CSAP é muito maior que o esperado.</li>
+</ul>
+<p>P3. Regras de Associação entre Perfil Ocupacional, Escolaridade e Óbitos por Causas Externas</p>
+<ul>
+<li><strong>Problema:</strong> Quais são as combinações mais fortes entre a ocupação (OCUP), o nível de escolaridade (ESC2010) e a ocorrência de óbitos por tipos específicos de Causas Externas (V01-Y98), como acidentes de trabalho?</li>
+<li><strong>Variáveis:</strong> OCUP (agrupada), ESC2010, ACIDTRAB (Sim/Não), CAUSABAS (agrupada por tipo de violência/acidente).</li>
+<li><strong>Apriori:</strong> Focar em regras com alto Lift onde a OCUP e a ESC2010 são antecedentes.</li>
+</ul>
+<p>P4. Associação entre Raça/Cor, Escolaridade e Mortalidade Materna Evitável</p>
+<ul>
+<li><strong>Problema:</strong> Que combinações de fatores de vulnerabilidade (RACACOR e ESCMAEAGR1) estão fortemente associadas a óbitos de mulheres em idade fértil (10-49 anos) por causas relacionadas à gestação, parto ou puerpério (CAUSAMAT)?</li>
+<li><strong>Variáveis:</strong> CAUSAMAT (agrupada), RACACOR, ESCMAEAGR1 (escolaridade da mãe), ASSISTMED.Ajustar o Suporte e a Confiança para eventos raros.</li>
+<li><strong>Apriori:</strong> Focar em regras com RACACOR no antecedente e a causa materna como consequente.</li>
+<li><strong>Análise:</strong> Comparar a Confiança de regras para diferentes grupos de RACACOR.</li>
+</ul>
+<p>P5. Associação de Óbitos por Doenças Respiratórias (J00-J99) com Fatores Ambientais e Sazonais</p>
+<ul>
+<li><strong>Problema:</strong> Quais combinações de características sociodemográficas e de evento (idade, sexo, LOCOCOR) mais se associam a óbitos por doenças respiratórias (CAUSABAS J00-J99) nos meses de maior incidência (inverno/chuvosos)?</li>
+<li><strong>Variáveis:</strong> CAUSABAS (agrupada: Pneumonia, Asma, DPOC), IDADE (faixas), SEXO, LOCOCOR, MÊS DO ÓBITO (criada a partir de DTOBITO).</li>
+<li><strong>Apriori:</strong> Executar com foco em regras que incluam a variável sazonal (Mês) no antecedente.</li>
+<li><strong>Avaliação:</strong> Filtrar as regras com o maior Lift nos meses de pico (ex: Junho, Julho).</li>
+</ul>
+<p>P6. Associação de Acidentes de Trânsito (V01-V89) com Idade, Sexo e Tipo de Veículo/Vítima</p>
+<ul>
+<li><strong>Problema:</strong> Quais são os padrões de vítimas (idade, sexo, tipo de óbito) mais frequentemente associados a acidentes de trânsito em um determinado estado?</li>
+<li><strong>Variáveis:</strong> IDADE (faixas), SEXO, CAUSABAS (agrupada por tipo de vítima: Pedestre, Ciclista, Motociclista, Ocupante de Carro).</li>
+<li><strong>Apriori:</strong> Busca por regras que tenham um dos tipos de vítima como consequente.</li>
+<li><strong>Relatório:</strong> Focar no Lift para destacar os grupos de risco que mais se sobressaem em relação à distribuição esperada.</li>
+</ul>
+<p>P7. Associações entre Nível de Escolaridade e Óbitos por Condições Crônicas Específicas (Diabetes Mellitus)</p>
+<ul>
+<li><strong>Problema:</strong> Que regras de associação mostram a relação entre a falta de escolaridade e o óbito por complicações do Diabetes (E10-E14), comparado a outros fatores de risco?</li>
+<li><strong>Variáveis:</strong> ESC2010, RACACOR, IDADE (faixas), LINHAC (complicações associadas, ex: Insuficiência Renal).</li>
+<li><strong>Apriori:</strong> Focar em regras onde a ESC2010 ou RACACOR são o antecedente e a complicação (Linha A-D) ou a causa básica (Diabetes) é o consequente.</li>
+</ul>
+<p>P8. Associação de Câncer (C00-C97) com Fatores Sociodemográficos e Local de Ocorrência</p>
+<ul>
+<li><strong>Problema:</strong> Que combinações de fatores (tipo de câncer, idade, escolaridade, local de óbito) estão fortemente associadas em óbitos por câncer em um estado?</li>
+<li><strong>Variáveis:</strong> CAUSABAS (agrupada por tipo de câncer - Mama, Próstata, Pulmão), IDADE (faixas), ESC2010, LOCOCOR (Hospital, Domicílio).</li>
+<li><strong>Apriori:</strong> Focar em regras onde o LOCOCOR é o antecedente/consequente.</li>
+</ul>
+<p>P9. Associação de Óbitos de Populações Indígenas/Ignoradas com Fatores de Evento (Associação Mínima)</p>
+<ul>
+<li><strong>Problema:</strong> Quais são os padrões mínimos de óbito (causa, local, assistência) associados à classificação de RACACOR=Indígena ou RACACOR=Ignorada, sinalizando desafios específicos de saúde e registro?</li>
+<li><strong>Variáveis:</strong> RACACOR (Indígena/Ignorada), CAUSABAS (agrupada), LOCOCOR, ASSISTMED, ATESTANTE (Agrupada: Médico, IML, Policial).</li>
+<li><strong>Apriori:</strong> Definir um Suporte muito baixo devido à raridade da população indígena e o foco nas variáveis de registro.</li>
+<li><strong>Avaliação:</strong> Analisar o Lift para encontrar associações surpreendentes.</li>
+</ul>
+</section>
+<section id="entrega-relatório-de-mineração-de-regras" class="level3">
+<h3 data-anchor-id="entrega-relatório-de-mineração-de-regras">Entrega: Relatório de Mineração de Regras</h3>
+<p>Você deverá produzir um <strong>Relatório Executivo</strong> no formato PDF, gerado através de um documento <strong>Quarto (.qmd)</strong>. Este relatório é destinado aos gestores da saúde pública do estado escolhido e deve priorizar a comunicação clara dos <em>insights</em> descobertos.</p>
+<p>O relatório deve seguir a seguinte estrutura formal, com os códigos e saídas do R movidos para o final, na seção de Anexos. Ele deve conter:</p>
+<ol type="1">
+<li>Contextualização e Objetivo</li>
+</ol>
+<p>Esta seção deve apresentar:</p>
+<ul>
+<li>O projeto escolhido.</li>
+<li>Mencionar o Estado foco da análise.</li>
+<li>Apresentar a relevância da mineração de regras de associação para o problema específico da UF. Explicar, em termos gerenciais, por que o método Apriori é a ferramenta ideal para descobrir combinações inesperadas de fatores que levam ao óbito neste contexto (extraído da seção ‘Por Que Faz Sentido’ do projeto).</li>
+</ul>
+<ol start="2" type="1">
+<li>Principais Padrões de Risco Descobertos</li>
+</ol>
+<p>Esta seção é o cerne do relatório e deve apresentar os achados mais importantes da mineração.</p>
+<ul>
+<li>Regras de Alto Impacto:
+<ul>
+<li>Apresentação clara das 5 (cinco) regras de associação com o MAIOR LIFT encontradas. Cada regra deve ser listada em linguagem de gestor (evitando notação formal <span class="math inline">\(\{X, Y\} \implies \{Z\}\)</span> inicialmente, e usando-a apenas no Anexo)</li>
+<li><em>Exemplo:</em> Em vez de <span class="math inline">\(\{\text{ESC2010=0, IDADE (80+)}\} \implies \{\text{LOCOCOR=Domicílio}\}\)</span>, use: “Indivíduos com mais de 80 anos e sem escolaridade apresentam uma alta associação com óbitos ocorridos em domicílio.”</li>
+</ul></li>
+<li>Interpretação Gerencial:
+<ul>
+<li>Uma interpretação descritiva e aprofundada das três regras mais fortes (maior Lift). Focar no significado da Confiança (qual a probabilidade de o consequente ocorrer dado o antecedente) e do Lift (o quão incomum ou forte é essa associação).</li>
+</ul></li>
+</ul>
+<ol start="3" type="1">
+<li>Implicações para a Vigilância e Ação Social</li>
+</ol>
+<ul>
+<li>Relevância para a Vigilância Epidemiológica:
+<ul>
+<li>Uma breve discussão sobre o impacto social e de saúde pública da regra mais significativa. Como este padrão descoberto pode informar ou modificar uma política de intervenção (ex: campanhas de saúde direcionadas, alocação de recursos, treinamento de equipes básicas).</li>
+</ul></li>
+</ul>
+<ol start="4" type="1">
+<li>Anexos Metodológicos e Detalhes Técnicos</li>
+</ol>
+<p>Esta seção deve conter todos os elementos técnicos para garantir a reprodutibilidade científica do estudo, sem poluir a leitura do gestor.</p>
+<ul>
+<li>Anexo A
+<ul>
+<li>A saída da função summary() aplicada ao objeto de regras resultante no R (para mostrar o número total de regras geradas e a distribuição de Suporte, Confiança e Lift).</li>
+</ul></li>
+<li>Anexo B
+<ul>
+<li>Script R completo e comentado utilizado no projeto.</li>
+<li>O código deve incluir a leitura dos dados, o filtro por UF, o pré-processamento/discretização das variáveis-chave e a criação do objeto <code>transactions (arules)</code>.</li>
+<li>A especificação clara dos parâmetros Suporte Mínimo e Confiança Mínima utilizados no Apriori.</li>
+<li>O código utilizado para a apresentação das regras com o MAIOR LIFT.</li>
+</ul></li>
+</ul>
+<p>O envio final deve ser realizado pelo SIGAA.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
