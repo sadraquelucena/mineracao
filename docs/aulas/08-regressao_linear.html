@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Conteúdo 3 – Mineração de Dados</title>
+<title>Conteúdo 8 – Mineração de Dados</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../aulas/04-processamento_out-of-core.html" rel="next">
-<link href="../aulas/02-introducao_ao_rstudio+github.html" rel="prev">
+<link href="../aulas/07-regras_de_associacao.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -83,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Conteúdo 3</h1>
+          <h1 class="quarto-secondary-nav-title">Conteúdo 8</h1>
         </a>     
     </div>
   </nav>
@@ -158,13 +157,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Parte 1: Fundamentos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../aulas/01-Apresentacao_da_disciplina.html" class="sidebar-item-text sidebar-link">
@@ -179,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../aulas/03-introducao_ao_quarto.html" class="sidebar-item-text sidebar-link active">
+  <a href="../aulas/03-introducao_ao_quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3- Introdução ao Quarto</span></a>
   </div>
 </li>
@@ -222,16 +221,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Parte 3: Métodos Supervisionados</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../aulas/08-regressao_linear.html" class="sidebar-item-text sidebar-link">
+  <a href="../aulas/08-regressao_linear.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">8- Regressão Linear</span></a>
   </div>
 </li>
@@ -250,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Conteúdo 3</h1>
+<h1 class="title d-none d-lg-block">Conteúdo 8</h1>
 </div>
 
 
@@ -267,19 +266,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introdução-ao-quarto" class="level2">
-<h2 data-anchor-id="introdução-ao-quarto">Introdução ao Quarto</h2>
-<p>Nesta aula, iniciamos nossa jornada no Quarto, a plataforma unificada que é o padrão atual para comunicação científica no RStudio. Exploramos a estrutura de um documento <code>.qmd</code>, o papel do cabeçalho YAML e o uso de Markdown para formatação. Aprendemos a criar, editar e renderizar documentos que integram texto, blocos de código R, tabelas, gráficos e referências. A aula mostra como o Quarto permite gerar diversos formatos de saída (como HTML, PDF e slides) a partir de um único arquivo. Esse é o ponto de partida para desenvolver habilidades de comunicação eficaz, garantir a reprodutibilidade das análises e adotar boas práticas na documentação de projetos ao longo da disciplina.</p>
+<section id="regressão-linear" class="level2">
+<h2 data-anchor-id="regressão-linear">Regressão Linear</h2>
+<p>Nesta aula, entramos no universo da Aprendizagem Supervisionada explorando a Regressão Linear sob duas óticas fundamentais: a Inferência, focada em explicar relações estatísticas e significância de variáveis, e a Predição, voltada para a capacidade de generalização do modelo em dados inéditos.</p>
 <p>Slides:</p>
 <div class="grid">
 <div class="g-col-12 g-col-md-4">
-<p><a href="../slides/03-introducao_ao_quarto/03-introducao_ao_quarto.html" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide03_html.png" class="img-fluid"><br>Versão html </a></p>
+<p><a href="../slides/08-regressao_linear/08-regressao_linear.html" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide08_html.png" class="img-fluid"><br>Versão html </a></p>
 </div>
 <div class="g-col-12 g-col-md-4">
-<p><a href="../PDFs/slides/03-introducao_ao_quarto.pdf" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide03_pdf.png" class="img-fluid"><br>Versão pdf </a></p>
+<p><a href="../PDFs/slides/08-regressao_linear.pdf" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide08_pdf.png" class="img-fluid"><br>Versão pdf </a></p>
 </div>
 </div>
-<p>Para auxiliar na prática, também está disponível <a href="../PDFs/slides/arquivo-exemplo-quarto.zip">um modelo de exemplo em Quarto</a> para download.</p>
+</section>
+<section id="aplicações" class="level2">
+<h2 data-anchor-id="aplicações">Aplicações</h2>
+<p>Os arquivos contendo exemplos com códigos em R e os dados podem ser baixados <a href="../PDFs/slides/08-regressao_linear_exemplos.zip">aqui</a>.</p>
 
 
 </section>
@@ -680,14 +682,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../aulas/02-introducao_ao_rstudio+github.html" class="pagination-link" aria-label="2- Introdução ao RStudio + GitHub">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2- Introdução ao RStudio + GitHub</span>
+      <a href="../aulas/07-regras_de_associacao.html" class="pagination-link" aria-label="7- Regras de Associação">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">7- Regras de Associação</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../aulas/04-processamento_out-of-core.html" class="pagination-link" aria-label="4- Processamento *Out-of-Core*">
-        <span class="nav-page-text">4- Processamento <em>Out-of-Core</em></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

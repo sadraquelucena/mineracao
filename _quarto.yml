@@ -47,16 +47,10 @@ website:
             text: "6- Agrupamento com K-Means e Métodos Relacionados"
           - href: aulas/07-regras_de_associacao.qmd
             text: "7- Regras de Associação"
-      
-      #- section: "Parte 2: Métodos de Estimação"
-      #  contents:
-      #    - href: aulas/11-Metodo_dos_momentos.qmd
-      #      text: "11- Método dos Momentos"
-      
-      #- section: "Parte 3: Estimação por intervalo"
-      #  contents:
-      #    - href: aulas/1-Apresentacao_da_disciplina.qmd
-      #      text: "1- Apresentação da Disciplina e Conceitos Iniciais"
+      - section: "Parte 3: Métodos Supervisionados"
+        contents:
+          - href: aulas/08-regressao_linear.qmd
+            text: "8- Regressão Linear"
     
     #- href: PDFs/listas/listas_de_exercicio.qmd
     #  text: "Listas de Exercício"

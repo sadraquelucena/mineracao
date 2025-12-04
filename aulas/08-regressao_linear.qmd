@@ -1,0 +1,39 @@
+---
+title: "Conteúdo 8"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Regressão Linear
+
+Nesta aula, entramos no universo da Aprendizagem Supervisionada explorando a Regressão Linear sob duas óticas fundamentais: a Inferência, focada em explicar relações estatísticas e significância de variáveis, e a Predição, voltada para a capacidade de generalização do modelo em dados inéditos.
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/08-regressao_linear/08-regressao_linear.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide08_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/08-regressao_linear.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide08_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::
+
+
+
+## Aplicações
+
+Os arquivos contendo exemplos com códigos em R e os dados podem ser baixados [aqui](/PDFs/slides/08-regressao_linear_exemplos.zip).
+
+
+
