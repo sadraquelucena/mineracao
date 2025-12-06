@@ -51,6 +51,8 @@ website:
         contents:
           - href: aulas/08-regressao_linear.qmd
             text: "8- Regressão Linear"
+          - href: aulas/09-regressao_logistica.qmd
+            text: "9- Regressão Logística"
     
     #- href: PDFs/listas/listas_de_exercicio.qmd
     #  text: "Listas de Exercício"

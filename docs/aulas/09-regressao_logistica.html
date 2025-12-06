@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Conteúdo 8 – Mineração de Dados</title>
+<title>Conteúdo 9 – Mineração de Dados</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../aulas/09-regressao_logistica.html" rel="next">
-<link href="../aulas/07-regras_de_associacao.html" rel="prev">
+<link href="../aulas/08-regressao_linear.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -83,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Conteúdo 8</h1>
+          <h1 class="quarto-secondary-nav-title">Conteúdo 9</h1>
         </a>     
     </div>
   </nav>
@@ -231,13 +230,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../aulas/08-regressao_linear.html" class="sidebar-item-text sidebar-link active">
+  <a href="../aulas/08-regressao_linear.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">8- Regressão Linear</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../aulas/09-regressao_logistica.html" class="sidebar-item-text sidebar-link">
+  <a href="../aulas/09-regressao_logistica.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">9- Regressão Logística</span></a>
   </div>
 </li>
@@ -256,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Conteúdo 8</h1>
+<h1 class="title d-none d-lg-block">Conteúdo 9</h1>
 </div>
 
 
@@ -273,22 +272,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="regressão-linear" class="level2">
-<h2 data-anchor-id="regressão-linear">Regressão Linear</h2>
-<p>Nesta aula, entramos no universo da Aprendizagem Supervisionada explorando a Regressão Linear sob duas óticas fundamentais: a Inferência, focada em explicar relações estatísticas e significância de variáveis, e a Predição, voltada para a capacidade de generalização do modelo em dados inéditos.</p>
+<section id="regressão-logística" class="level2">
+<h2 data-anchor-id="regressão-logística">Regressão Logística</h2>
+<p>Neste material, realizamos a transição fundamental da regressão linear para a classificação probabilística. Você aprenderá a modelar eventos binários utilizando a Regressão Logística, dominando desde a matemática da função sigmoide e a interpretação do Odds Ratio até as métricas cruciais de validação em Mineração de Dados, como a Matriz de Confusão e a Curva ROC/AUC. Essencial para quem busca construir modelos preditivos de risco, fraude e diagnóstico.</p>
 <p>Slides:</p>
 <div class="grid">
 <div class="g-col-12 g-col-md-4">
-<p><a href="../slides/08-regressao_linear/08-regressao_linear.html" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide08_html.png" class="img-fluid"><br>Versão html </a></p>
+<p><a href="../slides/09-regressao_logistica/09-regressao_logistica.html" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide09_html.png" class="img-fluid"><br>Versão html </a></p>
 </div>
 <div class="g-col-12 g-col-md-4">
-<p><a href="../PDFs/slides/08-regressao_linear.pdf" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide08_pdf.png" class="img-fluid"><br>Versão pdf </a></p>
+<p><a href="../PDFs/slides/09-regressao_logistica.pdf" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide09_pdf.png" class="img-fluid"><br>Versão pdf </a></p>
 </div>
 </div>
 </section>
 <section id="aplicações" class="level2">
 <h2 data-anchor-id="aplicações">Aplicações</h2>
-<p>Os arquivos contendo exemplos com códigos em R e os dados podem ser baixados <a href="../PDFs/slides/08-regressao_linear_exemplos.zip">aqui</a>.</p>
+<p>Os arquivos contendo exemplos com códigos em R e os dados podem ser baixados <a href="../PDFs/slides/09-regressao_logistica_exemplos.zip">aqui</a>.</p>
 
 
 </section>
@@ -689,14 +688,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../aulas/07-regras_de_associacao.html" class="pagination-link" aria-label="7- Regras de Associação">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">7- Regras de Associação</span>
+      <a href="../aulas/08-regressao_linear.html" class="pagination-link" aria-label="8- Regressão Linear">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">8- Regressão Linear</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../aulas/09-regressao_logistica.html" class="pagination-link" aria-label="9- Regressão Logística">
-        <span class="nav-page-text">9- Regressão Logística</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

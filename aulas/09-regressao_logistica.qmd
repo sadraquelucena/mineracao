@@ -1,0 +1,39 @@
+---
+title: "Conteúdo 9"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Regressão Logística
+
+Neste material, realizamos a transição fundamental da regressão linear para a classificação probabilística. Você aprenderá a modelar eventos binários utilizando a Regressão Logística, dominando desde a matemática da função sigmoide e a interpretação do Odds Ratio até as métricas cruciais de validação em Mineração de Dados, como a Matriz de Confusão e a Curva ROC/AUC. Essencial para quem busca construir modelos preditivos de risco, fraude e diagnóstico.
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/09-regressao_logistica/09-regressao_logistica.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide09_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/09-regressao_logistica.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide09_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::
+
+
+
+## Aplicações
+
+Os arquivos contendo exemplos com códigos em R e os dados podem ser baixados [aqui](/PDFs/slides/09-regressao_logistica_exemplos.zip).
+
+
+
