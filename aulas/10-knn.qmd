@@ -1,0 +1,39 @@
+---
+title: "Conteúdo 10"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## $k$-Nearest Neighbors
+
+Neste material de aula, abordamos o algoritmo k-Nearest Neighbors (k-NN), explorando tanto sua aplicação em classificação quanto em regressão. Os slides detalham a intuição por trás do método baseado em instâncias (lazy learning), a importância crítica do pré-processamento de dados (normalização e tratamento de variáveis categóricas) e o cálculo de distâncias. Além disso, discute-se o impacto da escolha do hiperparâmetro $k$ no equilíbrio entre viés e variância.
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/10-knn/10-knn.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide10_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/10-knn.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide10_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::
+
+
+
+## Aplicações
+
+Os arquivos contendo um exemplo com códigos em R e os dados podem ser baixados [aqui](/PDFs/slides/10-knn_exemplo.zip).
+
+
+

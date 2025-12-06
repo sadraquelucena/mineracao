@@ -53,6 +53,8 @@ website:
             text: "8- Regressão Linear"
           - href: aulas/09-regressao_logistica.qmd
             text: "9- Regressão Logística"
+          - href: aulas/10-knn.qmd
+            text: "10- $k$-Nearest Neighbors"
     
     #- href: PDFs/listas/listas_de_exercicio.qmd
     #  text: "Listas de Exercício"
