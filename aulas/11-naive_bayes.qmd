@@ -33,7 +33,7 @@ Slides:
 
 ## Aplicações
 
-Os arquivos contendo um exemplo com códigos em R e os dados podem ser baixados [aqui](/PDFs/slides/10-knn_exemplo.zip).
+Os arquivos contendo um exemplo com códigos em R e os dados podem ser baixados [aqui](/PDFs/slides/11-naive_bayes_exemplo.zip).
 
 
 
