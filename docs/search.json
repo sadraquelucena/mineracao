@@ -778,744 +778,6 @@
     "text": "Referências\n\n\n\n\nWICKHAM, H.; ÇETINKAYA-RUNDEL, M.; GROLEMUND, G. R for data science: Import, tidy, transform, visualize, and model data. 2nd. ed. Sebastopol, CA: O’Reilly, 2023."
   },
   {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#objetivo-da-aula",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#objetivo-da-aula",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Objetivo da Aula",
-    "text": "Objetivo da Aula\n\nAprender a manipular grandes bases de dados no R.\nConhecer os pacotes duckdb e DBI.\nFazer consultas usando a linguagem SQL dentro do R."
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-muro-da-memória-ram",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-muro-da-memória-ram",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "O Muro da Memória RAM",
-    "text": "O Muro da Memória RAM\n\nO R é, por natureza, uma ferramenta in-memory. É comum usarmos o comando: meus_dados &lt;- read.csv(\"arquivo_grande.csv\").\nProblema: O que acontece se arquivo_grande.csv tem 50 GB e seu notebook tem 16 GB de RAM?\n\nO R tenta alocar 50 GB de espaço na RAM.\nO sistema operacional tenta compensar usando swap (disco), o que torna o processo astronomicamente lento.\nNa maioria dos casos, a sessão do R simplesmente trava ou é morta pelo sistema.\n\nSolução: Em vez de trazer os dados para o R, nós lemos e processamos os dados diretamente no disco, e trazemos para a RAM apenas o resultado final (que geralmente é pequeno).\n\nIsso é chamado de processamento Out-of-Core (ou On-Disk).\nPodemos usar os pacotes duckdb e DBI para fazê-lo."
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-duckdb",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-duckdb",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "O Pacote duckdb",
-    "text": "O Pacote duckdb\n\nFunciona como seu assistente inteligente para dados grandes.\nImagine que seus dados são uma biblioteca gigante:\n\nMétodo tradicional: Trazer todos os livros para sua mesa (RAM).\nCom DuckDB: Pedir ao bibliotecário que consulte os livros nas estantes (disco) e traga apenas a resposta."
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-duckdb-1",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-duckdb-1",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "O Pacote duckdb",
-    "text": "O Pacote duckdb\n\nÉ um sistema de gerenciamento de banco de dados (SGBD) analítico, in-process e colunar. Ou seja:\n\nAnalítico (OLAP): Otimizado para consultas complexas, agregações e filtros (ex: GROUP BY, SUM, AVG).\nIn-Process: Não é um servidor (como PostgreSQL ou MySQL). Ele roda dentro da sua sessão R. Não há instalação, configuração ou gerenciamento de servidor. Apenas install.packages(\"duckdb\") e pronto.\nColunar: Esta é a chave. Bancos de dados tradicionais armazenam dados por linha. O duckdb armazena por coluna.\n\nSe sua consulta é SELECT VARIAVEL1, COUNT(*) ..., ele lê apenas a coluna VARIAVEL1 do disco, ignorando todas as outras (nome, data, etc.). Isso resulta em uma velocidade maior.\nduckdb implementa uma versão muito abrangente e moderna do padrão SQL (Structured Query Language)."
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-dbi",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-dbi",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "O Pacote DBI",
-    "text": "O Pacote DBI\n\nDBI (Database Interface) é um pacote que fornece uma camada de abstração universal para comunicação com bancos de dados no R.\nEle define um conjunto de funções consistentes:\n\ndbConnect(): para iniciar a conexão.\ndbGetQuery(): para enviar uma consulta e receber os dados de volta.\ndbDisconnect(): para encerrar a conexão.\n\nPor que usá-lo?\n\nConsistência: Você usa as mesmas funções DBI para falar com duckdb, RPostgres, RMariaDB, RSQLite, etc.\nPortabilidade: Seu código R não muda. Se amanhã você decidir migrar seu processo do duckdb (local) para um PostgreSQL (servidor), você só precisa alterar a linha do dbConnect()."
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#como-o-sql-se-encaixa",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#como-o-sql-se-encaixa",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Como o SQL se encaixa?",
-    "text": "Como o SQL se encaixa?\n\nO DBI permite que o R fale com o duckdb, e a língua que eles usam é o SQL (Structured Query Language).\nEm vez de usar comandos do pacte dplyr (como filter, group_by, summarise) que operam em data.frames na memória, nós escrevemos uma string de consulta SQL (ex: SELECT ... FROM ... WHERE ...)\nNós passamos essa string para o DBI (ex: dbGetQuery(…)).\nO DBI entrega a string ao duckdb.\nO duckdb interpreta o SQL, otimiza a consulta, executa a operação diretamente no arquivo em disco, e retorna apenas o data.frame resultante para o R."
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uso",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uso",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Estrutura Geral de Uso",
-    "text": "Estrutura Geral de Uso\nEste é o esquema de 5 passos para qualquer análise out-of-core com duckdb:\n\n# 1. Carregar as bibliotecas na sessão\nlibrary(DBI)\nlibrary(duckdb)\n\n# 2. Criar a conexão com o banco de dados (para salvar as consultas)\n\n# Opção A: Em memória (rápido, mas volátil)\n#con &lt;- dbConnect(duckdb::duckdb(), dbdir = \":memory:\")\n\n# Opção B: Persistente (recomendado)\ncon &lt;- dbConnect(duckdb::duckdb(),\n                 dbdir = \"meu_banco_analitico.duckdb\")\n\n# 3. Informar ao duckdb onde estão os dados\n# Isso NÃO carrega o CSV. Apenas cria um \"ponteiro\" para ele.\nduckdb_register(con, \"meus_dados\", \"arquivo_grande.csv\")"
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uso-1",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uso-1",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Estrutura Geral de Uso",
-    "text": "Estrutura Geral de Uso\nEste é o esquema de 5 passos para qualquer análise out-of-core com duckdb:\n\n# 4. Fazer consultas ao banco usando SQL\nresultado &lt;- dbGetQuery(con, \"SELECT COUNT(*) FROM meus_dados\")\n\n# 5. Encerrar a conexão e liberar os recursos\ndbDisconnect(con, shutdown = TRUE)\n\n\n\nComo as cosultas usam SQL, vamos fazer uma breve explicação sobre o uso da linguagem."
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uma-consulta-sql",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uma-consulta-sql",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Estrutura Geral de uma Consulta SQL",
-    "text": "Estrutura Geral de uma Consulta SQL\nUma consulta SQL é como uma frase que descreve os dados que você deseja. A ordem de escrita é quase sempre esta:\n\nSELECT coluna1, FUNCAO(coluna2) AS novo_nome\nFROM nome_da_tabela\nWHERE condicao_de_filtro (ex: ano = 2023)\nGROUP BY coluna_de_agrupamento (ex: coluna1)\nORDER BY coluna_de_ordenacao (ex: novo_nome) DESC\nLIMIT 10"
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-instrução-select",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-instrução-select",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "A instrução SELECT",
-    "text": "A instrução SELECT\n\nEspecifica as colunas que você quer ver no resultado final.\nSempre vem acompanhada de FROM, que especifica de qual tabela os dados devem ser lidos.\n\nSintaxe:\n\nSELECT coluna1, coluna2, ...\nFROM nome_tabela\n\n\ncoluna1, coluna2, ... são as colunas das tabelas que você quer selecionar.\nnome_tabela representa o nome da tabela que contém os dados.\n\nExemplo: Suponha que temos uma tabela clientes e queremos selecionar todas as colunas.\n\nSELECT *\nFROM clientes"
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-cláusula-where",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-cláusula-where",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "A cláusula WHERE",
-    "text": "A cláusula WHERE\n\nSeleciona linhas que atendem a uma condição.\n\nSintaxe:\n\nSELECT coluna1, coluna2, ...\nFROM nome_tabela\nWHERE condição\n\nExemplos:\n\n\n\nSELECT *\nFROM clientes\nWHERE idade=30\n\n\n\nSELECT *\nFROM clientes\nWHERE idade&gt;24"
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-cláusula-where-1",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-cláusula-where-1",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "A cláusula WHERE",
-    "text": "A cláusula WHERE\nWHERE aceita alguns operadores:\n\n\n\n\n\n\n\n\n\nOperador\nDescrição\nOperador\nDescrição\n\n\n\n\n=\nIgual\n&lt;&gt; ou !=\nDiferente\n\n\n&gt;\nMaior que\n&lt;\nMenor que\n\n\n&gt;=\nMaior ou igual\n&lt;=\nMenor ou igual\n\n\nBETWEEN\nEntre um intervalo\nLIKE\nBusca por um padrão\n\n\nIN\nPara especificar múltiplos valores possíveis para uma coluna\n\n\n\n\n\nExemplo:\n\nSELECT *\nFROM clientes\nWHERE Idade BETWEEN 20 AND 30"
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-instrução-group-by",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-instrução-group-by",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "A instrução GROUP BY",
-    "text": "A instrução GROUP BY\n\nAgrupa linhas com mesmo valor.\nGeralmente é usada com funções de agregação (COUNT(), MAX(), MIN(), SUM(), AVG()) para agrupar os resultados de uma ou mais colunas.\nMuito usada em conjunto com ORDER BY, para ordenação dos resultados.\n\nSintaxe:\n\nSELECT nomes_das_colunas\nFROM nome_tabela\nWHERE condição\nGROUP BY nomes_das_colunas\nORDER BY nomes_das_colunas\n\nExemplo:\n\nSELECT COUNT(ID_cliente), estado\nFROM clientes\nGROUP BY estado\nORDER BY COUNT(ID_cliente) DESC"
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-2",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-2",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Exemplo",
-    "text": "Exemplo\nVamos usar o banco de dados sobre mortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM), desenvolvido pelo Ministério da Saúde. Os dados estão disponíveis em: https://opendatasus.saude.gov.br/dataset/sim.\n\nVamos usar o conjunto de dados DO24OPEN.csv (óbitos ocorridos em 2024) e as variáveis:\n\nCODMUNOCOR: Código relativo ao município onde ocorreu o óbito\nCAUSABAS: Causa básica da declaração de óbito\n\nTambém vamos usar uma tabela do IBGE com os códigos e nomes dos municípios obtida em https://www.ibge.gov.br/explica/codigos-dos-municipios.php.\n\nUsaremos o arquivo RELATORIO_DTB_BRASIL_2024_MUNICIPIOS.xls."
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-preparação-do-ambiente",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-preparação-do-ambiente",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Exemplo: Preparação do ambiente",
-    "text": "Exemplo: Preparação do ambiente\n\n# 0. Instalando os pacotes (apenas uma vez)\n# install.packages(c(\"DBI\", \"duckdb\"))\n\n# 1. Carregando pacotes.\nlibrary(duckdb)\nlibrary(DBI)\n\n# 2. Especificando onde serão armazenadas as consultas.\n# Isso prepara o \"motor\" do duckdb para receber comandos\ncon &lt;- dbConnect(    # 'con' vai armazenar o objeto da conexão\n  duckdb::duckdb(),  # Especifica DuckDB como SGBD\n  dbdir = \":memory:\" # as consultas serão salvas na memória\n                     # e depois apagadas ao finalizar\n  #dbdir = \"sim_obitos.duckdb\" # cria uma arquivo p/ armazenar\n                               # os resultados da consulta\n)\n\n# 3. Definindo o caminho para o arquivo gigante\n# para não precisarmos escrever em toda consulta\ncaminho &lt;- \"/home/sadraque/Documentos/UFS/Disciplinas/2025.2/mineracao de dados em estatistica/slides/04-processamento_out-of-core/DO24OPEN.csv\""
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-1-contagem-total-de-linhas",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-1-contagem-total-de-linhas",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Exemplo 1: Contagem total de linhas",
-    "text": "Exemplo 1: Contagem total de linhas\nVamos contar quantas linhas há na tabela de dados.\n\n# Criando a consulta SQL\n# SELECT COUNT(*): \"Selecione a contagem de todas as linhas\"\n# FROM '%s' será substituído pelo caminho do arquivo\nconsult &lt;- sprintf(\"SELECT COUNT(*) AS total\n                           FROM '%s'\", caminho)\n\n# Enviando a consulta e pegando o resultado.\n# O duckdb vai ler o arquivo (sem carregá-lo) e retornar\n# apenas o resultado.\ntotal_linhas &lt;- dbGetQuery(con, consult)\ntotal_linhas\n\n    total\n1 1426346"
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-2-agregando-por-município",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-2-agregando-por-município",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Exemplo 2: Agregando por Município",
-    "text": "Exemplo 2: Agregando por Município\nVamos contar o número de óbitos por código do município (CODMUNOCOR).\n\n# Montar a consulta SQL\nconsult &lt;- sprintf(\"SELECT CODMUNOCOR, COUNT(*) AS total_obitos\n                      FROM '%s'\n                      GROUP BY CODMUNOCOR\n                      ORDER BY total_obitos DESC\",\n                     caminho)\n\n\n# Enviar a consulta e pegar o resultado\nobitos_por_municipio &lt;- dbGetQuery(con, consult)\n\n# Ver as primeiras 4 linhas do resultado\nhead(obitos_por_municipio, n = 4L)\n\n  CODMUNOCOR total_obitos\n1     355030        89208\n2     330455        61443\n3     310620        23340\n4     261160        22146"
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Exemplo 3: Adicionando filtragem",
-    "text": "Exemplo 3: Adicionando filtragem\nVamos consultar o número de óbitos por causas externas.\n\n# Criar a consulta SQL\n# CODMUNOCOR: Codigo do município onde ocorreu o óbito.\n# CAUSABAS: 'V01' a 'V99' são os códigos da CID-10 para\n#           acidentes de transporte.\nconsult &lt;- sprintf(\"SELECT CODMUNOCOR,\n                           COUNT(CAUSABAS) AS obitos_acidentes\n                    FROM '%s'\n                    WHERE CAUSABAS BETWEEN 'V01' AND 'V99'\n                    GROUP BY CODMUNOCOR\n                    ORDER BY obitos_acidentes DESC\",\n                   caminho)\nobitos_acidentes_mun &lt;- dbGetQuery(con, consult)\nhead(obitos_acidentes_mun, n = 4L) # primeiras 4 linhas\n\n  CODMUNOCOR obitos_acidentes\n1     130260              380\n2     520870              367\n3     261160              347\n4     355030              281"
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-1",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-1",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Exemplo 3: Adicionando filtragem",
-    "text": "Exemplo 3: Adicionando filtragem\n\nOs códigos do SIM vêm sem os nomes dos municípios.\nPrecisamos cruzar com a tabela do IBGE para saber os nomes dos municípios.\n\n\nlibrary(tidyverse)\n\ntab_cod_ibge &lt;- readxl::read_excel(\n  \"/home/sadraque/Documentos/UFS/Disciplinas/2025.2/mineracao de dados em estatistica/slides/04-processamento_out-of-core/RELATORIO_DTB_BRASIL_2024_MUNICIPIOS.xls\",\n  skip = 6,  # Pula as 6 primeiras linhas\n  col_names = TRUE  # Usa a 7ª linha como nome das variáveis (default)\n) |&gt;\n  # Limpar nomes das colunas\n  janitor::clean_names()"
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-2",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-2",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Exemplo 3: Adicionando filtragem",
-    "text": "Exemplo 3: Adicionando filtragem\n\ntab_cod_ibge &lt;- tab_cod_ibge |&gt;\n  # Cria código de 6 dígitos removendo o dígito verificador\n  mutate(codigo_6digitos = str_sub(codigo_municipio_completo,\n                                   1, -2)) |&gt;\n  # Converte para numérico\n  mutate(codigo_6digitos = as.numeric(codigo_6digitos)) |&gt;\n  # Seleciona e renomeia colunas finais\n  select(codigo = codigo_6digitos,\n         municipio = nome_municipio,\n         UF = nome_uf)"
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-3",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-3",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Exemplo 3: Adicionando filtragem",
-    "text": "Exemplo 3: Adicionando filtragem\n\n# juntando o número de acidentes e os nomes dos municípios\nobitos_acidentes_nome_municipios &lt;- tab_cod_ibge |&gt;\n  left_join(obitos_acidentes_mun,\n            by = c(\"codigo\" = \"CODMUNOCOR\"))  |&gt;\n  arrange(desc(obitos_acidentes)) # ordem decrescente\nhead(obitos_acidentes_nome_municipios)\n\n# A tibble: 6 × 4\n  codigo municipio UF               obitos_acidentes\n   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;                       &lt;dbl&gt;\n1 130260 Manaus    Amazonas                      380\n2 520870 Goiânia   Goiás                         367\n3 261160 Recife    Pernambuco                    347\n4 355030 São Paulo São Paulo                     281\n5 530010 Brasília  Distrito Federal              271\n6 211130 São Luís  Maranhão                      269\n\n# Encerrando a conexão\ndbDisconnect(con, shutdown = TRUE)"
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exercícios",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exercícios",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Exercícios",
-    "text": "Exercícios\n\nFaça um histograma das idades das pessoas que vieram a óbito em 2024 em todo o país (note que primeiro você precisa fazer uma consulta na base de dados).\nFaça um gráfico de barras contando os óbitos por sexo para cada estado do país."
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#conclusão-e-revisão",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#conclusão-e-revisão",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "Conclusão e Revisão",
-    "text": "Conclusão e Revisão\n\nProblema: A RAM é limitada; dados massivos não cabem nela.\nSolução: Processamento Out-of-Core (On-Disk).\nFerramentas:\n\nduckdb: Motor que faz o trabalho pesado no disco.\nDBI: Interface que o R usa para se comunicar.\nSQL: A linguagem que usamos para descrever o que queremos.\n\nFluxo: dbConnect -&gt; duckdb_register -&gt; dbGetQuery (com SQL) -&gt; dbDisconnect.\nVerbos SQL:\n\n\n\n\nSELECT (o quê)\nFROM (de onde)\nWHERE (filtro de linha)\n\n\n\nGROUP BY (agregar)\nORDER BY (ordenar)"
-  },
-  {
-    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#section",
-    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#section",
-    "title": "Processamento Out-of-Core com duckdb e DBI no R",
-    "section": "",
-    "text": "Mais sobre a estrutura de SQL você pode encontrar em https://www.w3schools.com/sql/."
-  },
-  {
-    "objectID": "aulas/07-regras_de_associacao.html",
-    "href": "aulas/07-regras_de_associacao.html",
-    "title": "Conteúdo 7",
-    "section": "",
-    "text": "Esta aula detalha o método das Regras de Associação, uma técnica essencial da Mineração de Dados focada na Análise de Cesta de Mercado para descobrir quais produtos os clientes tendem a comprar em conjunto. O material explica as três métricas cruciais — Suporte (frequência), Confiança (precisão condicional) e Lift (interesse real) — que são usadas para filtrar padrões acionáveis em meio a um vasto número de combinações. Além disso, a apresentação diferencia os principais algoritmos de busca por padrões frequentes, o clássico Apriori e o mais eficiente FP-Growth, preparando o leitor para aplicar esses conhecimentos na otimização de leiautes de lojas, campanhas de marketing e gestão de inventário.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 2: Métodos Não Supervisionados",
-      "7- Regras de Associação"
-    ]
-  },
-  {
-    "objectID": "aulas/07-regras_de_associacao.html#regras-de-associação",
-    "href": "aulas/07-regras_de_associacao.html#regras-de-associação",
-    "title": "Conteúdo 7",
-    "section": "",
-    "text": "Esta aula detalha o método das Regras de Associação, uma técnica essencial da Mineração de Dados focada na Análise de Cesta de Mercado para descobrir quais produtos os clientes tendem a comprar em conjunto. O material explica as três métricas cruciais — Suporte (frequência), Confiança (precisão condicional) e Lift (interesse real) — que são usadas para filtrar padrões acionáveis em meio a um vasto número de combinações. Além disso, a apresentação diferencia os principais algoritmos de busca por padrões frequentes, o clássico Apriori e o mais eficiente FP-Growth, preparando o leitor para aplicar esses conhecimentos na otimização de leiautes de lojas, campanhas de marketing e gestão de inventário.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 2: Métodos Não Supervisionados",
-      "7- Regras de Associação"
-    ]
-  },
-  {
-    "objectID": "aulas/07-regras_de_associacao.html#aplicações",
-    "href": "aulas/07-regras_de_associacao.html#aplicações",
-    "title": "Conteúdo 7",
-    "section": "Aplicações",
-    "text": "Aplicações\nOs arquivos contendo os códigos em R e os dados podem ser baixados aqui.",
-    "crumbs": [
-      "Aulas",
-      "Parte 2: Métodos Não Supervisionados",
-      "7- Regras de Associação"
-    ]
-  },
-  {
-    "objectID": "aulas/07-regras_de_associacao.html#projeto-4-regras-de-associação-no-sim",
-    "href": "aulas/07-regras_de_associacao.html#projeto-4-regras-de-associação-no-sim",
-    "title": "Conteúdo 7",
-    "section": "Projeto 4 – Regras de Associação no SIM",
-    "text": "Projeto 4 – Regras de Associação no SIM\nVocê é um(a) Analista de Mineração de Dados em Saúde Pública. O time de Vigilância Epidemiológica solicitou a identificação de padrões de coocorrência de risco na mortalidade, usando o Sistema de Informações sobre Mortalidade (SIM). Você deve aplicar o algoritmo Apriori sobre os dados de mortes ocorridas no Brasil em 2024 disponíveis em https://opendatasus.saude.gov.br/dataset/sim. O projeto é INDIVIDUAL.\nPrazo: Próxima aula.\nTarefa: Acesse https://opendatasus.saude.gov.br/dataset/sim. Baixe os dados de 2024 e escolha 1 (um) Estado (UF) para sua análise. Em seguida, escolha 1 (um) dos nove projetos listados abaixo, que já define o foco da sua análise. O objetivo é aplicar o Apriori para gerar regras de associação válidas, interpretáveis e com implicações para a saúde pública.\n\nMini Projetos para escolher\nP1. Associação de Múltiplas Causas (Linha A-D) e Perfil de Vulnerabilidade em Óbitos por Insuficiência Cardíaca\n\nProblema: Quais comorbidades e características sociodemográficas frequentemente coocorrem e precedem o óbito por Insuficiência Cardíaca (I50) em um estado brasileiro?\nVariáveis: Códigos da LINHAA a LINHAD (múltiplas causas), IDADE (em faixas), ESC2010, ASSISTMED, LOCOCOR.\nApriori: Gerar regras buscando Confiança, Suporte e Lift superiores a 1.\nAnálise: Interpretar regras que tenham códigos de DCNT como antecedentes e a Insuficiência Cardíaca como consequente.\n\nP2. Associação entre Local de Ocorrência, Assistência e Causas Básicas Sensíveis à Atenção Primária\n\nProblema: Quais combinações de fatores (local de óbito não-hospitalar e falta de assistência) estão mais fortemente associadas a óbitos por Causas Sensíveis à Atenção Primária (CSAP), indicando lacunas no cuidado básico?\nVariáveis: CAUSABAS (agrupada por CSAP), LOCOCOR (Domicílio, Outros), ASSISTMED (Não/Sim), IDADE (faixas).\nApriori: Busca por regras que tenham uma combinação de LOCOCOR (não hospitalar) e ASSISTMED (não) no antecedente, e a CSAP no consequente.\nAvaliação: Análise das regras com alto Lift, que indicam que a coocorrência de desassistência e óbito por CSAP é muito maior que o esperado.\n\nP3. Regras de Associação entre Perfil Ocupacional, Escolaridade e Óbitos por Causas Externas\n\nProblema: Quais são as combinações mais fortes entre a ocupação (OCUP), o nível de escolaridade (ESC2010) e a ocorrência de óbitos por tipos específicos de Causas Externas (V01-Y98), como acidentes de trabalho?\nVariáveis: OCUP (agrupada), ESC2010, ACIDTRAB (Sim/Não), CAUSABAS (agrupada por tipo de violência/acidente).\nApriori: Focar em regras com alto Lift onde a OCUP e a ESC2010 são antecedentes.\n\nP4. Associação entre Raça/Cor, Escolaridade e Mortalidade Materna Evitável\n\nProblema: Que combinações de fatores de vulnerabilidade (RACACOR e ESCMAEAGR1) estão fortemente associadas a óbitos de mulheres em idade fértil (10-49 anos) por causas relacionadas à gestação, parto ou puerpério (CAUSAMAT)?\nVariáveis: CAUSAMAT (agrupada), RACACOR, ESCMAEAGR1 (escolaridade da mãe), ASSISTMED.Ajustar o Suporte e a Confiança para eventos raros.\nApriori: Focar em regras com RACACOR no antecedente e a causa materna como consequente.\nAnálise: Comparar a Confiança de regras para diferentes grupos de RACACOR.\n\nP5. Associação de Óbitos por Doenças Respiratórias (J00-J99) com Fatores Ambientais e Sazonais\n\nProblema: Quais combinações de características sociodemográficas e de evento (idade, sexo, LOCOCOR) mais se associam a óbitos por doenças respiratórias (CAUSABAS J00-J99) nos meses de maior incidência (inverno/chuvosos)?\nVariáveis: CAUSABAS (agrupada: Pneumonia, Asma, DPOC), IDADE (faixas), SEXO, LOCOCOR, MÊS DO ÓBITO (criada a partir de DTOBITO).\nApriori: Executar com foco em regras que incluam a variável sazonal (Mês) no antecedente.\nAvaliação: Filtrar as regras com o maior Lift nos meses de pico (ex: Junho, Julho).\n\nP6. Associação de Acidentes de Trânsito (V01-V89) com Idade, Sexo e Tipo de Veículo/Vítima\n\nProblema: Quais são os padrões de vítimas (idade, sexo, tipo de óbito) mais frequentemente associados a acidentes de trânsito em um determinado estado?\nVariáveis: IDADE (faixas), SEXO, CAUSABAS (agrupada por tipo de vítima: Pedestre, Ciclista, Motociclista, Ocupante de Carro).\nApriori: Busca por regras que tenham um dos tipos de vítima como consequente.\nRelatório: Focar no Lift para destacar os grupos de risco que mais se sobressaem em relação à distribuição esperada.\n\nP7. Associações entre Nível de Escolaridade e Óbitos por Condições Crônicas Específicas (Diabetes Mellitus)\n\nProblema: Que regras de associação mostram a relação entre a falta de escolaridade e o óbito por complicações do Diabetes (E10-E14), comparado a outros fatores de risco?\nVariáveis: ESC2010, RACACOR, IDADE (faixas), LINHAC (complicações associadas, ex: Insuficiência Renal).\nApriori: Focar em regras onde a ESC2010 ou RACACOR são o antecedente e a complicação (Linha A-D) ou a causa básica (Diabetes) é o consequente.\n\nP8. Associação de Câncer (C00-C97) com Fatores Sociodemográficos e Local de Ocorrência\n\nProblema: Que combinações de fatores (tipo de câncer, idade, escolaridade, local de óbito) estão fortemente associadas em óbitos por câncer em um estado?\nVariáveis: CAUSABAS (agrupada por tipo de câncer - Mama, Próstata, Pulmão), IDADE (faixas), ESC2010, LOCOCOR (Hospital, Domicílio).\nApriori: Focar em regras onde o LOCOCOR é o antecedente/consequente.\n\nP9. Associação de Óbitos de Populações Indígenas/Ignoradas com Fatores de Evento (Associação Mínima)\n\nProblema: Quais são os padrões mínimos de óbito (causa, local, assistência) associados à classificação de RACACOR=Indígena ou RACACOR=Ignorada, sinalizando desafios específicos de saúde e registro?\nVariáveis: RACACOR (Indígena/Ignorada), CAUSABAS (agrupada), LOCOCOR, ASSISTMED, ATESTANTE (Agrupada: Médico, IML, Policial).\nApriori: Definir um Suporte muito baixo devido à raridade da população indígena e o foco nas variáveis de registro.\nAvaliação: Analisar o Lift para encontrar associações surpreendentes.\n\n\n\nEntrega: Relatório de Mineração de Regras\nVocê deverá produzir um Relatório Executivo no formato PDF, gerado através de um documento Quarto (.qmd). Este relatório é destinado aos gestores da saúde pública do estado escolhido e deve priorizar a comunicação clara dos insights descobertos.\nO relatório deve seguir a seguinte estrutura formal, com os códigos e saídas do R movidos para o final, na seção de Anexos. Ele deve conter:\n\nContextualização e Objetivo\n\nEsta seção deve apresentar:\n\nO projeto escolhido.\nMencionar o Estado foco da análise.\nApresentar a relevância da mineração de regras de associação para o problema específico da UF. Explicar, em termos gerenciais, por que o método Apriori é a ferramenta ideal para descobrir combinações inesperadas de fatores que levam ao óbito neste contexto (extraído da seção ‘Por Que Faz Sentido’ do projeto).\n\n\nPrincipais Padrões de Risco Descobertos\n\nEsta seção é o cerne do relatório e deve apresentar os achados mais importantes da mineração.\n\nRegras de Alto Impacto:\n\nApresentação clara das 5 (cinco) regras de associação com o MAIOR LIFT encontradas. Cada regra deve ser listada em linguagem de gestor (evitando notação formal \\(\\{X, Y\\} \\implies \\{Z\\}\\) inicialmente, e usando-a apenas no Anexo)\nExemplo: Em vez de \\(\\{\\text{ESC2010=0, IDADE (80+)}\\} \\implies \\{\\text{LOCOCOR=Domicílio}\\}\\), use: “Indivíduos com mais de 80 anos e sem escolaridade apresentam uma alta associação com óbitos ocorridos em domicílio.”\n\nInterpretação Gerencial:\n\nUma interpretação descritiva e aprofundada das três regras mais fortes (maior Lift). Focar no significado da Confiança (qual a probabilidade de o consequente ocorrer dado o antecedente) e do Lift (o quão incomum ou forte é essa associação).\n\n\n\nImplicações para a Vigilância e Ação Social\n\n\nRelevância para a Vigilância Epidemiológica:\n\nUma breve discussão sobre o impacto social e de saúde pública da regra mais significativa. Como este padrão descoberto pode informar ou modificar uma política de intervenção (ex: campanhas de saúde direcionadas, alocação de recursos, treinamento de equipes básicas).\n\n\n\nAnexos Metodológicos e Detalhes Técnicos\n\nEsta seção deve conter todos os elementos técnicos para garantir a reprodutibilidade científica do estudo, sem poluir a leitura do gestor.\n\nAnexo A\n\nA saída da função summary() aplicada ao objeto de regras resultante no R (para mostrar o número total de regras geradas e a distribuição de Suporte, Confiança e Lift).\n\nAnexo B\n\nScript R completo e comentado utilizado no projeto.\nO código deve incluir a leitura dos dados, o filtro por UF, o pré-processamento/discretização das variáveis-chave e a criação do objeto transactions (arules).\nA especificação clara dos parâmetros Suporte Mínimo e Confiança Mínima utilizados no Apriori.\nO código utilizado para a apresentação das regras com o MAIOR LIFT.\n\n\nO envio final deve ser realizado pelo SIGAA.",
-    "crumbs": [
-      "Aulas",
-      "Parte 2: Métodos Não Supervisionados",
-      "7- Regras de Associação"
-    ]
-  },
-  {
-    "objectID": "aulas/09-regressao_logistica.html",
-    "href": "aulas/09-regressao_logistica.html",
-    "title": "Conteúdo 9",
-    "section": "",
-    "text": "Neste material, realizamos a transição fundamental da regressão linear para a classificação probabilística. Você aprenderá a modelar eventos binários utilizando a Regressão Logística, dominando desde a matemática da função sigmoide e a interpretação do Odds Ratio até as métricas cruciais de validação em Mineração de Dados, como a Matriz de Confusão e a Curva ROC/AUC. Essencial para quem busca construir modelos preditivos de risco, fraude e diagnóstico.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 3: Métodos Supervisionados",
-      "9- Regressão Logística"
-    ]
-  },
-  {
-    "objectID": "aulas/09-regressao_logistica.html#regressão-logística",
-    "href": "aulas/09-regressao_logistica.html#regressão-logística",
-    "title": "Conteúdo 9",
-    "section": "",
-    "text": "Neste material, realizamos a transição fundamental da regressão linear para a classificação probabilística. Você aprenderá a modelar eventos binários utilizando a Regressão Logística, dominando desde a matemática da função sigmoide e a interpretação do Odds Ratio até as métricas cruciais de validação em Mineração de Dados, como a Matriz de Confusão e a Curva ROC/AUC. Essencial para quem busca construir modelos preditivos de risco, fraude e diagnóstico.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 3: Métodos Supervisionados",
-      "9- Regressão Logística"
-    ]
-  },
-  {
-    "objectID": "aulas/09-regressao_logistica.html#aplicações",
-    "href": "aulas/09-regressao_logistica.html#aplicações",
-    "title": "Conteúdo 9",
-    "section": "Aplicações",
-    "text": "Aplicações\nOs arquivos contendo exemplos com códigos em R e os dados podem ser baixados aqui.",
-    "crumbs": [
-      "Aulas",
-      "Parte 3: Métodos Supervisionados",
-      "9- Regressão Logística"
-    ]
-  },
-  {
-    "objectID": "aulas/10-knn.html",
-    "href": "aulas/10-knn.html",
-    "title": "Conteúdo 10",
-    "section": "",
-    "text": "Neste material de aula, abordamos o algoritmo k-Nearest Neighbors (k-NN), explorando tanto sua aplicação em classificação quanto em regressão. Os slides detalham a intuição por trás do método baseado em instâncias (lazy learning), a importância crítica do pré-processamento de dados (normalização e tratamento de variáveis categóricas) e o cálculo de distâncias. Além disso, discute-se o impacto da escolha do hiperparâmetro \\(k\\) no equilíbrio entre viés e variância.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 3: Métodos Supervisionados",
-      "10- $k$-Nearest Neighbors"
-    ]
-  },
-  {
-    "objectID": "aulas/10-knn.html#k-nearest-neighbors",
-    "href": "aulas/10-knn.html#k-nearest-neighbors",
-    "title": "Conteúdo 10",
-    "section": "",
-    "text": "Neste material de aula, abordamos o algoritmo k-Nearest Neighbors (k-NN), explorando tanto sua aplicação em classificação quanto em regressão. Os slides detalham a intuição por trás do método baseado em instâncias (lazy learning), a importância crítica do pré-processamento de dados (normalização e tratamento de variáveis categóricas) e o cálculo de distâncias. Além disso, discute-se o impacto da escolha do hiperparâmetro \\(k\\) no equilíbrio entre viés e variância.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 3: Métodos Supervisionados",
-      "10- $k$-Nearest Neighbors"
-    ]
-  },
-  {
-    "objectID": "aulas/10-knn.html#aplicações",
-    "href": "aulas/10-knn.html#aplicações",
-    "title": "Conteúdo 10",
-    "section": "Aplicações",
-    "text": "Aplicações\nOs arquivos contendo um exemplo com códigos em R e os dados podem ser baixados aqui.",
-    "crumbs": [
-      "Aulas",
-      "Parte 3: Métodos Supervisionados",
-      "10- $k$-Nearest Neighbors"
-    ]
-  },
-  {
-    "objectID": "aulas/04-processamento_out-of-core.html",
-    "href": "aulas/04-processamento_out-of-core.html",
-    "title": "Conteúdo 4",
-    "section": "",
-    "text": "Nesta aula, enfrentamos o desafio de analisar dados que excedem a memória RAM do computador, introduzindo o paradigma de processamento Out-of-Core no R. Exploramos a arquitetura dessa solução, compreendendo o papel do pacote duckdb como o motor analítico in-process e do pacote DBI como a interface de conexão universal. Aprendemos a estrutura fundamental da linguagem SQL para realizar consultas diretamente no disco, focando nos comandos SELECT, FROM, WHERE, GROUP BY e ORDER BY. A aula demonstra, com exemplos práticos usando dados do DATASUS, como agregar e filtrar milhões de registros instantaneamente, trazendo para o R apenas o resultado consolidado. Este é um passo essencial para escalar análises, garantir a performance em datasets massivos e superar as limitações do processamento in-memory tradicional.\nDados que iremos usar:\n\nMortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM): https://opendatasus.saude.gov.br/dataset/sim\nTabela de Códigos de Municípios do IBGE: https://www.ibge.gov.br/explica/codigos-dos-municipios.php\n\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "4- Processamento *Out-of-Core*"
-    ]
-  },
-  {
-    "objectID": "aulas/04-processamento_out-of-core.html#processamento-out-of-core-com-duckdb-e-dbi-no-r",
-    "href": "aulas/04-processamento_out-of-core.html#processamento-out-of-core-com-duckdb-e-dbi-no-r",
-    "title": "Conteúdo 4",
-    "section": "",
-    "text": "Nesta aula, enfrentamos o desafio de analisar dados que excedem a memória RAM do computador, introduzindo o paradigma de processamento Out-of-Core no R. Exploramos a arquitetura dessa solução, compreendendo o papel do pacote duckdb como o motor analítico in-process e do pacote DBI como a interface de conexão universal. Aprendemos a estrutura fundamental da linguagem SQL para realizar consultas diretamente no disco, focando nos comandos SELECT, FROM, WHERE, GROUP BY e ORDER BY. A aula demonstra, com exemplos práticos usando dados do DATASUS, como agregar e filtrar milhões de registros instantaneamente, trazendo para o R apenas o resultado consolidado. Este é um passo essencial para escalar análises, garantir a performance em datasets massivos e superar as limitações do processamento in-memory tradicional.\nDados que iremos usar:\n\nMortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM): https://opendatasus.saude.gov.br/dataset/sim\nTabela de Códigos de Municípios do IBGE: https://www.ibge.gov.br/explica/codigos-dos-municipios.php\n\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "4- Processamento *Out-of-Core*"
-    ]
-  },
-  {
-    "objectID": "aulas/04-processamento_out-of-core.html#projeto-1-preparação-de-datasets-para-análise-de-risco",
-    "href": "aulas/04-processamento_out-of-core.html#projeto-1-preparação-de-datasets-para-análise-de-risco",
-    "title": "Conteúdo 4",
-    "section": "Projeto 1 – Preparação de Datasets para Análise de Risco",
-    "text": "Projeto 1 – Preparação de Datasets para Análise de Risco\nVocê é um(a) Engenheiro(a) de Dados. O time de Cientistas de Dados solicitou um dataset filtrado do SCR.data. Vocês devem usar duckdb para consultar arquivos CSV brutos, fazer a filtragem necessária usando SQL, e entregar um dataframe leve no R. O projeto é INDIVIDUAL.\nPrazo: Próxima aula.\nTarefa: Acesse https://dadosabertos.bcb.gov.br/dataset/scr_data, baixe os dados de 2025 e selecione o conjunto de dados (arquivo CSV) do mês mais recente disponível.\nEm seguida, escolha 1 Estado (UF) e 1 das duas opções de projeto abaixo.\nO objetivo de ambas as opções é escrever uma consulta SQL que leia o CSV e filtre os dados. A consulta deve usar WHERE para selecionar apenas as linhas que correspondam à UF escolhida E ao tipo de cliente ('PF' ou 'PJ').\nOpção 1: Extração de Micro-Segmentos de Risco (Pessoa Física)\n\nObjetivo: Preparar o dataset de clientes Pessoa Física (PF) para uma futura análise de risco e segmentação.\nFiltro Requerido: cliente = 'PF' (além da UF escolhida).\n\nOpção 2: Extração de Risco Setorial (Pessoa Jurídica)\n\nObjetivo: Preparar o dataset de clientes Pessoa Jurídica (PJ) para uma futura análise de risco dos diferentes setores da economia (CNAE).\nFiltro Requerido: cliente = 'PJ' (além da UF escolhida).\n\nEntrega: Produza um relatório em pdf gerado em Quarto que contenha:\n\nQual das 2 opções foi escolhida e qual a UF (Estado) selecionada.\nO script R completo e comentado no documento Quarto. Nesta tarefa, o código SQL dentro do R é a parte principal do trabalho.\nA saída da consulta no R. Você deve usar as funções glimpse() e summary() no dataframe resultante para provar que os filtros foram aplicados corretamente.\nO envio deve ser realizado pelo SIGAA.",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "4- Processamento *Out-of-Core*"
-    ]
-  },
-  {
-    "objectID": "aulas/05-pre-processamento_de_dados.html",
-    "href": "aulas/05-pre-processamento_de_dados.html",
-    "title": "Conteúdo 5",
-    "section": "",
-    "text": "O pilar fundamental de qualquer modelo de mineração é a qualidade dos seus dados, reconhecendo o princípio de que entradas de baixa qualidade geram resultados de baixa qualidade (Garbage In, Garbage Out). Esta aula explora os desafios comuns encontrados em dados brutos — como ruído, inconsistências, dados faltantes e heterogeneidade — e introduz o pipeline de pré-processamento como um fluxo de trabalho estruturado para diagnosticar e remediar esses problemas. O processo se inicia pela base, com a classificação correta dos tipos de atributos (nominais, ordinais, intervalares e racionais) para definir as operações válidas. A partir daí, o pipeline detalha as etapas essenciais de tratamento de inconsistências (padronização e validação), estratégias para valores ausentes (da remoção simples à imputação preditiva), suavização de ruído (usando técnicas como binning), superação dos desafios da integração de dados (conflitos, redundância e identificação de entidades), aplicação de métodos de transformação (normalização Z-score, Min-Max, dummy coding) e o uso de técnicas de redução de dados (como PCA e seleção de atributos). Dominar este pipeline é um passo indispensável para garantir que os algoritmos de machine learning operem com máxima eficiência e que os resultados da análise sejam confiáveis, precisos e robustos.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "5- Pré-Processamento de Dados"
-    ]
-  },
-  {
-    "objectID": "aulas/05-pre-processamento_de_dados.html#pré-processamento-de-dados",
-    "href": "aulas/05-pre-processamento_de_dados.html#pré-processamento-de-dados",
-    "title": "Conteúdo 5",
-    "section": "",
-    "text": "O pilar fundamental de qualquer modelo de mineração é a qualidade dos seus dados, reconhecendo o princípio de que entradas de baixa qualidade geram resultados de baixa qualidade (Garbage In, Garbage Out). Esta aula explora os desafios comuns encontrados em dados brutos — como ruído, inconsistências, dados faltantes e heterogeneidade — e introduz o pipeline de pré-processamento como um fluxo de trabalho estruturado para diagnosticar e remediar esses problemas. O processo se inicia pela base, com a classificação correta dos tipos de atributos (nominais, ordinais, intervalares e racionais) para definir as operações válidas. A partir daí, o pipeline detalha as etapas essenciais de tratamento de inconsistências (padronização e validação), estratégias para valores ausentes (da remoção simples à imputação preditiva), suavização de ruído (usando técnicas como binning), superação dos desafios da integração de dados (conflitos, redundância e identificação de entidades), aplicação de métodos de transformação (normalização Z-score, Min-Max, dummy coding) e o uso de técnicas de redução de dados (como PCA e seleção de atributos). Dominar este pipeline é um passo indispensável para garantir que os algoritmos de machine learning operem com máxima eficiência e que os resultados da análise sejam confiáveis, precisos e robustos.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "5- Pré-Processamento de Dados"
-    ]
-  },
-  {
-    "objectID": "aulas/05-pre-processamento_de_dados.html#aplicações",
-    "href": "aulas/05-pre-processamento_de_dados.html#aplicações",
-    "title": "Conteúdo 5",
-    "section": "Aplicações",
-    "text": "Aplicações\nExemplo 1: Como exemplo de aplicação iremos usar os mesmos dados da aula anterior, em que usamos dados do Sistema de Informação sobre Mortalidade (SIM) e do IBGE. O código R pode ser baixado aqui. Os dados estão disponíveis em:\n\nMortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM): https://opendatasus.saude.gov.br/dataset/sim\nEstimativas de população residente por município de 2024: http://sidra.ibge.gov.br/tabela/6579\n\nExemplo 2: Também temos outro código em R para outro pr-é-processamento de dados. O arquivo com o código R e os dados podem ser baixados aqui.",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "5- Pré-Processamento de Dados"
-    ]
-  },
-  {
-    "objectID": "aulas/05-pre-processamento_de_dados.html#projeto-2-pré-processamento-de-dados-para-modelagem-de-risco",
-    "href": "aulas/05-pre-processamento_de_dados.html#projeto-2-pré-processamento-de-dados-para-modelagem-de-risco",
-    "title": "Conteúdo 5",
-    "section": "Projeto 2 – Pré-Processamento de Dados para Modelagem de Risco",
-    "text": "Projeto 2 – Pré-Processamento de Dados para Modelagem de Risco\nVocê agora atua como Cientista de Dados Júnior no mesmo time do Projeto 1. Seu trabalho começa onde o Projeto 1 terminou: com o dataframe filtrado do SCR.data.\nO objetivo desta etapa é limpar, padronizar, transformar os dados para prepará-los para modelagem estatística ou machine learning. O projeto é INDIVIDUAL.\nPrazo: Próxima aula.\nTarefa: Você deve reutilizar exatamente o dataframe final obtido no Projeto 1 (com PF ou PJ e UF filtrados). Caso tenha cometido algum erro no Projeto 1, você pode corrigi-lo agora – mas deve declarar isso no relatório. O foco agora é limpeza e preparação, não precisa colocar o que já foi feito no Projeto 1.\nFaça o pré-processamento dos dados que você organizou no Projeto 1. O dataframe resultante deve passar por no mínimo uma dessas etapas de pré-processamento, sendo obrigatória a etapa de Normalização:\n\nTratamento de valores ausentes usando imputação ou remoção\nCriação de variáveis derivadas log-transform, dummies, faixas etárias, grupos de risco, etc.\nDetecção de outliers, não precisa removê-los\nPadronização de nomes/renomeação de colunas se necessário\nChecagem de qualidade porcentagem de NAs por coluna\nNormalização/padronização z-score (obrigatório)\n\nEntrega: Produza um relatório em pdf gerado em Quarto que contenha:\n\nO script R completo e comentado no documento Quarto.\nAs saídas do R.\nDocumentação do dicionário de variáveis da tabela obtida (dataframe) com nome, tipo de variável e descrição.\nO envio deve ser realizado pelo SIGAA.",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "5- Pré-Processamento de Dados"
-    ]
-  },
-  {
-    "objectID": "aulas/08-regressao_linear.html",
-    "href": "aulas/08-regressao_linear.html",
-    "title": "Conteúdo 8",
-    "section": "",
-    "text": "Nesta aula, entramos no universo da Aprendizagem Supervisionada explorando a Regressão Linear sob duas óticas fundamentais: a Inferência, focada em explicar relações estatísticas e significância de variáveis, e a Predição, voltada para a capacidade de generalização do modelo em dados inéditos.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 3: Métodos Supervisionados",
-      "8- Regressão Linear"
-    ]
-  },
-  {
-    "objectID": "aulas/08-regressao_linear.html#regressão-linear",
-    "href": "aulas/08-regressao_linear.html#regressão-linear",
-    "title": "Conteúdo 8",
-    "section": "",
-    "text": "Nesta aula, entramos no universo da Aprendizagem Supervisionada explorando a Regressão Linear sob duas óticas fundamentais: a Inferência, focada em explicar relações estatísticas e significância de variáveis, e a Predição, voltada para a capacidade de generalização do modelo em dados inéditos.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 3: Métodos Supervisionados",
-      "8- Regressão Linear"
-    ]
-  },
-  {
-    "objectID": "aulas/08-regressao_linear.html#aplicações",
-    "href": "aulas/08-regressao_linear.html#aplicações",
-    "title": "Conteúdo 8",
-    "section": "Aplicações",
-    "text": "Aplicações\nOs arquivos contendo exemplos com códigos em R e os dados podem ser baixados aqui.",
-    "crumbs": [
-      "Aulas",
-      "Parte 3: Métodos Supervisionados",
-      "8- Regressão Linear"
-    ]
-  },
-  {
-    "objectID": "aulas/01-Apresentacao_da_disciplina.html",
-    "href": "aulas/01-Apresentacao_da_disciplina.html",
-    "title": "Conteúdo 1",
-    "section": "",
-    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nVídeo da aula:",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "1- Apresentação da Disciplina"
-    ]
-  },
-  {
-    "objectID": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
-    "href": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
-    "title": "Conteúdo 1",
-    "section": "",
-    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nVídeo da aula:",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "1- Apresentação da Disciplina"
-    ]
-  },
-  {
-    "objectID": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html",
-    "href": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html",
-    "title": "Conteúdo 6",
-    "section": "",
-    "text": "Esta aula oferece um guia prático sobre algoritmos de clusterização particionada, com foco em como selecionar o método correto com base na natureza dos seus dados. Partindo do clássico K-Means para dados numéricos, exploramos suas limitações (como a sensibilidade a outliers) e introduz alternativas robustas como o K-Medians e o K-Medoids (PAM). A lógica é então expandida para lidar com dados puramente categóricos, através do K-Modes e da Distância de Hamming, e para dados mistos complexos, onde compara as abordagens do K-Prototypes e a flexível combinação da Distância de Gower com K-Medoids. Abordamos também a questão essencial de como determinar o número ideal de clusters (k) utilizando técnicas de validação populares, como o Método do Cotovelo (WCSS), a Silhueta Média e a Estatística Gap.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 2: Métodos Não Supervisionados",
-      "6- Agrupamento com K-Means e Métodos Relacionados"
-    ]
-  },
-  {
-    "objectID": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html#agrupamento-com-k-means-e-métodos-relacionados",
-    "href": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html#agrupamento-com-k-means-e-métodos-relacionados",
-    "title": "Conteúdo 6",
-    "section": "",
-    "text": "Esta aula oferece um guia prático sobre algoritmos de clusterização particionada, com foco em como selecionar o método correto com base na natureza dos seus dados. Partindo do clássico K-Means para dados numéricos, exploramos suas limitações (como a sensibilidade a outliers) e introduz alternativas robustas como o K-Medians e o K-Medoids (PAM). A lógica é então expandida para lidar com dados puramente categóricos, através do K-Modes e da Distância de Hamming, e para dados mistos complexos, onde compara as abordagens do K-Prototypes e a flexível combinação da Distância de Gower com K-Medoids. Abordamos também a questão essencial de como determinar o número ideal de clusters (k) utilizando técnicas de validação populares, como o Método do Cotovelo (WCSS), a Silhueta Média e a Estatística Gap.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 2: Métodos Não Supervisionados",
-      "6- Agrupamento com K-Means e Métodos Relacionados"
-    ]
-  },
-  {
-    "objectID": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html#aplicações",
-    "href": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html#aplicações",
-    "title": "Conteúdo 6",
-    "section": "Aplicações",
-    "text": "Aplicações\nA aplicaçãos dos métodos no R usam diferentes bases de dados. Os arquivos contendo os códigos e os dados podem ser baixados aqui.",
-    "crumbs": [
-      "Aulas",
-      "Parte 2: Métodos Não Supervisionados",
-      "6- Agrupamento com K-Means e Métodos Relacionados"
-    ]
-  },
-  {
-    "objectID": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html#projeto-3-segmentação-de-clientes-e-análise-de-risco",
-    "href": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html#projeto-3-segmentação-de-clientes-e-análise-de-risco",
-    "title": "Conteúdo 6",
-    "section": "Projeto 3 – Segmentação de Clientes e Análise de Risco",
-    "text": "Projeto 3 – Segmentação de Clientes e Análise de Risco\nVocê continua atuando como Cientista de Dados Júnior. No Projeto 2, você finalizou a etapa de pré-processamento dos dados do SCR, resultando em um dataframe limpo, transformado e com as variáveis numéricas padronizadas (z-score).\nAgora queremos que você realize a próxima fase: a segmentação não supervisionada desses clientes.\nProblema de Negócio (A Solicitação do “Banco”): Não podemos tratar todos os clientes de crédito da mesma forma. Precisamos que você use técnicas de data science para “descobrir” os grupos (clusters) naturais que existem em no portfólio que você está usando. Queremos saber:\n\nQuantos perfis de clientes realmente temos?\nQuais são as características que definem cada perfil? (Ex: ‘Jovens de alto risco’, ‘Empresas estáveis de baixa alavancagem’, ‘Clientes em dia, mas com crédito imobiliário’?)\nCom base nesses perfis, que ação estratégica podemos tomar para cada um?”\n\nTarefa: Utilizando o dataframe final padronizado do Projeto 2, seu trabalho é realizar uma análise de clusterização. O projeto é INDIVIDUAL.\nPrazo: Próxima aula.\nEntrega: Você deve produzir um Relatório de Segmentação de Clientes em PDF (gerado via Quarto). Este relatório deve ser escrito em linguagem de negócios, como se fosse ser lido por um gerente de risco de crédito que não é um especialista em estatística.\n\nO código R completo e comentado deve ser incluído ao final do documento, em um Apêndice.\n\n\nEstrutura Obrigatória do Relatório\nSeu documento Quarto deve seguir esta estrutura para ser considerado profissional:\n\nSumário Executivo\n\nResponda diretamente à solicitação do “banco”.\nEx: “Nossa análise do portfólio de crédito revelou a existência de [K] perfis de clientes distintos. Os grupos mais relevantes são [Nome do Cluster 1, ex: ‘Risco Emergente’] e [Nome do Cluster 2, ex: ‘Conservadores de Baixa Dívida’]. Recomendamos ações imediatas de monitoramento para o Cluster 1 e foco em vendas de novos produtos para o Cluster 2. Os detalhes da análise seguem.”\n\nIntrodução e Objetivo\n\nBreve descrição do problema de negócio (a necessidade de segmentar clientes) e o objetivo do projeto (usar clusterização para encontrar perfis acionáveis).\n\nMetodologia de Segmentação\n\n3.1. Fonte de Dados: Descreva brevemente os dados de entrada (ex: “O dataframe padronizado do Projeto 2, contendo [N] observações e [P] variáveis selecionadas…”).\n3.2. Justificativa do Algoritmo (Ponto-Chave): Aqui, você deve usar o conteúdo da nossa aula. Analise a natureza do seu dataframe do Projeto 2.\n\nEle é 100% numérico?\nEle é 100% categórico?\nEle é Misto (com variáveis numéricas padronizadas e variáveis categóricas/dummies)?\nOs dados possuem muitos outliers?\nCom base nessa resposta, justifique sua escolha do método de clusterização.\nEx: “Como nossos dados contêm uma mistura de variáveis numéricas (ex: vencido_padronizado, idade_padronizada) e categóricas (ex: porte_empresa, uf), o uso de K-Means (apenas numérico) ou K-Modes (apenas categórico) é inadequado. Portanto, optamos pelo K-Prototypes, um algoritmo híbrido que lida nativamente com ambos os tipos de dados, combinando a Distância Euclidiana (para os dados já padronizados) e a Distância de Hamming.”\n\n3.3. Definição do Número de Grupos (k): Apresente o(s) gráfico(s) (Método do Cotovelo e/ou Silhueta) que você usou para escolher o número k de clusters.\n\nJustifique a escolha (ex: “O Método da Silhueta Média atingiu seu pico em k=4, indicando que esta é a separação mais coesa e distinta…”).\n\n\nResultados: Os Perfis de Clientes (Personas)\n\nEsta é a parte principal do relatório.\nPara cada um dos k clusters, crie uma “persona” ou perfil.\nDê um nome acionável a cada cluster (ex: “Cluster 1: Os Inadimplentes Recentes”, “Cluster 2: Os Super-Endividados”, “Cluster 3: O Cliente Padrão”).\nApresente uma tabela ou gráficos que mostrem as médias (para numéricos) e as modas (para categóricos) de cada cluster (como fizemos no exercício do K-Prototypes).\n\nRecomendações Estratégicas\n\nPara cada “persona” que você criou, sugira uma ação de negócio que o banco pode tomar.\nEx. Cluster 1 (‘Inadimplentes Recentes’): “Ação: Encaminhar imediatamente para a esteira de renegociação/cobrança. Não oferecer novos produtos de crédito.”\nEx. Cluster 2 (‘Cliente Padrão’): “Ação: Focar em cross-sell. Oferecer seguros, consórcios ou financiamento imobiliário. Baixo risco, alto potencial de engajamento.”\n\nApêndice: Script R Completo\n\nAo final do documento, insira uma seção “Apêndice” e coloque seu script R completo e comentado.\nUse echo: true e eval: false para os chunks de código no apêndice, garantindo que o relatório principal (seções 1-5) esteja limpo e focado nos resultados (sem código).",
-    "crumbs": [
-      "Aulas",
-      "Parte 2: Métodos Não Supervisionados",
-      "6- Agrupamento com K-Means e Métodos Relacionados"
-    ]
-  },
-  {
-    "objectID": "aulas/03-introducao_ao_quarto.html",
-    "href": "aulas/03-introducao_ao_quarto.html",
-    "title": "Conteúdo 3",
-    "section": "",
-    "text": "Nesta aula, iniciamos nossa jornada no Quarto, a plataforma unificada que é o padrão atual para comunicação científica no RStudio. Exploramos a estrutura de um documento .qmd, o papel do cabeçalho YAML e o uso de Markdown para formatação. Aprendemos a criar, editar e renderizar documentos que integram texto, blocos de código R, tabelas, gráficos e referências. A aula mostra como o Quarto permite gerar diversos formatos de saída (como HTML, PDF e slides) a partir de um único arquivo. Esse é o ponto de partida para desenvolver habilidades de comunicação eficaz, garantir a reprodutibilidade das análises e adotar boas práticas na documentação de projetos ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nPara auxiliar na prática, também está disponível um modelo de exemplo em Quarto para download.",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "3- Introdução ao Quarto"
-    ]
-  },
-  {
-    "objectID": "aulas/03-introducao_ao_quarto.html#introdução-ao-quarto",
-    "href": "aulas/03-introducao_ao_quarto.html#introdução-ao-quarto",
-    "title": "Conteúdo 3",
-    "section": "",
-    "text": "Nesta aula, iniciamos nossa jornada no Quarto, a plataforma unificada que é o padrão atual para comunicação científica no RStudio. Exploramos a estrutura de um documento .qmd, o papel do cabeçalho YAML e o uso de Markdown para formatação. Aprendemos a criar, editar e renderizar documentos que integram texto, blocos de código R, tabelas, gráficos e referências. A aula mostra como o Quarto permite gerar diversos formatos de saída (como HTML, PDF e slides) a partir de um único arquivo. Esse é o ponto de partida para desenvolver habilidades de comunicação eficaz, garantir a reprodutibilidade das análises e adotar boas práticas na documentação de projetos ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nPara auxiliar na prática, também está disponível um modelo de exemplo em Quarto para download.",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "3- Introdução ao Quarto"
-    ]
-  },
-  {
-    "objectID": "aulas/02-introducao_ao_rstudio+github.html",
-    "href": "aulas/02-introducao_ao_rstudio+github.html",
-    "title": "Conteúdo 2",
-    "section": "",
-    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "2- Introdução ao RStudio + GitHub"
-    ]
-  },
-  {
-    "objectID": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
-    "href": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
-    "title": "Conteúdo 2",
-    "section": "",
-    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
-    "crumbs": [
-      "Aulas",
-      "Parte 1: Fundamentos",
-      "2- Introdução ao RStudio + GitHub"
-    ]
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#objetivo-da-aula",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#objetivo-da-aula",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Objetivo da aula",
-    "text": "Objetivo da aula\n\nEntender o que é e para que serve o  e o .\nSaber como criar um repositório de projeto.\nAtualizar repositório no  via ."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "O que é o ?",
-    "text": "O que é o ?\n\nGit é uma ferramenta que ajuda a controlar e gerenciar mudanças em arquivos ao longo do tempo.\nEle permite que você salve versões diferentes de um trabalho à medida que faz alterações, de modo que possa voltar para versões anteriores se algo der errado ou se precisar revisar mudanças feitas."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Por que o  é importante?",
-    "text": "Por que o  é importante?\n\nEvita perda de trabalho: Se você estiver escrevendo código ou criando qualquer tipo de documento, o Git permite que você salve diferentes versões do seu trabalho. Assim, se algo der errado, você pode voltar a uma versão anterior.\nFacilita o trabalho em equipe: Quando várias pessoas estão trabalhando no mesmo projeto, o Git permite que cada uma trabalhe de forma independente e depois una os trabalhos de maneira organizada. Isso evita que as alterações de uma pessoa sobrescrevam as de outra.\nOrganização e rastreamento: O Git mantém um histórico completo de todas as mudanças feitas em um projeto, permitindo saber quem fez o quê e quando."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "O que é o ?",
-    "text": "O que é o ?\n\nGitHub é uma plataforma online que armazena e organiza projetos que utilizam Git.\nEle permite que você publique seu código, compartilhe arquivos e colabore com outras pessoas em projetos de forma fácil e eficiente."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Por que o  é importante?",
-    "text": "Por que o  é importante?\n\nArmazenamento seguro: Com o GitHub, seus projetos ficam seguramente armazenados na nuvem. Isso significa que você pode acessar seu trabalho de qualquer lugar e sempre terá uma cópia segura.\nColaboração em equipe: GitHub permite que várias pessoas trabalhem no mesmo projeto ao mesmo tempo. Cada pessoa pode fazer mudanças no código, e o GitHub ajuda a gerenciar essas mudanças sem que uma sobrescreva a outra.\nHistórico e transparência: O GitHub mantém um histórico completo de todas as alterações feitas no seu projeto. Isso permite ver quem fez o quê e quando, facilitando o acompanhamento e revisão do trabalho de equipe."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#como-e-por-que-usar-o-na-disciplina",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#como-e-por-que-usar-o-na-disciplina",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Como e por que usar o  na disciplina?",
-    "text": "Como e por que usar o  na disciplina?\n\nVocê receberá um script em R a cada aula\nDurante a aula, vai editar esse script no RStudio, testando e resolvendo problemas\nNo final da aula, envia suas alterações para seu repositório (push) — tudo salvo e organizado\nPode acessar seu trabalho de qualquer lugar, com segurança e histórico garantido\n\n\nGitHub será seu caderno digital de códigos — inteligente, seguro e acessível para a disciplina"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#primeiros-passos",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#primeiros-passos",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Primeiros passos",
-    "text": "Primeiros passos\n\nBaixar e instalar o Git: https://happygitwithr.com/install-git.html\nCriar uma conta no GitHub: https://github.com/\nCriar um reposítório Git\nClone esse repositório para sua máquina usando o RStudio\nTrabalhe no projeto e envie as atualizações de volta ao GitHub\n\n\nDesenvolva o hábito de buscar soluções por conta própria. Isso faz parte do dia a dia de quem trabalha com dados. Comece agora a desenvolver essa autonomia."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Criando um repositório  no ",
-    "text": "Criando um repositório  no \n\nApós fazer login no GitHub, Clique em + no canto superior direito\nEm seguida, clique em New repository"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Criando um repositório  no ",
-    "text": "Criando um repositório  no \n\n\n\nEm Repository name dê um anome ao repositóro\nEm Description faça uma descrição do repositório\nMarque a opção Public ou Private\nEm Initialize this repository with: marque a opção Add a README file\nClique em Create repository"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#section",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#section",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "",
-    "text": "Com o repositório já criado no GitHub, agora vamos usar o RStudio para ligar o projeto local ao repositório remoto.\nAssim, todas as alterações feitas no RStudio poderão ser salvas na nuvem e versionadas automaticamente.\nPara enviar essas alterações ao GitHub, será necessário se autenticar — com login e senha ou com um token de acesso.\n\nVamos ver como criar um token de acesso no GitHub."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Criando um token de acesso no ",
-    "text": "Criando um token de acesso no \n\n\n\nEstando logado no GitHub, clique na sua foto de perfil no canto superior direito\n\nClique em Settings"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Criando um token de acesso no ",
-    "text": "Criando um token de acesso no \n\nNo canto inferior esquerdo da tela clique em Developer settings"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-2",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-2",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Criando um token de acesso no ",
-    "text": "Criando um token de acesso no \n\n\n\nNo canto superior esquerdo da tela clique em Personal access tokens\nClique em Tokens (classic)\n\n\n\n\n\n\n\nEm Expiration selecione a data em que o token irá expirar\nMarque todas as opções em Select scopes\nClique em Generate token\n\n\nO token será gerado uma única vez. Guarde-o com cuidado, pois não será possível visualizá-lo novamente no GitHub. Você usará esse token quando for solicitada autenticação."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": " + : integração prática",
-    "text": "+ : integração prática\n\nO RStudio possui integração nativa com o Git e GitHub\n\nOu seja, é possível sincronizar um repositório GitHub a um repositório local\nIsso significa que você pode ligar o repositório do GitHub (na nuvem) ao seu projeto no computador. Assim, o que você altera localmente pode ser enviado para o GitHub — e vice-versa.\n\nPara isso, seguimos os seguintes passos:"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": " + : integração prática",
-    "text": "+ : integração prática\n\nFazemos uma cópia do repositório do GitHub na máquina local usando o RStudio.\n\nQuando já há uma cópia na máquina, começamos o trabalho atualizando o projeto local com as alterações que estão no GitHub (pull).\n\nTrabalhamos normalmente no projeto: scripts, análises, relatórios…\nUsamos o Git para registrar as alterações (commit) e enviar para o GitHub (push)."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": " + : criando o projeto local",
-    "text": "+ : criando o projeto local\n\n\n\nNo canto superior direito do RStudio clique em File &gt; New Project\nClique em Version control"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": " + : criando o projeto local",
-    "text": "+ : criando o projeto local\n\nClique em Git"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-2",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-2",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": " + : criando o projeto local",
-    "text": "+ : criando o projeto local\n\n\n\nNo campo Repository URL, cole a URL do repositório que você criou no GitHub\nEm Create project as subdirectory of, escolha o diretório em que o repositório do GitHub será copiado na máquina local\nClique em Create Project"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-3",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-3",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": " + : criando o projeto local",
-    "text": "+ : criando o projeto local\n\nSe você estiver clonando um repositório público, o RStudio irá criar uma cópia do projeto localmente, sem exigir login.\nSe o repositório for privado, o GitHub pedirá que você se autentique (login e senha ou token).\n\n\n\nUma vez que já existe o projeto na máquina local, você só precisa acessar o diretório local (pasta) e clicar no arquivo com extensão .Rproj para abrir o projeto no Rstudio, sem necessidade de clonar o projeto novamente na máquina."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nDepois de salvar as atualizações do seu projeto local, você pode enviar essas alterações para o repositório no GitHub diretamente pelo RStudio. Você deve fazer:\n\n\nNo quadrante superior direito clique em Commit"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-1",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-1",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nRStudio mostra os arquivos que foram alterados. Selecione-os.\nNo campo Commit message escreva um comentário contendo o que foi atualizado (sugestão: não use caracteres especiais ou acentos)\nClique em Commit"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-2",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-2",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-3",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-3",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nApós finalizado o envio, clique em Close"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-4",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-4",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nNote que irá aparecer a mensagem Your branch is ahead of 'origin/master' by 1 commit (isto indica que você tem alterações ainda não enviadas ao GitHub)\nClique em Push"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-5",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-5",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nEm máquinas com Windows o Rstudio redirecionará para você fazer login na sua conta GitHub no seu navegador. Em Linux preencha o campo Username for 'https://github.com' coloque login e clique em OK"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-6",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-6",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nAinda em Linux, no campo Personal Access Token insira o token criado no GitHub\nClique em OK"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-7",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-7",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Enviando alterações para o  via ",
-    "text": "Enviando alterações para o  via \n\nCaso apareça a mensagem abaixo, os arquivos foram atualizados no repositório do GitHub."
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#material-extra",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#material-extra",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Material Extra",
-    "text": "Material Extra\nAprofunde o que vimos em aula com esses vídeos no YouTube:\n\nCurso completo de Git e GitHub: http://tiny.cc/GitGitHub:\nIntegração do RStudio com o GitHub:\n\nParte 1: http://tiny.cc/RStudioGitHub1\nParte 2: http://tiny.cc/RStudioGitHub2"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#ganhos-da-aula",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#ganhos-da-aula",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Ganhos da aula",
-    "text": "Ganhos da aula\n\nVersionamento de código e arquivos com GitHub\nIntegração do RStudio com GitHub\nExperiência com ferramentas do mercado"
-  },
-  {
-    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#atividade-extraclasse",
-    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#atividade-extraclasse",
-    "title": "Introdução ao RStudio + GitHub",
-    "section": "Atividade extraclasse",
-    "text": "Atividade extraclasse\nConfigure seu ambiente de trabalho pessoal\nObjetivo\nDeixar seu computador pessoal pronto para continuar os trabalhos da disciplina fora do laboratório, de forma independente.\nEtapas:\n\nInstalar o Git: https://happygitwithr.com/install-git.html\nInstalar o R: https://cran.r-project.org\nInstalar o RStudio: https://posit.co/download/rstudio-desktop\n\nCriar um repositório da disciplina do GitHub, clonar via RStudio para a sua máquina local e fazer seu primeiro commit."
-  },
-  {
     "objectID": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#canais-de-comunicação-e-materiais-da-disciplina",
     "href": "slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html#canais-de-comunicação-e-materiais-da-disciplina",
     "title": "Apresentação da Disciplina e Introdução à mineração de dados",
@@ -1731,6 +993,927 @@
     "title": "Apresentação da Disciplina e Introdução à mineração de dados",
     "section": "A Mesma Ideia, Nomes Diferentes",
     "text": "A Mesma Ideia, Nomes Diferentes\n\nTreinamento (Training)\n\nAjuste do Modelo ou Estimação de Parâmetros\nÉ o processo de usar os dados para encontrar os melhores coeficientes (parâmetros) do modelo (Ex: método de mínimos quadrados em uma regressão).\n\nDiferença sutil no foco:\n\nA Estatística Clássica frequentemente enfatiza a inferência, ou seja, entender e explicar a relação entre as variáveis.\nA Mineração de Dados e Aprendizagem de Máquina geralmente priorizam a capacidade de predição do modelo em dados futuros, mesmo que o modelo seja uma “caixa-preta”."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#objetivo-da-aula",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#objetivo-da-aula",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Objetivo da aula",
+    "text": "Objetivo da aula\n\nEntender o que é e para que serve o  e o .\nSaber como criar um repositório de projeto.\nAtualizar repositório no  via ."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "O que é o ?",
+    "text": "O que é o ?\n\nGit é uma ferramenta que ajuda a controlar e gerenciar mudanças em arquivos ao longo do tempo.\nEle permite que você salve versões diferentes de um trabalho à medida que faz alterações, de modo que possa voltar para versões anteriores se algo der errado ou se precisar revisar mudanças feitas."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Por que o  é importante?",
+    "text": "Por que o  é importante?\n\nEvita perda de trabalho: Se você estiver escrevendo código ou criando qualquer tipo de documento, o Git permite que você salve diferentes versões do seu trabalho. Assim, se algo der errado, você pode voltar a uma versão anterior.\nFacilita o trabalho em equipe: Quando várias pessoas estão trabalhando no mesmo projeto, o Git permite que cada uma trabalhe de forma independente e depois una os trabalhos de maneira organizada. Isso evita que as alterações de uma pessoa sobrescrevam as de outra.\nOrganização e rastreamento: O Git mantém um histórico completo de todas as mudanças feitas em um projeto, permitindo saber quem fez o quê e quando."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#o-que-é-o-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "O que é o ?",
+    "text": "O que é o ?\n\nGitHub é uma plataforma online que armazena e organiza projetos que utilizam Git.\nEle permite que você publique seu código, compartilhe arquivos e colabore com outras pessoas em projetos de forma fácil e eficiente."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#por-que-o-é-importante-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Por que o  é importante?",
+    "text": "Por que o  é importante?\n\nArmazenamento seguro: Com o GitHub, seus projetos ficam seguramente armazenados na nuvem. Isso significa que você pode acessar seu trabalho de qualquer lugar e sempre terá uma cópia segura.\nColaboração em equipe: GitHub permite que várias pessoas trabalhem no mesmo projeto ao mesmo tempo. Cada pessoa pode fazer mudanças no código, e o GitHub ajuda a gerenciar essas mudanças sem que uma sobrescreva a outra.\nHistórico e transparência: O GitHub mantém um histórico completo de todas as alterações feitas no seu projeto. Isso permite ver quem fez o quê e quando, facilitando o acompanhamento e revisão do trabalho de equipe."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#como-e-por-que-usar-o-na-disciplina",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#como-e-por-que-usar-o-na-disciplina",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Como e por que usar o  na disciplina?",
+    "text": "Como e por que usar o  na disciplina?\n\nVocê receberá um script em R a cada aula\nDurante a aula, vai editar esse script no RStudio, testando e resolvendo problemas\nNo final da aula, envia suas alterações para seu repositório (push) — tudo salvo e organizado\nPode acessar seu trabalho de qualquer lugar, com segurança e histórico garantido\n\n\nGitHub será seu caderno digital de códigos — inteligente, seguro e acessível para a disciplina"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#primeiros-passos",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#primeiros-passos",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Primeiros passos",
+    "text": "Primeiros passos\n\nBaixar e instalar o Git: https://happygitwithr.com/install-git.html\nCriar uma conta no GitHub: https://github.com/\nCriar um reposítório Git\nClone esse repositório para sua máquina usando o RStudio\nTrabalhe no projeto e envie as atualizações de volta ao GitHub\n\n\nDesenvolva o hábito de buscar soluções por conta própria. Isso faz parte do dia a dia de quem trabalha com dados. Comece agora a desenvolver essa autonomia."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um repositório  no ",
+    "text": "Criando um repositório  no \n\nApós fazer login no GitHub, Clique em + no canto superior direito\nEm seguida, clique em New repository"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-repositório-no-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um repositório  no ",
+    "text": "Criando um repositório  no \n\n\n\nEm Repository name dê um anome ao repositóro\nEm Description faça uma descrição do repositório\nMarque a opção Public ou Private\nEm Initialize this repository with: marque a opção Add a README file\nClique em Create repository"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#section",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#section",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "",
+    "text": "Com o repositório já criado no GitHub, agora vamos usar o RStudio para ligar o projeto local ao repositório remoto.\nAssim, todas as alterações feitas no RStudio poderão ser salvas na nuvem e versionadas automaticamente.\nPara enviar essas alterações ao GitHub, será necessário se autenticar — com login e senha ou com um token de acesso.\n\nVamos ver como criar um token de acesso no GitHub."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um token de acesso no ",
+    "text": "Criando um token de acesso no \n\n\n\nEstando logado no GitHub, clique na sua foto de perfil no canto superior direito\n\nClique em Settings"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um token de acesso no ",
+    "text": "Criando um token de acesso no \n\nNo canto inferior esquerdo da tela clique em Developer settings"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-2",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-um-token-de-acesso-no-2",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Criando um token de acesso no ",
+    "text": "Criando um token de acesso no \n\n\n\nNo canto superior esquerdo da tela clique em Personal access tokens\nClique em Tokens (classic)\n\n\n\n\n\n\n\nEm Expiration selecione a data em que o token irá expirar\nMarque todas as opções em Select scopes\nClique em Generate token\n\n\nO token será gerado uma única vez. Guarde-o com cuidado, pois não será possível visualizá-lo novamente no GitHub. Você usará esse token quando for solicitada autenticação."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : integração prática",
+    "text": "+ : integração prática\n\nO RStudio possui integração nativa com o Git e GitHub\n\nOu seja, é possível sincronizar um repositório GitHub a um repositório local\nIsso significa que você pode ligar o repositório do GitHub (na nuvem) ao seu projeto no computador. Assim, o que você altera localmente pode ser enviado para o GitHub — e vice-versa.\n\nPara isso, seguimos os seguintes passos:"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#integração-prática-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : integração prática",
+    "text": "+ : integração prática\n\nFazemos uma cópia do repositório do GitHub na máquina local usando o RStudio.\n\nQuando já há uma cópia na máquina, começamos o trabalho atualizando o projeto local com as alterações que estão no GitHub (pull).\n\nTrabalhamos normalmente no projeto: scripts, análises, relatórios…\nUsamos o Git para registrar as alterações (commit) e enviar para o GitHub (push)."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : criando o projeto local",
+    "text": "+ : criando o projeto local\n\n\n\nNo canto superior direito do RStudio clique em File &gt; New Project\nClique em Version control"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : criando o projeto local",
+    "text": "+ : criando o projeto local\n\nClique em Git"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-2",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-2",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : criando o projeto local",
+    "text": "+ : criando o projeto local\n\n\n\nNo campo Repository URL, cole a URL do repositório que você criou no GitHub\nEm Create project as subdirectory of, escolha o diretório em que o repositório do GitHub será copiado na máquina local\nClique em Create Project"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-3",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#criando-o-projeto-local-3",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": " + : criando o projeto local",
+    "text": "+ : criando o projeto local\n\nSe você estiver clonando um repositório público, o RStudio irá criar uma cópia do projeto localmente, sem exigir login.\nSe o repositório for privado, o GitHub pedirá que você se autentique (login e senha ou token).\n\n\n\nUma vez que já existe o projeto na máquina local, você só precisa acessar o diretório local (pasta) e clicar no arquivo com extensão .Rproj para abrir o projeto no Rstudio, sem necessidade de clonar o projeto novamente na máquina."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nDepois de salvar as atualizações do seu projeto local, você pode enviar essas alterações para o repositório no GitHub diretamente pelo RStudio. Você deve fazer:\n\n\nNo quadrante superior direito clique em Commit"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-1",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-1",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nRStudio mostra os arquivos que foram alterados. Selecione-os.\nNo campo Commit message escreva um comentário contendo o que foi atualizado (sugestão: não use caracteres especiais ou acentos)\nClique em Commit"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-2",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-2",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-3",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-3",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nApós finalizado o envio, clique em Close"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-4",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-4",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nNote que irá aparecer a mensagem Your branch is ahead of 'origin/master' by 1 commit (isto indica que você tem alterações ainda não enviadas ao GitHub)\nClique em Push"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-5",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-5",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nEm máquinas com Windows o Rstudio redirecionará para você fazer login na sua conta GitHub no seu navegador. Em Linux preencha o campo Username for 'https://github.com' coloque login e clique em OK"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-6",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-6",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nAinda em Linux, no campo Personal Access Token insira o token criado no GitHub\nClique em OK"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-7",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#enviando-alterações-para-o-via-7",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Enviando alterações para o  via ",
+    "text": "Enviando alterações para o  via \n\nCaso apareça a mensagem abaixo, os arquivos foram atualizados no repositório do GitHub."
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#material-extra",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#material-extra",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Material Extra",
+    "text": "Material Extra\nAprofunde o que vimos em aula com esses vídeos no YouTube:\n\nCurso completo de Git e GitHub: http://tiny.cc/GitGitHub:\nIntegração do RStudio com o GitHub:\n\nParte 1: http://tiny.cc/RStudioGitHub1\nParte 2: http://tiny.cc/RStudioGitHub2"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#ganhos-da-aula",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#ganhos-da-aula",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Ganhos da aula",
+    "text": "Ganhos da aula\n\nVersionamento de código e arquivos com GitHub\nIntegração do RStudio com GitHub\nExperiência com ferramentas do mercado"
+  },
+  {
+    "objectID": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#atividade-extraclasse",
+    "href": "slides/02-introducao_ao_rstudio+github/02-introducao_ao_rstudio+github.html#atividade-extraclasse",
+    "title": "Introdução ao RStudio + GitHub",
+    "section": "Atividade extraclasse",
+    "text": "Atividade extraclasse\nConfigure seu ambiente de trabalho pessoal\nObjetivo\nDeixar seu computador pessoal pronto para continuar os trabalhos da disciplina fora do laboratório, de forma independente.\nEtapas:\n\nInstalar o Git: https://happygitwithr.com/install-git.html\nInstalar o R: https://cran.r-project.org\nInstalar o RStudio: https://posit.co/download/rstudio-desktop\n\nCriar um repositório da disciplina do GitHub, clonar via RStudio para a sua máquina local e fazer seu primeiro commit."
+  },
+  {
+    "objectID": "aulas/02-introducao_ao_rstudio+github.html",
+    "href": "aulas/02-introducao_ao_rstudio+github.html",
+    "title": "Conteúdo 2",
+    "section": "",
+    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "2- Introdução ao RStudio + GitHub"
+    ]
+  },
+  {
+    "objectID": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
+    "href": "aulas/02-introducao_ao_rstudio+github.html#introdução-ao-rstudio-github",
+    "title": "Conteúdo 2",
+    "section": "",
+    "text": "Nesta aula, damos nossos primeiros passos práticos na integração entre o RStudio e o GitHub, ferramentas essenciais para o trabalho moderno em ciência de dados. Exploramos o papel do Git no controle de versões e aprendemos a criar, conectar e atualizar repositórios de forma segura e organizada. A aula mostra como essas ferramentas permitem registrar a evolução dos projetos, trabalhar de qualquer lugar e manter um histórico completo das análises. Esse é o ponto de partida para desenvolver autonomia, reprodutibilidade e boas práticas de programação ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "2- Introdução ao RStudio + GitHub"
+    ]
+  },
+  {
+    "objectID": "aulas/03-introducao_ao_quarto.html",
+    "href": "aulas/03-introducao_ao_quarto.html",
+    "title": "Conteúdo 3",
+    "section": "",
+    "text": "Nesta aula, iniciamos nossa jornada no Quarto, a plataforma unificada que é o padrão atual para comunicação científica no RStudio. Exploramos a estrutura de um documento .qmd, o papel do cabeçalho YAML e o uso de Markdown para formatação. Aprendemos a criar, editar e renderizar documentos que integram texto, blocos de código R, tabelas, gráficos e referências. A aula mostra como o Quarto permite gerar diversos formatos de saída (como HTML, PDF e slides) a partir de um único arquivo. Esse é o ponto de partida para desenvolver habilidades de comunicação eficaz, garantir a reprodutibilidade das análises e adotar boas práticas na documentação de projetos ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nPara auxiliar na prática, também está disponível um modelo de exemplo em Quarto para download.",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "3- Introdução ao Quarto"
+    ]
+  },
+  {
+    "objectID": "aulas/03-introducao_ao_quarto.html#introdução-ao-quarto",
+    "href": "aulas/03-introducao_ao_quarto.html#introdução-ao-quarto",
+    "title": "Conteúdo 3",
+    "section": "",
+    "text": "Nesta aula, iniciamos nossa jornada no Quarto, a plataforma unificada que é o padrão atual para comunicação científica no RStudio. Exploramos a estrutura de um documento .qmd, o papel do cabeçalho YAML e o uso de Markdown para formatação. Aprendemos a criar, editar e renderizar documentos que integram texto, blocos de código R, tabelas, gráficos e referências. A aula mostra como o Quarto permite gerar diversos formatos de saída (como HTML, PDF e slides) a partir de um único arquivo. Esse é o ponto de partida para desenvolver habilidades de comunicação eficaz, garantir a reprodutibilidade das análises e adotar boas práticas na documentação de projetos ao longo da disciplina.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nPara auxiliar na prática, também está disponível um modelo de exemplo em Quarto para download.",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "3- Introdução ao Quarto"
+    ]
+  },
+  {
+    "objectID": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html",
+    "href": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html",
+    "title": "Conteúdo 6",
+    "section": "",
+    "text": "Esta aula oferece um guia prático sobre algoritmos de clusterização particionada, com foco em como selecionar o método correto com base na natureza dos seus dados. Partindo do clássico K-Means para dados numéricos, exploramos suas limitações (como a sensibilidade a outliers) e introduz alternativas robustas como o K-Medians e o K-Medoids (PAM). A lógica é então expandida para lidar com dados puramente categóricos, através do K-Modes e da Distância de Hamming, e para dados mistos complexos, onde compara as abordagens do K-Prototypes e a flexível combinação da Distância de Gower com K-Medoids. Abordamos também a questão essencial de como determinar o número ideal de clusters (k) utilizando técnicas de validação populares, como o Método do Cotovelo (WCSS), a Silhueta Média e a Estatística Gap.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 2: Métodos Não Supervisionados",
+      "6- Agrupamento com K-Means e Métodos Relacionados"
+    ]
+  },
+  {
+    "objectID": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html#agrupamento-com-k-means-e-métodos-relacionados",
+    "href": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html#agrupamento-com-k-means-e-métodos-relacionados",
+    "title": "Conteúdo 6",
+    "section": "",
+    "text": "Esta aula oferece um guia prático sobre algoritmos de clusterização particionada, com foco em como selecionar o método correto com base na natureza dos seus dados. Partindo do clássico K-Means para dados numéricos, exploramos suas limitações (como a sensibilidade a outliers) e introduz alternativas robustas como o K-Medians e o K-Medoids (PAM). A lógica é então expandida para lidar com dados puramente categóricos, através do K-Modes e da Distância de Hamming, e para dados mistos complexos, onde compara as abordagens do K-Prototypes e a flexível combinação da Distância de Gower com K-Medoids. Abordamos também a questão essencial de como determinar o número ideal de clusters (k) utilizando técnicas de validação populares, como o Método do Cotovelo (WCSS), a Silhueta Média e a Estatística Gap.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 2: Métodos Não Supervisionados",
+      "6- Agrupamento com K-Means e Métodos Relacionados"
+    ]
+  },
+  {
+    "objectID": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html#aplicações",
+    "href": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html#aplicações",
+    "title": "Conteúdo 6",
+    "section": "Aplicações",
+    "text": "Aplicações\nA aplicaçãos dos métodos no R usam diferentes bases de dados. Os arquivos contendo os códigos e os dados podem ser baixados aqui.",
+    "crumbs": [
+      "Aulas",
+      "Parte 2: Métodos Não Supervisionados",
+      "6- Agrupamento com K-Means e Métodos Relacionados"
+    ]
+  },
+  {
+    "objectID": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html#projeto-3-segmentação-de-clientes-e-análise-de-risco",
+    "href": "aulas/06-agrupamento_de_dados_com_k-means_e_metodos_relacionados.html#projeto-3-segmentação-de-clientes-e-análise-de-risco",
+    "title": "Conteúdo 6",
+    "section": "Projeto 3 – Segmentação de Clientes e Análise de Risco",
+    "text": "Projeto 3 – Segmentação de Clientes e Análise de Risco\nVocê continua atuando como Cientista de Dados Júnior. No Projeto 2, você finalizou a etapa de pré-processamento dos dados do SCR, resultando em um dataframe limpo, transformado e com as variáveis numéricas padronizadas (z-score).\nAgora queremos que você realize a próxima fase: a segmentação não supervisionada desses clientes.\nProblema de Negócio (A Solicitação do “Banco”): Não podemos tratar todos os clientes de crédito da mesma forma. Precisamos que você use técnicas de data science para “descobrir” os grupos (clusters) naturais que existem em no portfólio que você está usando. Queremos saber:\n\nQuantos perfis de clientes realmente temos?\nQuais são as características que definem cada perfil? (Ex: ‘Jovens de alto risco’, ‘Empresas estáveis de baixa alavancagem’, ‘Clientes em dia, mas com crédito imobiliário’?)\nCom base nesses perfis, que ação estratégica podemos tomar para cada um?”\n\nTarefa: Utilizando o dataframe final padronizado do Projeto 2, seu trabalho é realizar uma análise de clusterização. O projeto é INDIVIDUAL.\nPrazo: Próxima aula.\nEntrega: Você deve produzir um Relatório de Segmentação de Clientes em PDF (gerado via Quarto). Este relatório deve ser escrito em linguagem de negócios, como se fosse ser lido por um gerente de risco de crédito que não é um especialista em estatística.\n\nO código R completo e comentado deve ser incluído ao final do documento, em um Apêndice.\n\n\nEstrutura Obrigatória do Relatório\nSeu documento Quarto deve seguir esta estrutura para ser considerado profissional:\n\nSumário Executivo\n\nResponda diretamente à solicitação do “banco”.\nEx: “Nossa análise do portfólio de crédito revelou a existência de [K] perfis de clientes distintos. Os grupos mais relevantes são [Nome do Cluster 1, ex: ‘Risco Emergente’] e [Nome do Cluster 2, ex: ‘Conservadores de Baixa Dívida’]. Recomendamos ações imediatas de monitoramento para o Cluster 1 e foco em vendas de novos produtos para o Cluster 2. Os detalhes da análise seguem.”\n\nIntrodução e Objetivo\n\nBreve descrição do problema de negócio (a necessidade de segmentar clientes) e o objetivo do projeto (usar clusterização para encontrar perfis acionáveis).\n\nMetodologia de Segmentação\n\n3.1. Fonte de Dados: Descreva brevemente os dados de entrada (ex: “O dataframe padronizado do Projeto 2, contendo [N] observações e [P] variáveis selecionadas…”).\n3.2. Justificativa do Algoritmo (Ponto-Chave): Aqui, você deve usar o conteúdo da nossa aula. Analise a natureza do seu dataframe do Projeto 2.\n\nEle é 100% numérico?\nEle é 100% categórico?\nEle é Misto (com variáveis numéricas padronizadas e variáveis categóricas/dummies)?\nOs dados possuem muitos outliers?\nCom base nessa resposta, justifique sua escolha do método de clusterização.\nEx: “Como nossos dados contêm uma mistura de variáveis numéricas (ex: vencido_padronizado, idade_padronizada) e categóricas (ex: porte_empresa, uf), o uso de K-Means (apenas numérico) ou K-Modes (apenas categórico) é inadequado. Portanto, optamos pelo K-Prototypes, um algoritmo híbrido que lida nativamente com ambos os tipos de dados, combinando a Distância Euclidiana (para os dados já padronizados) e a Distância de Hamming.”\n\n3.3. Definição do Número de Grupos (k): Apresente o(s) gráfico(s) (Método do Cotovelo e/ou Silhueta) que você usou para escolher o número k de clusters.\n\nJustifique a escolha (ex: “O Método da Silhueta Média atingiu seu pico em k=4, indicando que esta é a separação mais coesa e distinta…”).\n\n\nResultados: Os Perfis de Clientes (Personas)\n\nEsta é a parte principal do relatório.\nPara cada um dos k clusters, crie uma “persona” ou perfil.\nDê um nome acionável a cada cluster (ex: “Cluster 1: Os Inadimplentes Recentes”, “Cluster 2: Os Super-Endividados”, “Cluster 3: O Cliente Padrão”).\nApresente uma tabela ou gráficos que mostrem as médias (para numéricos) e as modas (para categóricos) de cada cluster (como fizemos no exercício do K-Prototypes).\n\nRecomendações Estratégicas\n\nPara cada “persona” que você criou, sugira uma ação de negócio que o banco pode tomar.\nEx. Cluster 1 (‘Inadimplentes Recentes’): “Ação: Encaminhar imediatamente para a esteira de renegociação/cobrança. Não oferecer novos produtos de crédito.”\nEx. Cluster 2 (‘Cliente Padrão’): “Ação: Focar em cross-sell. Oferecer seguros, consórcios ou financiamento imobiliário. Baixo risco, alto potencial de engajamento.”\n\nApêndice: Script R Completo\n\nAo final do documento, insira uma seção “Apêndice” e coloque seu script R completo e comentado.\nUse echo: true e eval: false para os chunks de código no apêndice, garantindo que o relatório principal (seções 1-5) esteja limpo e focado nos resultados (sem código).",
+    "crumbs": [
+      "Aulas",
+      "Parte 2: Métodos Não Supervisionados",
+      "6- Agrupamento com K-Means e Métodos Relacionados"
+    ]
+  },
+  {
+    "objectID": "aulas/01-Apresentacao_da_disciplina.html",
+    "href": "aulas/01-Apresentacao_da_disciplina.html",
+    "title": "Conteúdo 1",
+    "section": "",
+    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nVídeo da aula:",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "1- Apresentação da Disciplina"
+    ]
+  },
+  {
+    "objectID": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
+    "href": "aulas/01-Apresentacao_da_disciplina.html#apresentação-da-disciplina-e-introdução-à-mineração-de-dados",
+    "title": "Conteúdo 1",
+    "section": "",
+    "text": "Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!\nNesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (Knowledge Discovery in Databases), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf \n\n\nVídeo da aula:",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "1- Apresentação da Disciplina"
+    ]
+  },
+  {
+    "objectID": "aulas/05-pre-processamento_de_dados.html",
+    "href": "aulas/05-pre-processamento_de_dados.html",
+    "title": "Conteúdo 5",
+    "section": "",
+    "text": "O pilar fundamental de qualquer modelo de mineração é a qualidade dos seus dados, reconhecendo o princípio de que entradas de baixa qualidade geram resultados de baixa qualidade (Garbage In, Garbage Out). Esta aula explora os desafios comuns encontrados em dados brutos — como ruído, inconsistências, dados faltantes e heterogeneidade — e introduz o pipeline de pré-processamento como um fluxo de trabalho estruturado para diagnosticar e remediar esses problemas. O processo se inicia pela base, com a classificação correta dos tipos de atributos (nominais, ordinais, intervalares e racionais) para definir as operações válidas. A partir daí, o pipeline detalha as etapas essenciais de tratamento de inconsistências (padronização e validação), estratégias para valores ausentes (da remoção simples à imputação preditiva), suavização de ruído (usando técnicas como binning), superação dos desafios da integração de dados (conflitos, redundância e identificação de entidades), aplicação de métodos de transformação (normalização Z-score, Min-Max, dummy coding) e o uso de técnicas de redução de dados (como PCA e seleção de atributos). Dominar este pipeline é um passo indispensável para garantir que os algoritmos de machine learning operem com máxima eficiência e que os resultados da análise sejam confiáveis, precisos e robustos.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "5- Pré-Processamento de Dados"
+    ]
+  },
+  {
+    "objectID": "aulas/05-pre-processamento_de_dados.html#pré-processamento-de-dados",
+    "href": "aulas/05-pre-processamento_de_dados.html#pré-processamento-de-dados",
+    "title": "Conteúdo 5",
+    "section": "",
+    "text": "O pilar fundamental de qualquer modelo de mineração é a qualidade dos seus dados, reconhecendo o princípio de que entradas de baixa qualidade geram resultados de baixa qualidade (Garbage In, Garbage Out). Esta aula explora os desafios comuns encontrados em dados brutos — como ruído, inconsistências, dados faltantes e heterogeneidade — e introduz o pipeline de pré-processamento como um fluxo de trabalho estruturado para diagnosticar e remediar esses problemas. O processo se inicia pela base, com a classificação correta dos tipos de atributos (nominais, ordinais, intervalares e racionais) para definir as operações válidas. A partir daí, o pipeline detalha as etapas essenciais de tratamento de inconsistências (padronização e validação), estratégias para valores ausentes (da remoção simples à imputação preditiva), suavização de ruído (usando técnicas como binning), superação dos desafios da integração de dados (conflitos, redundância e identificação de entidades), aplicação de métodos de transformação (normalização Z-score, Min-Max, dummy coding) e o uso de técnicas de redução de dados (como PCA e seleção de atributos). Dominar este pipeline é um passo indispensável para garantir que os algoritmos de machine learning operem com máxima eficiência e que os resultados da análise sejam confiáveis, precisos e robustos.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "5- Pré-Processamento de Dados"
+    ]
+  },
+  {
+    "objectID": "aulas/05-pre-processamento_de_dados.html#aplicações",
+    "href": "aulas/05-pre-processamento_de_dados.html#aplicações",
+    "title": "Conteúdo 5",
+    "section": "Aplicações",
+    "text": "Aplicações\nExemplo 1: Como exemplo de aplicação iremos usar os mesmos dados da aula anterior, em que usamos dados do Sistema de Informação sobre Mortalidade (SIM) e do IBGE. O código R pode ser baixado aqui. Os dados estão disponíveis em:\n\nMortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM): https://opendatasus.saude.gov.br/dataset/sim\nEstimativas de população residente por município de 2024: http://sidra.ibge.gov.br/tabela/6579\n\nExemplo 2: Também temos outro código em R para outro pr-é-processamento de dados. O arquivo com o código R e os dados podem ser baixados aqui.",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "5- Pré-Processamento de Dados"
+    ]
+  },
+  {
+    "objectID": "aulas/05-pre-processamento_de_dados.html#projeto-2-pré-processamento-de-dados-para-modelagem-de-risco",
+    "href": "aulas/05-pre-processamento_de_dados.html#projeto-2-pré-processamento-de-dados-para-modelagem-de-risco",
+    "title": "Conteúdo 5",
+    "section": "Projeto 2 – Pré-Processamento de Dados para Modelagem de Risco",
+    "text": "Projeto 2 – Pré-Processamento de Dados para Modelagem de Risco\nVocê agora atua como Cientista de Dados Júnior no mesmo time do Projeto 1. Seu trabalho começa onde o Projeto 1 terminou: com o dataframe filtrado do SCR.data.\nO objetivo desta etapa é limpar, padronizar, transformar os dados para prepará-los para modelagem estatística ou machine learning. O projeto é INDIVIDUAL.\nPrazo: Próxima aula.\nTarefa: Você deve reutilizar exatamente o dataframe final obtido no Projeto 1 (com PF ou PJ e UF filtrados). Caso tenha cometido algum erro no Projeto 1, você pode corrigi-lo agora – mas deve declarar isso no relatório. O foco agora é limpeza e preparação, não precisa colocar o que já foi feito no Projeto 1.\nFaça o pré-processamento dos dados que você organizou no Projeto 1. O dataframe resultante deve passar por no mínimo uma dessas etapas de pré-processamento, sendo obrigatória a etapa de Normalização:\n\nTratamento de valores ausentes usando imputação ou remoção\nCriação de variáveis derivadas log-transform, dummies, faixas etárias, grupos de risco, etc.\nDetecção de outliers, não precisa removê-los\nPadronização de nomes/renomeação de colunas se necessário\nChecagem de qualidade porcentagem de NAs por coluna\nNormalização/padronização z-score (obrigatório)\n\nEntrega: Produza um relatório em pdf gerado em Quarto que contenha:\n\nO script R completo e comentado no documento Quarto.\nAs saídas do R.\nDocumentação do dicionário de variáveis da tabela obtida (dataframe) com nome, tipo de variável e descrição.\nO envio deve ser realizado pelo SIGAA.",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "5- Pré-Processamento de Dados"
+    ]
+  },
+  {
+    "objectID": "aulas/08-regressao_linear.html",
+    "href": "aulas/08-regressao_linear.html",
+    "title": "Conteúdo 8",
+    "section": "",
+    "text": "Nesta aula, entramos no universo da Aprendizagem Supervisionada explorando a Regressão Linear sob duas óticas fundamentais: a Inferência, focada em explicar relações estatísticas e significância de variáveis, e a Predição, voltada para a capacidade de generalização do modelo em dados inéditos.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 3: Métodos Supervisionados",
+      "8- Regressão Linear"
+    ]
+  },
+  {
+    "objectID": "aulas/08-regressao_linear.html#regressão-linear",
+    "href": "aulas/08-regressao_linear.html#regressão-linear",
+    "title": "Conteúdo 8",
+    "section": "",
+    "text": "Nesta aula, entramos no universo da Aprendizagem Supervisionada explorando a Regressão Linear sob duas óticas fundamentais: a Inferência, focada em explicar relações estatísticas e significância de variáveis, e a Predição, voltada para a capacidade de generalização do modelo em dados inéditos.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 3: Métodos Supervisionados",
+      "8- Regressão Linear"
+    ]
+  },
+  {
+    "objectID": "aulas/08-regressao_linear.html#aplicações",
+    "href": "aulas/08-regressao_linear.html#aplicações",
+    "title": "Conteúdo 8",
+    "section": "Aplicações",
+    "text": "Aplicações\nOs arquivos contendo exemplos com códigos em R e os dados podem ser baixados aqui.",
+    "crumbs": [
+      "Aulas",
+      "Parte 3: Métodos Supervisionados",
+      "8- Regressão Linear"
+    ]
+  },
+  {
+    "objectID": "aulas/11-naive_bayes.html",
+    "href": "aulas/11-naive_bayes.html",
+    "title": "Conteúdo 11",
+    "section": "",
+    "text": "Neste material de aula, abordamos o algoritmo Naive Bayes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 3: Métodos Supervisionados",
+      "11- Naive Bayes"
+    ]
+  },
+  {
+    "objectID": "aulas/11-naive_bayes.html#naive-bayes",
+    "href": "aulas/11-naive_bayes.html#naive-bayes",
+    "title": "Conteúdo 11",
+    "section": "",
+    "text": "Neste material de aula, abordamos o algoritmo Naive Bayes.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 3: Métodos Supervisionados",
+      "11- Naive Bayes"
+    ]
+  },
+  {
+    "objectID": "aulas/11-naive_bayes.html#aplicações",
+    "href": "aulas/11-naive_bayes.html#aplicações",
+    "title": "Conteúdo 11",
+    "section": "Aplicações",
+    "text": "Aplicações\nOs arquivos contendo um exemplo com códigos em R e os dados podem ser baixados aqui.",
+    "crumbs": [
+      "Aulas",
+      "Parte 3: Métodos Supervisionados",
+      "11- Naive Bayes"
+    ]
+  },
+  {
+    "objectID": "aulas/04-processamento_out-of-core.html",
+    "href": "aulas/04-processamento_out-of-core.html",
+    "title": "Conteúdo 4",
+    "section": "",
+    "text": "Nesta aula, enfrentamos o desafio de analisar dados que excedem a memória RAM do computador, introduzindo o paradigma de processamento Out-of-Core no R. Exploramos a arquitetura dessa solução, compreendendo o papel do pacote duckdb como o motor analítico in-process e do pacote DBI como a interface de conexão universal. Aprendemos a estrutura fundamental da linguagem SQL para realizar consultas diretamente no disco, focando nos comandos SELECT, FROM, WHERE, GROUP BY e ORDER BY. A aula demonstra, com exemplos práticos usando dados do DATASUS, como agregar e filtrar milhões de registros instantaneamente, trazendo para o R apenas o resultado consolidado. Este é um passo essencial para escalar análises, garantir a performance em datasets massivos e superar as limitações do processamento in-memory tradicional.\nDados que iremos usar:\n\nMortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM): https://opendatasus.saude.gov.br/dataset/sim\nTabela de Códigos de Municípios do IBGE: https://www.ibge.gov.br/explica/codigos-dos-municipios.php\n\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "4- Processamento *Out-of-Core*"
+    ]
+  },
+  {
+    "objectID": "aulas/04-processamento_out-of-core.html#processamento-out-of-core-com-duckdb-e-dbi-no-r",
+    "href": "aulas/04-processamento_out-of-core.html#processamento-out-of-core-com-duckdb-e-dbi-no-r",
+    "title": "Conteúdo 4",
+    "section": "",
+    "text": "Nesta aula, enfrentamos o desafio de analisar dados que excedem a memória RAM do computador, introduzindo o paradigma de processamento Out-of-Core no R. Exploramos a arquitetura dessa solução, compreendendo o papel do pacote duckdb como o motor analítico in-process e do pacote DBI como a interface de conexão universal. Aprendemos a estrutura fundamental da linguagem SQL para realizar consultas diretamente no disco, focando nos comandos SELECT, FROM, WHERE, GROUP BY e ORDER BY. A aula demonstra, com exemplos práticos usando dados do DATASUS, como agregar e filtrar milhões de registros instantaneamente, trazendo para o R apenas o resultado consolidado. Este é um passo essencial para escalar análises, garantir a performance em datasets massivos e superar as limitações do processamento in-memory tradicional.\nDados que iremos usar:\n\nMortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM): https://opendatasus.saude.gov.br/dataset/sim\nTabela de Códigos de Municípios do IBGE: https://www.ibge.gov.br/explica/codigos-dos-municipios.php\n\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "4- Processamento *Out-of-Core*"
+    ]
+  },
+  {
+    "objectID": "aulas/04-processamento_out-of-core.html#projeto-1-preparação-de-datasets-para-análise-de-risco",
+    "href": "aulas/04-processamento_out-of-core.html#projeto-1-preparação-de-datasets-para-análise-de-risco",
+    "title": "Conteúdo 4",
+    "section": "Projeto 1 – Preparação de Datasets para Análise de Risco",
+    "text": "Projeto 1 – Preparação de Datasets para Análise de Risco\nVocê é um(a) Engenheiro(a) de Dados. O time de Cientistas de Dados solicitou um dataset filtrado do SCR.data. Vocês devem usar duckdb para consultar arquivos CSV brutos, fazer a filtragem necessária usando SQL, e entregar um dataframe leve no R. O projeto é INDIVIDUAL.\nPrazo: Próxima aula.\nTarefa: Acesse https://dadosabertos.bcb.gov.br/dataset/scr_data, baixe os dados de 2025 e selecione o conjunto de dados (arquivo CSV) do mês mais recente disponível.\nEm seguida, escolha 1 Estado (UF) e 1 das duas opções de projeto abaixo.\nO objetivo de ambas as opções é escrever uma consulta SQL que leia o CSV e filtre os dados. A consulta deve usar WHERE para selecionar apenas as linhas que correspondam à UF escolhida E ao tipo de cliente ('PF' ou 'PJ').\nOpção 1: Extração de Micro-Segmentos de Risco (Pessoa Física)\n\nObjetivo: Preparar o dataset de clientes Pessoa Física (PF) para uma futura análise de risco e segmentação.\nFiltro Requerido: cliente = 'PF' (além da UF escolhida).\n\nOpção 2: Extração de Risco Setorial (Pessoa Jurídica)\n\nObjetivo: Preparar o dataset de clientes Pessoa Jurídica (PJ) para uma futura análise de risco dos diferentes setores da economia (CNAE).\nFiltro Requerido: cliente = 'PJ' (além da UF escolhida).\n\nEntrega: Produza um relatório em pdf gerado em Quarto que contenha:\n\nQual das 2 opções foi escolhida e qual a UF (Estado) selecionada.\nO script R completo e comentado no documento Quarto. Nesta tarefa, o código SQL dentro do R é a parte principal do trabalho.\nA saída da consulta no R. Você deve usar as funções glimpse() e summary() no dataframe resultante para provar que os filtros foram aplicados corretamente.\nO envio deve ser realizado pelo SIGAA.",
+    "crumbs": [
+      "Aulas",
+      "Parte 1: Fundamentos",
+      "4- Processamento *Out-of-Core*"
+    ]
+  },
+  {
+    "objectID": "aulas/10-knn.html",
+    "href": "aulas/10-knn.html",
+    "title": "Conteúdo 10",
+    "section": "",
+    "text": "Neste material de aula, abordamos o algoritmo k-Nearest Neighbors (k-NN), explorando tanto sua aplicação em classificação quanto em regressão. Os slides detalham a intuição por trás do método baseado em instâncias (lazy learning), a importância crítica do pré-processamento de dados (normalização e tratamento de variáveis categóricas) e o cálculo de distâncias. Além disso, discute-se o impacto da escolha do hiperparâmetro \\(k\\) no equilíbrio entre viés e variância.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 3: Métodos Supervisionados",
+      "10- $k$-Nearest Neighbors"
+    ]
+  },
+  {
+    "objectID": "aulas/10-knn.html#k-nearest-neighbors",
+    "href": "aulas/10-knn.html#k-nearest-neighbors",
+    "title": "Conteúdo 10",
+    "section": "",
+    "text": "Neste material de aula, abordamos o algoritmo k-Nearest Neighbors (k-NN), explorando tanto sua aplicação em classificação quanto em regressão. Os slides detalham a intuição por trás do método baseado em instâncias (lazy learning), a importância crítica do pré-processamento de dados (normalização e tratamento de variáveis categóricas) e o cálculo de distâncias. Além disso, discute-se o impacto da escolha do hiperparâmetro \\(k\\) no equilíbrio entre viés e variância.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 3: Métodos Supervisionados",
+      "10- $k$-Nearest Neighbors"
+    ]
+  },
+  {
+    "objectID": "aulas/10-knn.html#aplicações",
+    "href": "aulas/10-knn.html#aplicações",
+    "title": "Conteúdo 10",
+    "section": "Aplicações",
+    "text": "Aplicações\nOs arquivos contendo um exemplo com códigos em R e os dados podem ser baixados aqui.",
+    "crumbs": [
+      "Aulas",
+      "Parte 3: Métodos Supervisionados",
+      "10- $k$-Nearest Neighbors"
+    ]
+  },
+  {
+    "objectID": "aulas/09-regressao_logistica.html",
+    "href": "aulas/09-regressao_logistica.html",
+    "title": "Conteúdo 9",
+    "section": "",
+    "text": "Neste material, realizamos a transição fundamental da regressão linear para a classificação probabilística. Você aprenderá a modelar eventos binários utilizando a Regressão Logística, dominando desde a matemática da função sigmoide e a interpretação do Odds Ratio até as métricas cruciais de validação em Mineração de Dados, como a Matriz de Confusão e a Curva ROC/AUC. Essencial para quem busca construir modelos preditivos de risco, fraude e diagnóstico.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 3: Métodos Supervisionados",
+      "9- Regressão Logística"
+    ]
+  },
+  {
+    "objectID": "aulas/09-regressao_logistica.html#regressão-logística",
+    "href": "aulas/09-regressao_logistica.html#regressão-logística",
+    "title": "Conteúdo 9",
+    "section": "",
+    "text": "Neste material, realizamos a transição fundamental da regressão linear para a classificação probabilística. Você aprenderá a modelar eventos binários utilizando a Regressão Logística, dominando desde a matemática da função sigmoide e a interpretação do Odds Ratio até as métricas cruciais de validação em Mineração de Dados, como a Matriz de Confusão e a Curva ROC/AUC. Essencial para quem busca construir modelos preditivos de risco, fraude e diagnóstico.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 3: Métodos Supervisionados",
+      "9- Regressão Logística"
+    ]
+  },
+  {
+    "objectID": "aulas/09-regressao_logistica.html#aplicações",
+    "href": "aulas/09-regressao_logistica.html#aplicações",
+    "title": "Conteúdo 9",
+    "section": "Aplicações",
+    "text": "Aplicações\nOs arquivos contendo exemplos com códigos em R e os dados podem ser baixados aqui.",
+    "crumbs": [
+      "Aulas",
+      "Parte 3: Métodos Supervisionados",
+      "9- Regressão Logística"
+    ]
+  },
+  {
+    "objectID": "aulas/07-regras_de_associacao.html",
+    "href": "aulas/07-regras_de_associacao.html",
+    "title": "Conteúdo 7",
+    "section": "",
+    "text": "Esta aula detalha o método das Regras de Associação, uma técnica essencial da Mineração de Dados focada na Análise de Cesta de Mercado para descobrir quais produtos os clientes tendem a comprar em conjunto. O material explica as três métricas cruciais — Suporte (frequência), Confiança (precisão condicional) e Lift (interesse real) — que são usadas para filtrar padrões acionáveis em meio a um vasto número de combinações. Além disso, a apresentação diferencia os principais algoritmos de busca por padrões frequentes, o clássico Apriori e o mais eficiente FP-Growth, preparando o leitor para aplicar esses conhecimentos na otimização de leiautes de lojas, campanhas de marketing e gestão de inventário.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 2: Métodos Não Supervisionados",
+      "7- Regras de Associação"
+    ]
+  },
+  {
+    "objectID": "aulas/07-regras_de_associacao.html#regras-de-associação",
+    "href": "aulas/07-regras_de_associacao.html#regras-de-associação",
+    "title": "Conteúdo 7",
+    "section": "",
+    "text": "Esta aula detalha o método das Regras de Associação, uma técnica essencial da Mineração de Dados focada na Análise de Cesta de Mercado para descobrir quais produtos os clientes tendem a comprar em conjunto. O material explica as três métricas cruciais — Suporte (frequência), Confiança (precisão condicional) e Lift (interesse real) — que são usadas para filtrar padrões acionáveis em meio a um vasto número de combinações. Além disso, a apresentação diferencia os principais algoritmos de busca por padrões frequentes, o clássico Apriori e o mais eficiente FP-Growth, preparando o leitor para aplicar esses conhecimentos na otimização de leiautes de lojas, campanhas de marketing e gestão de inventário.\nSlides:\n\n\n Versão html \n\n\n Versão pdf",
+    "crumbs": [
+      "Aulas",
+      "Parte 2: Métodos Não Supervisionados",
+      "7- Regras de Associação"
+    ]
+  },
+  {
+    "objectID": "aulas/07-regras_de_associacao.html#aplicações",
+    "href": "aulas/07-regras_de_associacao.html#aplicações",
+    "title": "Conteúdo 7",
+    "section": "Aplicações",
+    "text": "Aplicações\nOs arquivos contendo os códigos em R e os dados podem ser baixados aqui.",
+    "crumbs": [
+      "Aulas",
+      "Parte 2: Métodos Não Supervisionados",
+      "7- Regras de Associação"
+    ]
+  },
+  {
+    "objectID": "aulas/07-regras_de_associacao.html#projeto-4-regras-de-associação-no-sim",
+    "href": "aulas/07-regras_de_associacao.html#projeto-4-regras-de-associação-no-sim",
+    "title": "Conteúdo 7",
+    "section": "Projeto 4 – Regras de Associação no SIM",
+    "text": "Projeto 4 – Regras de Associação no SIM\nVocê é um(a) Analista de Mineração de Dados em Saúde Pública. O time de Vigilância Epidemiológica solicitou a identificação de padrões de coocorrência de risco na mortalidade, usando o Sistema de Informações sobre Mortalidade (SIM). Você deve aplicar o algoritmo Apriori sobre os dados de mortes ocorridas no Brasil em 2024 disponíveis em https://opendatasus.saude.gov.br/dataset/sim. O projeto é INDIVIDUAL.\nPrazo: Próxima aula.\nTarefa: Acesse https://opendatasus.saude.gov.br/dataset/sim. Baixe os dados de 2024 e escolha 1 (um) Estado (UF) para sua análise. Em seguida, escolha 1 (um) dos nove projetos listados abaixo, que já define o foco da sua análise. O objetivo é aplicar o Apriori para gerar regras de associação válidas, interpretáveis e com implicações para a saúde pública.\n\nMini Projetos para escolher\nP1. Associação de Múltiplas Causas (Linha A-D) e Perfil de Vulnerabilidade em Óbitos por Insuficiência Cardíaca\n\nProblema: Quais comorbidades e características sociodemográficas frequentemente coocorrem e precedem o óbito por Insuficiência Cardíaca (I50) em um estado brasileiro?\nVariáveis: Códigos da LINHAA a LINHAD (múltiplas causas), IDADE (em faixas), ESC2010, ASSISTMED, LOCOCOR.\nApriori: Gerar regras buscando Confiança, Suporte e Lift superiores a 1.\nAnálise: Interpretar regras que tenham códigos de DCNT como antecedentes e a Insuficiência Cardíaca como consequente.\n\nP2. Associação entre Local de Ocorrência, Assistência e Causas Básicas Sensíveis à Atenção Primária\n\nProblema: Quais combinações de fatores (local de óbito não-hospitalar e falta de assistência) estão mais fortemente associadas a óbitos por Causas Sensíveis à Atenção Primária (CSAP), indicando lacunas no cuidado básico?\nVariáveis: CAUSABAS (agrupada por CSAP), LOCOCOR (Domicílio, Outros), ASSISTMED (Não/Sim), IDADE (faixas).\nApriori: Busca por regras que tenham uma combinação de LOCOCOR (não hospitalar) e ASSISTMED (não) no antecedente, e a CSAP no consequente.\nAvaliação: Análise das regras com alto Lift, que indicam que a coocorrência de desassistência e óbito por CSAP é muito maior que o esperado.\n\nP3. Regras de Associação entre Perfil Ocupacional, Escolaridade e Óbitos por Causas Externas\n\nProblema: Quais são as combinações mais fortes entre a ocupação (OCUP), o nível de escolaridade (ESC2010) e a ocorrência de óbitos por tipos específicos de Causas Externas (V01-Y98), como acidentes de trabalho?\nVariáveis: OCUP (agrupada), ESC2010, ACIDTRAB (Sim/Não), CAUSABAS (agrupada por tipo de violência/acidente).\nApriori: Focar em regras com alto Lift onde a OCUP e a ESC2010 são antecedentes.\n\nP4. Associação entre Raça/Cor, Escolaridade e Mortalidade Materna Evitável\n\nProblema: Que combinações de fatores de vulnerabilidade (RACACOR e ESCMAEAGR1) estão fortemente associadas a óbitos de mulheres em idade fértil (10-49 anos) por causas relacionadas à gestação, parto ou puerpério (CAUSAMAT)?\nVariáveis: CAUSAMAT (agrupada), RACACOR, ESCMAEAGR1 (escolaridade da mãe), ASSISTMED.Ajustar o Suporte e a Confiança para eventos raros.\nApriori: Focar em regras com RACACOR no antecedente e a causa materna como consequente.\nAnálise: Comparar a Confiança de regras para diferentes grupos de RACACOR.\n\nP5. Associação de Óbitos por Doenças Respiratórias (J00-J99) com Fatores Ambientais e Sazonais\n\nProblema: Quais combinações de características sociodemográficas e de evento (idade, sexo, LOCOCOR) mais se associam a óbitos por doenças respiratórias (CAUSABAS J00-J99) nos meses de maior incidência (inverno/chuvosos)?\nVariáveis: CAUSABAS (agrupada: Pneumonia, Asma, DPOC), IDADE (faixas), SEXO, LOCOCOR, MÊS DO ÓBITO (criada a partir de DTOBITO).\nApriori: Executar com foco em regras que incluam a variável sazonal (Mês) no antecedente.\nAvaliação: Filtrar as regras com o maior Lift nos meses de pico (ex: Junho, Julho).\n\nP6. Associação de Acidentes de Trânsito (V01-V89) com Idade, Sexo e Tipo de Veículo/Vítima\n\nProblema: Quais são os padrões de vítimas (idade, sexo, tipo de óbito) mais frequentemente associados a acidentes de trânsito em um determinado estado?\nVariáveis: IDADE (faixas), SEXO, CAUSABAS (agrupada por tipo de vítima: Pedestre, Ciclista, Motociclista, Ocupante de Carro).\nApriori: Busca por regras que tenham um dos tipos de vítima como consequente.\nRelatório: Focar no Lift para destacar os grupos de risco que mais se sobressaem em relação à distribuição esperada.\n\nP7. Associações entre Nível de Escolaridade e Óbitos por Condições Crônicas Específicas (Diabetes Mellitus)\n\nProblema: Que regras de associação mostram a relação entre a falta de escolaridade e o óbito por complicações do Diabetes (E10-E14), comparado a outros fatores de risco?\nVariáveis: ESC2010, RACACOR, IDADE (faixas), LINHAC (complicações associadas, ex: Insuficiência Renal).\nApriori: Focar em regras onde a ESC2010 ou RACACOR são o antecedente e a complicação (Linha A-D) ou a causa básica (Diabetes) é o consequente.\n\nP8. Associação de Câncer (C00-C97) com Fatores Sociodemográficos e Local de Ocorrência\n\nProblema: Que combinações de fatores (tipo de câncer, idade, escolaridade, local de óbito) estão fortemente associadas em óbitos por câncer em um estado?\nVariáveis: CAUSABAS (agrupada por tipo de câncer - Mama, Próstata, Pulmão), IDADE (faixas), ESC2010, LOCOCOR (Hospital, Domicílio).\nApriori: Focar em regras onde o LOCOCOR é o antecedente/consequente.\n\nP9. Associação de Óbitos de Populações Indígenas/Ignoradas com Fatores de Evento (Associação Mínima)\n\nProblema: Quais são os padrões mínimos de óbito (causa, local, assistência) associados à classificação de RACACOR=Indígena ou RACACOR=Ignorada, sinalizando desafios específicos de saúde e registro?\nVariáveis: RACACOR (Indígena/Ignorada), CAUSABAS (agrupada), LOCOCOR, ASSISTMED, ATESTANTE (Agrupada: Médico, IML, Policial).\nApriori: Definir um Suporte muito baixo devido à raridade da população indígena e o foco nas variáveis de registro.\nAvaliação: Analisar o Lift para encontrar associações surpreendentes.\n\n\n\nEntrega: Relatório de Mineração de Regras\nVocê deverá produzir um Relatório Executivo no formato PDF, gerado através de um documento Quarto (.qmd). Este relatório é destinado aos gestores da saúde pública do estado escolhido e deve priorizar a comunicação clara dos insights descobertos.\nO relatório deve seguir a seguinte estrutura formal, com os códigos e saídas do R movidos para o final, na seção de Anexos. Ele deve conter:\n\nContextualização e Objetivo\n\nEsta seção deve apresentar:\n\nO projeto escolhido.\nMencionar o Estado foco da análise.\nApresentar a relevância da mineração de regras de associação para o problema específico da UF. Explicar, em termos gerenciais, por que o método Apriori é a ferramenta ideal para descobrir combinações inesperadas de fatores que levam ao óbito neste contexto (extraído da seção ‘Por Que Faz Sentido’ do projeto).\n\n\nPrincipais Padrões de Risco Descobertos\n\nEsta seção é o cerne do relatório e deve apresentar os achados mais importantes da mineração.\n\nRegras de Alto Impacto:\n\nApresentação clara das 5 (cinco) regras de associação com o MAIOR LIFT encontradas. Cada regra deve ser listada em linguagem de gestor (evitando notação formal \\(\\{X, Y\\} \\implies \\{Z\\}\\) inicialmente, e usando-a apenas no Anexo)\nExemplo: Em vez de \\(\\{\\text{ESC2010=0, IDADE (80+)}\\} \\implies \\{\\text{LOCOCOR=Domicílio}\\}\\), use: “Indivíduos com mais de 80 anos e sem escolaridade apresentam uma alta associação com óbitos ocorridos em domicílio.”\n\nInterpretação Gerencial:\n\nUma interpretação descritiva e aprofundada das três regras mais fortes (maior Lift). Focar no significado da Confiança (qual a probabilidade de o consequente ocorrer dado o antecedente) e do Lift (o quão incomum ou forte é essa associação).\n\n\n\nImplicações para a Vigilância e Ação Social\n\n\nRelevância para a Vigilância Epidemiológica:\n\nUma breve discussão sobre o impacto social e de saúde pública da regra mais significativa. Como este padrão descoberto pode informar ou modificar uma política de intervenção (ex: campanhas de saúde direcionadas, alocação de recursos, treinamento de equipes básicas).\n\n\n\nAnexos Metodológicos e Detalhes Técnicos\n\nEsta seção deve conter todos os elementos técnicos para garantir a reprodutibilidade científica do estudo, sem poluir a leitura do gestor.\n\nAnexo A\n\nA saída da função summary() aplicada ao objeto de regras resultante no R (para mostrar o número total de regras geradas e a distribuição de Suporte, Confiança e Lift).\n\nAnexo B\n\nScript R completo e comentado utilizado no projeto.\nO código deve incluir a leitura dos dados, o filtro por UF, o pré-processamento/discretização das variáveis-chave e a criação do objeto transactions (arules).\nA especificação clara dos parâmetros Suporte Mínimo e Confiança Mínima utilizados no Apriori.\nO código utilizado para a apresentação das regras com o MAIOR LIFT.\n\n\nO envio final deve ser realizado pelo SIGAA.",
+    "crumbs": [
+      "Aulas",
+      "Parte 2: Métodos Não Supervisionados",
+      "7- Regras de Associação"
+    ]
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#objetivo-da-aula",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#objetivo-da-aula",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Objetivo da Aula",
+    "text": "Objetivo da Aula\n\nAprender a manipular grandes bases de dados no R.\nConhecer os pacotes duckdb e DBI.\nFazer consultas usando a linguagem SQL dentro do R."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-muro-da-memória-ram",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-muro-da-memória-ram",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "O Muro da Memória RAM",
+    "text": "O Muro da Memória RAM\n\nO R é, por natureza, uma ferramenta in-memory. É comum usarmos o comando: meus_dados &lt;- read.csv(\"arquivo_grande.csv\").\nProblema: O que acontece se arquivo_grande.csv tem 50 GB e seu notebook tem 16 GB de RAM?\n\nO R tenta alocar 50 GB de espaço na RAM.\nO sistema operacional tenta compensar usando swap (disco), o que torna o processo astronomicamente lento.\nNa maioria dos casos, a sessão do R simplesmente trava ou é morta pelo sistema.\n\nSolução: Em vez de trazer os dados para o R, nós lemos e processamos os dados diretamente no disco, e trazemos para a RAM apenas o resultado final (que geralmente é pequeno).\n\nIsso é chamado de processamento Out-of-Core (ou On-Disk).\nPodemos usar os pacotes duckdb e DBI para fazê-lo."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-duckdb",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-duckdb",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "O Pacote duckdb",
+    "text": "O Pacote duckdb\n\nFunciona como seu assistente inteligente para dados grandes.\nImagine que seus dados são uma biblioteca gigante:\n\nMétodo tradicional: Trazer todos os livros para sua mesa (RAM).\nCom DuckDB: Pedir ao bibliotecário que consulte os livros nas estantes (disco) e traga apenas a resposta."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-duckdb-1",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-duckdb-1",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "O Pacote duckdb",
+    "text": "O Pacote duckdb\n\nÉ um sistema de gerenciamento de banco de dados (SGBD) analítico, in-process e colunar. Ou seja:\n\nAnalítico (OLAP): Otimizado para consultas complexas, agregações e filtros (ex: GROUP BY, SUM, AVG).\nIn-Process: Não é um servidor (como PostgreSQL ou MySQL). Ele roda dentro da sua sessão R. Não há instalação, configuração ou gerenciamento de servidor. Apenas install.packages(\"duckdb\") e pronto.\nColunar: Esta é a chave. Bancos de dados tradicionais armazenam dados por linha. O duckdb armazena por coluna.\n\nSe sua consulta é SELECT VARIAVEL1, COUNT(*) ..., ele lê apenas a coluna VARIAVEL1 do disco, ignorando todas as outras (nome, data, etc.). Isso resulta em uma velocidade maior.\nduckdb implementa uma versão muito abrangente e moderna do padrão SQL (Structured Query Language)."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-dbi",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#o-pacote-dbi",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "O Pacote DBI",
+    "text": "O Pacote DBI\n\nDBI (Database Interface) é um pacote que fornece uma camada de abstração universal para comunicação com bancos de dados no R.\nEle define um conjunto de funções consistentes:\n\ndbConnect(): para iniciar a conexão.\ndbGetQuery(): para enviar uma consulta e receber os dados de volta.\ndbDisconnect(): para encerrar a conexão.\n\nPor que usá-lo?\n\nConsistência: Você usa as mesmas funções DBI para falar com duckdb, RPostgres, RMariaDB, RSQLite, etc.\nPortabilidade: Seu código R não muda. Se amanhã você decidir migrar seu processo do duckdb (local) para um PostgreSQL (servidor), você só precisa alterar a linha do dbConnect()."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#como-o-sql-se-encaixa",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#como-o-sql-se-encaixa",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Como o SQL se encaixa?",
+    "text": "Como o SQL se encaixa?\n\nO DBI permite que o R fale com o duckdb, e a língua que eles usam é o SQL (Structured Query Language).\nEm vez de usar comandos do pacte dplyr (como filter, group_by, summarise) que operam em data.frames na memória, nós escrevemos uma string de consulta SQL (ex: SELECT ... FROM ... WHERE ...)\nNós passamos essa string para o DBI (ex: dbGetQuery(…)).\nO DBI entrega a string ao duckdb.\nO duckdb interpreta o SQL, otimiza a consulta, executa a operação diretamente no arquivo em disco, e retorna apenas o data.frame resultante para o R."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uso",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uso",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Estrutura Geral de Uso",
+    "text": "Estrutura Geral de Uso\nEste é o esquema de 5 passos para qualquer análise out-of-core com duckdb:\n\n# 1. Carregar as bibliotecas na sessão\nlibrary(DBI)\nlibrary(duckdb)\n\n# 2. Criar a conexão com o banco de dados (para salvar as consultas)\n\n# Opção A: Em memória (rápido, mas volátil)\n#con &lt;- dbConnect(duckdb::duckdb(), dbdir = \":memory:\")\n\n# Opção B: Persistente (recomendado)\ncon &lt;- dbConnect(duckdb::duckdb(),\n                 dbdir = \"meu_banco_analitico.duckdb\")\n\n# 3. Informar ao duckdb onde estão os dados\n# Isso NÃO carrega o CSV. Apenas cria um \"ponteiro\" para ele.\nduckdb_register(con, \"meus_dados\", \"arquivo_grande.csv\")"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uso-1",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uso-1",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Estrutura Geral de Uso",
+    "text": "Estrutura Geral de Uso\nEste é o esquema de 5 passos para qualquer análise out-of-core com duckdb:\n\n# 4. Fazer consultas ao banco usando SQL\nresultado &lt;- dbGetQuery(con, \"SELECT COUNT(*) FROM meus_dados\")\n\n# 5. Encerrar a conexão e liberar os recursos\ndbDisconnect(con, shutdown = TRUE)\n\n\n\nComo as cosultas usam SQL, vamos fazer uma breve explicação sobre o uso da linguagem."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uma-consulta-sql",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#estrutura-geral-de-uma-consulta-sql",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Estrutura Geral de uma Consulta SQL",
+    "text": "Estrutura Geral de uma Consulta SQL\nUma consulta SQL é como uma frase que descreve os dados que você deseja. A ordem de escrita é quase sempre esta:\n\nSELECT coluna1, FUNCAO(coluna2) AS novo_nome\nFROM nome_da_tabela\nWHERE condicao_de_filtro (ex: ano = 2023)\nGROUP BY coluna_de_agrupamento (ex: coluna1)\nORDER BY coluna_de_ordenacao (ex: novo_nome) DESC\nLIMIT 10"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-instrução-select",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-instrução-select",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "A instrução SELECT",
+    "text": "A instrução SELECT\n\nEspecifica as colunas que você quer ver no resultado final.\nSempre vem acompanhada de FROM, que especifica de qual tabela os dados devem ser lidos.\n\nSintaxe:\n\nSELECT coluna1, coluna2, ...\nFROM nome_tabela\n\n\ncoluna1, coluna2, ... são as colunas das tabelas que você quer selecionar.\nnome_tabela representa o nome da tabela que contém os dados.\n\nExemplo: Suponha que temos uma tabela clientes e queremos selecionar todas as colunas.\n\nSELECT *\nFROM clientes"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-cláusula-where",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-cláusula-where",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "A cláusula WHERE",
+    "text": "A cláusula WHERE\n\nSeleciona linhas que atendem a uma condição.\n\nSintaxe:\n\nSELECT coluna1, coluna2, ...\nFROM nome_tabela\nWHERE condição\n\nExemplos:\n\n\n\nSELECT *\nFROM clientes\nWHERE idade=30\n\n\n\nSELECT *\nFROM clientes\nWHERE idade&gt;24"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-cláusula-where-1",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-cláusula-where-1",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "A cláusula WHERE",
+    "text": "A cláusula WHERE\nWHERE aceita alguns operadores:\n\n\n\n\n\n\n\n\n\nOperador\nDescrição\nOperador\nDescrição\n\n\n\n\n=\nIgual\n&lt;&gt; ou !=\nDiferente\n\n\n&gt;\nMaior que\n&lt;\nMenor que\n\n\n&gt;=\nMaior ou igual\n&lt;=\nMenor ou igual\n\n\nBETWEEN\nEntre um intervalo\nLIKE\nBusca por um padrão\n\n\nIN\nPara especificar múltiplos valores possíveis para uma coluna\n\n\n\n\n\nExemplo:\n\nSELECT *\nFROM clientes\nWHERE Idade BETWEEN 20 AND 30"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-instrução-group-by",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#a-instrução-group-by",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "A instrução GROUP BY",
+    "text": "A instrução GROUP BY\n\nAgrupa linhas com mesmo valor.\nGeralmente é usada com funções de agregação (COUNT(), MAX(), MIN(), SUM(), AVG()) para agrupar os resultados de uma ou mais colunas.\nMuito usada em conjunto com ORDER BY, para ordenação dos resultados.\n\nSintaxe:\n\nSELECT nomes_das_colunas\nFROM nome_tabela\nWHERE condição\nGROUP BY nomes_das_colunas\nORDER BY nomes_das_colunas\n\nExemplo:\n\nSELECT COUNT(ID_cliente), estado\nFROM clientes\nGROUP BY estado\nORDER BY COUNT(ID_cliente) DESC"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-2",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-2",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo",
+    "text": "Exemplo\nVamos usar o banco de dados sobre mortes ocorridas no Brasil em 2024 disponíveis no Sistema de Informação sobre Mortalidade (SIM), desenvolvido pelo Ministério da Saúde. Os dados estão disponíveis em: https://opendatasus.saude.gov.br/dataset/sim.\n\nVamos usar o conjunto de dados DO24OPEN.csv (óbitos ocorridos em 2024) e as variáveis:\n\nCODMUNOCOR: Código relativo ao município onde ocorreu o óbito\nCAUSABAS: Causa básica da declaração de óbito\n\nTambém vamos usar uma tabela do IBGE com os códigos e nomes dos municípios obtida em https://www.ibge.gov.br/explica/codigos-dos-municipios.php.\n\nUsaremos o arquivo RELATORIO_DTB_BRASIL_2024_MUNICIPIOS.xls."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-preparação-do-ambiente",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-preparação-do-ambiente",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo: Preparação do ambiente",
+    "text": "Exemplo: Preparação do ambiente\n\n# 0. Instalando os pacotes (apenas uma vez)\n# install.packages(c(\"DBI\", \"duckdb\"))\n\n# 1. Carregando pacotes.\nlibrary(duckdb)\nlibrary(DBI)\n\n# 2. Especificando onde serão armazenadas as consultas.\n# Isso prepara o \"motor\" do duckdb para receber comandos\ncon &lt;- dbConnect(    # 'con' vai armazenar o objeto da conexão\n  duckdb::duckdb(),  # Especifica DuckDB como SGBD\n  dbdir = \":memory:\" # as consultas serão salvas na memória\n                     # e depois apagadas ao finalizar\n  #dbdir = \"sim_obitos.duckdb\" # cria uma arquivo p/ armazenar\n                               # os resultados da consulta\n)\n\n# 3. Definindo o caminho para o arquivo gigante\n# para não precisarmos escrever em toda consulta\ncaminho &lt;- \"/home/sadraque/Documentos/UFS/Disciplinas/2025.2/mineracao de dados em estatistica/slides/04-processamento_out-of-core/DO24OPEN.csv\""
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-1-contagem-total-de-linhas",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-1-contagem-total-de-linhas",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo 1: Contagem total de linhas",
+    "text": "Exemplo 1: Contagem total de linhas\nVamos contar quantas linhas há na tabela de dados.\n\n# Criando a consulta SQL\n# SELECT COUNT(*): \"Selecione a contagem de todas as linhas\"\n# FROM '%s' será substituído pelo caminho do arquivo\nconsult &lt;- sprintf(\"SELECT COUNT(*) AS total\n                           FROM '%s'\", caminho)\n\n# Enviando a consulta e pegando o resultado.\n# O duckdb vai ler o arquivo (sem carregá-lo) e retornar\n# apenas o resultado.\ntotal_linhas &lt;- dbGetQuery(con, consult)\ntotal_linhas\n\n    total\n1 1426346"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-2-agregando-por-município",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-2-agregando-por-município",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo 2: Agregando por Município",
+    "text": "Exemplo 2: Agregando por Município\nVamos contar o número de óbitos por código do município (CODMUNOCOR).\n\n# Montar a consulta SQL\nconsult &lt;- sprintf(\"SELECT CODMUNOCOR, COUNT(*) AS total_obitos\n                      FROM '%s'\n                      GROUP BY CODMUNOCOR\n                      ORDER BY total_obitos DESC\",\n                     caminho)\n\n\n# Enviar a consulta e pegar o resultado\nobitos_por_municipio &lt;- dbGetQuery(con, consult)\n\n# Ver as primeiras 4 linhas do resultado\nhead(obitos_por_municipio, n = 4L)\n\n  CODMUNOCOR total_obitos\n1     355030        89208\n2     330455        61443\n3     310620        23340\n4     261160        22146"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo 3: Adicionando filtragem",
+    "text": "Exemplo 3: Adicionando filtragem\nVamos consultar o número de óbitos por causas externas.\n\n# Criar a consulta SQL\n# CODMUNOCOR: Codigo do município onde ocorreu o óbito.\n# CAUSABAS: 'V01' a 'V99' são os códigos da CID-10 para\n#           acidentes de transporte.\nconsult &lt;- sprintf(\"SELECT CODMUNOCOR,\n                           COUNT(CAUSABAS) AS obitos_acidentes\n                    FROM '%s'\n                    WHERE CAUSABAS BETWEEN 'V01' AND 'V99'\n                    GROUP BY CODMUNOCOR\n                    ORDER BY obitos_acidentes DESC\",\n                   caminho)\nobitos_acidentes_mun &lt;- dbGetQuery(con, consult)\nhead(obitos_acidentes_mun, n = 4L) # primeiras 4 linhas\n\n  CODMUNOCOR obitos_acidentes\n1     130260              380\n2     520870              367\n3     261160              347\n4     355030              281"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-1",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-1",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo 3: Adicionando filtragem",
+    "text": "Exemplo 3: Adicionando filtragem\n\nOs códigos do SIM vêm sem os nomes dos municípios.\nPrecisamos cruzar com a tabela do IBGE para saber os nomes dos municípios.\n\n\nlibrary(tidyverse)\n\ntab_cod_ibge &lt;- readxl::read_excel(\n  \"/home/sadraque/Documentos/UFS/Disciplinas/2025.2/mineracao de dados em estatistica/slides/04-processamento_out-of-core/RELATORIO_DTB_BRASIL_2024_MUNICIPIOS.xls\",\n  skip = 6,  # Pula as 6 primeiras linhas\n  col_names = TRUE  # Usa a 7ª linha como nome das variáveis (default)\n) |&gt;\n  # Limpar nomes das colunas\n  janitor::clean_names()"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-2",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-2",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo 3: Adicionando filtragem",
+    "text": "Exemplo 3: Adicionando filtragem\n\ntab_cod_ibge &lt;- tab_cod_ibge |&gt;\n  # Cria código de 6 dígitos removendo o dígito verificador\n  mutate(codigo_6digitos = str_sub(codigo_municipio_completo,\n                                   1, -2)) |&gt;\n  # Converte para numérico\n  mutate(codigo_6digitos = as.numeric(codigo_6digitos)) |&gt;\n  # Seleciona e renomeia colunas finais\n  select(codigo = codigo_6digitos,\n         municipio = nome_municipio,\n         UF = nome_uf)"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-3",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exemplo-3-adicionando-filtragem-3",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exemplo 3: Adicionando filtragem",
+    "text": "Exemplo 3: Adicionando filtragem\n\n# juntando o número de acidentes e os nomes dos municípios\nobitos_acidentes_nome_municipios &lt;- tab_cod_ibge |&gt;\n  left_join(obitos_acidentes_mun,\n            by = c(\"codigo\" = \"CODMUNOCOR\"))  |&gt;\n  arrange(desc(obitos_acidentes)) # ordem decrescente\nhead(obitos_acidentes_nome_municipios)\n\n# A tibble: 6 × 4\n  codigo municipio UF               obitos_acidentes\n   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;                       &lt;dbl&gt;\n1 130260 Manaus    Amazonas                      380\n2 520870 Goiânia   Goiás                         367\n3 261160 Recife    Pernambuco                    347\n4 355030 São Paulo São Paulo                     281\n5 530010 Brasília  Distrito Federal              271\n6 211130 São Luís  Maranhão                      269\n\n# Encerrando a conexão\ndbDisconnect(con, shutdown = TRUE)"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exercícios",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#exercícios",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nFaça um histograma das idades das pessoas que vieram a óbito em 2024 em todo o país (note que primeiro você precisa fazer uma consulta na base de dados).\nFaça um gráfico de barras contando os óbitos por sexo para cada estado do país."
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#conclusão-e-revisão",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#conclusão-e-revisão",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "Conclusão e Revisão",
+    "text": "Conclusão e Revisão\n\nProblema: A RAM é limitada; dados massivos não cabem nela.\nSolução: Processamento Out-of-Core (On-Disk).\nFerramentas:\n\nduckdb: Motor que faz o trabalho pesado no disco.\nDBI: Interface que o R usa para se comunicar.\nSQL: A linguagem que usamos para descrever o que queremos.\n\nFluxo: dbConnect -&gt; duckdb_register -&gt; dbGetQuery (com SQL) -&gt; dbDisconnect.\nVerbos SQL:\n\n\n\n\nSELECT (o quê)\nFROM (de onde)\nWHERE (filtro de linha)\n\n\n\nGROUP BY (agregar)\nORDER BY (ordenar)"
+  },
+  {
+    "objectID": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#section",
+    "href": "slides/04-processamento_out-of-core/04-processamento_out-of-core.html#section",
+    "title": "Processamento Out-of-Core com duckdb e DBI no R",
+    "section": "",
+    "text": "Mais sobre a estrutura de SQL você pode encontrar em https://www.w3schools.com/sql/."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#objetivo-da-aula",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#objetivo-da-aula",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "Objetivo da Aula",
+    "text": "Objetivo da Aula\n\nCompreender o funcionamento do algoritmo Naive Bayes."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#introdução",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#introdução",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "Introdução",
+    "text": "Introdução\n\nO algoritmo Naive Bayes, também conhecido como Bayes ingênuo, faz parte da família dos métodos bayesianos.\nEle utiliza dados de treino para calcular a probabilidade de um resultado pertencer a uma classe, com base nos dados de entrada.\nClassificadores bayesianos podem ser usados para:\n\nClassificação de texto. Exemplo: detecção de e-mail de spam.\nSegurança de Rede. Exemplo: detecção de intrusos em uma rede de computadores.\nDiagnóstico médico. Exemplo: identificação de condições médicas com base em sintomas observados."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#introdução-1",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#introdução-1",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "Introdução",
+    "text": "Introdução\n\nClassificadores bayesianos são ideais para problemas que requerem a consideração simultânea de vários atributos.\n\nMesmo atributos com efeitos relativamente pequenos podem ter um impacto significativo quando combinados em um modelo bayesiano."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#base-teorema-de-bayes",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#base-teorema-de-bayes",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "Base: Teorema de Bayes",
+    "text": "Base: Teorema de Bayes\n\nO teorema de Bayes é uma ferramenta que nos permite atualizar probabilidades de eventos com base em novas evidências.\nSuponha que conhecemos a probabilidade de uma instância pertencer à classe \\(C\\), denotada por \\(P(C)\\).\nAo obtermos uma informação adicional sobre um atributo \\(A\\) dessa instância, podemos ajustar a probabilidade de \\(C\\) levando em consideração a informação do atributo \\(A\\): \\[\nP(C|A) = \\frac{P(C\\cap A)}{P(A)} = \\frac{P(A|C)P(C)}{P(A)}.\n\\tag{1}\\]\nA última parte da Equação 1 vem do resultado: \\[\nP(A|C) = \\frac{P(C\\cap A)}{P(C)} ~\\Rightarrow~ P(C\\cap A) = P(A|C)P(C).\n\\]"
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#base-teorema-de-bayes-1",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#base-teorema-de-bayes-1",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "Base: Teorema de Bayes",
+    "text": "Base: Teorema de Bayes\nTerminologia:\n\n\\(P(C)\\): probabilidade a priori (prior probability).\n\nConhecimento inicial sobre \\(C\\).\nOu seja, conhecimento sobre a aparição de exemplos da classe \\(C\\) no problema.\n\n\\(P(C|A)\\): probabilidade a posteriori (posterior probability).\n\nProbabilidade da instância pertencer à classe \\(C\\) após consideração do atributo \\(A\\).\n\n\\(P(A|C)\\): verossimilhança (likelihood).\n\\(P(A)\\): probabilidade marginal (marginal likelihood). \nO uso do teorema de Bayes permite então recalcular a probabilidade de uma instância pertencer a uma classe após a obtenção de novas evidências sobre essa instância."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#exemplo-10.1",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#exemplo-10.1",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "Exemplo 10.1",
+    "text": "Exemplo 10.1\nSuponha que queremos calcular a probabilidade de um email ser classificado como spam quando a palavra “viagra” está presente. Calcule a probabilidade a partir dos dados apresentados na tabela abaixo.\n\n\n\n\n\n\n\n\n\n\\(~\\)\nFrequência\nviagra\n\\(~\\)\nTotal\n\n\nSim\nNão\n\n\n\n\nspam\n4\n16\n20\n\n\nnão spam\n1\n79\n80\n\n\nTotal\n5\n95\n100"
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#exemplo-10.1-1",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#exemplo-10.1-1",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "Exemplo 10.1",
+    "text": "Exemplo 10.1\n\\[\n\\begin{aligned}\nP(spam| viagra) &= \\frac{P(spam \\cap \\text{viagra})}{P(\\text{viagra})}\\\\\n&= \\frac{P(\\text{viagra}|spam)P(spam)}{P(\\text{viagra})}\\\\\n&= \\frac{\\frac{4}{20}\\, \\frac{20}{100}}{\\frac{5}{100}}\\\\\n&= \\frac{4}{5}\\\\\n&= 0,\\!80\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#o-classificador-naive-bayes",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#o-classificador-naive-bayes",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "O classificador Naive Bayes",
+    "text": "O classificador Naive Bayes\n\nEsse método é chamado de “ingênuo” (naive) devido à sua suposição simplificada de que todos os atributos são igualmente importantes e independentes, o que geralmente não é verdadeiro na prática.\n\nNa realidade, os atributos raramente são independentes entre si.\n\nVamos considerar um exemplo prático, como classificar emails. Na prática, a importância dos atributos pode variar.\n\nPor exemplo, o remetente do email pode ter mais peso do que o próprio conteúdo.\nAlgumas palavras não são independentes; por exemplo, se encontrarmos a palavra “viagra”, isso pode sugerir a presença de outras palavras como “prescrição” ou “remédio”.\n\nObservação: Apesar de as suposições do método Naive Bayes não refletirem completamente a complexidade da realidade, o método ainda demonstra um desempenho razoável em muitos casos práticos."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#o-classificador-naive-bayes-1",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#o-classificador-naive-bayes-1",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "O classificador Naive Bayes",
+    "text": "O classificador Naive Bayes\n\nVamos considerar agora que temos mais informações sobre uma intância (mais atributos coletados) para calcular a probabilidade a posteriori de que ela pertença à classe \\(C\\).\nPor simplicidade, vamos considerar apenas três atributos \\(A_1\\), \\(A_2\\) e \\(A_3\\). Então \\[\nP(C | A_1 \\cap A_2 \\cap A_3) = \\frac{P(A_1\\cap A_2 \\cap A_3 | C)P(C)}{P(A_1\\cap A_2 \\cap A_2)}.\n\\tag{2}\\]\nEssa fórmula é computacionalmente muito difícil de resolver.\n\nÀ medida que são adicionados mais atributos, são necessárias quantidades enormes de memória para armazenar as probabilidades de todas as intereseções entre os eventos possíveis."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#o-classificador-naive-bayes-2",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#o-classificador-naive-bayes-2",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "O classificador Naive Bayes",
+    "text": "O classificador Naive Bayes\n\nPara contornar esse problema, o método Naive Bayes assume independência entre os atributos condicionados à mesma classe. Isto leva ao resultado: \\[\nP(A_1\\cap A_2\\cap A_3 | C) = P(A_1 | C) P(A_2 | C) P(A_3 | C).\n\\] Assim, a Equação 2 fica \\[\nP(C | A_1 \\cap A_2 \\cap A_3) = \\frac{P(A_1 | C) P(A_2 | C)P(A_3 | C)\\,P(C) }{P(A_1\\cap A_2 \\cap A_3)}.\n\\]"
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#o-classificador-naive-bayes-3",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#o-classificador-naive-bayes-3",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "O classificador Naive Bayes",
+    "text": "O classificador Naive Bayes\nO algoritmo de classificação Naive Bayes pode ser definido da seguinte forma:\n\nSejam \\(A_1, A_2, \\ldots, A_n\\) os valores dos \\(n\\) atributos de uma instância. A probabilidade de classificar essa instância como pertencente à classe \\(C\\) usando naive Bayes é \\[\nP(C| A_1,\\ldots,A_n) = \\frac{ P(C) \\prod\\limits_{i=1}^n P(A_i|C) }{P(A_1,\\ldots,A_n)}\n\\] em que:\n\n\\(P(C)\\) é a probabilidade de uma instância pertencer à classe \\(C\\);\n\\(P(A_i|C)\\) é a probabilidade de ser observado \\(A_i\\) dada a ocorrência da classe \\(C\\);\n\\(P(A_1,\\ldots,A_n)\\) é a probabilidade conjunta de \\(A_1,\\ldots,A_n\\)."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#o-classificador-naive-bayes-4",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#o-classificador-naive-bayes-4",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "O classificador Naive Bayes",
+    "text": "O classificador Naive Bayes\n\nSuponha que temos duas classes \\(C_1\\) e \\(C_2\\) para classificar uma intânccia considerando três atributos, \\(A_1\\), \\(A_2\\) e \\(A_3\\).\nEntão temos: \\[\nP(C_1| A_1\\cap A_2\\cap A_3) = \\frac{P(A_1|C_1)P(A_2|C_1)P(A_3|C_1)P(C_1)}{P(A_1, A_2, A_3)}\n\\] e \\[\nP(C_2| A_1\\cap A_2\\cap A_3) = \\frac{P(A_1|C_2)P(A_2|C_2)P(A_3|C_2)P(C_2)}{P(A_1, A_2, A_3)}\n\\]\nNa prática, como o denominador para ambas as equações é o mesmo, os ignoramos para simplificar nossos cálculos e nos concentramos apenas nos numeradores."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#o-classificador-naive-bayes-5",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#o-classificador-naive-bayes-5",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "O classificador Naive Bayes",
+    "text": "O classificador Naive Bayes\n\nEntão a probabilidade de uma instância ser classificada na classe \\(C_1\\) é a probabilidade de ser \\(C_1\\) dividida pela probabilidade de que seja tanto \\(C_1\\) quanto \\(C_2\\).\nVejamos um eexmplo para melhor compreensão."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#exemplo-10.2",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#exemplo-10.2",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "Exemplo 10.2",
+    "text": "Exemplo 10.2\nVamos expandir nosso filtro de spam do Exemplo 7.1, adicionando mais termos a serem monitorados: “viagra”, “dinheiro”, “compra” e “descadastrar”.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(~\\)\nVerossimilhança\nviagra \\(~~~~\\) \\((W_1)\\)\ndinheiro \\(~~~~\\) \\((W_2)\\)\ncompra \\(~\\) \\((W_3)\\)\ndescadastrar \\((W_4)\\)\n\\(~\\)\nTotal\n\n\nSim\nNão\nSim\nNão\nSim\nNão\nSim\nNão\n\n\n\n\nspam\n\\(\\frac{4}{20}\\)\n\\(\\frac{16}{20}\\)\n\\(\\frac{10}{20}\\)\n\\(\\frac{10}{20}\\)\n\\(\\frac{0}{20}\\)\n\\(\\frac{20}{20}\\)\n\\(\\frac{12}{20}\\)\n\\(\\frac{8}{20}\\)\n20\n\n\nnão spam\n\\(\\frac{1}{80}\\)\n\\(\\frac{79}{80}\\)\n\\(\\frac{14}{80}\\)\n\\(\\frac{66}{80}\\)\n\\(\\frac{8}{80}\\)\n\\(\\frac{72}{80}\\)\n\\(\\frac{23}{80}\\)\n\\(\\frac{57}{80}\\)\n80\n\n\nTotal\n\\(\\frac{5}{100}\\)\n\\(\\frac{95}{100}\\)\n\\(\\frac{24}{100}\\)\n\\(\\frac{76}{100}\\)\n\\(\\frac{8}{100}\\)\n\\(\\frac{91}{100}\\)\n\\(\\frac{35}{100}\\)\n\\(\\frac{65}{100}\\)\n100\n\n\n\n Um novo email é recebido e possui os termos “viagra” e “descadastrar”. Calcule a probabilidade do email ser spam e não spam usando naive Bayes."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#exemplo-10.2-1",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#exemplo-10.2-1",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "Exemplo 10.2",
+    "text": "Exemplo 10.2\n\nProbabilidade inicial para spam: \\[\n\\begin{aligned}\nP(W_1|spam)&P(\\neg W_2|spam)P(\\neg W_3|spam)P(W_4|spam)P(spam) =\\\\ &=(4/20)(10/20)(20/20)(12/20)(20/100)\\\\\n&= 0,\\!012\n\\end{aligned}\n\\]\nProbabilidade inicial para não spam: \\[\n\\begin{aligned}\nP(W_1|\\neg spam)&P(\\neg W_2|\\neg spam)P(\\neg W_3|\\neg spam)P(W_4|\\neg spam)P(\\neg spam) =\\\\ &=(1/80)(60/80)(71/80)(23/80)(80/100)\\\\\n&= 0,\\!002\n\\end{aligned}\n\\]\nAs probabilidades finais para spam e não spam são, respectivamente:\n\n\n\n\\[\n0,\\!012/(0,\\!012+0,\\!002) = 0,857\n\\]\n\n\\[\n0,\\!002/(0,\\!012+0,\\!002)=0,\\!143\n\\]"
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#o-estimador-de-laplace",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#o-estimador-de-laplace",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "O estimador de Laplace",
+    "text": "O estimador de Laplace\n\nSuponha agora que recebemos um email contendo os quatro termos do Exemplo 7.2: “viagra”, “dinheiro”, “compra” e “descadastrar”.\nUsando naive Bayes, a probabilidade de ser spam é \\[\n(4/20)(10/20)(0/20)(12/20)(20/100)=0\n\\]\nEnquanto a de não spam é \\[\n(1/80)(14/80)(8/80)(23/80)(80/100)=0,\\!00005\n\\]\nLogo, a probabilidade final para spam e não spam ficam, respectivamente:\n\n\n\n\\[\n0/(0+0,\\!00005) = 0\n\\]\n\n\\[\n0,\\!00005/(0+0,\\!00005)=1\n\\]"
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#o-estimador-de-laplace-1",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#o-estimador-de-laplace-1",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "O estimador de Laplace",
+    "text": "O estimador de Laplace\n\nO resultados indicam probabilidade zero de ser spam e 100% de não ser spam, mas isso parece improvável.\nIsso ocorreu porque nos dados de treino não foi observada a palavra “compra” em emails de spam.\nA solução é usar o estimador de Laplace, que adiciona pequenos valores às contagens para evitar probabilidades nulas e melhorar a precisão da classificação.\n\nEm geral somamos 1 às frequências de cada atributo para evitar frequência zero.\nEntão, ao invés de calcularmos a probabilidade de um atributo \\(A_i\\) como \\(a_i/N\\), calculamos \\[\n(a_i+1)/(N+1\\times d),\n\\] em que \\(d\\) é o número de atributos totais considerados."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#exemplo-10.3",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#exemplo-10.3",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "Exemplo 10.3",
+    "text": "Exemplo 10.3\nCalcule as probabilidades do email ser spam ou não usando o estimador de Laplace."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#exemplo-10.3-1",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#exemplo-10.3-1",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "Exemplo 10.3",
+    "text": "Exemplo 10.3\n\nProbabilidade inicial de spam: \\(~~(5 / 24)  (11 / 24)  (1 / 24)  (13 / 24)  (20 / 100) = 0,\\!0004\\)\nProbabilidade inicial de não spam: \\(~~(2 / 84)  (15 / 84)  (9 / 84)  (24 / 84)  (80 / 100) = 0,\\!0001\\)\n\n\n\nProbabilidade final de spam: \\(~~0,\\!0004 / (0,\\!0004 + 0,\\!0001) = 0,\\!80\\)\nProbabilidade final de não spam: \\(~~0,\\!0001 / (0,\\!0004 + 0,\\!0001) = 0,\\!20\\)"
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#atributos-numéricos",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#atributos-numéricos",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "Atributos numéricos",
+    "text": "Atributos numéricos\n\nO método Naive Bayes requer que os atributos sejam categóricos.\nSe um atributo for numérico, devemos discretizá-lo, criando categorias.\nPara isso, devermos explorar os dados."
+  },
+  {
+    "objectID": "slides/11-naive_bayes/11-naive_bayes.html#vantagens-e-desvantagens",
+    "href": "slides/11-naive_bayes/11-naive_bayes.html#vantagens-e-desvantagens",
+    "title": "Aprendizagem Probabilística – Classificação Usando Naive Bayes",
+    "section": "Vantagens e desvantagens",
+    "text": "Vantagens e desvantagens\n\n\n\n\n\n\nVantagens\n\n\n\nSimples, rápido e muito efetivo.\nBom desempenhocom dados ruidosos e ausentes.\nNecessidade de poucos exemplos para o treinamento, mas também funciona bem com um grande número de exemplos.\nFácil de obter a probabilidade estimada para uma previsão.\n\n\n\n\n\n\n\n\n\n\nDesvantagens\n\n\n\nBaseia-se frequentemente em uma suposição falha de características igualmente importantes e independentes.\nNão é ideal para conjuntos de dados com muitas características numéricas.\nAs probabilidades estimadas são menos confiáveis do que as classes previstas."
   },
   {
     "objectID": "slides/09-regressao_logistica/09-regressao_logistica.html#objetivo-da-aula",

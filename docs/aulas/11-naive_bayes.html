@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Conteúdo – Mineração de Dados</title>
+<title>Conteúdo 11 – Mineração de Dados</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../info/bibliografia.html" rel="next">
-<link href="../info/ementa.html" rel="prev">
+<link href="../aulas/10-knn.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -112,7 +111,7 @@ window.Quarto = {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Conteúdo</h1>
+          <h1 class="quarto-secondary-nav-title">Conteúdo 11</h1>
         </a>     
     </div>
   </nav>
@@ -152,7 +151,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../info/conteudo.html" class="sidebar-item-text sidebar-link active">
+  <a href="../info/conteudo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conteúdo</span></a>
   </div>
 </li>
@@ -251,13 +250,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Parte 3: Métodos Supervisionados</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../aulas/08-regressao_linear.html" class="sidebar-item-text sidebar-link">
@@ -278,7 +277,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../aulas/11-naive_bayes.html" class="sidebar-item-text sidebar-link">
+  <a href="../aulas/11-naive_bayes.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">11- Naive Bayes</span></a>
   </div>
 </li>
@@ -297,7 +296,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Conteúdo</h1>
+<h1 class="title d-none d-lg-block">Conteúdo 11</h1>
 </div>
 
 
@@ -314,13 +313,25 @@ window.Quarto = {
 </header>
 
 
-<p>O conteúdo programático detalhado da disciplina é apresentado a seguir. Ele está organizado em três grandes eixos que abordaremos ao longo do semestre.</p>
-<hr>
-<p>Parte 1: Fundamentos<br>   1.1. Fundamentos da Mineração de Dados<br>   1.2. Pré-processamento de Dados<br>      1.2.1. Exploração<br>      1.2.2. Limpeza<br>      1.2.3. Transformação<br>      1.2.3. Redução<br></p>
-<p>Parte 2: Aprendizado Não Supervisionado<br>   2.1. Regras de Associação<br>   2.2. <span class="math inline">\(k\)</span>-means<br></p>
-<p>Parte 3: Aprendizado Supervisionado<br>   3.1. Regressão<br>      3.1.1. Regressão linear<br>      3.1.2. Regressão logística<br>   3.2. <span class="math inline">\(k\)</span>-Nearest Neighbors<br>   3.3. Naive Bayes<br>   3.4. Árvores de Decisão<br>   3.5. Florestas aleatórias<br>   3.6. Support Vector Machine<br>   3.7. Avaliação de desempenho<br>      3.7.1. Validação Cruzada<br>      3.7.2. Amostragem bootstrap<br>      3.7.3. Acurácia<br>      3.7.4. Kappa<br>      3.7.5. Precisão e revocação<br>      3.7.6. Sensibilidade e especificidade<br>   3.8. Ajuste de parâmetros<br>   3.9. Métodos de conjunto (ensemble methods)<br>      3.9.1. Bagging<br>      3.9.2. Boosting<br>      3.9.3. Stacking<br></p>
+<section id="naive-bayes" class="level2">
+<h2 data-anchor-id="naive-bayes">Naive Bayes</h2>
+<p>Neste material de aula, abordamos o algoritmo Naive Bayes.</p>
+<p>Slides:</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-4">
+<p><a href="../slides/11-naive_bayes/11-naive_bayes.html" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide11_html.png" class="img-fluid"><br>Versão html </a></p>
+</div>
+<div class="g-col-12 g-col-md-4">
+<p><a href="../PDFs/slides/11-naive_bayes.pdf" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide11_pdf.png" class="img-fluid"><br>Versão pdf </a></p>
+</div>
+</div>
+</section>
+<section id="aplicações" class="level2">
+<h2 data-anchor-id="aplicações">Aplicações</h2>
+<p>Os arquivos contendo um exemplo com códigos em R e os dados podem ser baixados <a href="../PDFs/slides/10-knn_exemplo.zip">aqui</a>.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -718,14 +729,11 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../info/ementa.html" class="pagination-link" aria-label="Ementa e objetivos">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Ementa e objetivos</span>
+      <a href="../aulas/10-knn.html" class="pagination-link" aria-label="10- $k$-Nearest Neighbors">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">10- <span class="math inline">\(k\)</span>-Nearest Neighbors</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../info/bibliografia.html" class="pagination-link" aria-label="Bibliografia">
-        <span class="nav-page-text">Bibliografia</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -1,0 +1,39 @@
+---
+title: "Conteúdo 11"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Naive Bayes
+
+Neste material de aula, abordamos o algoritmo Naive Bayes.
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/11-naive_bayes/11-naive_bayes.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide11_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/11-naive_bayes.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide11_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::
+
+
+
+## Aplicações
+
+Os arquivos contendo um exemplo com códigos em R e os dados podem ser baixados [aqui](/PDFs/slides/10-knn_exemplo.zip).
+
+
+

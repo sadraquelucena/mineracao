@@ -55,6 +55,8 @@ website:
             text: "9- Regressão Logística"
           - href: aulas/10-knn.qmd
             text: "10- $k$-Nearest Neighbors"
+          - href: aulas/11-naive_bayes.qmd
+            text: "11- Naive Bayes"
     
     #- href: PDFs/listas/listas_de_exercicio.qmd
     #  text: "Listas de Exercício"
