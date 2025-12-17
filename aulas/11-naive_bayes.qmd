@@ -36,4 +36,44 @@ Slides:
 Os arquivos contendo um exemplo com códigos em R e os dados podem ser baixados [aqui](/PDFs/slides/11-naive_bayes_exemplo.zip).
 
 
+## Projeto 5 -- Classificação Supervisionada e Predição de Risco em Saúde
 
+Você é um(a) Cientista de Dados em Saúde Pública. A gestão precisa sair do "achismo" e utilizar dados históricos para prever desfechos clínicos ou classificar riscos de eventos na Região Nordeste do país. Sua missão é treinar e validar modelos preditivos usando dados públicos (DATASUS). Você deve aplicar e comparar os algoritmos de Classificação *Regressão Logística*, *k-NN* e *Naive Bayes* em um dos miniprojetos listados abaixo.
+
+**Prazo:** 15/01/2026
+
+**Tarefa:**
+
+- Escolha uma regiaão do Brasil (Norte, Nordeste, Sudeste, Centro-Oeste, Sul) para o ano de 2024 e realize a limpeza necessária.
+- Implemente os seguintes algoritmos para resolver o problema: Regressão Logística, k-NN ou Naive Bayes.
+- Compare a performance deles (Acurácia, Sensibilidade, Especificidade) e indique o algoritmo que apresentou melhor desempenho segundo essas métricas.
+
+
+### Mini Projetos para escolher
+
+**P1. Predição de Baixo Peso ao Nascer**
+
+- **Desafio:** Predizer o risco de baixo peso baseado nas características maternas e do pré-natal.
+
+- **Fonte de dados:** SINASC (Nascidos Vivos).
+
+- **Código para baixar os dados no R usando o pacote *microdatasus*:** [11-naive_bayes-P1.R](/PDFs/slides/Projeto5/11-naive_bayes-P1.R)
+
+- **Variáveis:**
+
+    - **Variável Alvo:** PESO. Crie uma nova variável BAIXO_PESO classificando como 1 quando PESO < 2500g.
+    - **Atributos sugeridos:** IDADEMAE, ESCMAE2010, ESTCIVMAE, RACACOR, QTDFILVIVO, QTDFILMORT, CONSULTAS, SEMAGESTAC, GRAVIDEZ, PARTO, SEXO.
+    
+
+**P2. Predição de Risco de Hospitalização em casos de Chikungunya**
+
+- **Desafio:** Predizer quais pacientes com Chikungunya precisarão de internação hospitalar baseado apenas no perfil (Idade/Comorbidades) e nos sintomas iniciais.
+
+- **Fonte de dados:** Sistema de Informação de Agravos de Notificação (Sinan).
+
+- **Código para baixar os dados no R usando o pacote *microdatasus*:** [11-naive_bayes-P2.R](/PDFs/slides/Projeto5/11-naive_bayes-P2.R)
+
+- **Variáveis:**
+
+    - **Variável Alvo:** houve_hospitalizacao.
+    - **Atributos sugeridos:** NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_RACA, CS_ESCOL_N, DIABETES, HIPERTENSA, AUTO_IMUNE, HEMATOLOG, RENAL, FEBRE, ARTRALGIA, ARTRITE, DOR_COSTAS, EXANTEMA, VOMITO, NAUSEA, CEFALEIA.
