@@ -1,0 +1,44 @@
+---
+title: "Conteúdo 12"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Árvores de Decisão
+
+Neste material de aula, abordamos o algoritmo Árvore de Decisão. Conheceremos os algoritmos CART e C5.0.
+
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/12-Arvores_de_decisao/12-Arvores_de_decisao.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide12_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/12-Arvores_de_decisao.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide12_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::
+
+
+
+## Aplicações
+
+Os arquivos contendo um exemplo com códigos em R e os dados podem ser baixados [aqui](/PDFs/slides/12-Arvores_de_decisao_exemplo.zip).
+
+
+## Projeto 6 -- Classificação Supervisionada e Predição de Risco em Saúde
+
+Acrescente os algoritmos CART e C5.0 na análise realizada no Projeto 5 e compare os resultados obtidos. Elabore um relatório.
+
+**Prazo:** 27/01/2026
