@@ -1,0 +1,40 @@
+---
+title: "Conteúdo 13"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Melhorando a Performance dos Modelos
+
+Esta aula apresenta os principais conceitos de Aprendizagem em Conjunto (*Ensemble Learning*), com foco nos métodos *Bagging* e *Boosting*, explicando seu funcionamento, vantagens e diferenças. Também aborda o papel dos hiperparâmetros nos algoritmos de aprendizado de máquina e mostra como realizar o ajuste de parâmetros (*tuning*) para melhorar o desempenho preditivo dos modelos, com exemplos práticos utilizando o pacote `caret` no R.
+
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/13-Melhorando_performance/13-Melhorando_performance.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide13_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/13-Melhorando_performance.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide13_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::
+
+
+
+## Aplicações
+
+Os arquivos contendo um exemplo com códigos em R pode ser baixado [aqui](/PDFs/slides/13-Melhorando_performance_exemplo.r).
+
+
+

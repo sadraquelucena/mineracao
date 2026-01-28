@@ -59,6 +59,8 @@ website:
             text: "11- Naive Bayes"
           - href: aulas/12-Arvores_de_decisao.qmd
             text: "12- Árvores de Decisão"
+          - href: aulas/13-Melhorando_performance.qmd
+            text: "13- Melhorando a performance dos modelos"
             
     
     #- href: PDFs/listas/listas_de_exercicio.qmd

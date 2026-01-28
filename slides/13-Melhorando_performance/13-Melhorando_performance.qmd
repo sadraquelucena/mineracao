@@ -1,0 +1,352 @@
+---
+title: "Melhorando a Performance dos Modelos"
+subtitle: "ESTAT0109 -- Mineração de Dados em Estatística"
+author:
+  name: | # indica que o campo name terá múltiplas linhas
+    Prof. Dr. Sadraque E. F. Lucena<br>
+    <span style="font-size:.8em;">sadraquelucena@academico.ufs.br</span>
+    <br>
+    <a href="http://sadraquelucena.github.io/mineracao" target="_blank" style="font-size:.8em;">http://sadraquelucena.github.io/mineracao</a>
+
+df-print: default  # Como data frames aparecem no documento
+                   # opções: "default", "kable", "tibble" e "paged"
+
+format:
+  revealjs:
+    theme: meutema.scss
+    width: 1600
+    height: 900
+    margin: 0.1         # margem em torno do conteúdo
+    min-scale: 0.2       # escala mínima permitida
+    max-scale: 2.0       # escala máxima permitida
+    slide-number: true
+    code-line-numbers: false # sem numero das linhas nos code chunks
+    subtitle-style: "font-size: 2em; font-weight: bold;"  # Aqui é onde aumentamos o subtítulo
+    logo: imagens/ufs_horizontal_positiva.png
+    transition: fade
+    transition-speed: fast
+    scss: meutema.scss
+
+lang: pt-BR
+---
+
+
+## Objetivo da Aula
+
+- Apresentar métodos de aprendizagem em conjunto (bagging e boosting) e ensinar como ajustar seus hiperparâmetros para melhorar o desempenho preditivo dos modelos.
+
+---
+
+## Aprendizagem em Conjunto (Ensemble Learning)
+
+- Métodos de aprendizado em conjunto são técnicas utilizadas para combinar múltiplos algoritmos de aprendizado a fim de obter um desempenho preditivo melhor do que poderia ser obtido por qualquer um dos algoritmos de aprendizado individualmente.
+
+- Veremos dois tipos:
+
+    - *Bagging*
+    - *Boosting*
+
+
+# Bagging
+
+## Aprendizagem em Conjunto (Ensemble Learning)
+
+### Bagging
+
+- *Bagging* vem de *Bootstrap Aggregating* (agregação *bootstrap*).
+- A ideia é treinar vários modelos com diferentes subconjuntos dos dados de treinamento selecionados aleatoriamente e combinar suas predições para fazer a predição final.
+
+  - Esta estratégia reduz a variâcia da predição, pois cada modelo é treinado com um conjunto levemente diferente de dados.
+  - Ela é particularmente útil quando os modelos tendem a sobreajustar aos dados.
+
+- Dois algoritmos de Bagging são comumente usados:
+
+  - *Vanilla Bagging*
+  - *Random Forest* (Floresta Aleatória)
+
+---
+
+## Aprendizagem em Conjunto (Ensemble Learning)
+
+### Vanilla Bagging
+
+1. Obtemos $N$ amostras *bootstrap*: selecionamos de forma aleatória e com reposição instâncias do conjunto de dados, gerando subconjuntos de mesmo tamanho do original.
+2. Usamos algum método (árvores de decisão, redes neurais, SVMs...) para predizer as respostas em cada amostra *bootstrap*.
+3. Combinamos as saídas para uma resposta final.
+  - Em **problemas de regressão** a saída é a média das predições de cada modelo.
+  - Em **problemas de classificação** a saída é o voto da maioria dos modelos.
+  
+- O número de subconjuntos (amostras) $N$ é um hiperparâmetro que pode ser ajustado.
+- Exemplo: algoritmo `Bagged CART`.
+
+---
+
+## Aprendizagem em Conjunto (Ensemble Learning)
+
+### Vanilla Bagging
+
+![](imagens/vanilla.png){width=70%}
+
+---
+
+## Aprendizagem em Conjunto (Ensemble Learning)
+
+### Random Forest
+
+- É uma extensão do algoritmo *vanilla bagging*. O procedimento é:
+
+    1. Obtenha $N$ amostras *bootstrap*, selecionando aleatoriamente instâncias do conjunto de dados original, e também escolhendo alguns atributos de forma aleatória.
+    2. Em cada amostra ajuste uma árvore de decisão para fazer previsões.
+    3. Combine as previsões de todas as árvores para obter uma resposta final.
+    
+- A principal diferença do *random forest* para o *vanilla bagging* é que, além das instâncias, os atributos de cada subconjunto também são selecionados aleatoriamente.
+
+- O número de atributos a serem considerados em cada subconjunto é um hiperparâmetro.
+
+
+## Aprendizagem em Conjunto (Ensemble Learning)
+
+### Random Forest
+
+![](imagens/randomforest.png){width=70%}
+
+
+## Aprendizagem em Conjunto (Ensemble Learning)
+
+### Random Forest
+
+- **Vantagens**
+
+    - Reduz risco de *overfitting*, pois ajusta modelos com observações e atributos levemente diferentes.
+    - Maior acurácia.
+    - Robustez a ruídos e valores ausentes.
+
+- **Desvantagens**
+
+    - Demanda tempo e poder computacional, pois ajusta várias árvores.
+    - Interpretabilidade mais difícil que em uma árvore de decisão.
+
+
+# Boosting
+
+## Boosting
+
+- O método *Boosting* combina vários aprendizes fracos para formar um aprendiz forte.
+- Procedimento:
+
+    1. Inicialmente um modelo é treinado e avaliado o erro de predição em cada instância.
+    2. Um segundo modelo é ajustado, dando mais atenção às observações com previsões incorretas. Isso é feito sucessivamente ($N$ vezes) para reduzir o erro de predição.
+    3. A saída é a combinação dos resultados dos modelos.
+
+- Três algoritmos populares de *boosting* são `AdaBoost`, `Gradient Boosting` e `XGBoost`.
+- O algoritmo `C5.0` também permite fazer *boosting*.
+
+- O número $N$ de árvores de decisões usadas é um hiperparâmetro que pode ser ajustado.
+
+
+## Boosting
+
+- Vejamos melhor a ideia do algoritmo usando `Gradient Boosting` para regressão:
+
+    1. Treine Árvore-1 aos dados e estime $\widehat{y}_i$.
+    2. Calcule os resíduos $r_{1i}$ a partir da Árvore-1. Treine Árvore-2 usando como variável resposta os resíduos $r_{1i}$.
+    3. Repita o processo usando os resíduos da árvore ajustada anteriormente como variável resposta até que $N$ árvores sejam treinadas.
+    4. Combina as predições para obter a predição final.
+    
+- A predição de $y_i$ será a combinação das predições de cada árvore:
+    $$
+      y_{pred} = \widehat{y}_i + \eta\, \widehat{r}_{1i} + \eta\, \widehat{r}_{2i} + \eta\, \widehat{r}_{Ni}
+    $$
+
+
+## Boosting
+
+### Exemplo
+
+Suponha que queremos estimar o preço de uma casa baseado na idade, metragem quadrada e localização.
+
+![](imagens/ex1.png){width=50%}
+
+- **Passo 1**: uma árvore de decisão é treinada e preditos os valores das casas.
+
+
+## Boosting
+
+### Exemplo
+
+- **Passo 2**: Treinamos uma segunda árvore de decisão considerando como reposta os resíduos da árvore anterior, $r_{1i}$.
+- O resíduo $r_{1i}$ é calculado: $r_{1i} = y_i - \widehat{y}_i$
+
+![](imagens/ex2.png){width=80%}
+
+## Boosting
+
+### Exemplo
+
+- **Passo 3**: Os resíduos dessa nova árvore são obtidos e usados como resposta no treino da árvore seguinte.
+
+![](imagens/ex3.png){width=80%}
+
+
+## Boosting
+
+### Exemplo
+
+- **Passo 4**: O processo continua até que $N$ árvores sejam treinadas.
+- A predição final é a soma das predições de todas as árvores ponderadas pela taxa de aprendizado.
+
+![](imagens/ex4.png){width=90%}
+
+
+# Ajuste de Parâmetros
+
+## Ajuste de Parâmetros
+
+- Os parâmetros que controlam o comportamento e o desempenho dos algoritmos de aprendizagem de máquina são comumente chamados de *hiperparâmetros*.
+- Durante o processo de treinamento de um modelo de aprendizagem de máquina, é essencial ajustar esses hiperparâmetros para melhorar o desempenho preditivo do modelo.
+- De acordo com o método utilizado, diferentes hiperparâmetros podem ser ajustados.
+
+
+## Ajuste de Parâmetros
+
+- Exemplos:
+
+| Método              | Tipo de aprendizado | Função no R | Parâmetros|
+|:----------|:----------|:-------|:-------------|
+| k-NN | Ambos       | `knn`   | `k`                         |
+| Naive Bayes         | Classificação       | `nb`    | `fL`, `usekernel`           |
+| Árvore C5.0   | Classificação       | `C5.0`  | `model`, `trials`, `winnow` |
+| Árvore CART | Ambos           | `rpart` | `cp`                        |
+| Árvore XGBoost   | Ambos       | `xgbTree`  | `nrounds`, `max_depth`, `eta`, `gamma`, `colsample_bytree`, `min_child_weight`, `subsample` |
+| Random Forest   | Ambos       | `rf`  | `mtry` |
+
+
+## Ajuste de Parâmetros
+
+- k-Nearest Neighbors:
+
+  - `k`: número de vizinhos mais próximos.
+  
+- Naive Bayes:
+
+  - `fL`: incorpora o suavizador de Laplace, usado para lidar com a probabilidade zero de certos eventos ocorrerem em dados de treinamento;
+  - `usekernel`: especifica se o método deve usar uma estimativa de densidade de kernel (`TRUE`) para variáveis contínuas em vez de uma estimativa gaussiana padrão (`FALSE`). 
+
+
+## Ajuste de Parâmetros
+
+- Árvore C5.0:
+
+  - `model`: se será uma árvore (`tree`) ou conjunto de regras (`rules`).
+  - `trials`: número de iterações boost.
+  - `winnow`: usa todos os atributos (`FALSE`) ou apenas os mais importantes (`TRUE`).
+  
+- Árvore CART:
+
+  - `cp`: parâmetro de complexidade. Valor de 0 a 1 usado para podar a árvore (quanto menor o valor de `cp`, maior a árvore).
+  
+- Random Forest:
+
+  - `mtry`: número de atributos que serão selecionados aleatoriamente em cada árvore.  
+
+
+
+## Ajuste de Parâmetros
+
+- Árvore XGBoost:
+
+  - `nrounds`: número de iterações de boosting.
+  - `max_depth`: profundidade máxima permitida para cada árvore.
+  - `eta`: taxa de aprendizado que controla a contribuição de cada árvore ao modelo final.
+  - `gamma`: controla a complexidade das árvores através da penalização do crescimento do nó. Valores mais altos levam a uma poda mais agressiva.
+  - `colsample_bytree`: Fração de colunas a serem amostradas aleatoriamente em cada iteração de construção da árvore.
+  - `min_child_weight`: peso mínimo necessário para criar um novo nó na árvore.
+  - `subsample`: fração de observações (ou linhas) a serem amostradas aleatoriamente em cada iteração de construção da árvore.
+
+
+## Ajuste de Parâmetros
+
+- Caso você esqueça os parâmetros de um modelo no R, use a função `modelLookup()` do pacote `caret`.
+
+```{r}
+#| echo: true
+library(caret)
+modelLookup("C5.0")
+modelLookup("rpart")
+```
+
+<br>
+
+- Para saber os modelos e parâmetros disponíveis no pacote `caret`, acesse: [https://topepo.github.io/caret/available-models.html](https://topepo.github.io/caret/available-models.html)
+
+
+## Ajuste de Parâmetros
+
+- O processo de definir os valores mais adequados para os hiperparâmetros é chamado de *ajuste de parâmetros* (ou *tuning de parâmetros*).
+
+- O ajuste costuma ser feito via busca em grade (*grid search*) e consiste em três etapas:
+
+    1. Criar uma grade de hiperparâmetros possíveis a serem avaliados;
+    2. Construir um modelo baseado em cada combinação de hiperparâmetros;
+    3. Escolher aquele com melhor performance segundo alguma métrica.
+    
+- O ajuste de parâmetros pode ser realizado de forma automática ou customizada (quando o espaço de busca é escolhido pelo usuário).
+
+
+
+
+## Ajuste de Parâmetros
+
+![](imagens/fig1.png){width=100%}
+
+
+## Ajuste de Parâmetros
+
+- A função `train()` do pacote `caret` possui os seguintes argumentos:
+
+  - `form`: especifica a variável de saída e as variáveis de entrada. Ex.: `y ~ x1 + x2 + ...`
+  - `data`: especifica os dados de treino.
+  - `metric`: especifica a métrica usada para avaliar o desempenho do modelo durante o treinamento. Usamos "RMSE" e "Rsquared" para regressão e "Accuracy" e "Kappa" para classificação.
+  - `method`: especifica o método de aprendizado de máquina.
+  - `trControl`: para ajuste customizado. Permite controlar o processo de treinamento, incluindo opções como validação cruzada, repetição do treinamento e seleção de modelo.
+  - `tuneGrid`: valores dos hiperparâmetros do método a serem testados.
+
+
+## Ajuste de Parâmetros
+Exemplo:
+
+- Ajuste automático:
+```{r}
+#| eval: false
+#| echo: true
+modelo <- train(
+  y ~ .,
+  data = dados_treino,
+  metric = "Accuracy",
+  method = "rf",
+  trControl = trainControl(method = "cv", number = 10)
+  )
+```
+
+## Ajuste de Parâmetros
+Exemplo:
+
+- Ajuste customizado:
+
+```{r}
+#| eval: false
+#| echo: true
+modelo <- train(
+  y ~ .,
+  data = dados_treino,
+  metric = "Accuracy",
+  method = "rf",
+  tuneGrid = expand.grid(mtry = 1:10), # testar mtry de 1 a 10
+  trControl = trainControl(method = "cv", number = 10)
+  )
+```
+
+
+
+
+# Agora vamos fazer no R...
