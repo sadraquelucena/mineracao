@@ -37,4 +37,9 @@ Slides:
 Os arquivos contendo um exemplo com códigos em R pode ser baixado [aqui](/PDFs/slides/14-SVM_exemplo.zip).
 
 
+## Projeto 7 -- Classificação Supervisionada e Predição de Risco em Saúde
+
+Acrescente os algoritmos de SVM na análise realizada no Projeto 6 e compare os resultados obtidos. Elabore um relatório.
+
+**Prazo:** 10/02/2026
 
