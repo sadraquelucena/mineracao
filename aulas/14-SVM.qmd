@@ -1,0 +1,40 @@
+---
+title: "Conteúdo 14"
+format:
+  html:
+    toc: false
+    anchor-sections: false
+---
+
+## Support Vector Machines (SVM)
+
+Nesta aula apresentamos as Máquinas de Vetores de Suporte (SVM), explorando sua intuição geométrica baseada na separação de dados por hiperplanos e na maximização da margem. Discutimos SVMs lineares e não lineares, o uso de margem suave e do truque do kernel, e aplicamos o método a um problema de Reconhecimento Óptico de Caracteres (OCR) em R, analisando o desempenho do modelo por meio de matriz de confusão e métricas de classificação.
+
+
+Slides:
+
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/slides/14-SVM/14-SVM.html" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide14_html.png)<br>Versão html
+</a>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+<a href="/PDFs/slides/14-SVM.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+![](/PDFs/slides/slide14_pdf.png)<br>Versão pdf
+</a>
+:::
+
+::::
+
+
+
+## Aplicações
+
+Os arquivos contendo um exemplo com códigos em R pode ser baixado [aqui](/PDFs/slides/14-SVM_exemplo.zip).
+
+
+

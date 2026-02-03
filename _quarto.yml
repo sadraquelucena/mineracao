@@ -61,7 +61,8 @@ website:
             text: "12- Árvores de Decisão"
           - href: aulas/13-Melhorando_performance.qmd
             text: "13- Melhorando a performance dos modelos"
-            
+          - href: aulas/14-SVM.qmd
+            text: "14- SVM"
     
     #- href: PDFs/listas/listas_de_exercicio.qmd
     #  text: "Listas de Exercício"

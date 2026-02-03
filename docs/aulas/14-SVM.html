@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Conteúdo 1 – Mineração de Dados</title>
+<title>Conteúdo 14 – Mineração de Dados</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../aulas/02-introducao_ao_rstudio+github.html" rel="next">
-<link href="../info/softwares.html" rel="prev">
+<link href="../aulas/13-Melhorando_performance.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -112,7 +111,7 @@ window.Quarto = {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Conteúdo 1</h1>
+          <h1 class="quarto-secondary-nav-title">Conteúdo 14</h1>
         </a>     
     </div>
   </nav>
@@ -187,16 +186,16 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Parte 1: Fundamentos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../aulas/01-Apresentacao_da_disciplina.html" class="sidebar-item-text sidebar-link active">
+  <a href="../aulas/01-Apresentacao_da_disciplina.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">1- Apresentação da Disciplina</span></a>
   </div>
 </li>
@@ -251,13 +250,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Parte 3: Métodos Supervisionados</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../aulas/08-regressao_linear.html" class="sidebar-item-text sidebar-link">
@@ -296,7 +295,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../aulas/14-SVM.html" class="sidebar-item-text sidebar-link">
+  <a href="../aulas/14-SVM.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">14- SVM</span></a>
   </div>
 </li>
@@ -315,7 +314,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Conteúdo 1</h1>
+<h1 class="title d-none d-lg-block">Conteúdo 14</h1>
 </div>
 
 
@@ -332,22 +331,22 @@ window.Quarto = {
 </header>
 
 
-<section id="apresentação-da-disciplina-e-introdução-à-mineração-de-dados" class="level2">
-<h2 data-anchor-id="apresentação-da-disciplina-e-introdução-à-mineração-de-dados">Apresentação da Disciplina e Introdução à mineração de dados</h2>
-<p>Sejam bem-vindos(as) à disciplina Mineração de Dados em Estatística!</p>
-<p>Nesta primeira aula, abrimos oficialmente nossa jornada pelo fascinante universo da descoberta de conhecimento em bases de dados. Apresentamos os objetivos da disciplina, o formato das avaliações, os canais de comunicação e o portfólio de projetos que guiará nosso semestre. Em seguida, mergulhamos nos fundamentos da mineração de dados, explorando o processo KDD (<em>Knowledge Discovery in Databases</em>), a hierarquia entre dados, informação e conhecimento, e a conexão entre Estatística, Aprendizado de Máquina e Inteligência Artificial. Essa introdução marca o início de uma trilha que combina teoria, prática e análise crítica para transformar dados em decisões inteligentes.</p>
+<section id="support-vector-machines-svm" class="level2">
+<h2 data-anchor-id="support-vector-machines-svm">Support Vector Machines (SVM)</h2>
+<p>Nesta aula apresentamos as Máquinas de Vetores de Suporte (SVM), explorando sua intuição geométrica baseada na separação de dados por hiperplanos e na maximização da margem. Discutimos SVMs lineares e não lineares, o uso de margem suave e do truque do kernel, e aplicamos o método a um problema de Reconhecimento Óptico de Caracteres (OCR) em R, analisando o desempenho do modelo por meio de matriz de confusão e métricas de classificação.</p>
 <p>Slides:</p>
 <div class="grid">
 <div class="g-col-12 g-col-md-4">
-<p><a href="../slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.html" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide01_html.png" class="img-fluid"><br>Versão html </a></p>
+<p><a href="../slides/14-SVM/14-SVM.html" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide14_html.png" class="img-fluid"><br>Versão html </a></p>
 </div>
 <div class="g-col-12 g-col-md-4">
-<p><a href="../PDFs/slides/01-Apresentacao_da_disciplina_e_introducao_a_mineracao_de_dados.pdf" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide01_pdf.png" class="img-fluid"><br>Versão pdf </a></p>
+<p><a href="../PDFs/slides/14-SVM.pdf" target="_blank" style="text-decoration: none; color: inherit;"> <img src="../PDFs/slides/slide14_pdf.png" class="img-fluid"><br>Versão pdf </a></p>
 </div>
 </div>
-<p>Vídeo da aula:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2QzsSH0kLBw?si=ZG9uBTcQWdS0l1mx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
+</section>
+<section id="aplicações" class="level2">
+<h2 data-anchor-id="aplicações">Aplicações</h2>
+<p>Os arquivos contendo um exemplo com códigos em R pode ser baixado <a href="../PDFs/slides/14-SVM_exemplo.zip">aqui</a>.</p>
 
 
 </section>
@@ -748,14 +747,11 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../info/softwares.html" class="pagination-link" aria-label="Softwares Necessários">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Softwares Necessários</span>
+      <a href="../aulas/13-Melhorando_performance.html" class="pagination-link" aria-label="13- Melhorando a performance dos modelos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">13- Melhorando a performance dos modelos</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../aulas/02-introducao_ao_rstudio+github.html" class="pagination-link" aria-label="2- Introdução ao RStudio + GitHub">
-        <span class="nav-page-text">2- Introdução ao RStudio + GitHub</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
